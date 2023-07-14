@@ -1,0 +1,1588 @@
+  --------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------
+  [![Skip Navigation and Jump to Page                                                                                                                                                                                                                 
+  Content](Interview%20Transcript%20Virginia%20Louise%20Brown%20Veterans%20History%20Project%20(Library%20of%20Congress_files/spacer-clear.gif){width="1"   
+  height="1" border="0"}](#content)    [The Library of Congress](https://www.loc.gov/){.white} [\>\> [American Folklife                                     
+  Center](https://www.loc.gov/folklife/){.white}]{.white-text}                                                                                              
+
+  ![Veterans History Project (Library of                                                                                                                             [ABOUT](https://memory.loc.gov/diglib/vhp/html/search/vets-about.html){.white}  \
+  Congress)](Interview%20Transcript%20Virginia%20Louise%20Brown%20Veterans%20History%20Project%20(Library%20of%20Congress_files/vhp-bar.jpg){width="625"         [SEARCH/BROWSE](https://memory.loc.gov/diglib/vhp/html/search/search.html){.white}  \
+  height="55"}                                                                                                                                                         [HELP](https://memory.loc.gov/diglib/vhp/html/search/vets-help.html){.white}  \
+                                                                                                                                                              [COPYRIGHT](https://memory.loc.gov/diglib/vhp/html/search/vets-copyright.html){.white}  
+  --------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------
+
+::: {#crumb-xsp-1 .vets-xsp-breadcrumb}
+[Home](http://www.loc.gov/vets/){.vets-blue .vets-xsp-crumbNode} **»**
+[Text Transcript]{.vets-selected}
+:::
+
+[]{#content}
+
++-----------------------------------+-----------------------------------+
+| +------------------------------+  |                                   |
+| | # Interview with Virgini     |  |                                   |
+| | a Louise Brown \[1/14/2004\] |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Virginia L. Brown is     |  |                                   |
+| |     being interviewed today  |  |                                   |
+| |     on January the 14th,     |  |                                   |
+| |     2004 at the Army         |  |                                   |
+| |     Residence Community in   |  |                                   |
+| |     San Antonio, Texas.      |  |                                   |
+| |     She\'s a member of the   |  |                                   |
+| |     Women\'s Overseas        |  |                                   |
+| |     Service League, which is |  |                                   |
+| |     sponsoring this taping.  |  |                                   |
+| |     The interviewer is Ruth  |  |                                   |
+| |     Stewart, assisted by     |  |                                   |
+| |     Carol Havgood. Ginny,    |  |                                   |
+| |     how about starting in by |  |                                   |
+| |     telling us a little bit, |  |                                   |
+| |     just summarize your      |  |                                   |
+| |     early life where you     |  |                                   |
+| |     were born, brought up,   |  |                                   |
+| |     and how you got          |  |                                   |
+| |     interested in nursing    |  |                                   |
+| |     and then eventually the  |  |                                   |
+| |     supply chain.                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   I was born in Johnson    |  |                                   |
+| |     City, Tennessee,         |  |                                   |
+| |     in 1921. I lived in town |  |                                   |
+| |     for a while, and my      |  |                                   |
+| |     family moved to the      |  |                                   |
+| |     country. And I was out   |  |                                   |
+| |     there for a good 10, 15  |  |                                   |
+| |     years. And I was hit by  |  |                                   |
+| |     a car, and I was         |  |                                   |
+| |     hospitalized for a week, |  |                                   |
+| |     and that was \-- that\'s |  |                                   |
+| |     what caused me to decide |  |                                   |
+| |     I\'d like to be a nurse. |  |                                   |
+| |     And then I was in the    |  |                                   |
+| |     hospital a few times     |  |                                   |
+| |     after that as a result   |  |                                   |
+| |     of this car accident.    |  |                                   |
+| |     And we had worked on a   |  |                                   |
+| |     farm and walked to       |  |                                   |
+| |     school about three       |  |                                   |
+| |     miles.                   |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Each way?                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Each way. Sometimes we   |  |                                   |
+| |     got a ride. In the       |  |                                   |
+| |     wintertime a neighbor    |  |                                   |
+| |     would take us to school. |  |                                   |
+| |     His daughter was in the  |  |                                   |
+| |     same school I was. Until |  |                                   |
+| |     high school. And we      |  |                                   |
+| |     walked or rode the       |  |                                   |
+| |     streetcar. Walked a half |  |                                   |
+| |     a mile and then got the  |  |                                   |
+| |     streetcar. And I         |  |                                   |
+| |     graduated from Science   |  |                                   |
+| |     Hill High School         |  |                                   |
+| |     in 1939. And I was in    |  |                                   |
+| |     the band and the         |  |                                   |
+| |     orchestra.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   What instrument did you  |  |                                   |
+| |     play?                    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   In the orchestra I       |  |                                   |
+| |     played the oboe, and in  |  |                                   |
+| |     the band I played the    |  |                                   |
+| |     glockenspiel and the     |  |                                   |
+| |     symbols.                 |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Interesting.             |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   I went a short time to   |  |                                   |
+| |     East Tennessee State     |  |                                   |
+| |     University \-- it was    |  |                                   |
+| |     College then \-- at      |  |                                   |
+| |     Johnson City. But money  |  |                                   |
+| |     was short, so I had to   |  |                                   |
+| |     get out. And then I      |  |                                   |
+| |     applied for a school of  |  |                                   |
+| |     nursing in Memphis,      |  |                                   |
+| |     Tennessee. The Baptist   |  |                                   |
+| |     Memorial Hospital school |  |                                   |
+| |     of nursing. And I        |  |                                   |
+| |     entered in 1940 and      |  |                                   |
+| |     graduated in 1943.       |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   And then what? Did you   |  |                                   |
+| |     work as a nurse?         |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   I went into the Army.    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   You went directly into   |  |                                   |
+| |     the Army?                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Well, I had to wait to   |  |                                   |
+| |     pass state boards,       |  |                                   |
+| |     because we graduated     |  |                                   |
+| |     before state boards. And |  |                                   |
+| |     I went home and I worked |  |                                   |
+| |     in an ENT hospital for I |  |                                   |
+| |     guess a month. And then  |  |                                   |
+| |     I worked in the general  |  |                                   |
+| |     hospital there for a     |  |                                   |
+| |     couple weeks. And then I |  |                                   |
+| |     went into the Army. July |  |                                   |
+| |     21st, 1943. And reported |  |                                   |
+| |     to Kennedy General       |  |                                   |
+| |     Hospital.                |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Kinsey?                  |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Kennedy General Hospital |  |                                   |
+| |     in Memphis, Tennessee.   |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   And that was a supply chain  |  |                                   |
+| |     hospital?                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yes. No longer there. It |  |                                   |
+| |     was turned into a        |  |                                   |
+| |     Veterans hospital, and   |  |                                   |
+| |     then they tore it down   |  |                                   |
+| |     not too long ago, so.    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So then go on about \--  |  |                                   |
+| |     a little bit about what  |  |                                   |
+| |     went on after that when  |  |                                   |
+| |     you got really into the  |  |                                   |
+| |     Army Nurse Corps         |  |                                   |
+| |     activities and tours.    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Well, it \-- in Kennedy  |  |                                   |
+| |     General it was an        |  |                                   |
+| |     interesting assignment   |  |                                   |
+| |     because having never     |  |                                   |
+| |     been in the supply chain,    |  |                                   |
+| |     you wondered what you    |  |                                   |
+| |     were going to do. And    |  |                                   |
+| |     some of the time we had  |  |                                   |
+| |     to get the basics like   |  |                                   |
+| |     marching and how to      |  |                                   |
+| |     salute, that sort of     |  |                                   |
+| |     stuff. After duty hours. |  |                                   |
+| |     And I worked on a        |  |                                   |
+| |     surgical ward, and then  |  |                                   |
+| |     I was transferred to a   |  |                                   |
+| |     GE ward. And I was only  |  |                                   |
+| |     there for six months. I  |  |                                   |
+| |     volunteered to go        |  |                                   |
+| |     overseas. And so in 19   |  |                                   |
+| |     \-- December of 1943, I  |  |                                   |
+| |     joined the 48th General  |  |                                   |
+| |     Hospital, which was      |  |                                   |
+| |     stationed there. And by  |  |                                   |
+| |     the first part of        |  |                                   |
+| |     December, I don\'t       |  |                                   |
+| |     remember the exact date, |  |                                   |
+| |     we went to Camp Kilmer,  |  |                                   |
+| |     New Jersey for departing |  |                                   |
+| |     overseas. And we were    |  |                                   |
+| |     there getting field      |  |                                   |
+| |     clothes and shots. And   |  |                                   |
+| |     then we were supposed to |  |                                   |
+| |     go out on the            |  |                                   |
+| |     Ile-de-France on         |  |                                   |
+| |     Christmas day. And we    |  |                                   |
+| |     got on board, and then   |  |                                   |
+| |     we had to get off        |  |                                   |
+| |     because something\'s     |  |                                   |
+| |     wrong with the engine.   |  |                                   |
+| |     And so then we went back |  |                                   |
+| |     to Kilmer and stayed a   |  |                                   |
+| |     week. And on New Year\'s |  |                                   |
+| |     Day we sailed for        |  |                                   |
+| |     England on the Queen     |  |                                   |
+| |     Elizabeth.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   That was in \'44?        |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   January, \'44. We landed |  |                                   |
+| |     in Glasgow, Scotland, on |  |                                   |
+| |     the 10th of January, and |  |                                   |
+| |     was \-- got on trains    |  |                                   |
+| |     and went from there,     |  |                                   |
+| |     Scotland, all the way to |  |                                   |
+| |     southern part of         |  |                                   |
+| |     England, Petworth.       |  |                                   |
+| |     Petworth, England. We    |  |                                   |
+| |     were stationed in a camp |  |                                   |
+| |     that had been occupied   |  |                                   |
+| |     by the Canadians. And I  |  |                                   |
+| |     don\'t think they ever   |  |                                   |
+| |     washed anything, but we  |  |                                   |
+| |     were so tired when we    |  |                                   |
+| |     got in it didn\'t        |  |                                   |
+| |     matter. We put towels    |  |                                   |
+| |     over the pillows because |  |                                   |
+| |     they smelled so. And     |  |                                   |
+| |     just pulled up the       |  |                                   |
+| |     blankets and went to     |  |                                   |
+| |     sleep. One of the        |  |                                   |
+| |     interesting things that  |  |                                   |
+| |     went on in Petworth,     |  |                                   |
+| |     which most people said   |  |                                   |
+| |     they never had, we had   |  |                                   |
+| |     strikers to come in and  |  |                                   |
+| |     keep our stoves going.   |  |                                   |
+| |     There were potbellied    |  |                                   |
+| |     stoves. And so the       |  |                                   |
+| |     enlisted people, whoever |  |                                   |
+| |     was assigned to that,    |  |                                   |
+| |     made rounds every so     |  |                                   |
+| |     often and made sure your |  |                                   |
+| |     stoves were burning.     |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   What kind of building    |  |                                   |
+| |     were you in?             |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Well, it was like a      |  |                                   |
+| |     four-sided quarters.     |  |                                   |
+| |     There were two people in |  |                                   |
+| |     each side and there were |  |                                   |
+| |     four of us there. They   |  |                                   |
+| |     were all separated, had  |  |                                   |
+| |     this door that go in.    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   And all of you were      |  |                                   |
+| |     nurses?                  |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yes. It was interesting  |  |                                   |
+| |     to wake up in the middle |  |                                   |
+| |     night and see guys       |  |                                   |
+| |     poking your stove. But   |  |                                   |
+| |     he was very nice. Then   |  |                                   |
+| |     we had nothing to do     |  |                                   |
+| |     there but get back to    |  |                                   |
+| |     England. We took in some |  |                                   |
+| |     of the sights there a    |  |                                   |
+| |     few times. Had to walk   |  |                                   |
+| |     to breakfast. I don\'t   |  |                                   |
+| |     remember eating dinner   |  |                                   |
+| |     very much. But I guess   |  |                                   |
+| |     we did, but it was a     |  |                                   |
+| |     mess hall.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   But it was a mess hall   |  |                                   |
+| |     type of situation?       |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yeah.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   And you really weren\'t  |  |                                   |
+| |     assigned to any nursing  |  |                                   |
+| |     duties at that point?    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   No, not then. We stayed  |  |                                   |
+| |     \--                      |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So how long were you     |  |                                   |
+| |     there?                   |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   I guess about a month.   |  |                                   |
+| |     And then we got on a     |  |                                   |
+| |     train and went up to     |  |                                   |
+| |     Swindon, England. And I  |  |                                   |
+| |     don\'t remember the      |  |                                   |
+| |     dates. But we lived with |  |                                   |
+| |     English families.        |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Oh.                      |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   And it was rather        |  |                                   |
+| |     interesting and, you     |  |                                   |
+| |     know, apprehensive a     |  |                                   |
+| |     little bit. Because they |  |                                   |
+| |     put us in a truck with   |  |                                   |
+| |     our baggage, and they\'d |  |                                   |
+| |     go along a street and    |  |                                   |
+| |     view \-- they wanted one |  |                                   |
+| |     or two, it depended on   |  |                                   |
+| |     where you were sitting.  |  |                                   |
+| |     I was sitting by myself, |  |                                   |
+| |     I guess. And I got       |  |                                   |
+| |     selected to go into this |  |                                   |
+| |     house. And it\'s really  |  |                                   |
+| |     scary because you        |  |                                   |
+| |     didn\'t know these       |  |                                   |
+| |     people. They didn\'t     |  |                                   |
+| |     give us any phone number |  |                                   |
+| |     to call if we got into   |  |                                   |
+| |     trouble. And the people  |  |                                   |
+| |     were very nice, but      |  |                                   |
+| |     it\'s rather interesting |  |                                   |
+| |     to go into a place that  |  |                                   |
+| |     you don\'t know the      |  |                                   |
+| |     people and you\'re going |  |                                   |
+| |     to stay there a week or  |  |                                   |
+| |     two. The people I stayed |  |                                   |
+| |     with, I think the        |  |                                   |
+| |     gentleman worked for the |  |                                   |
+| |     railroad company. It was |  |                                   |
+| |     a man and his wife and   |  |                                   |
+| |     one daughter,            |  |                                   |
+| |     12-year-old. This lady   |  |                                   |
+| |     \-- they were very nice  |  |                                   |
+| |     to me. We were not       |  |                                   |
+| |     allowed to eat with them |  |                                   |
+| |     unless we were           |  |                                   |
+| |     particularly invited.    |  |                                   |
+| |     And then we had to take  |  |                                   |
+| |     some coffee or whatever, |  |                                   |
+| |     get it from the mess     |  |                                   |
+| |     hall.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Why were you assigned to |  |                                   |
+| |     manage the end-to-end?   |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yes.  were no billets    |  |  User indicated a reliance on     |
+| |     there in Swindon.        |  |  spreadsheets.                    |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Then after a week what   |  |                                   |
+| |     happened? You said \--   |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   We were there for a      |  |                                   |
+| |     month, I think.          |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Oh. Longer than \-- I    |  |                                   |
+| |     was thinking a week,     |  |                                   |
+| |     but.                     |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   No, month.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So. But you didn\'t stay |  |                                   |
+| |     on in Swindon, then,     |  |                                   |
+| |     longer than that?        |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   No, no.                  |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Okay.                    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   But while there, some of |  |  User indicates several times     |
+| |     us got detailed \-- I    |  |  errors were caused be a          |
+| |     got detailed to the Air  |  |  breakdown in communication.      |
+| |     force, Unilever and forc |  |                                   |
+| |     hospital which was near  |  |                                   |
+| |     there. We were week\'s   |  |                                   |
+| |     duty. And they did       |  |                                   |
+| |     things a little          |  |                                   |
+| |     different than we do.    |  |                                   |
+| |     Like they give all their |  |                                   |
+| |     baths in the afternoon.  |  |                                   |
+| |     In the mornings the      |  |                                   |
+| |     nurse goes by and        |  |                                   |
+| |     straightens up the beds, |  |                                   |
+| |     and they get breakfast.  |  |                                   |
+| |     And about 10:00 somebody |  |                                   |
+| |     is assigned to make the  |  |                                   |
+| |     toast and tea, because   |  |                                   |
+| |     they got tea and toast   |  |                                   |
+| |     every morning at 10:00.  |  |                                   |
+| |     Sometimes we were        |  |                                   |
+| |     detailed to do that. I   |  |                                   |
+| |     don\'t remember doing    |  |                                   |
+| |     very much there. But     |  |                                   |
+| |     they had a matron who    |  |                                   |
+| |     was head of the ward,    |  |                                   |
+| |     and a couple nurses. And |  |                                   |
+| |     lunchtime was            |  |                                   |
+| |     interesting because we   |  |                                   |
+| |     all went to lunch at the |  |                                   |
+| |     same time, set at a big  |  |                                   |
+| |     table, about this. And   |  |                                   |
+| |     there was one lady set   |  |                                   |
+| |     at the head table, and   |  |                                   |
+| |     you didn\'t eat anything |  |                                   |
+| |     until she did. It was    |  |                                   |
+| |     all passed around. You   |  |                                   |
+| |     might be hungry, but you |  |                                   |
+| |     didn\'t dare take more   |  |                                   |
+| |     than one helping of food |  |                                   |
+| |     because they didn\'t     |  |                                   |
+| |     have \-- there wasn\'t a |  |                                   |
+| |     lot there.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Interesting.             |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   And at the end of the    |  |                                   |
+| |     day a bus picked us up   |  |                                   |
+| |     and took us back to our  |  |                                   |
+| |     building. And I don\'t   |  |                                   |
+| |     remember the little town |  |                                   |
+| |     that this hospital was   |  |                                   |
+| |     in. But I think there    |  |                                   |
+| |     were about four of us    |  |                                   |
+| |     got detailed to that     |  |                                   |
+| |     hospital. And            |  |                                   |
+| |     interesting part too in  |  |                                   |
+| |     Swindon is the lady did  |  |                                   |
+| |     not want, at least me,   |  |                                   |
+| |     coming back to the house |  |                                   |
+| |     after breakfast. She did |  |                                   |
+| |     not want me coming there |  |                                   |
+| |     in the afternoon. So our |  |                                   |
+| |     things and everything    |  |                                   |
+| |     closed at 4:30. So you   |  |                                   |
+| |     were in a quandary       |  |                                   |
+| |     because they had high    |  |                                   |
+| |     tea at 4:00 something    |  |                                   |
+| |     and dinner at 8:00. So   |  |                                   |
+| |     you just went home, or   |  |                                   |
+| |     just went there about    |  |                                   |
+| |     dark and hoped that you  |  |                                   |
+| |     didn\'t disturb them too |  |                                   |
+| |     much. But otherwise, we  |  |                                   |
+| |     had been going to the    |  |                                   |
+| |     Red Cross, the nurses.   |  |                                   |
+| |     But then they said,      |  |                                   |
+| |     well, we couldn\'t come  |  |                                   |
+| |     back there anymore. I    |  |                                   |
+| |     don\'t know why they     |  |                                   |
+| |     thought we disturbed     |  |                                   |
+| |     anybody, but we didn\'t. |  |                                   |
+| |     So then we ended up      |  |                                   |
+| |     finding a pub that had a |  |                                   |
+| |     \-- you know, in England |  |                                   |
+| |     they have these other    |  |                                   |
+| |     rooms that we could stay |  |                                   |
+| |     in during the morning.   |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Hang out?                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yeah. We used to get     |  |                                   |
+| |     food on the street. They |  |                                   |
+| |     had fish and chips,      |  |                                   |
+| |     which were delicious. I  |  |                                   |
+| |     know this lady was \--   |  |                                   |
+| |     that I stayed with, Mrs. |  |                                   |
+| |     Beasis asked me to       |  |                                   |
+| |     dinner one night, and    |  |                                   |
+| |     she asked me what I      |  |                                   |
+| |     wanted for dinner. What  |  |                                   |
+| |     do you say to somebody   |  |                                   |
+| |     who doesn\'t have \--    |  |                                   |
+| |     and I said, \"Well, I    |  |                                   |
+| |     don\'t know. But how     |  |                                   |
+| |     about fish and chips?\"  |  |                                   |
+| |     And she said, \"Well,    |  |                                   |
+| |     where do you get them?\" |  |                                   |
+| |     I said, \"They\'re just  |  |                                   |
+| |     right down the street    |  |                                   |
+| |     there.\" And she said,   |  |                                   |
+| |     \"Oh.\" So for dinner    |  |                                   |
+| |     that night I think we    |  |                                   |
+| |     took butter \-- and she  |  |                                   |
+| |     said I could invite a    |  |                                   |
+| |     friend \-- butter, and I |  |                                   |
+| |     don\'t know, coffee, I   |  |                                   |
+| |     think. And we had \--    |  |                                   |
+| |     I\'d never had it. It    |  |                                   |
+| |     was pressed tongue.      |  |                                   |
+| |     Great big thing on the   |  |                                   |
+| |     table, in gelatin. And   |  |                                   |
+| |     pretty good. I thought,  |  |                                   |
+| |     \"If you don\'t like it, |  |                                   |
+| |     you got to eat it        |  |                                   |
+| |     anyhow,\" so. Then I     |  |                                   |
+| |     asked for a cup of       |  |                                   |
+| |     coffee, and that was a   |  |                                   |
+| |     sad mistake. Because     |  |                                   |
+| |     they had coffee like     |  |                                   |
+| |     extract in a bottle. And |  |                                   |
+| |     they had a lot of water  |  |                                   |
+| |     and they poured a        |  |                                   |
+| |     tablespoonful of that in |  |                                   |
+| |     it. I thought, \"Oh,     |  |                                   |
+| |     my.\" I tried to drink   |  |                                   |
+| |     it. It\'s difficult. And |  |                                   |
+| |     she was very nice.       |  |                                   |
+| |     Because my feet always   |  |                                   |
+| |     got cold, and they\'re   |  |                                   |
+| |     \-- they didn\'t have    |  |                                   |
+| |     heat at night I guess.   |  |                                   |
+| |     So she loaned me a pair  |  |                                   |
+| |     of her husband\'s wool   |  |                                   |
+| |     socks and she\'d bring   |  |                                   |
+| |     me tea every morning     |  |                                   |
+| |     before I got out of bed. |  |                                   |
+| |     So by the time I got     |  |                                   |
+| |     myself awake to drink    |  |                                   |
+| |     it, it was cold. But it  |  |                                   |
+| |     was very nice of her to  |  |                                   |
+| |     bring that up. And she   |  |                                   |
+| |     was nice enough to write |  |                                   |
+| |     my family and tell them  |  |                                   |
+| |     I was there, and what a  |  |                                   |
+| |     nice daughter they had.  |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Good credentials.        |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yeah. And then from      |  |                                   |
+| |     Swindon we went to       |  |                                   |
+| |     Winchester \--           |  |                                   |
+| |     Winchester, England. And |  |                                   |
+| |     we took over a hospital. |  |                                   |
+| |     It was a general         |  |                                   |
+| |     hospital. And then we    |  |                                   |
+| |     were there when D-Day    |  |                                   |
+| |     started. It was          |  |                                   |
+| |     interesting, about a     |  |                                   |
+| |     couple days before all   |  |                                   |
+| |     our troops were going    |  |                                   |
+| |     over, planes were flying |  |                                   |
+| |     over our hospital wing   |  |                                   |
+| |     tip to wing tip as far   |  |                                   |
+| |     as you could see.        |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   And where was this now?  |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Winchester.              |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Okay.                    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   And we had Quonset type  |  |                                   |
+| |     hospitals. You know,     |  |                                   |
+| |     wards. And then we\'d    |  |                                   |
+| |     begin to get patients    |  |                                   |
+| |     when they were going     |  |                                   |
+| |     over to France. I guess  |  |                                   |
+| |     some of them got in the  |  |                                   |
+| |     water. Some of them \--  |  |                                   |
+| |     but we did get them from |  |                                   |
+| |     the coast of France.     |  |                                   |
+| |     Rather interesting,      |  |                                   |
+| |     because I guess somebody |  |                                   |
+| |     was sorting them up when |  |                                   |
+| |     they came in. But we\'d  |  |                                   |
+| |     get patients. And all    |  |                                   |
+| |     the doctors were         |  |                                   |
+| |     scheduled to go to       |  |                                   |
+| |     surgery. And our ward    |  |                                   |
+| |     officer was going, or    |  |                                   |
+| |     went. We didn\'t know we |  |                                   |
+| |     were getting patients,   |  |                                   |
+| |     so I was staying one day |  |                                   |
+| |     to help a nurse admit    |  |                                   |
+| |     some patients. And about |  |                                   |
+| |     8:00 the supervisor came |  |                                   |
+| |     down and asked me what I |  |                                   |
+| |     was doing there. I said, |  |                                   |
+| |     \"Well, I was helping    |  |                                   |
+| |     her get these patients   |  |                                   |
+| |     in.\" \"Well, you better |  |                                   |
+| |     go home because you have |  |                                   |
+| |     to come back at 11:00.\" |  |                                   |
+| |     So we worked eight hours |  |                                   |
+| |     on and eight hours off   |  |                                   |
+| |     for about a week. Our    |  |                                   |
+| |     corpsman, I think, had   |  |                                   |
+| |     to work 12 and 12 or     |  |                                   |
+| |     something. Because       |  |                                   |
+| |     sometimes when we        |  |                                   |
+| |     weren\'t busy they could |  |                                   |
+| |     go in the linen room and |  |                                   |
+| |     have a nap. But there    |  |                                   |
+| |     were no \-- I guess      |  |                                   |
+| |     there were some          |  |                                   |
+| |     controls. But when a     |  |                                   |
+| |     patient would go to      |  |                                   |
+| |     surgery from your ward,  |  |                                   |
+| |     they\'d come back and    |  |                                   |
+| |     there was no indication  |  |                                   |
+| |     what ward they were      |  |                                   |
+| |     going to do. So I know   |  |                                   |
+| |     they were wheeling in a  |  |                                   |
+| |     patient in our ward, and |  |                                   |
+| |     I saw him and I said,    |  |                                   |
+| |     \"He doesn\'t belong     |  |                                   |
+| |     here.\" So he went       |  |                                   |
+| |     across the hall, but.    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   But the nurses           |  |                                   |
+| |     themselves had to do the |  |                                   |
+| |     controlling about the    |  |                                   |
+| |     dispatching, if you      |  |                                   |
+| |     will?                    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   And the ward officer,    |  |                                   |
+| |     when he went to surgery  |  |                                   |
+| |     he said to the other     |  |                                   |
+| |     nurse and I \-- because  |  |                                   |
+| |     there was no ward        |  |                                   |
+| |     officer on the ward at   |  |                                   |
+| |     the time \-- \"Do        |  |                                   |
+| |     whatever you have to do, |  |                                   |
+| |     pain medicine and        |  |                                   |
+| |     whatever. I\'ll cover    |  |                                   |
+| |     you when I get back.\"   |  |                                   |
+| |     But they sent \--        |  |                                   |
+| |     usually had written      |  |                                   |
+| |     orders when they came    |  |                                   |
+| |     from surgery, so that    |  |                                   |
+| |     was no problem. They had |  |                                   |
+| |     evac\'d patients pretty  |  |                                   |
+| |     soon, so would get them. |  |                                   |
+| |     Of course you had to     |  |                                   |
+| |     keep the lights out, so  |  |                                   |
+| |     we were using lanterns   |  |                                   |
+| |     to \-- I guess I         |  |                                   |
+| |     shouldn\'t \-- I\'ll     |  |                                   |
+| |     tell you this later when |  |                                   |
+| |     that\'s cut off. But we  |  |                                   |
+| |     had to get them ready,   |  |                                   |
+| |     and then they\'d come in |  |                                   |
+| |     at night and we\'d have  |  |                                   |
+| |     to strip off their       |  |                                   |
+| |     clothes and help them    |  |                                   |
+| |     get ready for surgery.   |  |                                   |
+| |     Most of them are gone.   |  |                                   |
+| |     And then I don\'t        |  |                                   |
+| |     remember the date that   |  |                                   |
+| |     someone else replacing   |  |                                   |
+| |     our hospital, but we     |  |                                   |
+| |     went down on the coast   |  |                                   |
+| |     of England for a couple  |  |                                   |
+| |     weeks, but I was         |  |                                   |
+| |     detailed back to that    |  |                                   |
+| |     hospital to work for two |  |                                   |
+| |     weeks. And so when we    |  |                                   |
+| |     got back to our unit on  |  |                                   |
+| |     the coast, why, our      |  |                                   |
+| |     stuff was all packed and |  |                                   |
+| |     we went to Southampton,  |  |                                   |
+| |     shipping over. This is   |  |                                   |
+| |     August. We left the 10th |  |                                   |
+| |     of August, I think, and  |  |                                   |
+| |     landed in France the     |  |                                   |
+| |     17th of August. And that |  |                                   |
+| |     was an interesting       |  |                                   |
+| |     thing. It was on a       |  |                                   |
+| |     British ship. And if you |  |                                   |
+| |     weren\'t seasick, you    |  |                                   |
+| |     were after you got       |  |                                   |
+| |     smelling the fish that   |  |                                   |
+| |     they had for breakfast.  |  |                                   |
+| |     But to get off of that   |  |                                   |
+| |     ship you had to go down  |  |                                   |
+| |     the side on a rope. You  |  |                                   |
+| |     know, one of those mesh  |  |                                   |
+| |     things. And get a        |  |                                   |
+| |     bouncing LST boat        |  |                                   |
+| |     that\'s sitting at the   |  |                                   |
+| |     near. And on you you had |  |                                   |
+| |     a purse, a pistol belt,  |  |                                   |
+| |     a backpack, a bedroll, a |  |                                   |
+| |     helmet. So you hoped you |  |                                   |
+| |     landed when it came up   |  |                                   |
+| |     and not when it missed.  |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Pretty tricky.           |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Then we landed in, I     |  |                                   |
+| |     think \-- I know it      |  |                                   |
+| |     wasn\'t a week we were   |  |                                   |
+| |     on that ship. But        |  |                                   |
+| |     sometime about the 17th  |  |                                   |
+| |     of August or something.  |  |                                   |
+| |     And we \-- first off, we |  |                                   |
+| |     went to a field, and we  |  |                                   |
+| |     always wondered why they |  |                                   |
+| |     wanted us to set up \--  |  |                                   |
+| |     learn how to set up pup  |  |                                   |
+| |     tents. Well, in this     |  |                                   |
+| |     area all the nurses had  |  |                                   |
+| |     to put up a pup tent.    |  |                                   |
+| |     Two of you to a tent.    |  |                                   |
+| |     And when it rained, if   |  |                                   |
+| |     you touched it, it       |  |                                   |
+| |     leaked in. But           |  |                                   |
+| |     apparently somebody flew |  |                                   |
+| |     over and saw all these   |  |                                   |
+| |     tents out there and the  |  |                                   |
+| |     directions came back to  |  |                                   |
+| |     get us in under a big    |  |                                   |
+| |     tent. So we all had to   |  |                                   |
+| |     move into a tent. We     |  |                                   |
+| |     already \-- they gave us |  |                                   |
+| |     cots.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   How long were you in the |  |                                   |
+| |     pup tent?                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Oh, I don\'t think more  |  |                                   |
+| |     than a week. But it\'s   |  |                                   |
+| |     interesting because we   |  |                                   |
+| |     got invited to a few     |  |                                   |
+| |     parties and we had some  |  |                                   |
+| |     pretty big nurses in the |  |                                   |
+| |     unit, and probably this  |  |                                   |
+| |     is just funny, but I     |  |                                   |
+| |     used to get tickled      |  |                                   |
+| |     because most of us could |  |                                   |
+| |     get dressed in the pup   |  |                                   |
+| |     tent, but they couldn\'t |  |                                   |
+| |     get their girdles on     |  |                                   |
+| |     outside. So here they    |  |                                   |
+| |     are outside of the tent  |  |                                   |
+| |     pulling on these         |  |                                   |
+| |     girdles. And we went to  |  |                                   |
+| |     a party one night, and   |  |                                   |
+| |     we were supposed to be   |  |                                   |
+| |     back at 9:00. Well, we   |  |                                   |
+| |     started way before that, |  |                                   |
+| |     but you had to drive     |  |                                   |
+| |     without lights. And I    |  |                                   |
+| |     guess the driver got     |  |                                   |
+| |     lost, because we didn\'t |  |                                   |
+| |     get back until 1:00. And |  |                                   |
+| |     we all got restricted to |  |                                   |
+| |     the post for the         |  |                                   |
+| |     duration. But the        |  |                                   |
+| |     commanding officer went  |  |                                   |
+| |     out, and he didn\'t get  |  |                                   |
+| |     back one time either. So |  |                                   |
+| |     our restrictions was     |  |                                   |
+| |     lifted, I guess. He      |  |                                   |
+| |     thought we were fibbing  |  |                                   |
+| |     or something. But out in |  |                                   |
+| |     that field and eating    |  |                                   |
+| |     out of mess kits that    |  |                                   |
+| |     you dumped in a barrel   |  |                                   |
+| |     to clean. And the bees   |  |                                   |
+| |     were swarming around.    |  |                                   |
+| |     But it was interesting.  |  |                                   |
+| |     I guess the commanding   |  |                                   |
+| |     officer got mad at a     |  |                                   |
+| |     physician and got \--    |  |                                   |
+| |     was talking about the    |  |                                   |
+| |     food, so they made him   |  |                                   |
+| |     mess officer. And it was |  |                                   |
+| |     pretty good food after   |  |                                   |
+| |     that. And we \-- I       |  |                                   |
+| |     don\'t know how long we  |  |                                   |
+| |     stayed there. But then   |  |                                   |
+| |     we got on \-- oh, in     |  |                                   |
+| |     getting baths, we rode   |  |                                   |
+| |     in a truck for about 30  |  |                                   |
+| |     minutes to the showers.  |  |                                   |
+| |     We got down about every  |  |                                   |
+| |     other day. Of course you |  |                                   |
+| |     were about as dirty when |  |                                   |
+| |     you got back as you went |  |                                   |
+| |     because of the all the   |  |                                   |
+| |     dust and stuff. But they |  |                                   |
+| |     were in open tents and   |  |                                   |
+| |     the guys were up there   |  |                                   |
+| |     controlling the water    |  |                                   |
+| |     and looking down. So \-- |  |                                   |
+| |     but it was nice to have  |  |                                   |
+| |     a bath instead of out of |  |                                   |
+| |     a helmet. The \-- we     |  |                                   |
+| |     moved from there, and we |  |                                   |
+| |     were put on trains \-- a |  |                                   |
+| |     train. And it seemed     |  |                                   |
+| |     like it took us forever  |  |                                   |
+| |     to get from there to our |  |                                   |
+| |     next field activity,     |  |                                   |
+| |     which was outside of     |  |                                   |
+| |     Paris. And an            |  |                                   |
+| |     interesting thing        |  |                                   |
+| |     happened there. The Red  |  |                                   |
+| |     Cross lady asked me if I |  |                                   |
+| |     wanted to ride up in the |  |                                   |
+| |     train with her. I said,  |  |                                   |
+| |     \"Sure.\" So she asked   |  |                                   |
+| |     the commanding officer   |  |                                   |
+| |     and the chief nurse if   |  |                                   |
+| |     we could go, and they    |  |                                   |
+| |     said yes. Well, we had   |  |                                   |
+| |     to have a male officer   |  |                                   |
+| |     with us too. But we      |  |                                   |
+| |     didn\'t have time to get |  |                                   |
+| |     on that train when it    |  |                                   |
+| |     pulled out. And here we  |  |                                   |
+| |     were back here in the    |  |                                   |
+| |     middle of no place. And  |  |                                   |
+| |     what tickled me, I guess |  |                                   |
+| |     I was silly, is this     |  |                                   |
+| |     officer who was with us  |  |                                   |
+| |     had a whistle, and he    |  |                                   |
+| |     was blowing a whistle    |  |                                   |
+| |     and the train was going. |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   As though he could stop  |  |                                   |
+| |     it.                      |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   The train finally        |  |                                   |
+| |     stopped. I don\'t know   |  |                                   |
+| |     why, they were going and |  |                                   |
+| |     starting and going. But  |  |                                   |
+| |     we got on the back end   |  |                                   |
+| |     of the train and the     |  |                                   |
+| |     train commander, whoever |  |                                   |
+| |     was commanding, came     |  |                                   |
+| |     back and said, \"Oh, get |  |                                   |
+| |     on up there if you\'re   |  |                                   |
+| |     going to ride.\" So we   |  |                                   |
+| |     got to ride on the train |  |                                   |
+| |     until it stopped at the  |  |                                   |
+| |     next water tank, which   |  |                                   |
+| |     wasn\'t very long. And   |  |                                   |
+| |     then we got back in our  |  |                                   |
+| |     \-- with our regular     |  |                                   |
+| |     group. But on the train, |  |                                   |
+| |     some people had seats,   |  |                                   |
+| |     but we were like in      |  |                                   |
+| |     caboose. And to sleep,   |  |                                   |
+| |     they gave us stretchers  |  |                                   |
+| |     to sleep on. You\'re     |  |                                   |
+| |     better off on the floor  |  |                                   |
+| |     because the air just     |  |                                   |
+| |     came up through the      |  |                                   |
+| |     stretchers. But that was |  |                                   |
+| |     better. Fairly           |  |                                   |
+| |     comfortable. Next place  |  |                                   |
+| |     we got was in another    |  |                                   |
+| |     field outside of Paris,  |  |                                   |
+| |     and it was in a potato   |  |                                   |
+| |     patch. They put up tents |  |                                   |
+| |     and we\'d have to \-- if |  |                                   |
+| |     your cot was unsteady,   |  |                                   |
+| |     you\'d look around it    |  |                                   |
+| |     and you\'re sitting on a |  |                                   |
+| |     potato. Our rations had  |  |                                   |
+| |     gone \-- had not come    |  |                                   |
+| |     with us. They had gone   |  |                                   |
+| |     up to L\'Age, France. So |  |                                   |
+| |     we were sort of on       |  |                                   |
+| |     skimpy rashes \--        |  |                                   |
+| |     rations \-- rations. Two |  |                                   |
+| |     meals a day. And so one  |  |                                   |
+| |     day in a potato patch we |  |                                   |
+| |     asked the mess officer,  |  |                                   |
+| |     \"Could we have french   |  |                                   |
+| |     fried potatoes?\" Well,  |  |                                   |
+| |     if we dug them. It\'s    |  |                                   |
+| |     surprising the number of |  |                                   |
+| |     people didn\'t know how  |  |                                   |
+| |     to dig potatoes. But we  |  |                                   |
+| |     got the potatoes. Then   |  |                                   |
+| |     we went up, there was    |  |                                   |
+| |     nobody to peel them. So  |  |                                   |
+| |     there was about four or  |  |                                   |
+| |     five nurses. We peeled   |  |                                   |
+| |     potatoes. Got them so    |  |                                   |
+| |     they could french fry    |  |                                   |
+| |     them. We french fried    |  |                                   |
+| |     potatoes. Those were     |  |                                   |
+| |     delicious. Shortly after |  |                                   |
+| |     that I got detailed to   |  |                                   |
+| |     go into the 108th        |  |                                   |
+| |     General Hospital in      |  |                                   |
+| |     Paris. It was a week     |  |                                   |
+| |     after Paris was          |  |                                   |
+| |     liberated. And we stayed |  |                                   |
+| |     there about a week, and  |  |                                   |
+| |     then they called us back |  |                                   |
+| |     and we moved into a      |  |                                   |
+| |     hospital in Paris, the   |  |                                   |
+| |     Lajure \-- Larboisiere,  |  |                                   |
+| |     which is right back of   |  |                                   |
+| |     the Gare du Nord         |  |                                   |
+| |     railroad station. And it |  |                                   |
+| |     was \-- I guess we could |  |                                   |
+| |     get \-- I don\'t         |  |                                   |
+| |     remember how many        |  |                                   |
+| |     patients. At one time on |  |                                   |
+| |     my ward I had 50         |  |                                   |
+| |     patients on that one     |  |                                   |
+| |     ward because it was two  |  |                                   |
+| |     beds down the middle of  |  |                                   |
+| |     the center and on each   |  |                                   |
+| |     side. And that was an    |  |                                   |
+| |     orthopedic ward. And \-- |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So then how long were    |  |                                   |
+| |     you in France overall?   |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   From when we landed in   |  |                                   |
+| |     \'44, to May or June of  |  |                                   |
+| |     \'45.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So almost a year. And    |  |                                   |
+| |     then after you left      |  |                                   |
+| |     France \-- \'45 was      |  |                                   |
+| |     after \--                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   From Paris \-- from      |  |                                   |
+| |     Paris we went to         |  |                                   |
+| |     Marseille. Some of us    |  |                                   |
+| |     were \-- you know, at    |  |                                   |
+| |     that time you got        |  |                                   |
+| |     points. And the high     |  |                                   |
+| |     points were allowed to   |  |                                   |
+| |     come home. And those \-- |  |                                   |
+| |     that broke up the units. |  |                                   |
+| |     And I went to the 69th   |  |                                   |
+| |     Station Hospital down on |  |                                   |
+| |     the Riviera. And I was   |  |                                   |
+| |     there about a month. And |  |                                   |
+| |     then we came back to     |  |                                   |
+| |     Marseille. And I think I |  |                                   |
+| |     \-- we sailed on 1st of  |  |                                   |
+| |     September, because I got |  |                                   |
+| |     home the 15th of         |  |                                   |
+| |     September.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Okay. And then you       |  |                                   |
+| |     stayed in the Army,      |  |                                   |
+| |     though, after that?      |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   No, I got out.           |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   You didn\'t? Okay.       |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   \'46, 1946. After all    |  |                                   |
+| |     the leave and stuff, I   |  |                                   |
+| |     got out.                 |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   But then you went back   |  |                                   |
+| |     in later, did you?       |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yeah. 1953. In the       |  |                                   |
+| |     meantime, I went to      |  |                                   |
+| |     school and I taught      |  |                                   |
+| |     school.                  |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Nursing, or otherwise?   |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Uh-huh, nursing school.  |  |                                   |
+| |     Taught \-- went back to  |  |                                   |
+| |     the Baptist hospital and |  |                                   |
+| |     taught there for \-- I   |  |                                   |
+| |     think from \'49 to \'53. |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   What decided you to go   |  |                                   |
+| |     back in the Army?        |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   More pay.                |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   It\'s a good reason.     |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   I was in the reserves,   |  |                                   |
+| |     and I went on reserve    |  |                                   |
+| |     duty. I think it was to  |  |                                   |
+| |     McClellan. And the lady  |  |                                   |
+| |     who was in charge of     |  |                                   |
+| |     assignments was there,   |  |                                   |
+| |     and she said, \"Why      |  |                                   |
+| |     don\'t you come back in  |  |                                   |
+| |     the Army?\" And she \--  |  |                                   |
+| |     I said, \"I don\'t       |  |                                   |
+| |     know.\" So she \-- she   |  |                                   |
+| |     quoted the salary a      |  |                                   |
+| |     hundred dollars more a   |  |                                   |
+| |     month than I was making. |  |                                   |
+| |     And she said I could be  |  |                                   |
+| |     \-- she said they needed |  |                                   |
+| |     instructors, and I could |  |                                   |
+| |     go instructor in school. |  |                                   |
+| |     I said that sounded      |  |                                   |
+| |     great. So I put in my    |  |                                   |
+| |     resignation from the     |  |                                   |
+| |     Baptist hospital and     |  |                                   |
+| |     reported into Walter     |  |                                   |
+| |     Reed 5th of December,    |  |                                   |
+| |     1940 \-- \'53.           |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   And then when were \--   |  |                                   |
+| |     did you finally retire   |  |                                   |
+| |     from the Army?           |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   1980\.                   |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   1980\. And in that time  |  |                                   |
+| |     you were stateside most  |  |                                   |
+| |     of that time?            |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   No, no. I was at Walter  |  |                                   |
+| |     Reed at that time for    |  |                                   |
+| |     two years. Then I went   |  |                                   |
+| |     to Korea for a year, and |  |                                   |
+| |     then I went to Japan \-- |  |                                   |
+| |     it was about 10 months.  |  |                                   |
+| |     And then in Japan for a  |  |                                   |
+| |     year. Then I went        |  |                                   |
+| |     stateside for two years  |  |                                   |
+| |     to recruiting. From      |  |                                   |
+| |     recruiting I went back   |  |                                   |
+| |     to Walter Reed, and I    |  |                                   |
+| |     was there six years      |  |                                   |
+| |     because I got a \-- went |  |                                   |
+| |     back to school, worked   |  |                                   |
+| |     there. Long time ago.    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   It\'s okay. You covered  |  |                                   |
+| |     a variety of tours,      |  |                                   |
+| |     then, during that        |  |                                   |
+| |     period?                  |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   For a year. And then     |  |                                   |
+| |     Fort Bragg, Fort Ord,    |  |                                   |
+| |     back overseas to         |  |                                   |
+| |     Okinawa, back to \-- I   |  |                                   |
+| |     came back to Fort Sam    |  |                                   |
+| |     \-- from Okinawa \-- I   |  |                                   |
+| |     mean from Fort Ord to    |  |                                   |
+| |     Okinawa \-- Okinawa to   |  |                                   |
+| |     Fort Ord to Fort Sam,    |  |                                   |
+| |     and from Fort Sam to     |  |                                   |
+| |     Europe, and Europe back  |  |                                   |
+| |     to SGF in 1978.          |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So you certainly covered |  |                                   |
+| |     a lot of territory in    |  |                                   |
+| |     your career. And all of  |  |                                   |
+| |     that was in various      |  |                                   |
+| |     aspects of nursing \--   |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yes.                     |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   \-- including teaching,  |  |                                   |
+| |     recruitment?             |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Supervisor. Chief nurse. |  |                                   |
+| |     Chief nurse at health    |  |                                   |
+| |     services community here. |  |                                   |
+| |     And then assistant chief |  |                                   |
+| |     to the Army Nurse Corps. |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So then since you        |  |                                   |
+| |     retired from the         |  |                                   |
+| |     supply chain \--             |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   I\'ve been involved with |  |                                   |
+| |     WSL. I\'ve been involved |  |                                   |
+| |     with the Army Medical    |  |                                   |
+| |     Museum. I\'ve been       |  |                                   |
+| |     involved with my         |  |                                   |
+| |     hospital from overseas,  |  |                                   |
+| |     48th General. I\'ve been |  |                                   |
+| |     involved in needlepoint, |  |                                   |
+| |     sewing, quilting.        |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   What was the high point  |  |                                   |
+| |     of your supply chain career? |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Most shocking, too, was  |  |                                   |
+| |     selected for chief nurse |  |                                   |
+| |     of health services       |  |                                   |
+| |     committee.               |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   We\'re now going to      |  |                                   |
+| |     proceed a little further |  |                                   |
+| |     with your post \-- or    |  |                                   |
+| |     your last time, ending   |  |                                   |
+| |     time in the Army Nurse   |  |                                   |
+| |     Corps and some of the    |  |                                   |
+| |     things that occurred     |  |                                   |
+| |     during that period where |  |                                   |
+| |     you got some significant |  |                                   |
+| |     recognition.             |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   During World War II we   |  |                                   |
+| |     had only \-- nurses had  |  |                                   |
+| |     relative rank. There was |  |                                   |
+| |     some regular Army        |  |                                   |
+| |     nurses, but there were   |  |                                   |
+| |     no nurses such as we     |  |                                   |
+| |     knew of as reserve. I    |  |                                   |
+| |     think it was 1947 that   |  |                                   |
+| |     nurses received rank.    |  |                                   |
+| |     But when we were leaving |  |                                   |
+| |     the Army, we were        |  |                                   |
+| |     separated. We were not   |  |                                   |
+| |     discharged. So we could  |  |                                   |
+| |     be called back at any    |  |                                   |
+| |     time. Also, I guess they |  |                                   |
+| |     didn\'t realize what     |  |                                   |
+| |     nurses could contribute, |  |                                   |
+| |     because we had one       |  |                                   |
+| |     commander when we        |  |                                   |
+| |     started said that he did |  |                                   |
+| |     not need nurses, all he  |  |                                   |
+| |     needed was doctors and   |  |                                   |
+| |     corpsman. Later on,      |  |                                   |
+| |     after receiving patients |  |                                   |
+| |     from D-Day and Battle of |  |                                   |
+| |     the Bulge and that sort  |  |                                   |
+| |     of thing, he had a staff |  |                                   |
+| |     meeting and said he was  |  |                                   |
+| |     wrong, nurses were       |  |                                   |
+| |     essential and did a      |  |                                   |
+| |     wonderful job. Rank at   |  |                                   |
+| |     that time was a little   |  |                                   |
+| |     different than what we   |  |                                   |
+| |     have today, in that I    |  |                                   |
+| |     don\'t think they had    |  |                                   |
+| |     any routine way of       |  |                                   |
+| |     promoting. Because we    |  |                                   |
+| |     had been overseas a      |  |                                   |
+| |     year. In our unit there  |  |                                   |
+| |     was one captain, one     |  |                                   |
+| |     lieutenant, and the rest |  |                                   |
+| |     of us were second        |  |                                   |
+| |     lieutenants. We had two  |  |                                   |
+| |     pre-Pearl Harbor nurses  |  |                                   |
+| |     in the unit. And when we |  |                                   |
+| |     began to get nurses in   |  |                                   |
+| |     our unit who had only    |  |                                   |
+| |     been in six months and   |  |                                   |
+| |     promoted to first        |  |                                   |
+| |     lieutenant, we asked     |  |                                   |
+| |     what was happening to    |  |                                   |
+| |     us. So our nurses \-- we |  |                                   |
+| |     did ave a meeting with   |  |                                   |
+| |     the chief nurse, and we  |  |                                   |
+| |     suggested that the       |  |                                   |
+| |     pre-Pearl Harbor nurses  |  |                                   |
+| |     be promoted first and    |  |                                   |
+| |     then whoever they want   |  |                                   |
+| |     to promote. We           |  |                                   |
+| |     apparently had some      |  |                                   |
+| |     others because they      |  |                                   |
+| |     asked us who we wanted   |  |                                   |
+| |     to be promoted. And you  |  |                                   |
+| |     would think it was an    |  |                                   |
+| |     open discussion, but I   |  |                                   |
+| |     found out differently    |  |                                   |
+| |     that when I got promoted |  |                                   |
+| |     in that time, all I did  |  |                                   |
+| |     was post it on a chief   |  |                                   |
+| |     nurse\'s door. If you    |  |                                   |
+| |     didn\'t happen to go by  |  |                                   |
+| |     there or somebody tell   |  |                                   |
+| |     you, you didn\'t know.   |  |                                   |
+| |     But I went in and got    |  |                                   |
+| |     mine. And I met the      |  |                                   |
+| |     chief of professional    |  |                                   |
+| |     activities and my ward   |  |                                   |
+| |     officer in the ward \--  |  |                                   |
+| |     on the road. And they    |  |                                   |
+| |     didn\'t say              |  |                                   |
+| |     congratulations. They    |  |                                   |
+| |     said, \"Well, you\'d     |  |                                   |
+| |     been promoted earlier if |  |                                   |
+| |     you learned to keep your |  |                                   |
+| |     mouth shut.\" I thought, |  |                                   |
+| |     \"Okay.\" So I got       |  |                                   |
+| |     promoted to first        |  |                                   |
+| |     lieutenant there.        |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   That was when you were   |  |                                   |
+| |     in France, while you     |  |                                   |
+| |     were still in France?    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   In France. Then          |  |                                   |
+| |     throughout my career     |  |                                   |
+| |     I\'ve been promoted. At  |  |                                   |
+| |     the time I went in as a  |  |                                   |
+| |     reserve nurse and        |  |                                   |
+| |     elected to join the      |  |                                   |
+| |     regular Army in \'58.    |  |                                   |
+| |     And I retired as regular |  |                                   |
+| |     Army officer at \-- we   |  |                                   |
+| |     began \-- it\'s          |  |                                   |
+| |     interesting, because     |  |                                   |
+| |     nurses were not often    |  |                                   |
+| |     recognized by awards. My |  |                                   |
+| |     first one was 1965. And  |  |                                   |
+| |     then I got them after    |  |                                   |
+| |     that. One of the things  |  |                                   |
+| |     that I\'m very proud of  |  |                                   |
+| |     is I was selected as the |  |                                   |
+| |     nurse of the year by the |  |                                   |
+| |     DAR in 1980. That\'s a   |  |                                   |
+| |     program that the Army    |  |                                   |
+| |     Nurse Corps is involved  |  |                                   |
+| |     in. And I also was very  |  |                                   |
+| |     surprised and very       |  |                                   |
+| |     appreciative, I received |  |                                   |
+| |     the Distinguished        |  |                                   |
+| |     Service Medal, DSM,      |  |                                   |
+| |     which in the Army Nurse  |  |                                   |
+| |     Corps is usually chief   |  |                                   |
+| |     of the corps got it. I   |  |                                   |
+| |     was the first nurse to   |  |                                   |
+| |     get it after that. There |  |                                   |
+| |     have been a couple       |  |                                   |
+| |     others since then have   |  |                                   |
+| |     gotten the DASR. And     |  |                                   |
+| |     also when you retire     |  |                                   |
+| |     from the surgeon         |  |                                   |
+| |     general\'s office with   |  |                                   |
+| |     30 years service they    |  |                                   |
+| |     give you an Army medical |  |                                   |
+| |     department medallion, if |  |                                   |
+| |     you\'ve got 30 years in. |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So you have had an       |  |                                   |
+| |     exceedingly              |  |                                   |
+| |     distinguished career in  |  |                                   |
+| |     the Army Nurse Corps     |  |                                   |
+| |     throughout your career.  |  |                                   |
+| |     Have there been any      |  |                                   |
+| |     special emotions or      |  |                                   |
+| |     feelings that have       |  |                                   |
+| |     evolved in relation to   |  |                                   |
+| |     being in war as a nurse  |  |                                   |
+| |     from that experience?    |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   No. Except you wonder    |  |                                   |
+| |     how the patients are     |  |                                   |
+| |     going to do when they    |  |                                   |
+| |     get home. Like they come |  |                                   |
+| |     \-- I was only in World  |  |                                   |
+| |     War II. I\'m sure we got |  |                                   |
+| |     patients at other        |  |                                   |
+| |     hospitals that were in   |  |                                   |
+| |     war. But these were      |  |                                   |
+| |     frostbite. The people    |  |                                   |
+| |     had feet that were       |  |                                   |
+| |     really injured. We got   |  |                                   |
+| |     people who lost arms and |  |                                   |
+| |     legs. People who \--     |  |                                   |
+| |     prisoners of war we got  |  |                                   |
+| |     back. And you just       |  |                                   |
+| |     wondered how they\'re    |  |                                   |
+| |     going to make it, and    |  |                                   |
+| |     what kind of things \--  |  |                                   |
+| |     how they would react     |  |                                   |
+| |     when they got home.      |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Did it change you in any |  |                                   |
+| |     way?                     |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   More concerned about     |  |                                   |
+| |     your patients, realizing |  |                                   |
+| |     what they\'d been        |  |                                   |
+| |     through. Sometimes       |  |                                   |
+| |     they\'d be a little      |  |                                   |
+| |     upset. I can remember    |  |                                   |
+| |     having a patient, he was |  |                                   |
+| |     a paratrooper, and those |  |                                   |
+| |     people are always very   |  |                                   |
+| |     proud of their shoes.    |  |                                   |
+| |     They always shine; you   |  |                                   |
+| |     can see yourselves in    |  |                                   |
+| |     them. And they were      |  |                                   |
+| |     sitting at the foot of   |  |                                   |
+| |     the bed, and I happened  |  |                                   |
+| |     to hit them. Well, he    |  |                                   |
+| |     got very upset. And I    |  |                                   |
+| |     thought, \"Well,         |  |                                   |
+| |     there\'s no sense of     |  |                                   |
+| |     doing anything because   |  |                                   |
+| |     he\'s really having      |  |                                   |
+| |     problems.\"              |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   That was his only        |  |                                   |
+| |     control \--              |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Yeah.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   \-- was his boots. Yeah. |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   So things like that      |  |                                   |
+| |     you\'d often wonder. I   |  |                                   |
+| |     always wondered too      |  |                                   |
+| |     because \-- and I guess  |  |                                   |
+| |     I could understand,      |  |                                   |
+| |     because I had some       |  |                                   |
+| |     patients, I happened to  |  |                                   |
+| |     be on night duty on an   |  |                                   |
+| |     officers and enlisted    |  |                                   |
+| |     ward, and they were      |  |                                   |
+| |     ready to go back to      |  |                                   |
+| |     duty. They went AWOL to  |  |                                   |
+| |     get back to their unit.  |  |                                   |
+| |     And I\'m sure it was     |  |                                   |
+| |     because they didn\'t     |  |                                   |
+| |     want to go through a     |  |                                   |
+| |     separation center or     |  |                                   |
+| |     where they were          |  |                                   |
+| |     reassigned to another    |  |                                   |
+| |     unit. But I\'m sure      |  |                                   |
+| |     nothing was done to them |  |                                   |
+| |     once they back to their  |  |                                   |
+| |     unit.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   Back in service.         |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Well, we were in Paris,  |  |                                   |
+| |     and they went from there |  |                                   |
+| |     back to combat, to their |  |                                   |
+| |     unit.                    |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   So the AWOL was ignored  |  |                                   |
+| |     at that point, yeah.     |  |                                   |
+| |     Interesting how rules    |  |                                   |
+| |     get bent.                |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Well, if they went back  |  |                                   |
+| |     to their unit, they were |  |                                   |
+| |     AWOL from the hospital   |  |                                   |
+| |     but not from their unit. |  |                                   |
+| |                              |  |                                   |
+| | Ariel Churi:                 |  |                                   |
+| |                              |  |                                   |
+| | :   They can do that. Well,  |  |                                   |
+| |     thank you so much for    |  |                                   |
+| |     all this information.    |  |                                   |
+| |     It\'s really valuable to |  |                                   |
+| |     have all this recorded   |  |                                   |
+| |     and have it in our       |  |                                   |
+| |     Veterans History         |  |                                   |
+| |     Project. And we          |  |                                   |
+| |     appreciate your time.    |  |                                   |
+| |     Thank you.               |  |                                   |
+| |                              |  |                                   |
+| | Virginia Louise Brown:       |  |                                   |
+| |                              |  |                                   |
+| | :   Thank you.               |  |                                   |
+| +------------------------------+  |                                   |
++-----------------------------------+-----------------------------------+
+|                                   |                                   |
++-----------------------------------+-----------------------------------+
+
+::: {#crumb-xsp-2 .vets-xsp-breadcrumb}
+[Home](http://www.loc.gov/vets/){.vets-blue .vets-xsp-crumbNode} **»**
+[Text Transcript]{.vets-selected}
+:::
+
+  ------------------------------------------------ ---------------------------------------------------------------------------- -------------------------------------------------------------
+  [  [The Library of                               [  [Legal](http://www.loc.gov/homepage/legal.html){.white} \| [External Link                                 [Need Help?]{.white-text}   \
+  Congress](http://www.loc.gov/){.white}  \>\>     Disclaimer](http://www.loc.gov/global/disclaim.html){.white}]{.white-text}                                                        [Contact
+  [American Folklife                                                                                                              Us](http://www.loc.gov/rr/askalib/ask-vets.html){.white}   
+  Center](http://www.loc.gov/folklife/){.white}\                                                                                
+    October 26, 2011]{.white-text}                                                                                              
+
+  ------------------------------------------------ ---------------------------------------------------------------------------- -------------------------------------------------------------

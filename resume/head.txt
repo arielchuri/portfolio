@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Resume</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="fonts/inter.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="resume/resume.css">
+<style>
+#resumebutton { display:none; }
+#footer { display:none; }
+</style>
+
+<!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<!-- Primary Page Layout
+<nav>
+<a href="index.html" class="headerlink"><code>&lt; Return</code></a>
+<a href="index.html" class="headerlink"><code>resum&eacute;</code></a>
+<a href="index.html" class="headerlink"><code>ac@sparklelabs.com</code></a>
+</nav>
+-->
+<div class="container">

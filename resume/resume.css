@@ -1,0 +1,38 @@
+.container {
+      max-width: 640px;
+}
+.daterange {
+      color: var(--gray2);
+      margin-bottom: 1rem;
+}
+h1, h2, h3 {
+      font-size: 2rem;
+}
+h4, h5, h6 {
+      margin-bottom: 0px;
+}
+ul {
+      list-style-type: none;
+}
+em {
+      color: var(--gray3);
+}
+      h4 {
+            display: inline-block;
+      }
+.title {
+      display: inline;
+}
+
+@media (min-width: 750px) {
+      h4 {
+            display: inline;
+      }
+      p.daterange {
+            display: inline;
+      }
+}
+
+@media print {
+      font-size: .8rem;
+}
