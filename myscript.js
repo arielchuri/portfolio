@@ -72,6 +72,6 @@ document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag">
       </section> ' +
 
   // '<h6>Colophon</h6>' +
-'<p class="small" style="padding:0px;">This document was written in vanilla HTML, javascript, and CSS. ' +
-  'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>. ' +
-  '🄯 Created by Ariel Churi in 2022. </p></div></section>' ;
+  '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
+'This document was written in vanilla HTML, javascript, and CSS. ' +
+  'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>' ;
