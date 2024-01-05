@@ -252,7 +252,7 @@ mark {
 hr {
   border: 0;
   border-top: 1px solid var(--black);
-  margin: 1.35em auto;
+  margin: 12em auto 3em auto;
   max-width: 100%;
   background-position: 50%;
   box-sizing: border-box;
