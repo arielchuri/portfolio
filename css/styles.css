@@ -109,6 +109,16 @@ h6 {
   font-size: 2rem;
   margin-bottom: 2.5rem;
 }
+.reveal{
+  position: relative;
+  transform: translateY(0px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
+}
 .hero-image {
   display: flex;
   justify-content: center;
