@@ -417,7 +417,7 @@ figure {
 }
 #footer {
   color: var(--gray2);
-  font-size: .9rem;
+  font-size: 80%;
 }
 a:link#footer {
   color: var(--gray2);
