@@ -21,6 +21,12 @@ window.addEventListener("scroll", reveal);
 // To check the scroll position on page load
 reveal();
 // END scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
+// show contact div
+function showDiv() {
+  var div = document.getElementById('contactDiv');
+  div.style.display = div.style.display == "none" ? "block" : "none";
+};
+// END show contact div
 
 document.getElementById("returnbutton").innerHTML =
   '<a href="index.html" class="button button-primary">&#8617; Return</a>';
@@ -31,9 +37,12 @@ document.getElementById("resumebutton").innerHTML =
 user = '&#97;&#99;';
 site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
 
-document.getElementById("emailbutton").innerHTML =
-  '<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">' +
-  user + '@' + site + '</a>' ;
+// document.getElementById("emailbutton").innerHTML =
+//   '<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">' +
+//   user + '@' + site + '</a>' ;
+
+document.getElementById("contactbutton").innerHTML =
+  '<a class="button button-primary" onclick="showDiv()">contact</a>' ;
 
 document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small"> \
       <section class="" style="padding-bottom:0vh;padding-top:0vh"> \
@@ -56,6 +65,9 @@ document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag">
                   <td><a href="tel:646-450-4576">(646) 450-4576</a></td> \
                 </tr> \
                 <tr> \
+                  <td><a href="https://calendly.com/arielchuri/30min">Create a 30min. meeting.</a></td> \
+                </tr> \
+                <tr> \
                   <td><a href="https://arielchuri.sparklelabs.com">arielchuri.sparklelabs.com</a></td> \
                 </tr> \
                 <tr> \
@@ -73,10 +85,13 @@ document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag">
               </thead> \
               <tbody> \
                 <tr> \
+                  <td style="visibility:hidden">.</a></td> \
+                </tr> \
+                <tr> \
                   <td><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99">Montclair, NJ</a></td> \
                 </tr> \
                 <tr> \
-                  <td>he/him</td> \
+                  <td>he/him or they/them</td> \
                 </tr> \
                 <tr> \
                   <td><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></td> \

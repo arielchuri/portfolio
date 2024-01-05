@@ -629,6 +629,10 @@ table {
       margin-bottom: 0;
 }
 @media (min-width: 950px) {
+  #contactDiv {
+    position:absolute;
+    transition: 1s all ease;
+  }
   .flex {
     flex-direction: row;
   }
