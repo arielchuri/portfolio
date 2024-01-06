@@ -630,7 +630,7 @@ table {
 }
 @media (min-width: 950px) {
   #contactDiv {
-    position:absolute;
+    /* position:absolute; */
     transition: 1s all ease;
   }
   .flex {

@@ -1,4 +1,5 @@
 console.log("Hello world!");
+var showContact = false;
 
 // scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
 function reveal() {
@@ -16,36 +17,30 @@ function reveal() {
   }
 }
 
+// document.addEventListener("scrollend", (event) => {
+//   console.log('scrollend');
+//   if (showContact == true) {
+//     var div = document.getElementById('contactDiv');
+//     div.style.display = "block";
+//   };
+// });
+//
 window.addEventListener("scroll", reveal);
 
 // To check the scroll position on page load
 reveal();
 // END scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
+// function to hide contact info on scroll
+// window.onscroll = function() {scrollcheck()};
+// scrollcheck = () => {
+//   if (document.documentElement.scrollTop > 200) {
+//     contactDiv.style.display = "none";
+//     showContact = false;
+//   }
+// }
+// // END
 // show contact div
-function showDiv() {
-  var div = document.getElementById('contactDiv');
-  div.style.display = div.style.display == "none" ? "block" : "none";
-};
-// END show contact div
-
-document.getElementById("returnbutton").innerHTML =
-  '<a href="index.html" class="button button-primary">&#8617; Return</a>';
-
-document.getElementById("resumebutton").innerHTML =
-  '<a href="resume.html" class="button button-primary">r&eacute;sum&eacute;</a>';
-
-user = '&#97;&#99;';
-site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
-
-// document.getElementById("emailbutton").innerHTML =
-//   '<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">' +
-//   user + '@' + site + '</a>' ;
-
-document.getElementById("contactbutton").innerHTML =
-  '<a class="button button-primary" onclick="showDiv()">contact</a>' ;
-
-document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small"> \
-      <section class="" style="padding-bottom:0vh;padding-top:0vh"> \
+var contactinfo ='<section class="" style="padding-bottom:0vh;padding-top:0vh"> \
         <div class="row"> \
           <div class="three columns"> \
             <table> \
@@ -106,8 +101,42 @@ document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag">
             </table> \
           </div> \
         </div> \
-      </section> ' +
+      </section> ';
 
+function showDiv() {
+  console.log(window.pageYOffset);
+  var div = document.getElementById('contactDiv');
+  if (window.pageYOffset >200) {
+    div.style.display = "block";
+    window.scrollTo(0,0);
+  } else {
+  div.style.display = div.style.display == "none" ? "block" : "none";
+  // showContact = showContact == false ? true : false;
+  console.log(showContact);
+  };
+};
+// END show contact div
+//
+document.getElementById("contactDiv").innerHTML = contactinfo
+
+document.getElementById("returnbutton").innerHTML =
+  '<a href="index.html" class="button button-primary">&#8617; Return</a>';
+
+document.getElementById("resumebutton").innerHTML =
+  '<a href="resume.html" class="button button-primary">r&eacute;sum&eacute;</a>';
+
+user = '&#97;&#99;';
+site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
+
+// document.getElementById("emailbutton").innerHTML =
+//   '<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">' +
+//   user + '@' + site + '</a>' ;
+
+document.getElementById("contactbutton").innerHTML =
+  '<a class="button button-primary" onclick="showDiv()">contact</a>' ;
+
+document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
+contactinfo +
   // '<h6>Colophon</h6>' +
   '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
 'This document was written in vanilla HTML, javascript, and CSS. ' +
