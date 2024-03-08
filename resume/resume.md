@@ -1,12 +1,16 @@
 </div>
 <nav>
-<a href="../index.html" class="headerlink"><code>&lt; Return</code></a>
+<span id="returnbutton">
+<a class="button button-primary" href="index.html" class="headerlink">&lt; Return</a>
+</span>
+<span id="contactbutton">
 <SCRIPT LANGUAGE="JavaScript">
 user = '&#97;&#99;';
 site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
-document.write('<a class="headerlink" href=\"mailto:' + user + '@' + site + '\">');
-document.write('<code>' + user + '@' + site + '</code></a>');
+document.write('<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">');
+document.write(user + '@' + site + '</a>');
 </SCRIPT> 
+</span>
 </nav>
 
 <div class="container" markdown="1">
