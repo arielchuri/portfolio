@@ -17,14 +17,6 @@ function reveal() {
   }
 }
 
-// document.addEventListener("scrollend", (event) => {
-//   console.log('scrollend');
-//   if (showContact == true) {
-//     var div = document.getElementById('contactDiv');
-//     div.style.display = "block";
-//   };
-// });
-//
 window.addEventListener("scroll", reveal);
 
 // To check the scroll position on page load
