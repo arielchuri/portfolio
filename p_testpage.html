@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <!-- Basic Page Needs
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta charset="utf-8">
+        <title>Unilever</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Mobile Specific Metas
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- FONT
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+        <!-- CSS
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="fonts/inter.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Favicon
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="icon" type="image/png" href="images/favicon.png">
+    </head>
+    <body>
+        <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
+        <nav>
+            <span id="returnbutton"></span> <span id="resumebutton"></span> <span id="contactbutton"></span>
+        </nav>
+        <div class="container">
+            <div id="contactDiv" style="display:none;width:100%"></div>
+            <div class="row">
+                <div class="twelve columns title">
+                    <h1>Machine Learing Basics</h1>
+                    <p>
+                        I am documenting my journey into learning artificial intelligence.
+                    </p>
+                    </p>
+                    <h2 id="linear-regression">Linear Regression</h2>
+                    <p>In statistics, linear regression is a linear approach to modelling
+                        the relationship between a dependent variable and one or more
+                        independent variables. Let <strong>X</strong> be the independent
+                        variable and <strong>Y</strong> be the dependent variable. We will
+                        define a linear relationship between these two variables as follows:</p>
+                    <p>Source: <a
+                                   href="http://www.nabla.hr/SlopeInterceptLineEqu.gif">http://www.nabla.hr/SlopeInterceptLineEqu.gif</a></p>
+                    <p>This is the equation for a line that you studied in high school.
+                        <strong>m</strong> is the slope of the line and <strong>c</strong> is
+                        the y intercept. Today we will use this equation to train our model with
+                        a given dataset and predict the value of <strong>Y</strong> for any
+                        given value of <strong>X</strong>. Our challenge today is to determine
+                        the value of <strong>m</strong> and <strong>c</strong>, such that the
+                        line corresponding to those values is the best fitting line or gives the
+                        minimum error.</p>
+                    <h2 id="loss-function">Loss Function</h2>
+                    <p>The loss is the error in our predicted value of <strong>m</strong>
+                        and <strong>c</strong>. Our goal is to minimize this error to obtain the
+                        most accurate value of <strong>m</strong> and <strong>c</strong>.<br />
+                        We will use the Mean Squared Error function to calculate the loss. There
+                        are three steps in this function:</p>
+                    <ol type="1">
+                        <li>Find the difference between the actual y and predicted y value(y =
+                            mx + c), for a given x.</li>
+                        <li>Square this difference.</li>
+                        <li>Find the mean of the squares for every value in X.</li>
+                    </ol>
+                    <p>Mean Squared Error Equation</p>
+                    <p>Here yᵢ is the actual value and ȳᵢ is the predicted value. Lets
+                        substitute the value of ȳᵢ:</p>
+                    <p>Substituting the value of ȳᵢ</p>
+                    <p>So we square the error and find the mean. hence the name Mean Squared
+                        Error. Now that we have defined the loss function, lets get into the
+                        interesting part — minimizing it and finding <strong>m</strong> and
+                        <strong>c.</strong></p>
+                    <h2 id="the-gradient-descent-algorithm">The Gradient Descent
+                        Algorithm</h2>
+                    <p>Gradient descent is an iterative optimization algorithm to find the
+                        minimum of a function. Here that function is our Loss Function.</p>
+                    <p><strong>Understanding Gradient Descent</strong></p>
+                    <p>Illustration of how the gradient descent algorithm works</p>
+                    <p>Imagine a valley and a person with no sense of direction who wants to
+                        get to the bottom of the valley. He goes down the slope and takes large
+                        steps when the slope is steep and small steps when the slope is less
+                        steep. He decides his next position based on his current position and
+                        stops when he gets to the bottom of the valley which was his goal.<br />
+                        Let’s try applying gradient descent to <strong>m</strong> and
+                        <strong>c</strong> and approach it step by step:</p>
+                    <ol type="1">
+                        <li>Initially let m = 0 and c = 0. Let L be our learning rate. This
+                            controls how much the value of <strong>m</strong> changes with each
+                            step. L could be a small value like 0.0001 for good accuracy.</li>
+                        <li>Calculate the partial derivative of the loss function with respect
+                            to m, and plug in the current values of x, y, m and c in it to obtain
+                            the derivative value <strong>D</strong>.</li>
+                    </ol>
+                    <p>Derivative with respect to <strong>m</strong></p>
+                    <p>Dₘ is the value of the partial derivative with respect to
+                        <strong>m</strong>. Similarly lets find the partial derivative with
+                        respect to <strong>c</strong>, Dc :</p>
+                    <p>Derivative with respect to <strong>c</strong></p>
+                    <p>3. Now we update the current value of <strong>m</strong> and
+                        <strong>c</strong> using the following equation:</p>
+                    <p>4. We repeat this process until our loss function is a very small
+                        value or ideally 0 (which means 0 error or 100% accuracy). The value of
+                        <strong>m</strong> and <strong>c</strong> that we are left with now will
+                        be the optimum values.</p>
+                    <p>Now going back to our analogy, <strong>m</strong> can be considered
+                        the current position of the person. <strong>D</strong> is equivalent to
+                        the steepness of the slope and <strong>L</strong> can be the speed with
+                        which he moves. Now the new value of <strong>m</strong> that we
+                        calculate using the above equation will be his next position, and
+                        <strong>L×D</strong> will be the size of the steps he will take. When
+                        the slope is more steep (<strong>D</strong> is more) he takes longer
+                        steps and when it is less steep (<strong>D</strong> is less), he takes
+                        smaller steps. Finally he arrives at the bottom of the valley which
+                        corresponds to our loss = 0.<br />
+                        Now with the optimum value of <strong>m</strong> and <strong>c</strong>
+                        our model is ready to make predictions !</p>
+                    <h2 id="implementing-the-model">Implementing the Model</h2>
+                    <p>Now let’s convert everything above into code and see our model in
+                        action !</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <img class="bottomspace" src="images/unilever/unileverscreen.png">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="six columns bottomspace">
+                    <br/>
+                    <h5>Context</h5>
+                    <p>
+                        I was hired as a consultant to span the roles from product development to UI design for this innovative prototype.
+                        The objective was to create a working, proof-of-concept prototype that could be used for both testing and presentation.
+                        I worked directly with AI scientists and end users.
+                    </p>
+                </div>
+                <div class="six columns bottomspace">
+                    <img src="images/unilever/interview.png" class="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns bottomspace">
+                    <img src="images/unilever/unilever01.svg" class="bordergray box-shadow whiteback">
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="p_holobot.html" class="button button-primary u-pull-right">Next</a>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+        <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <script src="myscript.js"></script>
+    </body>
+</html>

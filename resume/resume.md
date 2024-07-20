@@ -52,14 +52,14 @@ UX Director : 2022-2023
 
 Managed a team of 4 UX/UI designers in a **SAFe/Agile** environment. Worked with business, product, and dev to ensure delivery of a **B2B** system for _Bridgestone/Firestone_. Developed and maintained the design process and implementation of the **Figma/Zeplin** design library.
 
-### Wunderman/Thompson : Berkley Insurance Group
+#### Wunderman/Thompson : Berkley Insurance Group
 
 UX Lead : 2021-2022
 {: .daterange}
 
 Workshopped with the client and their customers to determine stakeholder needs. Conducted **interviews**, **competitive analysis**, and **content audit** for a website redesign. Created **user-journeys** and **jobs-to-be-done** framework. Worked with the SEO and data analytics team to ensure business objectives were met.
 
-### Sotheby's
+#### Sotheby's
 
 UX Lead : 2019-2021
 {: .daterange}
@@ -67,7 +67,7 @@ UX Lead : 2019-2021
 I joined Sotheby’s as part of their digital transformation initiative. I led UX designers and collaborated with multiple product owners to merge the digital and live auctions. My team brought together **client-facing**, online auctions with **point-of-sale** and administrative interfaces in a unified **design system**. Research included **observation**, **design-thinking** workshops, and interviews.
 {: .pagebreakafter}
 
-### IBM
+#### IBM
 
 UX Lead : 2018-2019
 {: .daterange}
@@ -76,14 +76,14 @@ I worked closely with IBM’s digital agency to create artifacts and experiences
 I held **workshops** with IBM's top clients, **rapid prototyped** with cardboard and code, and created **motion** **graphics** to model interactions.
 I designed presentations to justify our work and get stakeholder buy-in.
 
-### Unilever
+#### Unilever
 
 UX Lead : 2017-2018
 {: .daterange}
 
 Supply-chain management moves from the sourcing of manufacturing ingredients to the store shelf. Unilever is exploring the use of **artificial intelligence** to manage this complex task. I interviewed people in the field and worked with the **AI** scientists to uncover where real value could be added into this system. Through an iterative process, I developed wireframes and UI designs for a real-world, AI supply-chain management **dashboard**.
    
-### Amazon/Comixology
+#### Amazon/Comixology
 
 UX Director : 2015-2017
 {: .daterange}
