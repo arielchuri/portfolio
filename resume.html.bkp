@@ -1,3 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Resume</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="fonts/inter.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="resume/resume.css">
+<style>
+#resumebutton { display:none; }
+#footer { display:none; }
+</style>
+
+<!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<!-- Primary Page Layout
+<nav>
+<a href="index.html" class="headerlink"><code>&lt; Return</code></a>
+<a href="index.html" class="headerlink"><code>resum&eacute;</code></a>
+<a href="index.html" class="headerlink"><code>ac@sparklelabs.com</code></a>
+</nav>
+-->
+<div class="container">
 </div>
 <nav>
 <span id="returnbutton">
@@ -76,34 +120,25 @@ document.write(user + '@' + site + '</a>');
 <!-- ## Summary -->
 <!-- [TBD] -->
 <h2>Experience</h2>
-<h4>Parsons, The New School for Design</h4>
-<p class="daterange">Professor : 2014-Present</p>
-<p>Teaching and designing courses for undergraduate and graduate students.</p>
-<ul>
-<li>Design Research Methodology: Introduce research and design methodologies. Apply the different techniques in a series of projects, engaging both users and experts.</li>
-<li>Visual &amp; Information Design: Explore the fundamentals of visual communication and typography.</li>
-<li>Creative Computing / Web Design: Introduce core concepts and design patterns of programming through front end web development.</li>
-<li>Physical Computing: Create and program embedded hardware systems. Design, prototype, and test a physical interfaces.</li>
-</ul>
-<h4>Razorfish</h4>
-<p class="daterange">UX Director : 2021-2023</p>
+<h4>Razorfish : Bridgestone</h4>
+<p class="daterange">UX Director : 2022-2023</p>
 <p>Managed a team of 4 UX/UI designers in a <strong>SAFe/Agile</strong> environment. Worked with business, product, and dev to ensure delivery of a <strong>B2B</strong> system for <em>Bridgestone/Firestone</em>. Developed and maintained the design process and implementation of the <strong>Figma/Zeplin</strong> design library.</p>
-<h4>Wunderman/Thompson</h4>
-<p class="daterange">Contract UX Lead : 2021</p>
+<h4>Wunderman/Thompson : Berkley Insurance Group</h4>
+<p class="daterange">UX Lead : 2021-2022</p>
 <p>Workshopped with the client and their customers to determine stakeholder needs. Conducted <strong>interviews</strong>, <strong>competitive analysis</strong>, and <strong>content audit</strong> for a website redesign. Created <strong>user-journeys</strong> and <strong>jobs-to-be-done</strong> framework. Worked with the SEO and data analytics team to ensure business objectives were met.</p>
 <h4>Sotheby&rsquo;s</h4>
-<p class="daterange">UX Lead : 2018-2021</p>
+<p class="daterange">UX Lead : 2019-2021</p>
 <p class="pagebreakafter">I joined Sotheby’s as part of their digital transformation initiative. I led UX designers and collaborated with multiple product owners to merge the digital and live auctions. My team brought together <strong>client-facing</strong>, online auctions with <strong>point-of-sale</strong> and administrative interfaces in a unified <strong>design system</strong>. Research included <strong>observation</strong>, <strong>design-thinking</strong> workshops, and interviews.</p>
 <h4>IBM</h4>
-<p class="daterange">Contract UX Lead : 2018</p>
+<p class="daterange">UX Lead : 2018-2019</p>
 <p>I worked closely with IBM’s digital agency to create artifacts and experiences that included <strong>touch interfaces</strong> for editorial publishing and <strong>mixed reality</strong> experiences.
 I held <strong>workshops</strong> with IBM&rsquo;s top clients, <strong>rapid prototyped</strong> with cardboard and code, and created <strong>motion</strong> <strong>graphics</strong> to model interactions.
 I designed presentations to justify our work and get stakeholder buy-in.</p>
 <h4>Unilever</h4>
-<p class="daterange">Contract UX Lead : 2018</p>
+<p class="daterange">UX Lead : 2017-2018</p>
 <p>Supply-chain management moves from the sourcing of manufacturing ingredients to the store shelf. Unilever is exploring the use of <strong>artificial intelligence</strong> to manage this complex task. I interviewed people in the field and worked with the <strong>AI</strong> scientists to uncover where real value could be added into this system. Through an iterative process, I developed wireframes and UI designs for a real-world, AI supply-chain management <strong>dashboard</strong>.</p>
 <h4>Amazon/Comixology</h4>
-<p class="daterange">UX Director : 2015-2018</p>
+<p class="daterange">UX Director : 2015-2017</p>
 <p>Led a team of UX practitioners and creatives to implement a series of feature improvements to the subscription, purchase, and library management that positively effected <strong>user-satisfaction</strong>.</p>
 <p>Successfully designed and implemented the user account and library merge program required by the company&rsquo;s aquisition by Amazon.</p>
 <h4>Sparkle Labs</h4>
@@ -114,6 +149,15 @@ I designed presentations to justify our work and get stakeholder buy-in.</p>
 <li>Sourcing, manufacturing, and factory visits.</li>
 <li>Consulting and prototyping of hardware and software applications for Starcom Mediavest, Faith Popcorn, Kid Robot, Kill Screen, MoMA, Mattel, Hasbro.</li>
 <li>Writing articles for Make Magazine.</li>
+</ul>
+<h4>Parsons, The New School for Design</h4>
+<p class="daterange">Professor : Ongoing</p>
+<p>Teaching and designing courses for undergraduate and graduate students.</p>
+<ul>
+<li><strong>Design Research Methodology</strong>: Introduce research and design methodologies. Apply the different techniques in a series of projects, engaging both users and experts.</li>
+<li><strong>Visual &amp; Information Design</strong>: Explore the fundamentals of visual communication and typography.</li>
+<li><strong>Creative Computing / Web Design</strong>: Introduce core concepts and design patterns of programming through front end web development.</li>
+<li><strong>Physical Computing</strong>: Create and program embedded hardware systems. Design, prototype, and test a physical interfaces.</li>
 </ul>
 <!-- {: .pagebreakafter} -->
 <h4>Other Clients</h4>
@@ -143,4 +187,9 @@ I designed presentations to justify our work and get stakeholder buy-in.</p>
 </ul>
 </div>
 </div>
-</div>
+</div>    </div>
+
+    <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- <script src="myscript.js"></script> -->
+  </body>
+</html>
