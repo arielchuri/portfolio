@@ -51,10 +51,12 @@ Professor : 2014-Present
 
 Teaching and designing courses for undergraduate and graduate students.
 
-- Design Research Methodology: Introduce research and design methodologies. Apply the different techniques in a series of projects, engaging both users and experts.
-- Visual & Information Design: Explore the fundamentals of visual communication and typography.
-- Creative Computing / Web Design: Introduce core concepts and design patterns of programming through front end web development.
-- Physical Computing: Create and program embedded hardware systems. Design, prototype, and test a physical interfaces.
+**Courses:**   
+
+- _Design Research Methodology:_ Introduce research and design methodologies. Apply the different techniques in a series of projects, engaging both users and experts.
+- _Visual & Information Design:_ Explore the fundamentals of visual communication and typography.
+- _Creative Computing / Web Design:_ Introduce core concepts and design patterns of programming through front end web development.
+- _Physical Computing:_ Create and program embedded hardware systems. Design, prototype, and test a physical interfaces.
 
 #### Razorfish
 
@@ -134,14 +136,14 @@ Partner : Ongoing
 
 ## Recognition 
 
-- *Guest Speaker on Design Thinking*, *Eurobest Conference*, Lisbon, Portugal, 2011
-- *Gallery Hanahou solo show*, New York, New York, 2010
-- *The 2nd Art and Science International Exhibition and Symposium*, Beijing, China, 2006
-- *Contributor*, *Make Magazine*, 2005 - 2010
-- *Gwang Ju Design Biennale*, Gwang Ju, Korea, 2005
-- *American Institute of Graphic Arts*, *Design Ranch workshop*, 2005
-- *New Product Showcase*, *Compact-Impact/TKNY*, New York, NY, 2004
-- *Ubiquitous Computing Conference*, Seattle, WA, 2003
+- *Guest Speaker on Design Thinking*, *Eurobest Conference*, Lisbon, Portugal
+- *Gallery Hanahou solo show*, New York, New York
+- *The 2nd Art and Science International Exhibition and Symposium*, Beijing, China
+- *Contributor*, *Make Magazine*
+- *Gwang Ju Design Biennale*, Gwang Ju, Korea
+- *American Institute of Graphic Arts*, *Design Ranch workshop*
+- *New Product Showcase*, *Compact-Impact/TKNY*, New York, NY
+- *Ubiquitous Computing Conference*, Seattle, WA
 
 </div>
 </div>
