@@ -91,11 +91,11 @@ h4 {
   text-transform: uppercase;
 }
 h5 {
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 2rem;
+  font-weight: 300;
   letter-spacing: .01em;
   text-transform: uppercase;
-  margin-bottom: .5em;
+  margin-bottom: .0em;
 }
 h6 {
   margin-bottom: .5em;
@@ -108,6 +108,16 @@ h6 {
 .title {
   font-size: 2rem;
   margin-bottom: 2.5rem;
+}
+.reveal{
+  position: relative;
+  transform: translateY(0px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
 }
 .hero-image {
   display: flex;
@@ -252,7 +262,7 @@ mark {
 hr {
   border: 0;
   border-top: 1px solid var(--black);
-  margin: 1.35em auto;
+  margin: 12em auto 3em auto;
   max-width: 100%;
   background-position: 50%;
   box-sizing: border-box;
@@ -417,7 +427,7 @@ figure {
 }
 #footer {
   color: var(--gray2);
-  font-size: .9rem;
+  font-size: 80%;
 }
 a:link#footer {
   color: var(--gray2);
@@ -428,11 +438,6 @@ a:link#footer {
 .box-shadow {
   box-shadow: 2px 2px var(--gray1);
 }
-
-.drop-shadow {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .hatch {
   background-image: linear-gradient(135deg, white 40%, var(--accent2) 40%, var(--accent2) 50%, white 50%, white 90%, var(--accent2) 90%, var(--accent2) 100%);
   background-size: 12px 12px;
@@ -624,6 +629,10 @@ table {
       margin-bottom: 0;
 }
 @media (min-width: 950px) {
+  #contactDiv {
+    /* position:absolute; */
+    transition: 1s all ease;
+  }
   .flex {
     flex-direction: row;
   }
