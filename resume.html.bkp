@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Resume</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="fonts/inter.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="resume/resume.css">
+<style>
+#resumebutton { display:none; }
+#footer { display:none; }
+</style>
+
+<!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<!-- Primary Page Layout
+<nav>
+<a href="index.html" class="headerlink"><code>&lt; Return</code></a>
+<a href="index.html" class="headerlink"><code>resum&eacute;</code></a>
+<a href="index.html" class="headerlink"><code>ac@sparklelabs.com</code></a>
+</nav>
+-->
+<div class="container">
+</div>
+<nav>
+<span id="returnbutton">
+<a class="button button-primary" href="index.html" class="headerlink">&lt; Return</a>
+</span>
+<span id="contactbutton">
+<SCRIPT LANGUAGE="JavaScript">
+user = '&#97;&#99;';
+site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
+document.write('<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">');
+document.write(user + '@' + site + '</a>');
+</SCRIPT> 
+</span>
+</nav>
+
+<div class="container">
+<div class="row">
+<h1>Résumé</h1>
+</div>
+<div class="">
+<div class="six columns">
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ariel Churi</td>
+</tr>
+<tr>
+<td><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></td>
+</tr>
+<tr>
+<td><a href="tel:646-450-4576">(646) 450-4576</a></td>
+</tr>
+<tr>
+<td><a href="https://arielchuri.sparklelabs.com">arielchuri.sparklelabs.com</a></td>
+</tr>
+<tr>
+<td><a href="https://linkedin.com/in/arielchuri/">linkedin.com/in/arielchuri</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="six columns bottomspace">
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99">Montclair, NJ</a></td>
+</tr>
+<tr>
+<td>he/him</td>
+</tr>
+<tr>
+<td><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></td>
+</tr>
+<tr>
+<td><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf"><img style="height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/arielchuri/">github.com/arielchuri</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="row">
+<div class="twelve columns">
+<!-- ## Summary -->
+<!-- [TBD] -->
+<h2>Experience</h2>
+<h4>Parsons, The New School for Design</h4>
+<p class="daterange">Professor : 2014-Present</p>
+<p>Teaching and designing courses for undergraduate and graduate students.</p>
+<p><strong>Courses:</strong>   </p>
+<ul>
+<li><em>Design Research Methodology:</em> Introduce research and design methodologies. Apply the different techniques in a series of projects, engaging both users and experts.</li>
+<li><em>Visual &amp; Information Design:</em> Explore the fundamentals of visual communication and typography.</li>
+<li><em>Creative Computing / Web Design:</em> Introduce core concepts and design patterns of programming through front end web development.</li>
+<li><em>Physical Computing:</em> Create and program embedded hardware systems. Design, prototype, and test a physical interfaces.</li>
+</ul>
+<h4>Razorfish</h4>
+<p class="daterange">UX Director : 2021-2023</p>
+<p>Managed a team of 4 UX/UI designers in a <strong>SAFe/Agile</strong> environment. Worked with business, product, and dev to ensure delivery of a <strong>B2B</strong> system for <em>Bridgestone/Firestone</em>. Developed and maintained the design process and implementation of the <strong>Figma/Zeplin</strong> design library.</p>
+<h4>Wunderman/Thompson</h4>
+<p class="daterange">Contract UX Lead : 2021</p>
+<p>Workshopped with the client and their customers to determine stakeholder needs. Conducted <strong>interviews</strong>, <strong>competitive analysis</strong>, and <strong>content audit</strong> for a website redesign. Created <strong>user-journeys</strong> and <strong>jobs-to-be-done</strong> framework. Worked with the SEO and data analytics team to ensure business objectives were met.</p>
+<h4>Sotheby&rsquo;s</h4>
+<p class="daterange">UX Lead : 2018-2021</p>
+<p class="pagebreakafter">I joined Sotheby’s as part of their digital transformation initiative. I led UX designers and collaborated with multiple product owners to merge the digital and live auctions. My team brought together <strong>client-facing</strong>, online auctions with <strong>point-of-sale</strong> and administrative interfaces in a unified <strong>design system</strong>. Research included <strong>observation</strong>, <strong>design-thinking</strong> workshops, and interviews.</p>
+<h4>IBM</h4>
+<p class="daterange">Contract UX Lead : 2018</p>
+<p>I worked closely with IBM’s digital agency to create artifacts and experiences that included <strong>touch interfaces</strong> for editorial publishing and <strong>mixed reality</strong> experiences.
+I held <strong>workshops</strong> with IBM&rsquo;s top clients, <strong>rapid prototyped</strong> with cardboard and code, and created <strong>motion</strong> <strong>graphics</strong> to model interactions.
+I designed presentations to justify our work and get stakeholder buy-in.</p>
+<h4>Unilever</h4>
+<p class="daterange">Contract UX Lead : 2018</p>
+<p>Supply-chain management moves from the sourcing of manufacturing ingredients to the store shelf. Unilever is exploring the use of <strong>artificial intelligence</strong> to manage this complex task. I interviewed people in the field and worked with the <strong>AI</strong> scientists to uncover where real value could be added into this system. Through an iterative process, I developed wireframes and UI designs for a real-world, AI supply-chain management <strong>dashboard</strong>.</p>
+<h4>Amazon/Comixology</h4>
+<p class="daterange">UX Director : 2015-2018</p>
+<p>Led a team of UX practitioners and creatives to implement a series of feature improvements to the subscription, purchase, and library management that positively effected <strong>user-satisfaction</strong>.</p>
+<p>Successfully designed and implemented the user account and library merge program required by the company&rsquo;s aquisition by Amazon.</p>
+<h4>Sparkle Labs</h4>
+<p class="daterange">Partner : Ongoing</p>
+<ul>
+<li>Ideation and development of educational electronics kits.</li>
+<li>Instructional and package design.</li>
+<li>Sourcing, manufacturing, and factory visits.</li>
+<li>Consulting and prototyping of hardware and software applications for Starcom Mediavest, Faith Popcorn, Kid Robot, Kill Screen, MoMA, Mattel, Hasbro.</li>
+<li>Writing articles for Make Magazine.</li>
+</ul>
+<!-- {: .pagebreakafter} -->
+<h4>Other Clients</h4>
+<p><a href="https://www.wundermanthompson.com/">Wunderman Thompson</a>,
+<a href="https://havascreative.com/">Havas Creative</a>,
+<a href="https://www.moma.org/">MoMA</a>,
+<a href="https://www.samsung.com/us/">Samsung</a>,
+<a href="https://www.calvinklein.us/">Calvin Klein</a>,
+<a href="https://www.morganstanley.com/">Morgan Stanley</a>,
+<a href="https://www.ogilvy.com/">Ogilvy</a>,
+<a href="https://www.razorfish.com/">Razorfish</a></p>
+<h2>Education</h2>
+<ul>
+<li><strong>MFA:</strong> Interactive Telecommunications Program, New York University, NYC</li>
+<li><strong>BA:</strong> Printmaking, University of the Arts, Philadelphia</li>
+</ul>
+<h2>Recognition</h2>
+<ul>
+<li><em>Guest Speaker on Design Thinking</em>, <em>Eurobest Conference</em>, Lisbon, Portugal</li>
+<li><em>Gallery Hanahou solo show</em>, New York, New York</li>
+<li><em>The 2nd Art and Science International Exhibition and Symposium</em>, Beijing, China</li>
+<li><em>Contributor</em>, <em>Make Magazine</em></li>
+<li><em>Gwang Ju Design Biennale</em>, Gwang Ju, Korea</li>
+<li><em>American Institute of Graphic Arts</em>, <em>Design Ranch workshop</em></li>
+<li><em>New Product Showcase</em>, <em>Compact-Impact/TKNY</em>, New York, NY</li>
+<li><em>Ubiquitous Computing Conference</em>, Seattle, WA</li>
+</ul>
+</div>
+</div>
+</div>    </div>
+
+    <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- <script src="myscript.js"></script> -->
+  </body>
+</html>
