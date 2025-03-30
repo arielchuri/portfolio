@@ -1,3 +1,90 @@
+/*! tailwindcss v4.0.8 | MIT License | https://tailwindcss.com */
+.visible {
+  visibility: visible;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.relative {
+  position: relative;
+}
+.static {
+  position: static;
+}
+.sticky {
+  position: sticky;
+}
+.container {
+  width: 100%;
+}
+.block {
+  display: block;
+}
+.contents {
+  display: contents;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.hidden {
+  display: none;
+}
+.inline {
+  display: inline;
+}
+.inline-block {
+  display: inline-block;
+}
+.table {
+  display: table;
+}
+.shrink {
+  flex-shrink: 1;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.grow {
+  flex-grow: 1;
+}
+.transform {
+  transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
+}
+.resize {
+  resize: both;
+}
+.border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.underline {
+  text-decoration-line: underline;
+}
+.ring {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.outline {
+  outline-style: var(--tw-outline-style);
+  outline-width: 1px;
+}
+.filter {
+  filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+.transition {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
 * {
   box-sizing: border-box;
 }
@@ -35,72 +122,53 @@ html {
 }
 body {
   margin-top: 4rem;
-  font-family: 'Inter';
+  font-family: "Inter";
   background-color: var(--white);
   color: var(--black);
-  var(--lineHeight);
   font-size: var(--fontsize);
   line-height: var(--lineheight);
   letter-spacing: -0.004em;
   font-weight: 400;
   font-feature-settings: "case" 0, "cpsp" 0, "dlig", "frac", "dnom" 0, "numr" 0, "salt" 0, "subs" 0, "sups" 0, "tnum" 0, "zero", "ss01" 0, "ss02" 0, "ss03" 0, "ss04" 0, "cv01" 0, "cv02" 0, "cv03" 0, "cv04" 0, "cv05" 0, "cv06" 0, "cv07" 0, "cv08" 0, "cv09" 0, "cv10" 0, "cv11" 0, "calt", "ccmp", "kern";
 }
-.row {
-  /* margin-bottom: 2rem; */
-}
-.columns {
-  /* overflow: hidden; */
-}
-section {
-  /* margin-bottom: 8rem; */
-}
 code, samp, pre, kbd {
   color: var(--gray3);
-}
-section {
-  /* padding: 6rem; */
-  /* margin-top: 6rem; */
-  /* margin-bottom: 6rem; */
 }
 pre {
   line-height: 1.6;
 }
-.container {
-  /* margin-bottom: 6rem; */
-  /* margin-top: 6rem; */
-}
 h1 {
   font-size: 6rem;
   font-weight: 800;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
 }
 h2 {
   font-size: 5rem;
   font-weight: 700;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
 }
 h3 {
   font-size: 2rem;
   font-weight: 800;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
 }
 h4 {
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 h5 {
   font-size: 2rem;
   font-weight: 300;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  margin-bottom: .0em;
+  margin-bottom: 0em;
 }
 h6 {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
-.title > h1{
+.title > h1 {
   font-size: 6rem;
   margin-top: 4rem;
   margin-bottom: 0rem;
@@ -109,13 +177,13 @@ h6 {
   font-size: 2rem;
   margin-bottom: 2.5rem;
 }
-.reveal{
+.reveal {
   position: relative;
   transform: translateY(0px);
   opacity: 0;
   transition: 1s all ease;
 }
-.reveal.active{
+.reveal.active {
   transform: translateY(0);
   opacity: 1;
 }
@@ -124,7 +192,7 @@ h6 {
   justify-content: center;
   align-items: center;
   background-image: url("../images/hero.jpg");
-  min-height:200px;
+  min-height: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -143,7 +211,6 @@ h6 {
 img {
   width: 100%;
 }
-
 .multiply {
   mix-blend-mode: multiply;
 }
@@ -174,8 +241,6 @@ mark {
 }
 .yellow * {
   mix-blend-mode: multiply;
-  /* background-color: #004d2a; */
-  /* color: var(--yellow); */
 }
 .blue mark {
   mix-blend-mode: normal;
@@ -183,7 +248,6 @@ mark {
   color: var(--yellow);
 }
 .red *:not(a) {
-  /* mix-blend-mode: multiply; */
   color: black;
 }
 .red :is(a) {
@@ -206,22 +270,10 @@ mark {
   background-color: red;
   background-color: var(--red);
 }
-.blue mark:hover {
-  /* background-color: #001c2b; */
-}
-/* mark:hover { */
-/*     background-color: var(--red); */
-/*     color: var(--yellow); */
-/* } */
 .block {
   padding: 2rem;
   font-size: 80%;
   mix-blend-mode: multiply;
-}
-.block p {
-}
-.shape:hover {
-  /* background: var(--black); */
 }
 .triangle {
   background: var(--yellow);
@@ -248,7 +300,6 @@ mark {
   width: calc(1000px / 4.6);
   height: calc(1000px / 4.6);
 }
-
 .flex {
   display: flex;
   flex-direction: column;
@@ -280,22 +331,15 @@ hr.hrred {
   height: 10px;
   color: var(--gray1);
   mix-blend-mode: multiply;
-  background-image: linear-gradient(
-    90deg,
-    currentColor,
-    currentColor 33.33%,
-    transparent 33.33%,
-    transparent 100%);
+  background-image: linear-gradient( 90deg, currentColor, currentColor 33.33%, transparent 33.33%, transparent 100% );
   background-size: 3px 100%;
-  /* width: 60%; */
 }
 hr.zig, hr.zag {
   border: none;
   height: 30px;
   margin: 0 0px;
 }
-
-hr.zig{
+hr.zig {
   margin-top: 6rem;
   background: linear-gradient(-135deg, var(--white) 20px, #66658100 0) 0 5px, linear-gradient(135deg, var(--white) 20px, #66658100 0) 0 5px;
   background-color: #66658100;
@@ -305,7 +349,6 @@ hr.zig{
   z-index: 100;
   position: relative;
 }
-
 hr.zag {
   margin-bottom: 6rem;
   background: linear-gradient(-135deg, var(--gray1) 20px, #66658100 0) 0 5px, linear-gradient(135deg, var(--gray1) 20px, var(--white) 0) 0 5px;
@@ -316,111 +359,66 @@ hr.zag {
   z-index: 50;
   margin-top: -28px;
 }
-/*Copied from skeleton css in order to use css variables here*/
-
-.button.button-primary,
-button.button-primary,
-input[type="submit"].button-primary,
-input[type="reset"].button-primary,
-input[type="button"].button-primary {
+.button.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
   color: var(--white);
   background-color: var(--accent);
   border-color: var(--accent);
   text-decoration: none;
 }
-
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
-  color: #FFF;
+.button.button-primary:hover, button.button-primary:hover, input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover, .button.button-primary:focus, button.button-primary:focus, input[type="submit"].button-primary:focus, input[type="reset"].button-primary:focus, input[type="button"].button-primary:focus {
+  color: #fff;
   background-color: var(--active);
   border-color: var(--active);
   text-decoration: none;
 }
-
 a {
   color: var(--accent);
-  /* text-decoration: none; */
   mix-blend-mode: multiply;
 }
-
 a.shape {
   text-decoration: none;
 }
-
 a:hover {
   color: var(--active);
   background-color: var(--accent);
   color: var(--white);
   text-decoration: none;
-  /* text-decoration: underline; */
   mix-blend-mode: multiply;
 }
-
 nav {
-  top: -.5rem;
+  top: -0.5rem;
   position: fixed;
   z-index: 9999;
   margin: 1rem;
   mix-blend-mode: multiply;
 }
-
 span > .button.button-primary {
-height: 20px;
-line-height: 20px;
-padding: 0px 10px;
-background-color: var(--gray2);
-border: none;
+  height: 20px;
+  line-height: 20px;
+  padding: 0px 10px;
+  background-color: var(--gray2);
+  border: none;
 }
-
-
 a.headerlink {
   text-decoration: none;
   font-size: 80%;
 }
-
-a:hover.headerlink{
+a:hover.headerlink {
   background-color: var(--white);
 }
-
-a.headerlink > code{
+a.headerlink > code {
   color: var(--active);
 }
-
-a:hover.headerlink > code{
+a:hover.headerlink > code {
   text-decoration: underline;
 }
-
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="search"]:focus,
-input[type="text"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-select:focus {
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
   border: 1px solid var(--active);
-  outline: 0; }
-
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="text"],
-input[type="tel"],
-input[type="url"],
-input[type="password"],
-textarea,
-select {
+  outline: 0;
+}
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
   background-color: #fff;
-  border: 1px solid #D1D1D1;
+  border: 1px solid #d1d1d1;
 }
 figure {
   margin: 0px;
@@ -439,7 +437,7 @@ a:link#footer {
   box-shadow: 2px 2px var(--gray1);
 }
 .hatch {
-  background-image: linear-gradient(135deg, white 40%, var(--accent2) 40%, var(--accent2) 50%, white 50%, white 90%, var(--accent2) 90%, var(--accent2) 100%);
+  background-image: linear-gradient( 135deg, white 40%, var(--accent2) 40%, var(--accent2) 50%, white 50%, white 90%, var(--accent2) 90%, var(--accent2) 100% );
   background-size: 12px 12px;
   border: 1px solid var(--accent2);
 }
@@ -457,7 +455,7 @@ a:link#footer {
   border: 1px solid var(--accent2);
 }
 .hatchgray {
-  background-image: linear-gradient(135deg, white 40%, var(--gray1) 40%, var(--gray1) 50%, white 50%, white 90%, var(--gray1) 90%, var(--gray1) 100%);
+  background-image: linear-gradient( 135deg, white 40%, var(--gray1) 40%, var(--gray1) 50%, white 50%, white 90%, var(--gray1) 90%, var(--gray1) 100% );
   background-size: 12px 12px;
   border: 1px solid var(--gray1);
 }
@@ -475,7 +473,7 @@ a:link#footer {
   border: 1px solid var(--gray1);
 }
 .hatchyellow {
-  background-image: linear-gradient(135deg, white 40%, var(--yellow) 40%, var(--yellow) 50%, white 50%, white 90%, var(--yellow) 90%, var(--yellow) 100%);
+  background-image: linear-gradient( 135deg, white 40%, var(--yellow) 40%, var(--yellow) 50%, white 50%, white 90%, var(--yellow) 90%, var(--yellow) 100% );
   background-size: 12px 12px;
   border: 1px solid var(--yellow);
 }
@@ -493,7 +491,7 @@ a:link#footer {
   border: 1px solid var(--yellow);
 }
 .hatchred {
-  background-image: linear-gradient(135deg, white 40%, var(--red) 40%, var(--red) 50%, white 50%, white 90%, var(--red) 90%, var(--red) 100%);
+  background-image: linear-gradient( 135deg, white 40%, var(--red) 40%, var(--red) 50%, white 50%, white 90%, var(--red) 90%, var(--red) 100% );
   background-size: 12px 12px;
   border: 1px solid var(--red);
   color: var(--red);
@@ -514,7 +512,7 @@ a:link#footer {
   color: var(--red);
 }
 .hatchblue {
-  background-image: linear-gradient(135deg, white 40%, var(--blue) 40%, var(--blue) 50%, white 50%, white 90%, var(--blue) 90%, var(--blue) 100%);
+  background-image: linear-gradient( 135deg, white 40%, var(--blue) 40%, var(--blue) 50%, white 50%, white 90%, var(--blue) 90%, var(--blue) 100% );
   background-size: 12px 12px;
   border: 1px solid var(--blue);
   color: var(--blue);
@@ -534,23 +532,18 @@ a:link#footer {
   border: 1px solid var(--blue);
   color: var(--blue);
 }
-:is(.graphpaper, .dot, .hatch, .graphpapergray, .dotgray, .hatchgray, .graphpaperyellow, .dotyellow, .hatchyellow, .graphpaperred, .dotred, .hatchred,  .graphpaperblue, .dotblue, .hatchblue) *:not(mark, blue) {
+:is( .graphpaper, .dot, .hatch, .graphpapergray, .dotgray, .hatchgray, .graphpaperyellow, .dotyellow, .hatchyellow, .graphpaperred, .dotred, .hatchred, .graphpaperblue, .dotblue, .hatchblue ) *:not(mark, blue) {
   background-color: white;
 }
-
 .graphpapergray > * {
   border: 1px solid var(--gray1);
 }
-
-/* magnify code */
-
 .tiles {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
 }
-
 .tile {
   position: relative;
   float: left;
@@ -558,7 +551,6 @@ a:link#footer {
   height: 100%;
   overflow: hidden;
 }
-
 .photo {
   position: absolute;
   top: 0;
@@ -568,69 +560,60 @@ a:link#footer {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  transition: transform .5s ease-out;
+  transition: transform 0.5s ease-out;
 }
-
 .txt {
   position: absolute;
   z-index: 2;
   right: 0;
   bottom: 10%;
   left: 0;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-size: 9px;
   line-height: 12px;
   text-align: center;
   cursor: default;
 }
-
 .x {
   font-size: 32px;
   line-height: 32px;
 }
-
-/* END MAGNIFY */
-
 img.zoom, img.zoomsmall, img.zoombig {
-  transition:.25s all;
+  transition: 0.25s all;
 }
 img.zoom:hover {
-  transform:scale(3);
+  transform: scale(3);
 }
 img.zoomsmall:hover {
-  transform:scale(2);
+  transform: scale(2);
 }
 img.zoombig:hover {
-  transform:scale(4);
+  transform: scale(4);
 }
-img.zoomsmall:hover, img.zoombig:hover, img.zoom:hover{
+img.zoomsmall:hover, img.zoombig:hover, img.zoom:hover {
   border: 0;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.25);
   z-index: 1000;
 }
-
 .mobile {
   display: block;
 }
 .desktop {
   display: none;
 }
-
 .bottomspace {
-  /* margin-bottom: 3%; */
   margin-bottom: 2.5rem;
 }
 th, td {
-      border-bottom: none;
-      padding: 2px;
+  border-bottom: none;
+  padding: 2px;
 }
 table {
-      width: 100%;
-      margin-bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
 }
 @media (min-width: 950px) {
   #contactDiv {
-    /* position:absolute; */
     transition: 1s all ease;
   }
   .flex {
@@ -645,20 +628,17 @@ table {
   h1 {
     font-size: 6rem;
   }
-.title > h1{
-  font-size: 8rem;
-  /* margin-top: 4rem; */
-  /* margin-bottom: 0rem; */
+  .title > h1 {
+    font-size: 8rem;
+  }
+  img.viewheight {
+    height: 100vh;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
-img.viewheight {
-height:100vh;
-width:auto;
-margin-left:auto;
-margin-right:auto;
-display:block
-}
-}
-
 @media print {
   nav {
     display: none !important;
@@ -673,4 +653,133 @@ display:block
     page-break-before: always;
   }
 }
-
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: rotateX(0);
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: rotateY(0);
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: rotateZ(0);
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: skewX(0);
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: skewY(0);
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}

@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
+@import "tailwindcss" * {
   box-sizing: border-box;
 }
 :root {
@@ -97,6 +93,18 @@ section {
   /* margin-top: 6rem; */
   /* margin-bottom: 6rem; */
 }
+.homecopy {
+  text-align: left;
+}
+
+.homecopy p {
+  font-size: 1em;
+  line-height: 1.5em;
+  hyphens: auto;
+  word-break: break-word;
+  text-wrap: balance;
+}
+
 pre {
   line-height: 1.6;
 }
@@ -110,6 +118,7 @@ h1 {
   letter-spacing: 0.01em;
 }
 h2 {
+  color: hotpink;
   font-size: 5rem;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -747,6 +756,18 @@ table {
   margin-bottom: 0;
 }
 @media (min-width: 950px) {
+  .homecopy {
+    column-count: 2;
+    column-gap: 4ch;
+    max-width: 90ch;
+  }
+  .homecopy p {
+    text-align: justify;
+    orphans: 2;
+    widows: 2;
+    break-inside: avoid-column;
+    break-inside: avoid;
+  }
   #contactDiv {
     /* position:absolute; */
     transition: 1s all ease;
