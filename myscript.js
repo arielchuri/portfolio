@@ -33,64 +33,22 @@ reveal();
 // show contact div
 var contactinfo =
   '<section class="" style="padding-bottom:0vh;"> \
-        <div class="row"> \
-          <div class="three columns"> \
-            <table> \
-              <thead> \
-                <tr> \
-                  <th></th> \
-                </tr> \
-              </thead> \
-              <tbody> \
-                <tr> \
-                  <td><strong>Ariel Churi</strong></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="tel:646-450-4576">(646) 450-4576</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://calendly.com/arielchuri/30min">Create a 30min. meeting.</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com">arielchuri.sparklelabs.com</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://linkedin.com/in/arielchuri/">linkedin.com/in/arielchuri</a></td> \
-                </tr> \
-              </tbody> \
-            </table> \
+        <div class="flex gap-2"> \
+          <div class="flex flex-col"> \
+                  <div class="font-medium">Ariel Churi</div> \
+                  <div><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></div> \
+                  <div><a href="tel:646-450-4576">(646) 450-4576</a></div> \
+                  <div><a href="https://calendly.com/arielchuri/30min">Create a 30min. meeting.</a></div> \
+                  <div><a href="https://arielchuri.sparklelabs.com">arielchuri.sparklelabs.com</a></div> \
+                  <div><a href="https://linkedin.com/in/arielchuri/">linkedin.com/in/arielchuri</a></div> \
           </div> \
-          <div class="three columns bottomspace"> \
-            <table> \
-              <thead> \
-                <tr> \
-                  <th></th> \
-                </tr> \
-              </thead> \
-              <tbody> \
-                <tr> \
-                  <td style="visibility:hidden">.</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99">Montclair, NJ</a></td> \
-                </tr> \
-                <tr> \
-                  <td>he/him or they/them</td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf"><img style="height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://github.com/arielchuri/">github.com/arielchuri</a></td> \
-                </tr> \
-              </tbody> \
-            </table> \
+          <div class="flex flex-col"> \
+                  <div style="visibility:hidden">.</a></div> \
+                  <div><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99">Montclair, NJ</a></div> \
+                  <div>he/him or they/them</div> \
+                  <div class="whitespace-nowrap"><a class="" href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE <img class="inline" style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></div> \
+                  <div class="whitespace-nowrap"><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf <img class="inline" style="height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></div> \
+                  <div><a href="https://github.com/arielchuri/">github.com/arielchuri</a></div> \
           </div> \
         </div> \
       </section> ';
@@ -112,7 +70,10 @@ function showDiv() {
 document.getElementById("contactDiv").innerHTML = contactinfo;
 
 document.getElementById("returnbutton").innerHTML =
-  '<a href="index.html" class="button button-primary">&#8617; Return</a>';
+  '<a onclick="history.back()" class="button button-primary">&#8617; Return</a>';
+
+// document.getElementById("homebutton").innerHTML =
+//   '<a href="index.html#" class="button button-primary">home</a>';
 
 document.getElementById("resumebutton").innerHTML =
   '<a href="resume.html" class="button button-primary">r&eacute;sum&eacute;</a>';
@@ -132,6 +93,6 @@ document.getElementById("footer").innerHTML =
   '<hr class="zig"> <hr class="zag"> <div class="container mx-auto px-4"><div class="twelve columns small">' +
   contactinfo +
   // '<h6>Colophon</h6>' +
-  '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2025.</br>' +
+  '<p class="small" style="padding:0px;">🄯 2025.</br>' +
   "This document was created using HTML, javascript, CSS, tailwind, gimp, and inkscape. " +
   'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>';

@@ -262,7 +262,7 @@ a:hover {
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.button,
+/* .button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -283,9 +283,9 @@ input[type="button"] {
   border-radius: 4px;
   border: 1px solid #bbb;
   cursor: pointer;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
-.button:hover,
+/* .button:hover,
 button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
@@ -321,7 +321,7 @@ input[type="button"].button-primary:focus {
   color: #fff;
   background-color: #1eaedb;
   border-color: #1eaedb;
-}
+} */
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -394,12 +394,6 @@ label > .label-body {
 
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-ul {
-  list-style: circle inside;
-}
-ol {
-  list-style: decimal inside;
-}
 ol,
 ul {
   padding-left: 0;
@@ -452,10 +446,10 @@ td:last-child {
 
 /* Spacing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-button,
+/* button,
 .button {
   margin-bottom: 1rem;
-}
+} */
 input,
 textarea,
 select,

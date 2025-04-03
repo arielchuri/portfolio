@@ -57,7 +57,7 @@
           // tiles set up
           .each(function () {
             $(this)
-              // add a photo container
+              // add a photo container mx-auto
               .append('<div class="photo"></div>')
               // set up a background image for each tile based on data-image attribute
               .children(".photo")
@@ -70,34 +70,57 @@
   </head>
   <body>
     <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav>
-      <span id="returnbutton"></span> <span id="resumebutton"></span>
-      <span id="contactbutton"></span>
-    </nav>
-    <div class="row container">
+
+    <header class="w-full fixed z-50">
+      <nav class="container mx-auto !flex justify-between">
+        <div class="flex flex-col sm:flex-row gap-0 sm:gap-[4px] items-start">
+          <span id="returnbutton"></span>
+          <span id="resumebutton"></span>
+          <span id="contactbutton"></span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-0 sm:gap-[4px] items-end">
+          <span class="" id=""
+            ><a class="home button button-primary" href="index.html#first"
+              >work</a
+            ></span
+          >
+          <span class="" id=""
+            ><a class="button button-primary">projects</a></span
+          >
+          <span class="" id=""
+            ><a class="button button-primary" href="index.html#first"
+              >art</a
+            ></span
+          >
+        </div>
+      </nav>
+    </header>
+    <div class="row container mx-auto">
       <div id="contactDiv" style="display: none; width: 100%"></div>
-      <div class="twelve columns title">
-        <h1>Sotheby&#39;s</h1>
-        <!-- <p>Paragraph</p> -->
-      </div>
     </div>
-    <div class="row container">
-      <div class="four columns">
-        <!-- <h4>Headline 4</h4> -->
-        <p>
-          As part of their digital transformation, I led UX designers and
-          collaborated with multiple product owners on a far-reaching series of
-          initiatives. My team brought together client-facing, online auctions
-          with point-of-sale and administrative interfaces in a unified design
-          system.
-        </p>
-      </div>
-      <div class="eight columns">
-        <!-- <img src="images/sothebys/manipadi_mockup.png" class="multiply bottomspace"> -->
-        <img
-          src="images/sothebys/sothebys_laptopandphone.jpg"
-          class="multiply bottomspace"
-        />
+    <div class="h-[95vh] flex flex-col justify-center">
+      <div class="container mx-auto">
+        <!-- <div class="text-accent">
+          <h1>Sotheby&rsquo;s</h1>
+        </div> -->
+        <div class="flex justify-between items-center gap-32">
+          <div class="">
+            <h1 class="">Sotheby&rsquo;s</h1>
+            <p class="font-medium leading-snug">
+              As part of their digital transformation, I led UX designers and
+              collaborated with multiple product owners on a far-reaching series
+              of initiatives. My team brought together client-facing, online
+              auctions with point-of-sale and administrative interfaces in a
+              unified design system.
+            </p>
+          </div>
+          <div class="pr-6">
+            <img
+              src="images/sothebys/sothebys_laptopandphone.png"
+              class="bottomspace"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -108,28 +131,8 @@
         />
       </div>
     </div>
-    <div class="row container">
-      <div class="four columns bottomspace">
-        <img
-          class="bottomspace multiply"
-          src="images/sothebys/sothebys_mobile_auctiontitle.webp"
-        />
-      </div>
-      <div class="four columns bottomspace">
-        <img
-          class="bottomspace multiply"
-          src="images/sothebys/sothebys_mobile_auctionitem.webp"
-        />
-      </div>
-      <div class="four columns bottomspace">
-        <img
-          class="bottomspace multiply"
-          src="images/sothebys/sothebys_mobile_collections.webp"
-        />
-      </div>
-    </div>
-    <div class="row container">
-      <div class="eight columns bottomspace">
+    <div class="row container mx-auto mt-72">
+      <div class="eight columns">
         <p>
           Research included <strong>observation</strong>,
           <strong>design-thinking workshops</strong>, and
@@ -139,27 +142,47 @@
         </p>
       </div>
     </div>
-    <div class="row container" style="margin-bottom: 64px">
-      <div class="four columns bottomspace">
+    <div class="container mx-auto flex gap-24">
+      <div class="bottomspace w-1/3">
         <img
-          class="bottomspace multiply"
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_auctiontitle.webp"
+        />
+      </div>
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_auctionitem.webp"
+        />
+      </div>
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_collections.webp"
+        />
+      </div>
+    </div>
+    <div class="container mx-auto flex gap-24 my-64">
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
           src="images/sothebys/sothebys_mobile_foryou.webp"
         />
       </div>
-      <div class="four columns bottomspace">
+      <div class="bottomspace w-1/3">
         <img
-          class="bottomspace multiply"
+          class="multiply"
           src="images/sothebys/sothebys_mobile_myaccount.webp"
         />
       </div>
-      <div class="four columns bottomspace">
+      <div class="bottomspace w-1/3">
         <img
-          class="bottomspace multiply"
+          class="multiply"
           src="images/sothebys/sothebys_mobile_myfeed.webp"
         />
       </div>
     </div>
-    <!-- <div class="row container"> -->
+    <!-- <div class="row container mx-auto"> -->
     <!-- <div class="four columns bottomspace"> -->
     <!-- <img -->
     <!-- class="bottomspace multiply" -->
@@ -169,7 +192,7 @@
     <!-- <div class="four columns bottomspace">&nbsp;</div> -->
     <!-- <div class="four columns bottomspace">&nbsp;</div> -->
     <!-- </div> -->
-    <div class="row container">
+    <div class="row container mx-auto">
       <div class="four columns">
         <h4>Graffiti Wall</h4>
         <p>
@@ -206,7 +229,7 @@
         ></div>
       </div>
     </div>
-    <div class="row container bottomspace">
+    <div class="row container mx-auto bottomspace">
       <div class="four columns">
         <p>
           As a team, we created a detailed plan for the digital future of the
@@ -219,7 +242,7 @@
         <img src="images/sothebys/vision1.svg" class="bordergray box-shadow" />
       </div>
     </div>
-    <div class="row container bottomspace">
+    <div class="row container mx-auto bottomspace">
       <div class="four columns">
         <p></p>
       </div>
@@ -227,7 +250,7 @@
         <img src="images/sothebys/vision3.svg" class="bordergray box-shadow" />
       </div>
     </div>
-    <div class="row container bottomspace">
+    <div class="row container mx-auto bottomspace">
       <div class="four columns">
         <p></p>
       </div>
@@ -235,7 +258,7 @@
         <img src="images/sothebys/vision6.svg" class="bordergray box-shadow" />
       </div>
     </div>
-    <div class="row container bottomspace">
+    <div class="row container mx-auto bottomspace">
       <div class="four columns">
         <p>
           Each initiative required extensive research, testing, and presentation
@@ -250,7 +273,7 @@
         />
       </div>
     </div>
-    <div class="row container bottomspace">
+    <div class="row container mx-auto bottomspace">
       <div class="four columns">
         <p>
           Prototypes were created in Figma using a shared design library. These
@@ -259,13 +282,13 @@
         </p>
       </div>
     </div>
-    <div class="row container bottomspace">
+    <div class="row container mx-auto bottomspace">
       <div class="twelve columns bottomspace">
         <img src="images/sothebys/manipadi.gif" class="bordergray box-shadow" />
       </div>
     </div>
 
-    <div class="row container">
+    <div class="row container mx-auto">
       <div class="twelve columns">
         <a href="p_sparklelabs.html" class="button button-primary u-pull-right"
           >Next</a

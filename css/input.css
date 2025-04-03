@@ -11,6 +11,11 @@
   --color-hover: var(--color-trueyellow);
   --color-active: var(--color-trueblue);
   /* --color-accent: hotpink; */
+  --color-truewhite: whitesmoke;
+  --spacing-edge: 12px;
+  --spacing-edge-sm: 16px;
+  --spacing-edge-lg: 24px;
+  --spacing-edge-xl: 48px;
 }
 @layer base {
   h2 {
@@ -21,10 +26,31 @@
   }
 }
 
+@utility container {
+  padding-inline: 12px;
+  margin-inline: auto;
+
+  @variant sm {
+    padding-inline: 16px;
+  }
+
+  @variant lg {
+    padding-inline: 24px;
+  }
+
+  @variant xl {
+    padding-inline: 48px;
+  }
+}
+
 @font-face {
   font-family: "CustomFont";
   src: url("/fonts/Inter-Regular.woff2") format("woff2");
   font-display: swap;
+}
+
+header {
+  @apply mt-[12px];
 }
 
 :root {
@@ -38,21 +64,13 @@
   --gray3: #666581;
   --gray2: #9190aa;
   --gray1: #d7d6ec;
-  --white: white;
-  --white: linen;
-  --white: oldlace;
-  --white: floralwhite;
-  --white: seashell;
-  --white: snow;
-  --white: antiquewhite;
-  --white: red;
 
   --white: whitesmoke;
   --yellow: #fad13e;
   --red: #df4c40;
   --blue: #005eac;
-  --spacing: 2rem;
-  --columnGap: 2rem;
+  /* --spacing: 2rem; */
+  /* --columnGap: 2rem; */
 }
 html {
   scroll-behavior: smooth;
@@ -96,6 +114,23 @@ body {
     "ccmp",
     "kern";
 }
+p,
+li {
+  @apply max-w-[50ch];
+  orphans: 2;
+  widows: 2;
+  break-inside: avoid-column;
+  break-inside: avoid;
+}
+ol {
+  @apply list-decimal;
+}
+ul {
+  @apply list-disc;
+}
+li::marker {
+  @apply text-accent;
+}
 .row {
   /* margin-bottom: 2rem; */
 }
@@ -135,7 +170,7 @@ pre {
   /* margin-top: 6rem; */
 }
 h1 {
-  font-size: 6rem;
+  @apply text-accent text-6xl mb-4;
   font-weight: 800;
   letter-spacing: 0.01em;
 }
@@ -390,80 +425,54 @@ hr.zag {
 }
 /*Copied from skeleton css in order to use css variables here*/
 
+nav span {
+  @apply leading-0;
+}
+span > .button.button-primary {
+  @apply leading-[18px] h-[20px] px-[10px];
+  /* height: 20px; */
+  /* line-height: 20px; */
+  /* padding: 0px 10px; */
+}
+
 .button.button-primary,
 button.button-primary,
 input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
-  color: var(--white);
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  @apply text-accent bg-truewhite/80 border border-accent hover:text-truewhite hover:bg-accent hover:border-accent active:bg-trueyellow active:border-trueyellow active:text-trueblue outline-trueblue outline-offset-1 focus:outline;
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
   text-decoration: none;
-}
-
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
-  color: var(--color-trueblue);
-  background-color: var(--color-hover);
-  border-color: var(--color-hover);
-  text-decoration: none;
-}
-
-.button.button-primary:active,
-button.button-primary:active,
-input[type="submit"].button-primary:active,
-input[type="reset"].button-primary:active,
-input[type="button"].button-primary:active,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
-  color: var(--white);
-  background-color: var(--color-active);
-  border-color: var(--color-active);
-  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 a {
-  color: var(--color-accent);
-  /* text-decoration: none; */
-  mix-blend-mode: multiply;
+  @apply text-trueblue hover:text-trueblue hover:bg-trueyellow hover:rounded no-underline;
+}
+
+#home .home {
+  @apply text-trueblue bg-truewhite border-trueblue hover:opacity-40;
 }
 
 a.shape {
   text-decoration: none;
 }
 
-a:hover {
-  color: var(--active);
-  background-color: var(--color-accent);
-  color: var(--white);
-  text-decoration: none;
-  /* text-decoration: underline; */
-  mix-blend-mode: multiply;
-}
-
 nav {
   z-index: 9999;
   /* margin: 1rem; */
-  mix-blend-mode: multiply;
-}
-
-span > .button.button-primary {
-  height: 20px;
-  line-height: 20px;
-  padding: 0px 10px;
-  background-color: var(--color-accent);
-  border: none;
+  /* mix-blend-mode: multiply; */
 }
 
 a.headerlink {
@@ -481,19 +490,6 @@ a.headerlink > code {
 
 a:hover.headerlink > code {
   text-decoration: underline;
-}
-
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="search"]:focus,
-input[type="text"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-select:focus {
-  border: 1px solid var(--active);
-  outline: 0;
 }
 
 input[type="email"],
@@ -606,7 +602,7 @@ a:link#footer {
   opacity: 1;
   background-image:
     linear-gradient(var(--yellow) 1px, transparent 1px),
-    linear-gradient(to right, var(--yellow) 1px, white 1px);
+    linear-gradient(to right, var(--color-trueyellow) 1px, var(--white) 1px);
   background-position: left -1px top -1px;
   background-size: 12px 12px;
   border: 1px solid var(--yellow);
@@ -793,12 +789,11 @@ table {
 }
 @media (min-width: 950px) {
   .homecopy {
-    column-count: 2;
+    column-count: 1;
     column-gap: 4ch;
-    max-width: 90ch;
+    max-width: ch;
   }
   .homecopy p {
-    text-align: justify;
     orphans: 2;
     widows: 2;
     break-inside: avoid-column;
@@ -820,9 +815,6 @@ table {
   }
   .desktop {
     display: block;
-  }
-  h1 {
-    font-size: 6rem;
   }
   .title > h1 {
     font-size: 8rem;

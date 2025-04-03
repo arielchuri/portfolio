@@ -36,39 +36,44 @@
       }
     </style>
   </head>
-  <body class="home">
+  <body id="home">
     <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
     <!-- <div class="hero-image" style="margin-bottom:12rem;">
          <div class="hero-text">
          <h1>Hello.</h1>
          </div>
          </div> -->
-    <header class="w-full fixed z-50 mix-blend-multiply">
-      <nav class="container mx-auto px-4 !flex justify-between">
-        <div class="">
-          <span id="returnbutton"></span> <span id="resumebutton"></span>
-          <span id="contactbutton"></span>
-        </div>
-        <div class="">
+    <header class="w-full fixed z-50">
+      <nav class="container mx-auto !flex justify-between">
+        <div
+          class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-start"
+        >
           <span class="" id=""
-            ><a class="button button-primary" href="index.html#first"
+            ><a class="home button button-primary" href="index.html#first"
               >work</a
             ></span
           >
-          <span class="" id=""><a class="button button-primary">code</a></span>
+          <span class="" id=""
+            ><a class="button button-primary">projects</a></span
+          >
           <span class="" id=""
             ><a class="button button-primary" href="index.html#first"
               >art</a
             ></span
           >
         </div>
+        <div class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-end">
+          <span id="returnbutton" class=""></span>
+          <span id="resumebutton"></span>
+          <span id="contactbutton"></span>
+        </div>
       </nav>
     </header>
-    <div class="container m-auto px-4">
+    <div class="container m-auto">
       <div id="contactDiv" style="display: none; width: 100%"></div>
       <section class="" style="height: 100vh">
         <a href="#first">
-          <div style="max-width: 32px; position: absolute; top: 85vh">
+          <div style="max-width: 32px; position: absolute; top: 90vh">
             <svg
               class="w-[50px] h-[50px] text-accent hover:text-trueblue active:text-orange-500 animate-bounce"
               viewBox="20 20 60 70"
@@ -89,18 +94,19 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: left;
+            align-items: start;
             height: 100%;
           "
         >
-          <div class="mb-2" style="">
-            <h2 class="" style="margin-bottom: 1.4rem">Ariel Churi</h2>
+          <div class="" style="">
+            <h2 class="" style="margin-bottom: 1.4rem">Ariel C.</h2>
             <div class="homecopy">
               <p class="" style="">
                 Going back to my student days, I have been experimenting with
-                how technology effects the communication of ideas. I earned my
-                undergraduate degree in printmaking, exploring communication
-                through the meeting point of craft and new technologies.
+                how technology effects the <a>communication of ideas</a>. I
+                earned my undergraduate degree in printmaking, exploring
+                communication through the meeting point of craft and new
+                technologies.
               </p>
               <p class="">
                 My variety of background experience has led me to an interesting
@@ -150,17 +156,22 @@
           </div>
           <!-- shapes -->
           <div
-            class="row flex h-8"
+            class="row flex h-8 scale-50"
             style="overflow: visible; padding-top: 1rem; padding-bottom: 1rem"
           >
             <div
-              class="twelve columns flex"
+              class="twelve columns flex bg-blend-multiply"
               style="margin-right: 3%; overflow: visible"
             >
-              <div class="flex relative" style="overflow: visible">
-                <div class="shape circle absolute mix-blend-multiply"></div>
+              <div
+                class="flex relative mix-blend-multiply"
+                style="overflow: visible"
+              >
                 <div
-                  class="shape triangle absolute -ml-[.75rem] -mr-[.75rem] mix-blend-multiply"
+                  class="shape circle absolute left-[590px] mix-blend-multiply"
+                ></div>
+                <div
+                  class="shape triangle absolute left-[100px] -ml-[.75rem] -mr-[.75rem] mix-blend-multiply"
                 ></div>
                 <div
                   class="shape square absolute ml-[.5rem] mr-[.5rem] mix-blend-multiply"
@@ -175,7 +186,7 @@
       <section id="first" style="padding-top: 24rem">
         <div class="row reveal">
           <div class="four columns">
-            <h3>Bridgestone</h3>
+            <h2>Bridgestone</h2>
             <p>
               I led <strong>UX/UI</strong> for <em>Bridgestone</em>'s foray into
               a mobile repair service. Customers can choose maintenance for
@@ -187,7 +198,9 @@
               <strong>customer-facing</strong> mobile and web app as well as a
               <strong>business-facing</strong> order management web app.
             </p>
-            <a href="p_bridgestone.html" class="button button-primary">View</a>
+            <a href="p_bridgestone.html" class="button button-primary">
+              View
+            </a>
           </div>
           <div class="eight columns">
             <img
@@ -201,7 +214,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>Sotheby&#39;s</h3>
+            <h2>Sotheby&#39;s</h2>
             <p>
               As part of their <strong>digital transformation</strong>, I led UX
               designers and collaborated with multiple product owners on a
@@ -230,7 +243,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>Calvin Klein</h3>
+            <h2>Calvin Klein</h2>
             <p>
               This interactive touch-screen experience included careful
               onboarding and human-factors research. The UI for this flagship,
@@ -250,7 +263,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>Unilever AI Supply Chain</h3>
+            <h2>Unilever AI Supply Chain</h2>
             <p>
               Supply-chain management moves from the sourcing of manufacturing
               ingredients to the store shelf. The ESCIS5 Supply Chain
@@ -278,7 +291,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>IBM Holobot</h3>
+            <h2>IBM Holobot</h2>
             <p>
               This sales initiative delivered iPad Pros in handmade boxes to
               specific targets. Removing the device from the box launches an
@@ -307,7 +320,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>MOMA/Killscreen</h3>
+            <h2>MOMA/Killscreen</h2>
             <p>
               This was an <strong>exhibition display project</strong> for the
               <em>Museum of Modern Art</em>. Any design that has mechanical
@@ -328,7 +341,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>Sparkle Labs</h3>
+            <h2>Sparkle Labs</h2>
             <p>
               Sparkle Labs provides engaging, hands-on learning experiences that
               spark curiosity, creativity, and a love of learning.
@@ -352,7 +365,7 @@
       <section>
         <div class="row reveal">
           <div class="four columns">
-            <h3>More work</h3>
+            <h2>More work</h2>
             <p>
               Pedagogy, illustration, instructional design, embedded systems,
               industrial design, offset lithography are a few of the skills I
