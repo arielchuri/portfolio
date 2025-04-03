@@ -34,6 +34,19 @@
       #returnbutton {
         display: none;
       }
+
+      @keyframes moveLeftRight {
+        0% {
+          transform: translateX(0);
+        } /* Start and end position */
+        100% {
+          transform: translateX(200%);
+        } /* Midway position */
+      }
+
+      .animate-move {
+        animation: moveLeftRight 8s ease-in-out infinite alternate;
+      }
     </style>
   </head>
   <body id="home">
@@ -156,26 +169,29 @@
           </div>
           <!-- shapes -->
           <div
-            class="row flex h-8 scale-50"
-            style="overflow: visible; padding-top: 1rem; padding-bottom: 1rem"
+            class="w-full bg-500-blue mx-auto h-48"
+            style="overflow: visible"
           >
-            <div
-              class="twelve columns flex bg-blend-multiply"
-              style="margin-right: 3%; overflow: visible"
-            >
+            <div class="flex h-48 w-full relative" style="overflow: visible">
+              <div class="animate-move absolute mix-blend-multiply">
+                <div
+                  class="shape circle relative scale-50 -left-[55px] mix-blend-multiply"
+                ></div>
+              </div>
               <div
-                class="flex relative mix-blend-multiply"
-                style="overflow: visible"
+                class="animate-move absolute mix-blend-multiply"
+                style="animation-delay: 2s"
               >
                 <div
-                  class="shape circle absolute left-[590px] mix-blend-multiply"
+                  class="shape triangle relative scale-50 -left-[55px] -ml-[.75rem] -mr-[.75rem] mix-blend-multiply"
                 ></div>
+              </div>
+              <div
+                class="animate-move absolute mix-blend-multiply"
+                style="animation-delay: 5s"
+              >
                 <div
-                  class="shape triangle absolute left-[100px] -ml-[.75rem] -mr-[.75rem] mix-blend-multiply"
-                ></div>
-                <div
-                  class="shape square absolute ml-[.5rem] mr-[.5rem] mix-blend-multiply"
-                  style=""
+                  class="shape square relative scale-50 -left-[55px] ml-[.5rem] mr-[.5rem] mix-blend-multiply"
                 ></div>
               </div>
             </div>
