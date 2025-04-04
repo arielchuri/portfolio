@@ -1,4 +1,7 @@
 /*
+p:last-child {
+  @apply mb-myspace;
+}
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
 * www.getskeleton.com
@@ -204,12 +207,12 @@ p {
 
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
+/* a {
   color: #1eaedb;
 }
 a:hover {
   color: #0fa0ce;
-}
+} */
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -401,7 +404,7 @@ td:last-child {
 .button {
   margin-bottom: 1rem;
 } */
-input,
+/* input,
 textarea,
 select,
 fieldset {
@@ -417,7 +420,7 @@ ul,
 ol,
 form {
   margin-bottom: 1rem;
-}
+} */
 
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

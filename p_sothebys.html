@@ -17,7 +17,7 @@
 
     <!-- CSS
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- <link rel="stylesheet" href="css/normalize.css" /> -->
     <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="css/styles.css" />
 
@@ -114,7 +114,9 @@
         <!-- <div class="text-accent">
           <h1>Sotheby&rsquo;s</h1>
         </div> -->
-        <div class="flex justify-between gap-32">
+        <div
+          class="flex flex-col md:flex-row justify-between gap-myspace md:gap-20"
+        >
           <div class="">
             <h1 class="">Sotheby&rsquo;s</h1>
             <p class="">
@@ -125,32 +127,39 @@
               unified design system.
             </p>
             <p>
-              <a href="https://sothebys.com">https:/ /sothebys.com</a>
+              <a href="https://sothebys.com" target="_blank"
+                >https:/ /sothebys.com</a
+              >
             </p>
           </div>
-          <div class="pr-6">
-            <img
-              src="images/sothebys/sothebys_laptopandphone.png"
-              class="bottomspace"
-            />
+          <div class="h-min self-center">
+            <img src="images/sothebys/sothebys_laptopandphone.png" class="" />
           </div>
         </div>
       </div>
     </div>
-    <div id="first" class="container mx-auto flex gap-24 pt-24">
-      <div class="bottomspace">
-        <img
-          class="multiply"
-          src="images/sothebys/sothebys_galleryspace.webp"
-        />
+
+    <div id="first" class="md:container mx-auto flex pt-24 mb-myspace-2xl">
+      <div class="">
+        <img class="rounded" src="images/sothebys/sothebys_galleryspace.webp" />
       </div>
     </div>
-    <div id="" class="container mx-auto flex gap-24 pt-24">
+    <div class="row container mx-auto mt-myspace mb-64">
+      <div class="twelve columns md:flex flex-col md:flex-row gap-myspace">
+        <h2>Context</h2>
+        <p>
+          Research included <strong>observation</strong>,
+          <strong>design-thinking workshops</strong>, and
+          <strong>interviews</strong>. I implemented major feature improvements
+          to the client facing web and mobile apps, as well as the backend
+          interface and workflow, while working in a heavily regulated industry.
+        </p>
+      </div>
+    </div>
+
+    <div id="" class="container mx-auto flex gap-24 pt-24 px-64">
       <div class="bottomspace w-1/3">
-        <img
-          class="multiply"
-          src="images/sothebys/sothebys_mobile_auctiontitle.webp"
-        />
+        <img class="" src="images/sothebys/sothebys_mobile_auctiontitle.webp" />
       </div>
       <div class="bottomspace w-1/3">
         <img
@@ -165,19 +174,7 @@
         />
       </div>
     </div>
-    <div class="row container mx-auto my-24">
-      <div class="eight columns">
-        <h2>Service Design + Mobile</h2>
-        <p>
-          Research included <strong>observation</strong>,
-          <strong>design-thinking workshops</strong>, and
-          <strong>interviews</strong>. I implemented major feature improvements
-          to the client facing web and mobile apps, as well as the backend
-          interface and workflow, while working in a heavily regulated industry.
-        </p>
-      </div>
-    </div>
-    <div class="container mx-auto flex gap-24 mb-24">
+    <div class="container mx-auto flex gap-24 mb-24 px-64">
       <div class="bottomspace w-1/3">
         <img
           class="multiply"
@@ -197,9 +194,31 @@
         />
       </div>
     </div>
-    <div id="" class="py-24">
-      <div class="border-y border-[#ccc] bottomspace">
-        <img class="" src="images/sothebys/sotheby_screencollage.webp" />
+
+    <div id="first" class="lg:container mx-auto flex pt-24 mb-myspace-2xl">
+      <div class="">
+        <img
+          class="border border-stone-700/5 rounded"
+          src="images/sothebys/sotheby_screencollage.webp"
+        />
+      </div>
+    </div>
+
+    <div class="row container mx-auto mb-64">
+      <div class="w-full md:flex gap-myspace">
+        <div>
+          <h2>Service Design + Mobile</h2>
+        </div>
+        <div>
+          <p>
+            Research included <strong>observation</strong>,
+            <strong>design-thinking workshops</strong>, and
+            <strong>interviews</strong>. I implemented major feature
+            improvements to the client facing web and mobile apps, as well as
+            the backend interface and workflow, while working in a heavily
+            regulated industry.
+          </p>
+        </div>
       </div>
     </div>
     <div id="" class="row">
@@ -222,12 +241,14 @@
     <!-- </div> -->
     <div class="row container mx-auto py-64">
       <div class="four columns">
-        <h2>Graffiti Wall</h2>
+        <h2>Design Research</h2>
         <p>
           Preliminary research for an administrative dashboard uncovered a major
           problem. No one understood the breadth of complexity of the business
           process at <em>Sotheby's</em>. I created a diagram to confirm my
           understanding and printed it out on a plotter. I hung it in a public
+        </p>
+        <p>
           location with instructions for viewers to contribute. Within a few
           days, I created a final diagram that was used throughout the
           organization.
