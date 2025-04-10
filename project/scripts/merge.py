@@ -1,54 +1,76 @@
 import os
-import re
-from header import generate_header
-from navigation import generate_navigation
-from footer import generate_footer
-from copy_new import copy_new_or_changed_files
+import sys
 
-# Define directories relative to the scripts folder
-BASE_DIR = os.path.dirname(__file__)
-PAGES_DIR = os.path.join(BASE_DIR, "../src")
-OUTPUT_DIR = os.path.join(BASE_DIR, "../output")
+# Paths
+BASE_DIR = os.path.dirname(__file__)  # Base directory of the script
+SRC_DIR = os.path.join(BASE_DIR, "../src")  # Source directory
+OUTPUT_DIR = os.path.join(BASE_DIR, "../output")  # Output directory
+COMPONENTS_DIR = os.path.join(BASE_DIR, "../components")  # Components directory
 
-# Ensure output directory exists
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+def load_component(component_name):
+    """
+    Loads the content of a component (e.g., navigation, footer, header) from the components directory.
+    """
+    component_path = os.path.join(COMPONENTS_DIR, f"{component_name}.html")
+    if not os.path.exists(component_path):
+        print(f"Warning: Component {component_name} not found.")
+        return f"<!-- Missing {component_name} -->"
+    with open(component_path, "r") as component_file:
+        return component_file.read()
 
-# Function to extract the title from the <main> tag's id attribute
-def extract_title_from_main(content):
-    # Match the <main> tag with an id attribute
-    match = re.search(r'<main\s+id="(.+?)"', content)
-    return match.group(1) if match else "Untitled"
+def merge_file(file_path):
+    """
+    Merges the specified HTML file with the navigation, footer, and header components.
+    Writes the output to the output directory.
+    """
+    # Get the relative path of the file (e.g., "index.html")
+    file_name = os.path.basename(file_path)
 
-# Track merged files to exclude them from being overwritten
-merged_files = []
+    # Read the content of the source file
+    with open(file_path, "r") as src_file:
+        content = src_file.read()
 
-# Merge HTML files
-for page_file in os.listdir(PAGES_DIR):
-    if page_file.endswith(".html"):
-        # Read the page content
-        with open(os.path.join(PAGES_DIR, page_file), "r") as f:
-            page_content = f.read()
+    # Load components
+    navigation = load_component("navigation")
+    footer = load_component("footer")
+    header = load_component("header")
 
-        # Extract the title from the <main> tag's id attribute
-        page_title = extract_title_from_main(page_content)
+    # Merge the components into the content
+    merged_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{file_name}</title>
+    </head>
+    <body>
+        {navigation}
+        {header}
+        {content}
+        {footer}
+    </body>
+    </html>
+    """
 
-        # Generate each component
-        header = generate_header(page_title)
-        navigation = generate_navigation()
-        footer = generate_footer()
+    # Write the merged content to the output directory
+    output_path = os.path.join(OUTPUT_DIR, file_name)
+    with open(output_path, "w") as output_file:
+        output_file.write(merged_content)
 
-        # Merge the components and page content
-        merged_content = f"{header}\n{navigation}\n{page_content}\n{footer}"
+    print(f"Merged {file_name} into {output_path}")
 
-        # Write the merged content to the output directory
-        output_file = os.path.join(OUTPUT_DIR, page_file)
-        with open(output_file, "w") as f:
-            f.write(merged_content)
+if __name__ == "__main__":
+    # Check if a file path was passed as an argument
+    if len(sys.argv) < 2:
+        print("Error: No file specified for merging.")
+        sys.exit(1)
 
-        print(f"Merged {page_file} into {output_file}")
+    # Get the file path from the command-line arguments
+    file_path = sys.argv[1]
 
-        # Add the merged file to the exclusion list
-        merged_files.append(page_file)
+    # Ensure the file exists
+    if not os.path.exists(file_path):
+        print(f"Error: File {file_path} does not exist.")
+        sys.exit(1)
 
-# Copy new or changed files, excluding merged files
-copy_new_or_changed_files(PAGES_DIR, OUTPUT_DIR, exclude_files=merged_files)
+    # Merge the specified file
+    merge_file(file_path)
