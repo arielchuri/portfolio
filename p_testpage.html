@@ -38,12 +38,76 @@
   </head>
   <body>
     <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav>
-      <span id="returnbutton"></span> <span id="resumebutton"></span>
-      <span id="contactbutton"></span>
-    </nav>
-    <div class="container mx-auto px-4">
-      <div id="contactDiv" style="display: none; width: 100%"></div>
+    <header class="w-full fixed z-50">
+      <nav class="container mx-auto !flex justify-between">
+        <div
+          class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-start"
+        >
+          <span class="" id=""
+            ><a class="home button button-primary" href="index.html#first"
+              >work</a
+            ></span
+          >
+          <span class="" id=""
+            ><a class="button button-primary">projects</a></span
+          >
+          <span class="" id=""
+            ><a class="button button-primary" href="index.html#first"
+              >art</a
+            ></span
+          >
+        </div>
+        <div class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-end">
+          <span id="returnbutton" class=""></span>
+          <span id="resumebutton"></span>
+          <span id="contactbutton"></span>
+        </div>
+      </nav>
+    </header>
+
+<div class="h-screen flex flex-col justify-center">
+      <div class="container mx-auto">
+        <!-- DOWN ARROW -->
+        <a href="#first">
+          <div style="max-width: 32px; position: absolute; top: 90vh">
+            <svg
+              class="w-[50px] h-[50px] text-accent hover:text-trueblue active:text-orange-500 animate-bounce"
+              viewBox="20 20 60 70"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="bevel"
+            >
+              <path d="M 50 22 V 88" />
+              <path d="M 78 60 50 88 22 60" />
+            </svg>
+          </div>
+        </a>
+        <!-- <div class="text-accent">
+          <h1>Sotheby&rsquo;s</h1>
+        </div> -->
+        <div
+          class="flex flex-col md:flex-row justify-between gap-myspace md:gap-20"
+        >
+          <div class="">
+            <h1 class="">Style specimen</h1>
+            <p class="">
+              A document containing sample display of one or more <strong>css style sheets</strong>. 
+              It should contain examples of the various <em>tags</em> and <em>classes</em> as well as the <em>color palette</em>, <em>icons</em>, and <em>components</em>.
+            </p>
+            <p>
+              <a href="https://test.com" target="_blank"
+                >https:/ / test.com</a
+              >
+            </p>
+          </div>
+          <div class="self-center w-1/2 h-96  hatchgray border-0 flex items-center justify-center multiply">
+          <p class="font-bold text-4xl text-stone-300 font-inter p-2">FPO</p>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="row">
         <div class="twelve columns">
           <h1>Machine Learing Basics</h1>

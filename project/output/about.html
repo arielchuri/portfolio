@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic Page Needs
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8" />
+    <title>Untitled</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Mobile Specific Metas
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FONT
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    /> -->
+
+    <!-- CSS
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="fonts/inter.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Favicon
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <style>
+      #returnbutton {
+        display: none;
+      }
+
+      @keyframes moveLeftRight {
+        0% {
+          transform: translateX(0);
+        } /* Start and end position */
+        100% {
+          transform: translateX(200%);
+        } /* Midway position */
+      }
+
+      .animate-move {
+        animation: moveLeftRight 8s ease-in-out infinite alternate;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
+
+<header class="w-full fixed z-50">
+  <nav class="container mx-auto !flex justify-between">
+    <div class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-start">
+      <span class="" id=""
+        ><a class="home button button-primary" href="index.html#first"
+          >work</a
+        ></span
+      >
+      <span class="" id=""><a class="button button-primary">projects</a></span>
+      <span class="" id=""
+        ><a class="button button-primary" href="index.html#first">art</a></span
+      >
+    </div>
+    <div class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-end">
+      <span id="returnbutton" class=""></span>
+      <span id="resumebutton"></span>
+      <span id="contactbutton"></span>
+    </div>
+  </nav>
+</header>
+
+<!-- title: About Us -->
+<main>
+    <h2>About Us</h2>
+    <p>Learn more about our mission and values.</p>
+</main>
+
+<div id="footer"></div>
+<script src="myscript.js"></script>

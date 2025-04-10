@@ -1,0 +1,304 @@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".tile")
+          // tile mouse actions
+          .on("mouseover", function () {
+            $(this)
+              .children(".photo")
+              .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+          })
+          .on("mouseout", function () {
+            $(this).children(".photo").css({ transform: "scale(1)" });
+          })
+          .on("mousemove", function (e) {
+            $(this)
+              .children(".photo")
+              .css({
+                "transform-origin":
+                  ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+                  "% " +
+                  ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+                  "%",
+              });
+          })
+          // tiles set up
+          .each(function () {
+            $(this)
+              // add a photo container mx-auto
+              .append('<div class="photo"></div>')
+              // set up a background image for each tile based on data-image attribute
+              .children(".photo")
+              .css({
+                "background-image": "url(" + $(this).attr("data-image") + ")",
+              });
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <main id="Transforming the World's Oldest Auction House">
+    <div class="row container mx-auto">
+      <div id="contactDiv" style="display: none; width: 100%"></div>
+    </div>
+    <div class="h-screen flex flex-col justify-center">
+      <div class="container mx-auto">
+        <!-- DOWN ARROW -->
+        <a href="#first">
+          <div style="max-width: 32px; position: absolute; top: 90vh">
+            <svg
+              class="w-[50px] h-[50px] text-accent hover:text-trueblue active:text-orange-500 animate-bounce"
+              viewBox="20 20 60 70"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="bevel"
+            >
+              <path d="M 50 22 V 88" />
+              <path d="M 78 60 50 88 22 60" />
+            </svg>
+          </div>
+        </a>
+        <!-- <div class="text-accent">
+          <h1>Sotheby&rsquo;s</h1>
+        </div> -->
+        <div
+          class="flex flex-col md:flex-row justify-between gap-myspace md:gap-20"
+        >
+          <div class="">
+            <h1 class="">Transforming the World's Oldest Auction House</h1>
+            <p class="">
+              As part of their digital transformation, I led UX designers and
+              collaborated with multiple product owners on a far-reaching series
+              of initiatives. My team brought together client-facing, online
+              auctions with point-of-sale and administrative interfaces in a
+              unified design system.
+            </p>
+            <p>
+              <a href="https://sothebys.com" target="_blank"
+                >https:/ /sothebys.com</a
+              >
+            </p>
+          </div>
+          <div class="h-min self-center">
+            <img src="images/sothebys/sothebys_laptopandphone.png" class="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="first" class="md:container mx-auto flex pt-24 mb-myspace-2xl">
+      <div class="">
+        <img class="rounded" src="images/sothebys/sothebys_galleryspace.webp" />
+      </div>
+    </div>
+    <div class="row container mx-auto mt-myspace mb-64">
+      <div class="twelve columns md:flex flex-col md:flex-row gap-myspace">
+        <h2>Context</h2>
+        <p>
+          Research included <strong>observation</strong>,
+          <strong>design-thinking workshops</strong>, and
+          <strong>interviews</strong>. I implemented major feature improvements
+          to the client facing web and mobile apps, as well as the backend
+          interface and workflow, while working in a heavily regulated industry.
+        </p>
+      </div>
+    </div>
+
+    <div id="" class="container mx-auto flex gap-24 pt-24 px-64">
+      <div class="bottomspace w-1/3">
+        <img class="" src="images/sothebys/sothebys_mobile_auctiontitle.webp" />
+      </div>
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_auctionitem.webp"
+        />
+      </div>
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_collections.webp"
+        />
+      </div>
+    </div>
+    <div class="container mx-auto flex gap-24 mb-24 px-64">
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_foryou.webp"
+        />
+      </div>
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_myaccount.webp"
+        />
+      </div>
+      <div class="bottomspace w-1/3">
+        <img
+          class="multiply"
+          src="images/sothebys/sothebys_mobile_myfeed.webp"
+        />
+      </div>
+    </div>
+
+    <div id="first" class="lg:container mx-auto flex pt-24 mb-myspace-2xl">
+      <div class="">
+        <img
+          class="border border-stone-700/5 rounded"
+          src="images/sothebys/sotheby_screencollage.webp"
+        />
+      </div>
+    </div>
+
+    <div class="row container mx-auto mb-64">
+      <div class="w-full md:flex gap-myspace">
+        <div>
+          <h2>Service Design + Mobile</h2>
+        </div>
+        <div>
+          <p>
+            Research included <strong>observation</strong>,
+            <strong>design-thinking workshops</strong>, and
+            <strong>interviews</strong>. I implemented major feature
+            improvements to the client facing web and mobile apps, as well as
+            the backend interface and workflow, while working in a heavily
+            regulated industry.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="" class="row">
+      <div class="twelve columns bottomspace">
+        <img
+          class="bottomspace"
+          src="images/sothebys/sothebys_mobileexplode.webp"
+        />
+      </div>
+    </div>
+    <!-- <div class="row container mx-auto"> -->
+    <!-- <div class="four columns bottomspace"> -->
+    <!-- <img -->
+    <!-- class="bottomspace multiply" -->
+    <!-- src="images/sothebys/sothebys_mobile_notify.webp" -->
+    <!-- /> -->
+    <!-- </div> -->
+    <!-- <div class="four columns bottomspace">&nbsp;</div> -->
+    <!-- <div class="four columns bottomspace">&nbsp;</div> -->
+    <!-- </div> -->
+    <div class="row container mx-auto py-64">
+      <div class="four columns">
+        <h2>Design Research</h2>
+        <p>
+          Preliminary research for an administrative dashboard uncovered a major
+          problem. No one understood the breadth of complexity of the business
+          process at <em>Sotheby's</em>. I created a diagram to confirm my
+          understanding and printed it out on a plotter. I hung it in a public
+        </p>
+        <p>
+          location with instructions for viewers to contribute. Within a few
+          days, I created a final diagram that was used throughout the
+          organization.
+        </p>
+      </div>
+      <div class="seven columns bottomspace">
+        <img
+          src="images/sothebys/welcomewall.jpg"
+          class="bordergray box-shadow"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="tiles" style="aspect-ratio: 2 / 1">
+        <div
+          class="tile"
+          data-scale="2.8"
+          data-image="images/sothebys/graffitiwall.png"
+        ></div>
+      </div>
+    </div>
+    <div class="row bottomspace">
+      <div class="tiles" style="aspect-ratio: 3 / 1">
+        <div
+          class="tile"
+          data-scale="3.8"
+          data-image="images/sothebys/banner.png"
+        ></div>
+      </div>
+    </div>
+    <div class="row container mx-auto pt-64">
+      <div class="twelve columns">
+        <h2>Administrative Interface</h2>
+      </div>
+    </div>
+    <div class="row container mx-auto">
+      <div class="four columns">
+        <p>
+          As a team, we created a detailed plan for the digital future of the
+          Sotheby's organization. I was responsible for the user experience of
+          the <strong>Viking administration dashboard</strong>. A piece of
+        </p>
+        <p>
+          software that touched every part of the business process at Sotheby's.
+        </p>
+      </div>
+      <div class="eight columns bottomspace">
+        <img src="images/sothebys/vision1.svg" class="bordergray box-shadow" />
+      </div>
+    </div>
+    <div class="row container mx-auto bottomspace">
+      <div class="four columns">
+        <p></p>
+      </div>
+      <div class="eight columns">
+        <img src="images/sothebys/vision3.svg" class="bordergray box-shadow" />
+      </div>
+    </div>
+    <div class="row container mx-auto bottomspace">
+      <div class="four columns">
+        <p></p>
+      </div>
+      <div class="eight columns bottomspace">
+        <img src="images/sothebys/vision6.svg" class="bordergray box-shadow" />
+      </div>
+    </div>
+    <div class="row container mx-auto bottomspace">
+      <div class="four columns">
+        <p>
+          Each initiative required extensive research, testing, and presentation
+          to a variety of stakeholders. I created visualizations in order to
+          ensure the viability of the features I was executing.
+        </p>
+      </div>
+      <div class="eight columns pb-64">
+        <img
+          src="images/sothebys/vision6diag.jpg"
+          class="bordergray box-shadow"
+        />
+      </div>
+    </div>
+    <div class="row container mx-auto bottomspace">
+      <div class="four columns">
+        <p>
+          Prototypes were created in Figma using a shared design library. These
+          were used for testing, final presentation, delivery to the development
+          team, and employee training.
+        </p>
+      </div>
+    </div>
+    <div class="row container mx-auto bottomspace">
+      <div class="twelve columns bottomspace">
+        <img src="images/sothebys/manipadi.gif" class="bordergray box-shadow" />
+      </div>
+    </div>
+
+    <div class="row container mx-auto pt-64">
+      <div class="twelve columns">
+        <a href="p_sparklelabs.html" class="button button-primary u-pull-right"
+          >Next</a
+        >
+      </div>
+    </div>
+</main>
