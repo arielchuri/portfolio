@@ -19,24 +19,27 @@
 
   --color-flviolet: #ac6aff;
   --color-flblue: #3dbefe;
-  --color-florange: #ff4c00;
+  --color-florange: #ff5e01;
+  --color-florange200: #f9a67d;
+  --color-florange100: #f4d3bf;
+
+
   --color-flgreen: #8bff1f;
   --color-flyellow: #edff00;
   --color-flyellow: #f7ff00;
   --color-flpink: #ff51a5;
 
-  --color-accent: var(--color-truered);
-  --color-accent: var(--color-truered);
-  --color-hover: var(--color-trueyellow);
-  --color-active: var(--color-trueblue);
-  --spacing-ms4xl: 12rem;
-  --spacing-ms3xl: 8rem;
-  --spacing-ms2xl: 4.75rem;
-  --spacing-msxl: 3.5rem;
-  --spacing-mslg: 2.75rem;
+  --color-accent: var(--color-florange);
+  --color-hover: var(--color-flviolet);
+  --color-active: var(--color-flblue);
+  --spacing-ms4xl: 14rem;
+  --spacing-ms3xl: 9rem;
+  --spacing-ms2xl: 5.75rem;
+  --spacing-msxl: 4rem;
+  --spacing-mslg: 3rem;
   --spacing-ms: 2rem;
-  --spacing-mssm: 1.5rem;
-  --spacing-msxs: 1.0rem;
+  --spacing-mssm: 1.25rem;
+  --spacing-msxs: .5rem;
 }
 
 @layer components {
