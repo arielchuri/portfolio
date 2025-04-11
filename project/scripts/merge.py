@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 # Paths
 BASE_DIR = os.path.dirname(__file__)  # Base directory of the script
@@ -9,7 +10,7 @@ COMPONENTS_DIR = os.path.join(BASE_DIR, "../components")  # Components directory
 
 def load_component(component_name):
     """
-    Loads the content of a component (e.g., navigation, footer, header) from the components directory.
+    Loads the content of a component (e.g., head, nav, footer) from the components directory.
     """
     component_path = os.path.join(COMPONENTS_DIR, f"{component_name}.html")
     if not os.path.exists(component_path):
@@ -18,9 +19,18 @@ def load_component(component_name):
     with open(component_path, "r") as component_file:
         return component_file.read()
 
+def extract_title_from_body(content):
+    """
+    Extracts the title from the id attribute of the <main> tag in the content file.
+    """
+    match = re.search(r'<main[^>]*id="([^"]+)"', content)
+    if match:
+        return match.group(1).strip()
+    return "Untitled Page"  # Default title if no id is found
+
 def merge_file(file_path):
     """
-    Merges the specified HTML file with the navigation, footer, and header components.
+    Merges the head, nav, content, and footer into a complete HTML document.
     Writes the output to the output directory.
     """
     # Get the relative path of the file (e.g., "index.html")
@@ -30,24 +40,22 @@ def merge_file(file_path):
     with open(file_path, "r") as src_file:
         content = src_file.read()
 
-    # Load components
-    navigation = load_component("navigation")
-    footer = load_component("footer")
-    header = load_component("header")
+    # Extract the title from the <body> tag's id attribute
+    page_title = extract_title_from_body(content)
 
-    # Merge the components into the content
+    # Load components
+    head = load_component("head")
+    nav = load_component("navigation")
+    footer = load_component("footer")
+
+    # Merge the components into a complete HTML document
     merged_content = f"""
     <!DOCTYPE html>
     <html>
-    <head>
-        <title>{file_name}</title>
-    </head>
-    <body>
-        {navigation}
-        {header}
-        {content}
-        {footer}
-    </body>
+    {head.replace("<title></title>", f"<title>{page_title}</title>")}
+    {nav}
+    {content}
+    {footer}
     </html>
     """
 

@@ -6,22 +6,37 @@
 }
 
 @theme {
+  --color-testcolor: oklch(55.1% 0.027 264.364);
+  --color-trueblack: #243131;
+  --color-truewhite: oklch(98.4% 0.003 247.858); /*slate-50*/
   --color-trueblue: #005eac;
   --color-trueyellow: #fad13e;
   --color-truered: #df4c40;
-  /* --color-accent: #ddf4c40; */
+  --color-graylight: oklch(86.9% 0.022 252.894);
+  --color-graymedium: oklch(70.4% 0.04 256.788);
+  --color-graydark: oklch(55.1% 0.027 264.364);
+
+
+  --color-flviolet: #ac6aff;
+  --color-flblue: #3dbefe;
+  --color-florange: #ff4c00;
+  --color-flgreen: #8bff1f;
+  --color-flyellow: #edff00;
+  --color-flyellow: #f7ff00;
+  --color-flpink: #ff51a5;
+
+  --color-accent: var(--color-truered);
   --color-accent: var(--color-truered);
   --color-hover: var(--color-trueyellow);
   --color-active: var(--color-trueblue);
-  /* --color-accent: hotpink; */
-  --color-truewhite: whitesmoke;
-  --spacing-myspace-2xl: 2.5rem;
-  --spacing-myspace-xl: 2rem;
-  --spacing-myspace-lg: 1.75rem;
-  --spacing-myspace: 1.5rem;
-  --spacing-myspace-md: 1.25rem;
-  --spacing-myspace-sm: 1rem;
-  --spacing-myspace-xs: .875rem;
+  --spacing-ms4xl: 12rem;
+  --spacing-ms3xl: 8rem;
+  --spacing-ms2xl: 4.75rem;
+  --spacing-msxl: 3.5rem;
+  --spacing-mslg: 2.75rem;
+  --spacing-ms: 2rem;
+  --spacing-mssm: 1.5rem;
+  --spacing-msxs: 1.0rem;
 }
 
 @layer components {
@@ -183,36 +198,14 @@ a {
   }
 }
 
-header {
-  @apply mt-[12px];
-}
 
-:root {
-  --black: #394155;
-  --black: #3a3955;
-  --black: #243131;
-  /* --accent: hotpink; */
-  --active: deeppink;
-  --accent2: powderblue;
-  --accent2: paleturquoise;
-  --gray3: var(--color-stone-700);
-  --gray2: var(--color-stone-500);
-  --gray1: var(--color-stone-300);
-
-  --white: whitesmoke;
-  --yellow: #fad13e;
-  --red: #df4c40;
-  --blue: #005eac;
-  /* --spacing: 2rem; */
-  /* --columnGap: 2rem; */
-}
 html {
   scroll-behavior: smooth;
 }
 body {
   /* margin-top: 4rem; */
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--color-truewhite);
+  color: var(--color-trueblack);
   /* line-height: var(--lineheight); */
   /* letter-spacing: -0.004em; */
   /* font-weight: 400; */
@@ -458,7 +451,7 @@ mark {
   /* background: var(--black); */
 }
 .triangle {
-  background: var(--yellow);
+  background: var(--color-trueyellow);
   font-size: 18px;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   line-height: 235px;
@@ -467,7 +460,7 @@ mark {
   transform: translateY(-6px);
 }
 .square {
-  background: var(--red);
+  background: var(--color-truered);
   border-radius: 1%;
   font-size: 18px;
   line-height: calc(1000px / 5);
@@ -475,7 +468,7 @@ mark {
   height: calc(1000px / 5);
 }
 .circle {
-  background: var(--blue);
+  background: var(--color-trueblue);
   border-radius: 50%;
   font-size: 18px;
   line-height: calc(1000px / 4.6);
@@ -512,7 +505,7 @@ hr.hrred {
 }
 .vertical-lines {
   height: 10px;
-  color: var(--gray1);
+  color: var(--color-graylight);
   mix-blend-mode: multiply;
   background-image: linear-gradient(
     90deg,
@@ -547,8 +540,8 @@ hr.zig {
 hr.zag {
   margin-bottom: 6rem;
   background:
-    linear-gradient(-135deg, var(--gray1) 20px, #66658100 0) 0 5px,
-    linear-gradient(135deg, var(--gray1) 20px, var(--white) 0) 0 5px;
+    linear-gradient(-135deg, var(--color-graylight) 20px, #66658100 0) 0 5px,
+    linear-gradient(135deg, var(--color-graylight) 20px, var(--white) 0) 0 5px;
   background-color: #66658100;
   background-position: center bottom;
   background-repeat: repeat-x;
@@ -625,10 +618,10 @@ a:link#footer {
   color: var(--gray2);
 }
 .bordergray {
-  border: 1px solid var(--gray1);
+  border: 1px solid var(--color-graylight);
 }
 .box-shadow {
-  box-shadow: 2px 2px var(--gray1);
+  box-shadow: 2px 2px var(--color-graylight);
 }
 .hatch {
   background-image: linear-gradient(
@@ -663,30 +656,30 @@ a:link#footer {
   background-image: linear-gradient(
     135deg,
     white 40%,
-    var(--gray1) 40%,
-    var(--gray1) 50%,
+    var(--color-graylight) 40%,
+    var(--color-graylight) 50%,
     white 50%,
     white 90%,
-    var(--gray1) 90%,
-    var(--gray1) 100%
+    var(--color-graylight) 90%,
+    var(--color-graylight) 100%
   );
   background-size: 12px 12px;
-  border: 1px solid var(--gray1);
+  border: 1px solid var(--color-graylight);
 }
 .dotgray {
   opacity: 1;
-  background-image: radial-gradient(var(--gray1) 1px, white 1px);
+  background-image: radial-gradient(var(--color-graylight) 1px, white 1px);
   background-size: 12px 12px;
-  border: 1px solid var(--gray1);
+  border: 1px solid var(--color-graylight);
 }
 .graphpapergray {
   opacity: 1;
   background-image:
-    linear-gradient(var(--gray1) 1px, transparent 1px),
-    linear-gradient(to right, var(--gray1) 1px, white 1px);
+    linear-gradient(var(--color-graylight) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-graylight) 1px, white 1px);
   background-position: left -1px top -1px;
   background-size: 10px 10px;
-  border: 1px solid var(--gray1);
+  border: 1px solid var(--color-graylight);
 }
 .hatchyellow {
   background-image: linear-gradient(
@@ -803,7 +796,7 @@ a:link#footer {
 }
 
 .graphpapergray > * {
-  border: 1px solid var(--gray1);
+  border: 1px solid var(--color-graylight);
 }
 
 /* magnify code */
