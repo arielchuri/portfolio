@@ -5,13 +5,66 @@
   url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@100..900&display=swap');
 }
 
+/* Define MonaspaceArgon */
+@font-face {
+  font-family: 'MonaspaceArgon';
+  src: url('../fonts/MonaspaceArgonVarVF[wght,wdth,slnt].woff2') format('woff2'),
+       url('../fonts/MonaspaceArgonVarVF[wght,wdth,slnt].woff') format('woff');
+  font-weight: 100 900; /* Supports weights from 100 to 900 */
+  font-stretch: 75% 125%; /* Supports widths from 75% to 125% */
+  font-style: normal italic; /* Supports normal and italic styles */
+}
+
+/* Define MonaspaceKrypton */
+@font-face {
+  font-family: 'MonaspaceKrypton';
+  src: url('../fonts/MonaspaceKryptonVarVF[wght,wdth,slnt].woff2') format('woff2'),
+       url('../fonts/MonaspaceKryptonVarVF[wght,wdth,slnt].woff') format('woff');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
+}
+
+/* Define MonaspaceNeon */
+@font-face {
+  font-family: 'MonaspaceNeon';
+  src: url('../fonts/MonaspaceNeonVarVF[wght,wdth,slnt].woff2') format('woff2'),
+       url('../fonts/MonaspaceNeonVarVF[wght,wdth,slnt].woff') format('woff');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
+}
+
+/* Define MonaspaceRadon */
+@font-face {
+  font-family: 'MonaspaceRadon';
+  src: url('../fonts/MonaspaceRadonVarVF[wght,wdth,slnt].woff2') format('woff2'),
+       url('../fonts/MonaspaceRadonVarVF[wght,wdth,slnt].woff') format('woff');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
+}
+
+/* Define MonaspaceXenon */
+@font-face {
+  font-family: 'MonaspaceXenon';
+  src: url('../fonts/MonaspaceXenonVarVF[wght,wdth,slnt].woff2') format('woff2'),
+       url('../fonts/MonaspaceXenonVarVF[wght,wdth,slnt].woff') format('woff');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
+}
+
 @theme {
   --color-testcolor: oklch(55.1% 0.027 264.364);
   --color-trueblack: #243131;
   --color-truewhite: oklch(98.4% 0.003 247.858); /*slate-50*/
-  --color-trueblue: #005eac;
+  --color-trueblue: #0e65ac;
   --color-trueyellow: #fad13e;
   --color-truered: #df4c40;
+  --color-trueorange: #f99b30;
+  --color-truegreen: #62b862;
+  --color-trueviolet: #7f61c5;
   --color-graylight: oklch(86.9% 0.022 252.894);
   --color-graymedium: oklch(70.4% 0.04 256.788);
   --color-graydark: oklch(55.1% 0.027 264.364);
@@ -106,6 +159,18 @@
   }
 }
 
+@layer utilities {
+  .font-condensed {
+    font-stretch: 75%;
+  }
+  .font-normal-width {
+    font-stretch: 100%;
+  }
+  .font-expanded {
+    font-stretch: 125%;
+  }
+}
+
 @layer base {
   body {
     /* font-family: 'EB Garamond', serif; */
@@ -115,8 +180,27 @@
   .font-inter {
     font-family: 'Inter', sans-serif;
   }
-  .font-garamond {
+
+  
+  /* .font-garamond {
     font-family: 'EB Garamond', sans-serif;
+  } */
+
+
+  .font-argon {
+    font-family: 'MonaspaceArgon', sans-serif;
+  }
+  .font-krypton {
+    font-family: 'MonaspaceKrypton', sans-serif;
+  }
+  .font-neon {
+    font-family: 'MonaspaceNeon', sans-serif;
+  }
+  .font-radon {
+    font-family: 'MonaspaceRadon', sans-serif;
+  }
+  .font-xenon {
+    font-family: 'MonaspaceXenon', sans-serif;
   }
 
   h1,h2,h3,h4,h5 {

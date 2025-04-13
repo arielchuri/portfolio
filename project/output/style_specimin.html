@@ -1,4 +1,41 @@
-<body class="flex flex-col items-center justify-center min-h-screen">
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+  <meta charset="utf-8" />
+  <title>{{title}}</title>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/skeleton.css" />
+  <link rel="stylesheet" href="fonts/inter.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+
+    <header class="w-full fixed z-50">
+  <nav class="container mx-auto !flex justify-between">
+    <div class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-start">
+      <span class="" id=""
+        ><a class="home button button-primary" href="index.html#first"
+          >work</a
+        ></span
+      >
+      <span class="" id=""><a class="button button-primary">projects</a></span>
+      <span class="" id=""
+        ><a class="button button-primary" href="index.html#first">art</a></span
+      >
+    </div>
+    <div class="flex flex-col sm:flex-row gap-[4px] sm:gap-[4px] items-end">
+      <span id="returnbutton" class=""></span>
+      <span id="resumebutton"></span>
+      <span id="contactbutton"></span>
+    </div>
+  </nav>
+</header>
+
+    <body class="flex flex-col items-center justify-center min-h-screen">
   <main id="Test Page" class="">
     <div class="">
       <!-- DOWN ARROW -->
@@ -45,7 +82,7 @@
       </div>
     </div>
     <div
-      class="container p-ms border border-graymedium box-shadow bg-truewhite flex flex-col justify-center"
+      class="container m-ms p-ms border border-graymedium box-shadow bg-truewhite flex flex-col justify-center"
     >
       <div class="mb-ms">
         <h2 class="font-light text-3xl uppercase mb-ms">Sizes</h2>
@@ -173,26 +210,7 @@
       </div>
       <div class="mb-ms">
         <h2 class="font-light text-3xl uppercase mb-ms">Palette</h2>
-        <div class="flex flex-wrap gap-ms leading-5 leading-mssm">
-          <div class="text-[#000]">
-            <div
-              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-[#000] text-truewhite"
-            >
-              black
-            </div>
-            <span class="font-bold">black</span><br />
-            black
-          </div>
-          <div class="text-trueblack">
-            <div
-              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-trueblack text-truewhite"
-            >
-              trueblack<br />
-              <span class="text-trueblack">trueblack</span>
-            </div>
-            <span class="font-bold">trueblack</span><br />
-            trueblack
-          </div>
+        <div class="flex flex-wrap gap-ms leading-5 leading-mssm mb-mslg">
           <div class="text-[#fff]">
             <div
               class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-[#fff] text-truewhite"
@@ -212,6 +230,57 @@
             <span class="font-bold">truewhite</span><br />
             truewhite
           </div>
+          <div class="text-graylight">
+            <div
+              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-graylight text-truewhite"
+            >
+              graylight<br />
+              <span class="text-trueblack">graylight</span>
+            </div>
+            <span class="font-bold">graylight</span><br />
+            graylight
+          </div>
+          <div class="text-graymedium">
+            <div
+              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-graymedium text-truewhite"
+            >
+              graymedium<br />
+              <span class="text-trueblack">graymedium</span>
+            </div>
+            <span class="font-bold">graymedium</span><br />
+            graymedium
+          </div>
+          <div class="text-graydark">
+            <div
+              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-graydark text-truewhite"
+            >
+              graydark<br />
+              <span class="text-trueblack">graydark</span>
+            </div>
+            <span class="font-bold">graydark</span><br />
+            graydark
+          </div>
+          <div class="text-[#000]">
+            <div
+              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-[#000] text-truewhite"
+            >
+              black
+            </div>
+            <span class="font-bold">black</span><br />
+            black
+          </div>
+          <div class="text-trueblack">
+            <div
+              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-trueblack text-truewhite"
+            >
+              trueblack<br />
+              <span class="text-trueblack">trueblack</span>
+            </div>
+            <span class="font-bold">trueblack</span><br />
+            trueblack
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-ms leading-5 leading-mss mb-mslg">
           <div class="text-trueblue">
             <div
               class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-trueblue text-truewhite"
@@ -272,37 +341,8 @@
             <span class="font-bold">trueviolet</span><br />
             trueviolet
           </div>
-          <div class="text-graylight">
-            <div
-              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-graylight text-truewhite"
-            >
-              graylight<br />
-              <span class="text-trueblack">graylight</span>
-            </div>
-            <span class="font-bold">graylight</span><br />
-            <br />
-            graylight
-          </div>
-          <div class="text-graymedium">
-            <div
-              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-graymedium text-truewhite"
-            >
-              graymedium<br />
-              <span class="text-trueblack">graymedium</span>
-            </div>
-            <span class="font-bold">graymedium</span><br />
-            graymedium
-          </div>
-          <div class="text-graydark">
-            <div
-              class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-graydark text-truewhite"
-            >
-              graydark<br />
-              <span class="text-trueblack">graydark</span>
-            </div>
-            <span class="font-bold">graydark</span><br />
-            graydark
-          </div>
+        </div>
+        <div class="flex flex-wrap gap-ms leading-5 leading-mssm mb-mslg">
           <div class="text-flviolet">
             <div
               class="w-ms3xl h-ms3xl mb-msxs p-msxs bg-flviolet text-truewhite"
@@ -386,6 +426,189 @@
         </div>
       </div>
     </div>
+
+    <div
+      class="container m-ms p-ms border border-graymedium box-shadow bg-truewhite flex flex-col justify-center"
+    >
+
+ <h2 class="font-3xl font-light mb-ms">Font Showcase</h2>
+
+<div class="flex flex-wrap gap-mssm mb-mslg">
+  <!-- Inter Fonts -->
+  <section class="mb-12">
+    <h3 class="mb-ms">Inter</h3>
+    <div class="flex flex-wrap flex-col gap-msxs leading-5 leading-mssm mb-mslg">
+      <div class="font-inter font-extrabold">Inter Black</div>
+      <div class="font-inter font-extrabold italic">Inter Black Italic</div>
+      <div class="font-inter font-extrabold">Inter ExtraBold</div>
+      <div class="font-inter font-extrabold italic">Inter ExtraBold Italic</div>
+      <div class="font-inter font-bold">Inter Bold</div>
+      <div class="font-inter font-bold italic">Inter Bold Italic</div>
+      <div class="font-inter font-semibold">Inter SemiBold</div>
+      <div class="font-inter font-semibold italic">Inter SemiBold Italic</div>
+      <div class="font-inter font-medium">Inter Medium</div>
+      <div class="font-inter font-medium italic">Inter Medium Italic</div>
+      <div class="font-inter font-normal">Inter Regular</div>
+      <div class="font-inter italic">Inter Italic</div>
+      <div class="font-inter font-light">Inter light</div>
+      <div class="font-inter font-light italic">Inter light Italic</div>
+      <div class="font-inter font-extralight">Inter ExtraLight</div>
+      <div class="font-inter font-extralight italic">Inter ExtraLight Italic</div>
+      <div class="font-inter font-thin">Inter Thin</div>
+      <div class="font-inter font-thin italic">Inter Thin Italic</div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h3 class="mb-ms">Argon</h3>
+    <div class="flex flex-wrap flex-col gap-msxs leading-5 leading-mssm mb-mslg">
+      <div class="font-argon font-extrabold">Argon Black</div>
+      <div class="font-argon font-extrabold italic">Argon Black Italic</div>
+      <div class="font-argon font-extrabold">Argon ExtraBold</div>
+      <div class="font-argon font-extrabold italic">Argon ExtraBold Italic</div>
+      <div class="font-argon font-bold">Argon Bold</div>
+      <div class="font-argon font-bold italic">Argon Bold Italic</div>
+      <div class="font-argon font-semibold">Argon SemiBold</div>
+      <div class="font-argon font-semibold italic">Argon SemiBold Italic</div>
+      <div class="font-argon font-medium">Argon Medium</div>
+      <div class="font-argon font-medium italic">Argon Medium Italic</div>
+      <div class="font-argon font-normal">Argon Regular</div>
+      <div class="font-argon italic">Argon Italic</div>
+      <div class="font-argon font-light">Argon light</div>
+      <div class="font-argon font-light italic">Argon light Italic</div>
+      <div class="font-argon font-extralight">Argon ExtraLight</div>
+      <div class="font-argon font-extralight italic">Argon ExtraLight Italic</div>
+      <div class="font-argon font-thin">Argon Thin</div>
+      <div class="font-argon font-thin italic">Argon Thin Italic</div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h3 class="mb-ms">Krypton</h3>
+    <div class="flex flex-wrap flex-col gap-msxs leading-5 leading-mssm mb-mslg">
+      <div class="font-krypton font-extrabold">Krypton Black</div>
+      <div class="font-krypton font-extrabold italic">Krypton Black Italic</div>
+      <div class="font-krypton font-extrabold">Krypton ExtraBold</div>
+      <div class="font-krypton font-extrabold italic">Krypton ExtraBold Italic</div>
+      <div class="font-krypton font-bold">Krypton Bold</div>
+      <div class="font-krypton font-bold italic">Krypton Bold Italic</div>
+      <div class="font-krypton font-semibold">Krypton SemiBold</div>
+      <div class="font-krypton font-semibold italic">Krypton SemiBold Italic</div>
+      <div class="font-krypton font-medium">Krypton Medium</div>
+      <div class="font-krypton font-medium italic">Krypton Medium Italic</div>
+      <div class="font-krypton font-normal">Krypton Regular</div>
+      <div class="font-krypton italic">Krypton Italic</div>
+      <div class="font-krypton font-light">Krypton light</div>
+      <div class="font-krypton font-light italic">Krypton light Italic</div>
+      <div class="font-krypton font-extralight">Krypton ExtraLight</div>
+      <div class="font-krypton font-extralight italic">Krypton ExtraLight Italic</div>
+      <div class="font-krypton font-thin">Krypton Thin</div>
+      <div class="font-krypton font-thin italic">Krypton Thin Italic</div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h3 class="mb-ms">Neon</h3>
+    <div class="flex flex-wrap flex-col gap-msxs leading-5 leading-mssm mb-mslg">
+      <div class="font-neon font-extrabold">Neon Black</div>
+      <div class="font-neon font-extrabold italic">Neon Black Italic</div>
+      <div class="font-neon font-extrabold">Neon ExtraBold</div>
+      <div class="font-neon font-extrabold italic">Neon ExtraBold Italic</div>
+      <div class="font-neon font-bold">Neon Bold</div>
+      <div class="font-neon font-bold italic">Neon Bold Italic</div>
+      <div class="font-neon font-semibold">Neon SemiBold</div>
+      <div class="font-neon font-semibold italic">Neon SemiBold Italic</div>
+      <div class="font-neon font-medium">Neon Medium</div>
+      <div class="font-neon font-medium italic">Neon Medium Italic</div>
+      <div class="font-neon font-normal">Neon Regular</div>
+      <div class="font-neon italic">Neon Italic</div>
+      <div class="font-neon font-light">Neon light</div>
+      <div class="font-neon font-light italic">Neon light Italic</div>
+      <div class="font-neon font-extralight">Neon ExtraLight</div>
+      <div class="font-neon font-extralight italic">Neon ExtraLight Italic</div>
+      <div class="font-neon font-thin">Neon Thin</div>
+      <div class="font-neon font-thin italic">Neon Thin Italic</div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h3 class="mb-ms">Radon</h3>
+    <div class="flex flex-wrap flex-col gap-msxs leading-5 leading-mssm mb-mslg">
+      <div class="font-radon font-extrabold">Radon Black</div>
+      <div class="font-radon font-extrabold italic">Radon Black Italic</div>
+      <div class="font-radon font-extrabold">Radon ExtraBold</div>
+      <div class="font-radon font-extrabold italic">Radon ExtraBold Italic</div>
+      <div class="font-radon font-bold">Radon Bold</div>
+      <div class="font-radon font-bold italic">Radon Bold Italic</div>
+      <div class="font-radon font-semibold">Radon SemiBold</div>
+      <div class="font-radon font-semibold italic">Radon SemiBold Italic</div>
+      <div class="font-radon font-medium">Radon Medium</div>
+      <div class="font-radon font-medium italic">Radon Medium Italic</div>
+      <div class="font-radon font-normal">Radon Regular</div>
+      <div class="font-radon italic">Radon Italic</div>
+      <div class="font-radon font-light">Radon light</div>
+      <div class="font-radon font-light italic">Radon light Italic</div>
+      <div class="font-radon font-extralight">Radon ExtraLight</div>
+      <div class="font-radon font-extralight italic">Radon ExtraLight Italic</div>
+      <div class="font-radon font-thin">Radon Thin</div>
+      <div class="font-radon font-thin italic">Radon Thin Italic</div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h3 class="mb-ms">Xenon</h3>
+    <div class="flex flex-wrap flex-col gap-msxs leading-5 leading-mssm mb-mslg">
+      <div class="font-xenon font-extrabold">Xenon Black</div>
+      <div class="font-xenon font-extrabold italic">Xenon Black Italic</div>
+      <div class="font-xenon font-extrabold">Xenon ExtraBold</div>
+      <div class="font-xenon font-extrabold italic">Xenon ExtraBold Italic</div>
+      <div class="font-xenon font-bold">Xenon Bold</div>
+      <div class="font-xenon font-bold italic">Xenon Bold Italic</div>
+      <div class="font-xenon font-semibold">Xenon SemiBold</div>
+      <div class="font-xenon font-semibold italic">Xenon SemiBold Italic</div>
+      <div class="font-xenon font-medium">Xenon Medium</div>
+      <div class="font-xenon font-medium italic">Xenon Medium Italic</div>
+      <div class="font-xenon font-normal">Xenon Regular</div>
+      <div class="font-xenon italic">Xenon Italic</div>
+      <div class="font-xenon font-light">Xenon light</div>
+      <div class="font-xenon font-light italic">Xenon light Italic</div>
+      <div class="font-xenon font-extralight">Xenon ExtraLight</div>
+      <div class="font-xenon font-extralight italic">Xenon ExtraLight Italic</div>
+      <div class="font-xenon font-thin">Xenon Thin</div>
+      <div class="font-xenon font-thin italic">Xenon Thin Italic</div>
+    </div>
+  </section>
+</div>
+
+  <!-- Argon Fonts -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Monaspace Argon</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="font-argon text-lg" style="font-weight: 100; font-stretch: 75%;">Thin Condensed</div>
+      <div class="font-argon text-lg" style="font-weight: 400; font-stretch: 100%;">Regular</div>
+      <div class="font-argon text-lg" style="font-weight: 900; font-stretch: 125%;">Bold Expanded</div>
+      <div class="font-argon text-lg italic" style="font-weight: 400; font-stretch: 100%;">Italic</div>
+      <div class="font-argon text-lg italic" style="font-weight: 900; font-stretch: 125%;">Bold Italic Expanded</div>
+    </div>
+  </section>
+
+  <!-- Krypton Fonts -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Monaspace Krypton</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="font-krypton text-lg" style="font-weight: 100; font-stretch: 75%;">Thin Condensed</div>
+      <div class="font-krypton text-lg" style="font-weight: 400; font-stretch: 100%;">Regular</div>
+      <div class="font-krypton text-lg" style="font-weight: 900; font-stretch: 125%;">Bold Expanded</div>
+      <div class="font-krypton text-lg italic" style="font-weight: 400; font-stretch: 100%;">Italic</div>
+      <div class="font-krypton text-lg italic" style="font-weight: 900; font-stretch: 125%;">Bold Italic Expanded</div>
+    </div>
+  </section>
+
+    </div>
+    <div
+      class="container p-ms border border-graymedium box-shadow bg-truewhite flex flex-col justify-center"
+    >
+    
     <div class="container mt-ms4xl">
       <div class="twelve columns">
         <h1 class="font-light">Machine Learing Basics 03</h1>
@@ -554,3 +777,10 @@
     </div>
   </main>
 </body>
+
+    <div id="footer">my footer</div>
+<script src="myscript.js"></script>
+</body>
+
+    </html>
+    

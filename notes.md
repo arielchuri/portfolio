@@ -4,7 +4,7 @@ $ python scripts/watcher.py
 
 ## Process HTML files
 
-$ python scripts/merge.py
+$ python scripts/watcher.py
 
 ## Python virtual environment
 
