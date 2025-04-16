@@ -1,98 +1,326 @@
 @import "tailwindcss";
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
+  /* url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@100..900&display=swap'); */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* Define MonaspaceArgon */
+@font-face {
+  font-family: "MonaspaceArgon";
+  src:
+    url("../fonts/MonaspaceArgonVarVF[wght,wdth,slnt].woff2") format("woff2"),
+    url("../fonts/MonaspaceArgonVarVF[wght,wdth,slnt].woff") format("woff");
+  font-weight: 100 900; /* Supports weights from 100 to 900 */
+  font-stretch: 75% 125%; /* Supports widths from 75% to 125% */
+  font-style: normal italic; /* Supports normal and italic styles */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Define MonaspaceKrypton */
+@font-face {
+  font-family: "MonaspaceKrypton";
+  src:
+    url("fonts/MonaspaceKryptonVarVF[wght,wdth,slnt].woff2") format("woff2"),
+    url("fonts/MonaspaceKryptonVarVF[wght,wdth,slnt].woff") format("woff");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Define MonaspaceNeon */
+@font-face {
+  font-family: "MonaspaceNeon";
+  src:
+    url("../fonts/MonaspaceNeonVarVF[wght,wdth,slnt].woff2") format("woff2"),
+    url("../fonts/MonaspaceNeonVarVF[wght,wdth,slnt].woff") format("woff");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+/* Define MonaspaceRadon */
+@font-face {
+  font-family: "MonaspaceRadon";
+  src:
+    url("../fonts/MonaspaceRadonVarVF[wght,wdth,slnt].woff2") format("woff2"),
+    url("../fonts/MonaspaceRadonVarVF[wght,wdth,slnt].woff") format("woff");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
 }
 
-.card {
-  padding: 2em;
+/* Define MonaspaceXenon */
+@font-face {
+  font-family: "MonaspaceXenon";
+  src:
+    url("../fonts/MonaspaceXenonVarVF[wght,wdth,slnt].woff2") format("woff2"),
+    url("../fonts/MonaspaceXenonVarVF[wght,wdth,slnt].woff") format("woff");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal italic;
 }
 
-.read-the-docs {
-  color: #888;
+@theme {
+  --color-testcolor: oklch(55.1% 0.027 264.364);
+  --color-trueblack: #243131;
+  --color-truewhite: oklch(98.4% 0.003 247.858); /*slate-50*/
+  --color-trueblue: #0e65ac;
+  --color-trueyellow: #fad13e;
+  --color-truered: #df4c40;
+  --color-trueorange: #f99b30;
+  --color-truegreen: #62b862;
+  --color-trueviolet: #7f61c5;
+  --color-graylight: oklch(86.9% 0.022 252.894);
+  --color-graymedium: oklch(70.4% 0.04 256.788);
+  --color-graydark: oklch(55.1% 0.027 264.364);
+  --color-flviolet: #ac6aff;
+  --color-flblue: #3dbefe;
+  --color-florange: #ff5e01;
+  --color-florange200: #f9a67d;
+  --color-florange100: #f4d3bf;
+  --color-flgreen: #8bff1f;
+  --color-flyellow: #edff00;
+  --color-flyellow: #f7ff00;
+  --color-flpink: #ff51a5;
+  --color-accent: var(--color-florange);
+  --color-hover: var(--color-flviolet);
+  --color-active: var(--color-flblue);
+  --spacing-ms4xl: 14rem;
+  --spacing-ms3xl: 9rem;
+  --spacing-ms2xl: 5.75rem;
+  --spacing-msxl: 4rem;
+  --spacing-mslg: 3rem;
+  --spacing-ms: 2rem;
+  --spacing-mssm: 1.25rem;
+  --spacing-msxs: 0.5rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer components {
+  .button.button-primary,
+  a.button.button-primary,
+  button.button-primary,
+  input[type="submit"].button-primary,
+  input[type="reset"].button-primary,
+  input[type="button"].button-primary {
+    margin-top: var(--spacing-myspace);
+    margin-bottom: var(--spacing-myspace);
+    color: var(--color-accent);
+    background-color: rgba(var(--color-truewhite), 0.8);
+    border: 1px solid var(--color-accent);
+    outline-color: var(--color-trueblue);
+    outline-offset: 1px;
+    font-family: "Inter", sans-serif;
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
   }
-  a:hover {
-    color: #747bff;
+
+  .button.button-primary:hover,
+  a.button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover {
+    color: var(--color-truewhite);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
   }
-  button {
-    background-color: #f9f9f9;
+
+  .button.button-primary:active,
+  a.button.button-primary:active,
+  button.button-primary:active,
+  input[type="submit"].button-primary:active,
+  input[type="reset"].button-primary:active,
+  input[type="button"].button-primary:active {
+    background-color: var(--color-trueyellow);
+    border-color: var(--color-trueyellow);
+    color: var(--color-trueblue);
+  }
+
+  .button.button-primary:focus,
+  a.button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    outline: 1px solid var(--color-trueblue);
+  }
+}
+
+@layer utilities {
+  .font-condensed {
+    font-stretch: 75%;
+  }
+  .font-normal-width {
+    font-stretch: 100%;
+  }
+  .font-expanded {
+    font-stretch: 125%;
+  }
+}
+
+@utility container {
+  padding-inline: 12px;
+  margin-inline: auto;
+
+  @variant sm {
+    padding-inline: 16px;
+  }
+
+  @variant lg {
+    padding-inline: 24px;
+  }
+
+  @variant xl {
+    padding-inline: 48px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* margin-top: 4rem; */
+    background-color: var(--color-truewhite);
+    color: var(--color-trueblack);
+    /* line-height: var(--lineheight); */
+    /* letter-spacing: -0.004em; */
+    /* font-weight: 400; */
+    font-feature-settings:
+      "case" 0,
+      "cpsp" 0,
+      "dlig",
+      "frac",
+      "dnom" 0,
+      "numr" 0,
+      "salt" 0,
+      "subs" 0,
+      "sups" 0,
+      "tnum" 0,
+      "zero",
+      "ss01" 0,
+      "ss02" 0,
+      "ss03" 0,
+      "ss04" 0,
+      "cv01" 0,
+      "cv02" 0,
+      "cv03" 0,
+      "cv04" 0,
+      "cv05" 0,
+      "cv06" 0,
+      "cv07" 0,
+      "cv08" 0,
+      "cv09" 0,
+      "cv10" 0,
+      "cv11" 0,
+      "calt",
+      "ccmp",
+      "kern";
+  }
+  p,
+  li {
+    @apply max-w-[50ch];
+    /* letter-spacing: .5pt; */
+    orphans: 2;
+    widows: 2;
+    break-inside: avoid-column;
+    break-inside: avoid;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  ul {
+    @apply list-disc;
+  }
+  li::marker {
+    @apply text-accent;
+  }
+
+  .font-inter {
+    font-family: "Inter", sans-serif;
+  }
+  /* .font-garamond {
+    font-family: 'EB Garamond', sans-serif;
+  } */
+  .font-argon {
+    font-family: "MonaspaceArgon", sans-serif;
+  }
+  .font-krypton {
+    font-family: "MonaspaceKrypton", sans-serif;
+  }
+  .font-neon {
+    font-family: "MonaspaceNeon", sans-serif;
+  }
+  .font-radon {
+    font-family: "MonaspaceRadon", sans-serif;
+  }
+  .font-xenon {
+    font-family: "MonaspaceXenon", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--color-accent);
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    margin-bottom: var(--spacing-myspace);
+  }
+
+  h1 {
+    font-size: 4rem;
+    @apply text-6xl leading-[3.75rem] mb-[1.25rem];
+    line-height: 1;
+  }
+
+  h2 {
+    margin-bottom: var(--spacing-myspace);
+    font-size: var(--text-4xl);
+    line-height: 1;
+  }
+
+  p,
+  ul,
+  ol {
+    margin-bottom: var(--spacing-myspace);
+  }
+
+  ul:last-child,
+  ol:last-child,
+  h1:last-child,
+  h2:last-child,
+  h3:last-child,
+  h4:last-child,
+  h5:last-child,
+  p:last-child {
+    margin-bottom: 0rem;
+  }
+
+  a {
+    @apply text-trueblue hover:text-trueblue hover:bg-trueyellow  no-underline;
+  }
+  code,
+  samp,
+  pre,
+  kbd {
+    color: var(--gray3);
+  }
+  img {
+    width: 100%;
   }
 }
