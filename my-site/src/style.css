@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  /* url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@100..900&display=swap'); */
-}
-
 /* Define MonaspaceArgon */
 @font-face {
   font-family: "MonaspaceArgon";
@@ -61,6 +56,7 @@
 }
 
 @theme {
+  /* colors */
   --color-testcolor: oklch(55.1% 0.027 264.364);
   --color-trueblack: #243131;
   --color-truewhite: oklch(98.4% 0.003 247.858); /*slate-50*/
@@ -75,16 +71,19 @@
   --color-graydark: oklch(55.1% 0.027 264.364);
   --color-flviolet: #ac6aff;
   --color-flblue: #3dbefe;
-  --color-florange: #ff5e01;
+  --color-florange: #ff711e;
   --color-florange200: #f9a67d;
   --color-florange100: #f4d3bf;
   --color-flgreen: #8bff1f;
+  --color-flgreen200: #8bff1f7b;
+  --color-flgreen100: #8bff1f44;
   --color-flyellow: #edff00;
   --color-flyellow: #f7ff00;
   --color-flpink: #ff51a5;
   --color-accent: var(--color-florange);
   --color-hover: var(--color-flviolet);
   --color-active: var(--color-flblue);
+  /* sizes */
   --spacing-ms4xl: 14rem;
   --spacing-ms3xl: 9rem;
   --spacing-ms2xl: 5.75rem;
@@ -93,6 +92,150 @@
   --spacing-ms: 2rem;
   --spacing-mssm: 1.25rem;
   --spacing-msxs: 0.5rem;
+  --spacing-msxxs: 0.25rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    /* url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@100..900&display=swap'); */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* margin-top: 4rem; */
+    background-color: var(--color-truewhite);
+    color: var(--color-trueblack);
+    /* line-height: var(--lineheight); */
+    /* letter-spacing: -0.004em; */
+    /* font-weight: 400; */
+    font-feature-settings:
+      "case" 0,
+      "cpsp" 0,
+      "dlig",
+      "frac",
+      "dnom" 0,
+      "numr" 0,
+      "salt" 0,
+      "subs" 0,
+      "sups" 0,
+      "tnum" 0,
+      "zero",
+      "ss01" 0,
+      "ss02" 0,
+      "ss03" 0,
+      "ss04" 0,
+      "cv01" 0,
+      "cv02" 0,
+      "cv03" 0,
+      "cv04" 0,
+      "cv05" 0,
+      "cv06" 0,
+      "cv07" 0,
+      "cv08" 0,
+      "cv09" 0,
+      "cv10" 0,
+      "cv11" 0,
+      "calt",
+      "ccmp",
+      "kern";
+  }
+  p,
+  li {
+    @apply max-w-[45ch];
+    /* letter-spacing: .5pt; */
+    orphans: 2;
+    widows: 2;
+    break-inside: avoid-column;
+    break-inside: avoid;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  ul {
+    @apply list-disc;
+  }
+  li::marker {
+    @apply text-accent;
+  }
+
+  .font-inter {
+    font-family: "Inter", sans-serif;
+  }
+  /* .font-garamond {
+    font-family: 'EB Garamond', sans-serif;
+  } */
+  .font-argon {
+    font-family: "MonaspaceArgon", sans-serif;
+  }
+  .font-krypton {
+    font-family: "MonaspaceKrypton", sans-serif;
+  }
+  .font-neon {
+    font-family: "MonaspaceNeon", sans-serif;
+  }
+  .font-radon {
+    font-family: "MonaspaceRadon", sans-serif;
+  }
+  .font-xenon {
+    font-family: "MonaspaceXenon", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--color-accent);
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    margin-bottom: var(--spacing-msxs);
+  }
+
+  h1 {
+    font-size: 4rem;
+    @apply text-6xl leading-[3.75rem] mb-[1.25rem];
+    line-height: 1;
+  }
+
+  h2 {
+    margin-bottom: var(--spacing-msxs);
+    font-size: var(--text-4xl);
+    line-height: 1;
+  }
+
+  p,
+  ul,
+  ol {
+    margin-bottom: var(--spacing-msxs);
+  }
+
+  ul:last-child,
+  ol:last-child,
+  h1:last-child,
+  h2:last-child,
+  h3:last-child,
+  h4:last-child,
+  h5:last-child,
+  p:last-child {
+    margin-bottom: 0rem;
+  }
+
+  a {
+    @apply text-trueblue hover:text-trueblue hover:bg-trueyellow  no-underline;
+  }
+  code,
+  samp,
+  pre,
+  kbd {
+    color: var(--gray3);
+  }
+  img {
+    width: 100%;
+  }
 }
 
 @layer components {
@@ -102,8 +245,8 @@
   input[type="submit"].button-primary,
   input[type="reset"].button-primary,
   input[type="button"].button-primary {
-    margin-top: var(--spacing-myspace);
-    margin-bottom: var(--spacing-myspace);
+    margin-top: var(--spacing-msxs);
+    margin-bottom: var(--spacing-msxs);
     color: var(--color-accent);
     background-color: rgba(var(--color-truewhite), 0.8);
     border: 1px solid var(--color-accent);
@@ -159,6 +302,62 @@
 }
 
 @layer utilities {
+  .container {
+    padding-left: var(--spacing-mssm);
+    padding-right: var(--spacing-mssm);
+    @variant xl {
+      padding-left: var(--spacing-ms);
+      padding-right: var(--spacing-ms);
+    }
+  }
+
+  .flex,
+  .grid {
+    gap: var(--spacing-mssm);
+    @variant xl {
+      gap: var(--spacing-ms);
+    }
+  }
+
+  /* .mygrid { */
+  /* @apply grid gap-mssm xl:gap-ms sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-12 xl:grid-cols-12; */
+  /* } */
+
+  .mygrid {
+    @apply grid gap-mssm xl:gap-ms xl:grid-cols-12;
+  }
+
+  .wrapgrid {
+    display: grid;
+    gap: var(--spacing-mssm, 1rem);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @variant sm {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @variant md {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @variant lg {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    @variant xl {
+      gap: var(--spacing-ms, 1rem);
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+
+    @variant 2xl {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  .autogrid {
+    @apply grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-mssm xl:gap-ms;
+  }
+
   .font-condensed {
     font-stretch: 75%;
   }
@@ -168,159 +367,10 @@
   .font-expanded {
     font-stretch: 125%;
   }
-}
-
-@utility container {
-  padding-inline: 12px;
-  margin-inline: auto;
-
-  @variant sm {
-    padding-inline: 16px;
+  .box-shadow {
+    box-shadow: 2px 2px var(--color-graylight);
   }
-
-  @variant lg {
-    padding-inline: 24px;
-  }
-
-  @variant xl {
-    padding-inline: 48px;
-  }
-}
-
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    /* margin-top: 4rem; */
-    background-color: var(--color-truewhite);
-    color: var(--color-trueblack);
-    /* line-height: var(--lineheight); */
-    /* letter-spacing: -0.004em; */
-    /* font-weight: 400; */
-    font-feature-settings:
-      "case" 0,
-      "cpsp" 0,
-      "dlig",
-      "frac",
-      "dnom" 0,
-      "numr" 0,
-      "salt" 0,
-      "subs" 0,
-      "sups" 0,
-      "tnum" 0,
-      "zero",
-      "ss01" 0,
-      "ss02" 0,
-      "ss03" 0,
-      "ss04" 0,
-      "cv01" 0,
-      "cv02" 0,
-      "cv03" 0,
-      "cv04" 0,
-      "cv05" 0,
-      "cv06" 0,
-      "cv07" 0,
-      "cv08" 0,
-      "cv09" 0,
-      "cv10" 0,
-      "cv11" 0,
-      "calt",
-      "ccmp",
-      "kern";
-  }
-  p,
-  li {
-    @apply max-w-[50ch];
-    /* letter-spacing: .5pt; */
-    orphans: 2;
-    widows: 2;
-    break-inside: avoid-column;
-    break-inside: avoid;
-  }
-  ol {
-    @apply list-decimal;
-  }
-  ul {
-    @apply list-disc;
-  }
-  li::marker {
-    @apply text-accent;
-  }
-
-  .font-inter {
-    font-family: "Inter", sans-serif;
-  }
-  /* .font-garamond {
-    font-family: 'EB Garamond', sans-serif;
-  } */
-  .font-argon {
-    font-family: "MonaspaceArgon", sans-serif;
-  }
-  .font-krypton {
-    font-family: "MonaspaceKrypton", sans-serif;
-  }
-  .font-neon {
-    font-family: "MonaspaceNeon", sans-serif;
-  }
-  .font-radon {
-    font-family: "MonaspaceRadon", sans-serif;
-  }
-  .font-xenon {
-    font-family: "MonaspaceXenon", sans-serif;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    color: var(--color-accent);
-    font-family: "Inter", sans-serif;
-    font-weight: 800;
-    margin-bottom: var(--spacing-myspace);
-  }
-
-  h1 {
-    font-size: 4rem;
-    @apply text-6xl leading-[3.75rem] mb-[1.25rem];
-    line-height: 1;
-  }
-
-  h2 {
-    margin-bottom: var(--spacing-myspace);
-    font-size: var(--text-4xl);
-    line-height: 1;
-  }
-
-  p,
-  ul,
-  ol {
-    margin-bottom: var(--spacing-myspace);
-  }
-
-  ul:last-child,
-  ol:last-child,
-  h1:last-child,
-  h2:last-child,
-  h3:last-child,
-  h4:last-child,
-  h5:last-child,
-  p:last-child {
-    margin-bottom: 0rem;
-  }
-
-  a {
-    @apply text-trueblue hover:text-trueblue hover:bg-trueyellow  no-underline;
-  }
-  code,
-  samp,
-  pre,
-  kbd {
-    color: var(--gray3);
-  }
-  img {
-    width: 100%;
+  .page {
+    @apply p-mslg border border-graymedium  flex flex-col justify-center;
   }
 }
