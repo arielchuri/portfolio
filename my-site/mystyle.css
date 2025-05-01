@@ -1,0 +1,328 @@
+.triangle {
+  background: var(--color-trueyellow);
+  font-size: 18px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  line-height: 235px;
+  width: 242px;
+  height: 210px;
+  transform: translateY(-6px);
+}
+.square {
+  background: var(--color-truered);
+  border-radius: 1%;
+  font-size: 18px;
+  line-height: calc(1000px / 5);
+  width: calc(1000px / 5);
+  height: calc(1000px / 5);
+}
+.circle {
+  background: var(--color-trueblue);
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: calc(1000px / 4.6);
+  width: calc(1000px / 4.6);
+  height: calc(1000px / 4.6);
+}
+
+.vertical-lines {
+  /* height: 10px; */
+  color: var(--color-graylight);
+  mix-blend-mode: multiply;
+  background-image: linear-gradient(
+    90deg,
+    currentColor,
+    currentColor 33.33%,
+    transparent 33.33%,
+    transparent 100%
+  );
+  background-size: 3px 100%;
+  /* width: 60%; */
+}
+hr.zig,
+hr.zag {
+  border: none;
+  height: 30px;
+  margin: 0 0px;
+}
+
+hr.zig {
+  margin-top: 6rem;
+  background:
+    linear-gradient(-135deg, var(--color-truewhite) 20px, #66658100 0) 0 5px,
+    linear-gradient(135deg, var(--color-truewhite) 20px, #66658100 0) 0 5px;
+  background-color: #66658100;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: 20px 40px;
+  z-index: 100;
+  position: relative;
+}
+
+hr.zag {
+  margin-bottom: 6rem;
+  background:
+    linear-gradient(-135deg, var(--color-graylight) 20px, #66658100 0) 0 5px,
+    linear-gradient(
+        135deg,
+        var(--color-graylight) 20px,
+        var(--color-truewhite) 0
+      )
+      0 5px;
+  background-color: #66658100;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: 20px 40px;
+  z-index: 50;
+  margin-top: -28px;
+}
+/*Copied from skeleton css in order to use css variables here*/
+
+a.shape {
+  text-decoration: none;
+}
+.hatch {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-truewhite) 40%,
+    var(--color-accent) 40%,
+    var(--color-accent) 50%,
+    var(--color-truewhite) 50%,
+    var(--color-truewhite) 90%,
+    var(--color-accent) 90%,
+    var(--color-accent) 100%
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--accent2);
+}
+.dot {
+  opacity: 1;
+  background-image: radial-gradient(
+    var(--color-accent) 1px,
+    var(--color-truewhite) 1px
+  );
+  background-size: 12px 12px;
+  /* border: 1px solid var(--color-accent); */
+}
+.bigdot {
+  opacity: 1;
+  background-image: radial-gradient(
+    var(--color-accent) 2px,
+    var(--color-truewhite) 2px
+  );
+  background-size: 16px 16px;
+  /* border: 1px solid var(--color-accent); */
+}
+
+.graphpaper {
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-accent) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      var(--color-accent) 1px var(--color-truewhite) 1px
+    );
+  background-position: left -1px top -1px;
+  background-size: 12px 12px;
+  border: 1px solid var(--color-accent);
+}
+.graphpaper {
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-accent) 1px, transparent 1px);
+  background-position:
+    0 6,
+    0 0;
+  background-size: 12px 12px;
+  /* border: 1px solid var(--color-accent); */
+}
+.hatchgray {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-truewhite) 40%,
+    var(--color-graylight) 40%,
+    var(--color-graylight) 50%,
+    var(--color-truewhite) 50%,
+    var(--color-truewhite) 90%,
+    var(--color-graylight) 90%,
+    var(--color-graylight) 100%
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-graylight);
+}
+.dotgray {
+  opacity: 1;
+  background-image: radial-gradient(
+    var(--color-graylight) 1px--color-truewhite 1px
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-graylight);
+}
+.graphpapergray {
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-graylight) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-graylight) 1px--color-truewhite 1px);
+  background-position: left -1px top -1px;
+  background-size: 10px 10px;
+  border: 1px solid var(--color-graylight);
+}
+.hatchyellow {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-truewhite) 40%,
+    var(--color-trueyellow) 40%,
+    var(--color-trueyellow) 50%,
+    var(--color-truewhite) 50%,
+    var(--color-truewhite) 90%,
+    var(--color-trueyellow) 90%,
+    var(--color-trueyellow) 100%
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-trueyellow);
+}
+.dotyellow {
+  opacity: 1;
+  background-image: radial-gradient(
+    var(--color-trueyellow) 1px--color-truewhite 1px
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-trueyellow);
+}
+.graphpaperyellow {
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-trueyellow) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      var(--color-trueyellow) 1px,
+      var(--color-truewhite) 1px
+    );
+  background-position: left -1px top -1px;
+  background-size: 12px 12px;
+  border: 1px solid var(--color-trueyellow);
+}
+.hatchred {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-truewhite) 40%,
+    var(--color-truered) 40%,
+    var(--color-truered) 50%,
+    var(--color-truewhite) 50%,
+    var(--color-truewhite) 90%,
+    var(--color-truered) 90%,
+    var(--color-truered) 100%
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-truered);
+  color: var(--color-truered);
+}
+.dotred {
+  opacity: 1;
+  background-image: radial-gradient(
+    var(--color-truered) 1px--color-truewhite 1px
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-truered);
+  color: var(--color-truered);
+}
+.graphpaperred {
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-truered) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      var(--color-truered) 1px,
+      var(--color-truewhite) 1px
+    );
+  background-position: left -1px top -1px;
+  background-size: 12px 12px;
+  border: 1px solid var(--color-truered);
+  color: var(--color-truered);
+}
+.hatchblue {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-truewhite) 40%,
+    var(--color-trueblue) 40%,
+    var(--color-trueblue) 50%,
+    var(--color-truewhite) 50%,
+    var(--color-truewhite) 90%,
+    var(--color-trueblue) 90%,
+    var(--color-trueblue) 100%
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-trueblue);
+  color: var(--color-trueblue);
+}
+.dotblue {
+  opacity: 1;
+  background-image: radial-gradient(
+    var(--color-trueblue) 1px--color-truewhite 1px
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--color-trueblue);
+  color: var(--color-trueblue);
+}
+.graphpaperblue {
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-trueblue) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      var(--color-trueblue) 1px,
+      var(--color-truewhite) 1px
+    );
+  background-position: left -1px top -1px;
+  background-size: 12px 12px;
+  border: 1px solid var(--color-trueblue);
+  color: var(--color-trueblue);
+}
+:is(
+    .graphpaper,
+    .dot,
+    .hatch,
+    .graphpapergray,
+    .dotgray,
+    .hatchgray,
+    .graphpaperyellow,
+    .dotyellow,
+    .hatchyellow,
+    .graphpaperred,
+    .dotred,
+    .hatchred,
+    .graphpaperblue,
+    .dotblue,
+    .hatchblue
+  )
+  *:not(mark, blue) {
+  background-color: var(--color-truewhite);
+}
+
+.graphpapergray > * {
+  border: 1px solid var(--color-graylight);
+}
+
+/* magnify code */
+
+img.zoom,
+img.zoomsmall,
+img.zoombig {
+  transition: 0.25s all;
+}
+img.zoom:hover {
+  transform: scale(3);
+}
+img.zoomsmall:hover {
+  transform: scale(2);
+}
+img.zoombig:hover {
+  transform: scale(4);
+}
+img.zoomsmall:hover,
+img.zoombig:hover,
+img.zoom:hover {
+  border: 0;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}

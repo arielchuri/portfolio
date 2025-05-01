@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* import input.css */
+/* @import "mystyle.css"; */
+
 /* Define MonaspaceArgon */
 @font-face {
   font-family: "MonaspaceArgon";
@@ -63,7 +66,7 @@
   --color-trueblue: #0e65ac;
   --color-trueyellow: #fad13e;
   --color-truered: #df4c40;
-  --color-trueorange: #f99b30;
+  --color-trueorange: #ed9734;
   --color-truegreen: #62b862;
   --color-trueviolet: #7f61c5;
   --color-graylight: oklch(86.9% 0.022 252.894);
@@ -306,8 +309,8 @@
     padding-left: var(--spacing-mssm);
     padding-right: var(--spacing-mssm);
     @variant xl {
-      padding-left: var(--spacing-ms);
-      padding-right: var(--spacing-ms);
+      padding-left: var(--spacing-mssm);
+      padding-right: var(--spacing-mssm);
     }
   }
 
