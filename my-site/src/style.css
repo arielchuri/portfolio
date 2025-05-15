@@ -13,7 +13,6 @@
   font-stretch: 75% 125%; /* Supports widths from 75% to 125% */
   font-style: normal italic; /* Supports normal and italic styles */
 }
-
 /* Define MonaspaceKrypton */
 @font-face {
   font-family: "MonaspaceKrypton";
@@ -60,6 +59,8 @@
 
 @theme {
   /* colors */
+
+  --color-transparent: rgba(255, 255, 255, 0);
   --color-testcolor: oklch(55.1% 0.027 264.364);
   --color-trueblack: #243131;
   --color-truewhite: oklch(98.4% 0.003 247.858); /*slate-50*/
@@ -375,5 +376,26 @@
   }
   .page {
     @apply p-mslg border border-graymedium  flex flex-col justify-center;
+  }
+
+  .responsive-text-sm {
+    font-size: clamp(0.875rem, 3vw, 1.5rem);
+  }
+  
+  .responsive-text {
+    font-size: clamp(1rem, 5vw, 3rem);
+  }
+  
+  .responsive-text-lg {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  .responsive-text-xl {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+  .responsive-text-2xl {
+    font-size: clamp(4rem, 14vw, 6rem);
+  }
+  .responsive-text-3xl {
+    font-size: clamp(5rem, 16vw, 7rem);
   }
 }

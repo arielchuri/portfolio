@@ -98,7 +98,7 @@ a.shape {
   opacity: 1;
   background-image: radial-gradient(
     var(--color-accent) 1px,
-    var(--color-truewhite) 1px
+    var(--color-transparent) 1px
   );
   background-size: 12px 12px;
   /* border: 1px solid var(--color-accent); */
@@ -107,7 +107,7 @@ a.shape {
   opacity: 1;
   background-image: radial-gradient(
     var(--color-accent) 2px,
-    var(--color-truewhite) 2px
+    var(--color-transparent) 2px
   );
   background-size: 16px 16px;
   /* border: 1px solid var(--color-accent); */
@@ -168,18 +168,34 @@ a.shape {
   border: 1px solid var(--color-graylight);
 }
 .hatchyellow {
+  @apply mix-blend-multiply;
   background-image: linear-gradient(
     135deg,
-    var(--color-truewhite) 40%,
+    var(--color-transparent) 40%,
     var(--color-trueyellow) 40%,
     var(--color-trueyellow) 50%,
-    var(--color-truewhite) 50%,
-    var(--color-truewhite) 90%,
+    var(--color-transparent) 50%,
+    var(--color-transparent) 90%,
     var(--color-trueyellow) 90%,
     var(--color-trueyellow) 100%
   );
   background-size: 12px 12px;
   border: 1px solid var(--color-trueyellow);
+}
+.hatchyellowi {
+  @apply mix-blend-multiply;
+  background-image: linear-gradient(
+    45deg,
+    var(--color-transparent) 40%,
+    var(--color-trueyellow) 40%,
+    var(--color-trueyellow) 50%,
+    var(--color-transparent) 50%,
+    var(--color-transparent) 90%,
+    var(--color-trueyellow) 90%,
+    var(--color-trueyellow) 100%
+  );
+  background-size: 12px 12px;
+  /* border: 1px solid var(--color-trueyellow); */
 }
 .dotyellow {
   opacity: 1;
@@ -241,37 +257,36 @@ a.shape {
   color: var(--color-truered);
 }
 .hatchblue {
+  @apply mix-blend-multiply;
   background-image: linear-gradient(
     135deg,
-    var(--color-truewhite) 40%,
+    var(--color-transparent) 40%,
     var(--color-trueblue) 40%,
     var(--color-trueblue) 50%,
-    var(--color-truewhite) 50%,
-    var(--color-truewhite) 90%,
+    var(--color-transparent) 50%,
+    var(--color-transparent) 90%,
     var(--color-trueblue) 90%,
     var(--color-trueblue) 100%
   );
   background-size: 12px 12px;
-  border: 1px solid var(--color-trueblue);
   color: var(--color-trueblue);
 }
 .dotblue {
   opacity: 1;
-  background-image: radial-gradient(
-    var(--color-trueblue) 1px--color-truewhite 1px
-  );
+  background-image: radial-gradient(var(--color-trueblue) 1px transparent 1px);
   background-size: 12px 12px;
   border: 1px solid var(--color-trueblue);
   color: var(--color-trueblue);
 }
 .graphpaperblue {
+  @apply mix-blend-multiply;
   opacity: 1;
   background-image:
     linear-gradient(var(--color-trueblue) 1px, transparent 1px),
     linear-gradient(
       to right,
       var(--color-trueblue) 1px,
-      var(--color-truewhite) 1px
+      var(--color-transparent) 1px
     );
   background-position: left -1px top -1px;
   background-size: 12px 12px;
