@@ -328,7 +328,7 @@
   /* } */
 
   .mygrid {
-    @apply grid gap-mssm xl:gap-ms xl:grid-cols-12;
+    @apply grid gap-mssm xl:gap-ms sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-12 xl:grid-cols-12;
   }
 
   .wrapgrid {
