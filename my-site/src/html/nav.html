@@ -1,25 +1,25 @@
-<nav class="bg-truewhite border-b border-graymedium sticky top-0 z-50 relative">
+<nav class="bg-truewhite border-b border-graymedium sticky top-0 z-50 relative mix-blend-multiply">
   <div class="container mx-auto px-ms">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="text-xl font-bold text-accent hover:text-hover transition-colors">
+      <a href="/" class="text-xl font-bold text-accent hover:text-hover transition-colors flex items-center h-full">
         Ariel Churi
       </a>
       
       <!-- Desktop menu -->
-      <div class="hidden md:flex space-x-ms">
-        <a href="/" class="text-trueblack hover:text-accent transition-colors">Home</a>
-        <a href="/pages/gallery.html" class="text-trueblack hover:text-accent transition-colors">Gallery</a>
-        <a href="/pages/journal.html" class="text-trueblack hover:text-accent transition-colors">Journal</a>
-        <a href="/style_specimin.html" class="text-trueblack hover:text-accent transition-colors">Style Guide</a>
+      <div class="hidden md:flex items-center h-full">
+        <a href="/" class="text-trueblack hover:text-truewhite hover:bg-trueblue transition-all duration-300 flex items-center h-full pt-0.5 px-3">Home</a>
+        <a href="/pages/gallery.html" class="text-trueblack hover:text-truewhite hover:bg-truered transition-all duration-300 flex items-center h-full pt-0.5 px-3">Gallery</a>
+        <a href="/pages/journal.html" class="text-trueblack hover:text-truewhite hover:bg-truegreen transition-all duration-300 flex items-center h-full pt-0.5 px-3">Journal</a>
+        <a href="/style_specimin.html" class="text-trueblack hover:text-truewhite hover:bg-trueviolet transition-all duration-300 flex items-center h-full pt-0.5 px-3">Style Guide</a>
       </div>
       
       <!-- Mobile menu button -->
-      <button type="button" id="mobile-menu-button" aria-label="Toggle mobile menu" class="md:hidden text-trueblack hover:text-accent transition-colors">
-        <div class="relative w-6 h-6">
+      <button type="button" id="mobile-menu-button" aria-label="Toggle mobile menu" class="md:hidden text-trueblack hover:text-accent transition-colors flex items-center justify-center h-16 w-6">
+        <div class="relative w-6 h-6 flex items-center justify-center">
           <!-- Hamburger lines -->
-          <span class="absolute top-0 left-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line1"></span>
-          <span class="absolute top-2 left-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line2"></span>
-          <span class="absolute top-4 left-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line3"></span>
+          <span class="absolute w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out -translate-y-2" id="line1"></span>
+          <span class="absolute w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line2"></span>
+          <span class="absolute w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out translate-y-2" id="line3"></span>
         </div>
       </button>
     </div>
