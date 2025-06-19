@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:portfolio && vite build",
+    "build:portfolio": "node scripts/build-portfolio.js",
     "preview": "vite preview"
   },
   "devDependencies": {

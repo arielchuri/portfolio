@@ -1,23 +1,35 @@
-<nav class="bg-truewhite border-b border-graymedium sticky top-0 z-50">
+<nav class="bg-truewhite border-b border-graymedium sticky top-0 z-50 relative">
   <div class="container mx-auto px-ms">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="text-xl font-bold text-accent hover:text-hover transition-colors">
         Ariel Churi
       </a>
       
+      <!-- Desktop menu -->
       <div class="hidden md:flex space-x-ms">
         <a href="/" class="text-trueblack hover:text-accent transition-colors">Home</a>
-        <a href="/gallery.html" class="text-trueblack hover:text-accent transition-colors">Gallery</a>
-        <a href="/journal.html" class="text-trueblack hover:text-accent transition-colors">Journal</a>
+        <a href="/pages/gallery.html" class="text-trueblack hover:text-accent transition-colors">Gallery</a>
+        <a href="/pages/journal.html" class="text-trueblack hover:text-accent transition-colors">Journal</a>
         <a href="/style_specimin.html" class="text-trueblack hover:text-accent transition-colors">Style Guide</a>
       </div>
       
       <!-- Mobile menu button -->
-      <button type="button" aria-label="Toggle mobile menu" class="md:hidden text-trueblack hover:text-accent transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+      <button type="button" id="mobile-menu-button" aria-label="Toggle mobile menu" class="md:hidden text-trueblack hover:text-accent transition-colors">
+        <div class="relative w-6 h-6">
+          <!-- Hamburger lines -->
+          <span class="absolute top-0 left-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line1"></span>
+          <span class="absolute top-2 left-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line2"></span>
+          <span class="absolute top-4 left-0 w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out" id="line3"></span>
+        </div>
       </button>
     </div>
+  </div>
+  
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 z-40 mt-16">
+    <a href="/" class="mobile-menu-item block w-full h-16 text-truewhite bg-trueblue transition-all duration-300 ease-out transform translate-y-[-100%] opacity-0 hover:bg-trueblue/80 flex items-center px-ms">Home</a>
+    <a href="/pages/gallery.html" class="mobile-menu-item block w-full h-16 text-truewhite bg-truered transition-all duration-300 ease-out transform translate-y-[-100%] opacity-0 hover:bg-truered/80 flex items-center px-ms" style="transition-delay: 0.1s;">Gallery</a>
+    <a href="/pages/journal.html" class="mobile-menu-item block w-full h-16 text-truewhite bg-truegreen transition-all duration-300 ease-out transform translate-y-[-100%] opacity-0 hover:bg-truegreen/80 flex items-center px-ms" style="transition-delay: 0.2s;">Journal</a>
+    <a href="/style_specimin.html" class="mobile-menu-item block w-full h-16 text-truewhite bg-trueviolet transition-all duration-300 ease-out transform translate-y-[-100%] opacity-0 hover:bg-trueviolet/80 flex items-center px-ms" style="transition-delay: 0.3s;">Style Guide</a>
   </div>
 </nav>
