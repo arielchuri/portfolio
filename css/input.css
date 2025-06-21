@@ -1,4 +1,6 @@
-@import "tailwindcss" * {
+@import "tailwindcss"; 
+
+* {
   box-sizing: border-box;
 }
 :root {
@@ -24,10 +26,11 @@
   --yellow: #fad13e;
   --red: #df4c40;
   --blue: #005eac;
-  --fontsize: 15px;
+  --fontsize: 1.2rem;
+  /* --text-base: 1.2rem; */
   --lineheight: calc(var(--fontSize) * 1.5);
-  --spacing: 2rem;
-  --spacingv: calc(var(--lineHeight) / 2);
+  /* --spacing: 2rem;
+  --spacingv: calc(var(--lineHeight) / 2); */
   --columnGap: 2rem;
 }
 html {
@@ -38,10 +41,10 @@ body {
   font-family: "Inter";
   background-color: var(--white);
   color: var(--black);
-  font-size: var(--fontsize);
+  /* font-size: var(--fontsize); */
   line-height: var(--lineheight);
   letter-spacing: -0.004em;
-  font-weight: 400;
+  /* font-weight: 400; */
   font-feature-settings:
     "case" 0,
     "cpsp" 0,
@@ -98,8 +101,8 @@ section {
 }
 
 .homecopy p {
-  font-size: 1em;
-  line-height: 1.5em;
+  /* font-size: 1em;
+  line-height: 1.5em; */
   hyphens: auto;
   word-break: break-word;
   text-wrap: balance;
@@ -123,11 +126,11 @@ h2 {
   font-weight: 700;
   letter-spacing: 0.01em;
 }
-h3 {
+/* h3 {
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: 0.01em;
-}
+} */
 h4 {
   font-size: 1.5rem;
   font-weight: 700;
