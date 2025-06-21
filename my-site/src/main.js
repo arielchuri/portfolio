@@ -76,9 +76,71 @@ function initMobileMenu() {
   });
 }
 
+// Scroll-based header animation
+function initHeaderScroll() {
+  const header = document.querySelector('nav');
+  let lastScrollTop = 0;
+  let isScrolling = false;
+  
+  if (!header) {
+    console.log('Header not found');
+    return;
+  }
+  
+  function handleScroll() {
+    if (isScrolling) return;
+    
+    isScrolling = true;
+    requestAnimationFrame(() => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const isAtTop = scrollTop <= 0;
+      const isScrollingUp = scrollTop < lastScrollTop;
+      
+      // Always show header at top of page
+      if (isAtTop) {
+        header.style.transform = 'translateY(0)';
+        header.style.transition = 'transform 0.3s ease-in-out';
+      }
+      // Hide header when scrolling down
+      else if (!isScrollingUp && scrollTop > 64) {
+        header.style.transform = 'translateY(-100%)';
+        header.style.transition = 'transform 0.3s ease-in-out';
+      }
+      // Show header when scrolling up
+      else if (isScrollingUp) {
+        header.style.transform = 'translateY(0)';
+        header.style.transition = 'transform 0.3s ease-in-out';
+      }
+      
+      lastScrollTop = scrollTop;
+      isScrolling = false;
+    });
+  }
+  
+  // Throttle scroll events for better performance
+  let ticking = false;
+  function updateHeader() {
+    handleScroll();
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }
+  
+  window.addEventListener('scroll', requestTick, { passive: true });
+}
+
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMobileMenu);
+  document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    initHeaderScroll();
+  });
 } else {
   initMobileMenu();
+  initHeaderScroll();
 }
