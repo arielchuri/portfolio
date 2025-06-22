@@ -1,27 +1,30 @@
-@import "tailwindcss"; 
+@import "tailwindcss";
+
+@theme {
+  --color-black: #243131;
+  --color-accent: deeppink;
+  --color-active: hotpink;
+  --color-accent2: paleturquoise;
+  --color-gray3: #666581;
+  --color-gray2: #9190aa;
+  --color-gray1: #d7d6ec;
+  --color-white: whitesmoke;
+  --color-yellow: #fad13e;
+  --color-red: #df4c40;
+  --color-blue: #005eac;
+}
 
 * {
   box-sizing: border-box;
 }
 :root {
-  --black: #394155;
-  --black: #3a3955;
   --black: #243131;
-  --accent: hotpink;
-  --active: deeppink;
-  --accent2: powderblue;
+  --accent: deeppink;
+  --active: hotpink;
   --accent2: paleturquoise;
   --gray3: #666581;
   --gray2: #9190aa;
   --gray1: #d7d6ec;
-  --white: white;
-  --white: linen;
-  --white: oldlace;
-  --white: floralwhite;
-  --white: seashell;
-  --white: snow;
-  --white: antiquewhite;
-  --white: red;
   --white: whitesmoke;
   --yellow: #fad13e;
   --red: #df4c40;
@@ -121,7 +124,6 @@ h1 {
   letter-spacing: 0.01em;
 }
 h2 {
-  color: hotpink;
   font-size: 5rem;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -371,35 +373,9 @@ hr.zag {
 }
 /*Copied from skeleton css in order to use css variables here*/
 
-.button.button-primary,
-button.button-primary,
-input[type="submit"].button-primary,
-input[type="reset"].button-primary,
-input[type="button"].button-primary {
-  color: var(--white);
-  background-color: var(--accent);
-  border-color: var(--accent);
-  text-decoration: none;
-}
-
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
-  color: #fff;
-  background-color: var(--active);
-  border-color: var(--active);
-  text-decoration: none;
-}
 
 a {
-  color: var(--accent);
+  /* color: var(--accent); */
   /* text-decoration: none; */
   mix-blend-mode: multiply;
 }
@@ -409,12 +385,11 @@ a.shape {
 }
 
 a:hover {
-  color: var(--active);
+  /* color: var(--active);
   background-color: var(--accent);
-  color: var(--white);
-  text-decoration: none;
+  color: var(--white); */
+  /* text-decoration: none; */
   /* text-decoration: underline; */
-  mix-blend-mode: multiply;
 }
 
 nav {
@@ -813,5 +788,72 @@ table {
   }
   .pagebreakbefore {
     page-break-before: always;
+  }
+}
+
+/* Tailwind Components */
+@layer components {
+  .btn-primary {
+    @apply bg-accent hover:bg-active text-white border border-accent hover:border-active px-4 py-1 rounded transition-colors duration-400;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray2 hover:bg-gray3 text-white border border-gray2 hover:border-gray3 px-4 py-1 rounded transition-colors duration-400;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent hover:bg-accent text-accent hover:text-white border border-accent px-4 py-1 rounded transition-colors duration-400;
+  }
+  
+  .btn-small {
+    @apply px-2 py-1 text-sm;
+  }
+  
+  .btn-large {
+    @apply px-6 py-3 text-lg;
+  }
+  
+  /* SVG Coloring */
+  .downarrow {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg) brightness(118%) contrast(119%);
+    /* This creates a pink color similar to your accent color */
+  }
+  
+  .downarrow-white {
+    filter: brightness(0) invert(1);
+    /* Makes it white */
+  }
+  
+  .downarrow-gray {
+    filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(89%) contrast(86%);
+    /* Makes it gray */
+  }
+  
+  .downarrow-accent {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg) brightness(118%) contrast(119%);
+    /* Pink accent color */
+  }
+  
+  .downarrow-active {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg) brightness(104%) contrast(97%);
+    /* Hot pink active color */
+  }
+}
+
+/* Global link styles */
+@layer base {
+  a {
+    @apply text-accent hover:text-active decoration-dotted underline transition-colors duration-200;
+  }
+  
+  /* Exclude buttons from global link styles */
+  a.btn-primary,
+  a.btn-secondary,
+  a.btn-outline {
+    @apply text-white hover:text-white no-underline;
+  }
+  
+  a.btn-outline {
+    @apply text-accent hover:text-white no-underline;
   }
 }

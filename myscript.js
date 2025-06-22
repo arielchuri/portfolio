@@ -112,10 +112,10 @@ function showDiv() {
 document.getElementById("contactDiv").innerHTML = contactinfo
 
 document.getElementById("returnbutton").innerHTML =
-  '<a href="index.html" class="button button-primary">&#8617; Return</a>';
+  '<a href="index.html" class="btn-outline btn-small">&#8617; Return</a>';
 
 document.getElementById("resumebutton").innerHTML =
-  '<a href="resume.html" class="button button-primary">r&eacute;sum&eacute;</a>';
+  '<a href="resume.html" class="btn-outline btn-small">r&eacute;sum&eacute;</a>';
 
 user = '&#97;&#99;';
 site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
@@ -125,7 +125,7 @@ site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99
 //   user + '@' + site + '</a>' ;
 
 document.getElementById("contactbutton").innerHTML =
-  '<a class="button button-primary" onclick="showDiv()">contact</a>' ;
+  '<a class="btn-outline btn-small" onclick="showDiv()">contact</a>' ;
 
 document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
 contactinfo +
