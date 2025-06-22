@@ -101,10 +101,10 @@ var contactinfo ='<section class="" style="padding-bottom:0vh;padding-top:0vh"> 
                   <td>he/him or they/them</td> \
                 </tr> \
                 <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></td> \
+                  <td><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></td> \
                 </tr> \
                 <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf"><img style="height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></td> \
+                  <td><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></td> \
                 </tr> \
                 <tr> \
                   <td><a href="https://github.com/arielchuri/">github.com/arielchuri</a></td> \
