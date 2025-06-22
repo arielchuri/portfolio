@@ -1,6 +1,26 @@
 console.log("Hello world!");
 var showContact = false;
 
+// Background animation scroll fade
+function handleBackgroundFade() {
+  const scrollY = window.scrollY || window.pageYOffset;
+  const fadeStart = 100; // Start fading after 100px scroll
+  const fadeEnd = 500;   // Completely faded out after 500px scroll
+  
+  // For CSS version
+  const bgAnimation = document.querySelector('.bg-animation-css');
+  if (bgAnimation) {
+    if (scrollY > fadeStart) {
+      bgAnimation.classList.add('scrolled');
+    } else {
+      bgAnimation.classList.remove('scrolled');
+    }
+  }
+}
+
+// Add scroll event listener for background fade
+window.addEventListener('scroll', handleBackgroundFade);
+
 // scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
