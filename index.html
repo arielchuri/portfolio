@@ -37,23 +37,19 @@
 <body class="bg-blue-400">
   <!-- Background Animation -->
   <div id="background-animation"></div>
-  
+
   <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav>
-      <span class="" id="returnbutton"></span> <span class="" id="resumebutton"></span>
-      <span class="" id="contactbutton"></span>
-    </nav>
+  <nav>
+    <span class="" id="returnbutton"></span> <span class="" id="resumebutton"></span>
+    <span class="" id="contactbutton"></span>
+  </nav>
   <div class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
 
     <div id="contactDiv" style="display: none; width: 100%"></div>
     <section class="" style="height: 100vh">
       <a href="#first">
         <div style="max-width: 32px; position: absolute; top: 90vh">
-          <svg
-            width="59.068542"
-            height="68.325569"
-            viewBox="0 0 59.068542 68.325569"
-            version="1.1"
+          <svg width="59.068542" height="68.325569" viewBox="0 0 59.068542 68.325569" version="1.1"
             class="animate-bounce w-8 h-8 text-accent hover:text-active transition-colors duration-200"
             xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(-20.473987,-20.89831)">
@@ -119,7 +115,7 @@
           </div>
         </div>
     </section>
-        <hr id="first" class="dots" style="border-color: var(--gray2)" />
+    <hr id="first" class="dots" style="border-color: var(--gray2)" />
     <section id="">
       <div class="row reveal">
         <div class="four columns">
@@ -133,7 +129,8 @@
             manufacturer, design the packaging, design the instructions, and
             sell the kits.
           </p>
-          <a href="p_sparklelabs.html" class="btn-outline m-6 ml-0 px-12 inline-block">View</a>
+          <a href="p_sparklelabs.html" class="btn-outline m-6 ml-0 px-12 inline-block "><span
+              class="wipe-bg"></span><span class="btn-text">View</span></a>
         </div>
         <div class="eight columns">
           <img src="images/sparklelabs/discovercover.jpg" class="rounded-md" />
@@ -305,9 +302,11 @@
   <div id="footer"></div>
 
   <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="myscript.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
   <script src="background-animation.js"></script>
+
 </body>
 
 </html>

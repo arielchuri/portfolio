@@ -27,7 +27,6 @@
     --default-mono-font-family: var(--font-mono);
     --color-accent: deeppink;
     --color-active: hotpink;
-    --color-gray3: #666581;
     --color-gray2: #9190aa;
   }
 }
@@ -218,9 +217,6 @@
   }
   .m-6 {
     margin: calc(var(--spacing) * 6);
-  }
-  .m-8 {
-    margin: calc(var(--spacing) * 8);
   }
   .mx-auto {
     margin-inline: auto;
@@ -982,21 +978,6 @@ table {
     padding-inline: calc(var(--spacing) * 4);
     padding-block: calc(var(--spacing) * 1);
     color: var(--color-white);
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 400ms;
-    transition-duration: 400ms;
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-active);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-active);
-      }
-    }
   }
   .btn-secondary {
     border-radius: 0.25rem;
@@ -1012,16 +993,6 @@ table {
     transition-duration: var(--tw-duration, var(--default-transition-duration));
     --tw-duration: 400ms;
     transition-duration: 400ms;
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray3);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray3);
-      }
-    }
   }
   .btn-outline {
     border-radius: 0.25rem;
@@ -1032,16 +1003,6 @@ table {
     padding-inline: calc(var(--spacing) * 4);
     padding-block: calc(var(--spacing) * 1);
     color: var(--color-accent);
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 400ms;
-    transition-duration: 400ms;
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-accent);
-      }
-    }
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
@@ -1059,6 +1020,33 @@ table {
     padding-block: calc(var(--spacing) * 3);
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .btn-primary, .btn-secondary, .btn-outline {
+    position: relative;
+    overflow: hidden;
+  }
+  .wipe-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    z-index: 0;
+    transition: none;
+    pointer-events: none;
+  }
+  .btn-primary .wipe-bg {
+    background: var(--active, hotpink);
+  }
+  .btn-secondary .wipe-bg {
+    background: var(--gray3, #666581);
+  }
+  .btn-outline .wipe-bg {
+    background: var(--accent, deeppink);
+  }
+  .btn-text {
+    position: relative;
+    z-index: 1;
   }
   .downarrow {
     filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg) brightness(118%) contrast(119%);

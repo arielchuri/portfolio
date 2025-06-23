@@ -794,24 +794,38 @@ table {
 /* Tailwind Components */
 @layer components {
   .btn-primary {
-    @apply bg-accent hover:bg-active text-white border border-accent hover:border-active px-4 py-1 rounded transition-colors duration-400;
+    @apply bg-accent text-white border border-accent px-4 py-1 rounded;
   }
-  
   .btn-secondary {
-    @apply bg-gray2 hover:bg-gray3 text-white border border-gray2 hover:border-gray3 px-4 py-1 rounded transition-colors duration-400;
+    @apply bg-gray2 text-white border border-gray2  px-4 py-1 rounded transition-colors duration-400;
   }
-  
   .btn-outline {
-    @apply bg-transparent hover:bg-accent text-accent hover:text-white border border-accent px-4 py-1 rounded transition-colors duration-400;
+    @apply bg-transparent text-accent hover:text-white border border-accent px-4 py-1 rounded ;
   }
-  
   .btn-small {
     @apply px-2 py-1 text-sm;
   }
-  
   .btn-large {
     @apply px-8 py-3 text-lg;
   }
+
+  .btn-primary, .btn-secondary, .btn-outline {
+    position: relative;
+    overflow: hidden;
+  }
+  .wipe-bg {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    z-index: 0;
+    transition: none;
+    pointer-events: none;
+  }
+  .btn-primary .wipe-bg { background: var(--active, hotpink); }
+  .btn-secondary .wipe-bg { background: var(--gray3, #666581); }
+  .btn-outline .wipe-bg { background: var(--accent, deeppink); }
+  .btn-text { position: relative; z-index: 1; }
+  
   
   /* SVG Coloring */
   .downarrow {

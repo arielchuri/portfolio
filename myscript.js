@@ -5,32 +5,31 @@ var showContact = false;
 function handleBackgroundFade() {
   const scrollY = window.scrollY || window.pageYOffset;
   const fadeStart = 100; // Start fading after 100px scroll
-  const fadeEnd = 500;   // Completely faded out after 500px scroll
-  
+  const fadeEnd = 500; // Completely faded out after 500px scroll
+
   // For CSS version
-  const bgAnimation = document.querySelector('.bg-animation-css');
+  const bgAnimation = document.querySelector(".bg-animation-css");
   if (bgAnimation) {
     if (scrollY > fadeStart) {
-      bgAnimation.classList.add('scrolled');
+      bgAnimation.classList.add("scrolled");
     } else {
-      bgAnimation.classList.remove('scrolled');
+      bgAnimation.classList.remove("scrolled");
     }
   }
 }
 
 // Add scroll event listener for background fade
-window.addEventListener('scroll', handleBackgroundFade);
+window.addEventListener("scroll", handleBackgroundFade);
 
 // scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
-  for (var i =0; i < reveals.length; i++) {
+  for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = reveals[i].getBoundingClientRect().top;
     var elementVisible = 450;
     if (elementTop < windowHeight - elementVisible) {
       reveals[i].classList.add("active");
-
     } else {
       reveals[i].classList.remove("active");
     }
@@ -52,7 +51,8 @@ reveal();
 // }
 // // END
 // show contact div
-var contactinfo ='<section class="" style="padding-bottom:0vh;padding-top:0vh"> \
+var contactinfo =
+  '<section class="" style="padding-bottom:0vh;padding-top:0vh"> \
         <div class="row"> \
           <div class="three columns"> \
             <table> \
@@ -117,19 +117,19 @@ var contactinfo ='<section class="" style="padding-bottom:0vh;padding-top:0vh"> 
 
 function showDiv() {
   console.log(window.pageYOffset);
-  var div = document.getElementById('contactDiv');
-  if (window.pageYOffset >200) {
+  var div = document.getElementById("contactDiv");
+  if (window.pageYOffset > 200) {
     div.style.display = "block";
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   } else {
-  div.style.display = div.style.display == "none" ? "block" : "none";
-  // showContact = showContact == false ? true : false;
-  console.log(showContact);
-  };
-};
+    div.style.display = div.style.display == "none" ? "block" : "none";
+    // showContact = showContact == false ? true : false;
+    console.log(showContact);
+  }
+}
 // END show contact div
 //
-document.getElementById("contactDiv").innerHTML = contactinfo
+document.getElementById("contactDiv").innerHTML = contactinfo;
 
 document.getElementById("returnbutton").innerHTML =
   '<a href="index.html" class="btn-outline btn-small">&#8617; Return</a>';
@@ -137,19 +137,44 @@ document.getElementById("returnbutton").innerHTML =
 document.getElementById("resumebutton").innerHTML =
   '<a href="resume.html" class="btn-outline btn-small">r&eacute;sum&eacute;</a>';
 
-user = '&#97;&#99;';
-site = '&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;';
+user = "&#97;&#99;";
+site =
+  "&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;";
 
 // document.getElementById("emailbutton").innerHTML =
 //   '<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">' +
 //   user + '@' + site + '</a>' ;
 
 document.getElementById("contactbutton").innerHTML =
-  '<a class="btn-outline btn-small" onclick="showDiv()">contact</a>' ;
+  '<a class="btn-outline btn-small" onclick="showDiv()">contact</a>';
 
-document.getElementById("footer").innerHTML = '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
-contactinfo +
+document.getElementById("footer").innerHTML =
+  '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
+  contactinfo +
   // '<h6>Colophon</h6>' +
   '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
-'This document was written in vanilla HTML, javascript, and CSS. ' +
-  'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>' ;
+  "This document was written in vanilla HTML, javascript, and CSS. " +
+  'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>';
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".btn-primary, .btn-secondary, .btn-outline").forEach((btn) => {
+    const bg = btn.querySelector(".wipe-bg");
+    if (!bg) return;
+    btn.addEventListener("mouseenter", () => {
+      anime({
+        targets: bg,
+        width: ["0%", "100%"],
+        duration: 500,
+        easing: "easeInOutCubic",
+      });
+    });
+    btn.addEventListener("mouseleave", () => {
+      anime({
+        targets: bg,
+        width: ["100%", "0%"],
+        duration: 500,
+        easing: "easeInOutCubic",
+      });
+    });
+  });
+});
