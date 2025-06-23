@@ -116,12 +116,53 @@ var contactinfo =
 
 function showDiv() {
   var div = document.getElementById("contactDiv");
-  if (window.pageYOffset > 200) {
+  
+  // Toggle visibility
+  const isVisible = div.style.display === "block";
+  
+  if (!isVisible) {
+    // Move div to body for proper absolute positioning
+    document.body.appendChild(div);
+    
+    // Show contact div with slide-in animation
     div.style.display = "block";
-    window.scrollTo(0, 0);
+    div.style.position = "fixed";
+    div.style.top = "0";
+    div.style.left = "0";
+    div.style.right = "0";
+    div.style.zIndex = "1000";
+    div.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+    div.style.backdropFilter = "blur(20px)";
+    div.style.webkitBackdropFilter = "blur(20px)";
+    div.style.padding = "2rem";
+    div.style.transform = "translateY(-50px)";
+    div.style.opacity = "0";
+    
+    // Slide in from above
+    anime({
+      targets: div,
+      translateY: [0],
+      opacity: [1],
+      duration: 600,
+      easing: 'easeInOutCubic'
+    });
   } else {
-    div.style.display = div.style.display == "none" ? "block" : "none";
-    // showContact = showContact == false ? true : false;
+    // Hide contact div with slide-out animation
+    anime({
+      targets: div,
+      translateY: [-50],
+      opacity: [0],
+      duration: 400,
+      easing: 'easeInOutCubic',
+      complete: function() {
+        div.style.display = "none";
+        // Move div back to its original location
+        const originalContainer = document.querySelector('.mx-auto.max-w-\\[2000px\\]');
+        if (originalContainer) {
+          originalContainer.appendChild(div);
+        }
+      }
+    });
   }
 }
 // END show contact div

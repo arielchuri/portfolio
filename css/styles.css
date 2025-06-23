@@ -268,7 +268,6 @@
   }
   .max-w-\[2000px\] {
     max-width: 2000px;
-    opacity: 0;
   }
   .flex-shrink {
     flex-shrink: 1;
