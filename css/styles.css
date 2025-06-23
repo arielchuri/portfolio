@@ -8,6 +8,8 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
     --color-blue-400: oklch(70.7% 0.165 254.624);
+    --color-gray-400: oklch(70.7% 0.022 261.325);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: whitesmoke;
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
@@ -326,6 +328,12 @@
   }
   .text-accent {
     color: var(--color-accent);
+  }
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .uppercase {
     text-transform: uppercase;
@@ -969,58 +977,6 @@ table {
   }
 }
 @layer components {
-  .btn-primary {
-    border-radius: 0.25rem;
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-    border-color: var(--color-accent);
-    background-color: var(--color-accent);
-    padding-inline: calc(var(--spacing) * 4);
-    padding-block: calc(var(--spacing) * 1);
-    color: var(--color-white);
-  }
-  .btn-secondary {
-    border-radius: 0.25rem;
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-    border-color: var(--color-gray2);
-    background-color: var(--color-gray2);
-    padding-inline: calc(var(--spacing) * 4);
-    padding-block: calc(var(--spacing) * 1);
-    color: var(--color-white);
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 400ms;
-    transition-duration: 400ms;
-  }
-  .btn-outline {
-    border-radius: 0.25rem;
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-    border-color: var(--color-accent);
-    background-color: transparent;
-    padding-inline: calc(var(--spacing) * 4);
-    padding-block: calc(var(--spacing) * 1);
-    color: var(--color-accent);
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-white);
-      }
-    }
-  }
-  .btn-small {
-    padding-inline: calc(var(--spacing) * 2);
-    padding-block: calc(var(--spacing) * 1);
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-  .btn-large {
-    padding-inline: calc(var(--spacing) * 8);
-    padding-block: calc(var(--spacing) * 3);
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
   .btn-primary, .btn-secondary, .btn-outline {
     position: relative;
     overflow: hidden;
@@ -1046,7 +1002,77 @@ table {
   }
   .btn-text {
     position: relative;
-    z-index: 1;
+    z-index: 3;
+  }
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 2;
+    background: var(--yellow);
+  }
+  .btn-primary {
+    border-radius: 0.25rem;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 1);
+    color: var(--color-white);
+    &:active {
+      color: var(--color-accent);
+    }
+  }
+  .btn-secondary {
+    border-radius: 0.25rem;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-gray2);
+    background-color: var(--color-gray2);
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 1);
+    color: var(--color-white);
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 400ms;
+    transition-duration: 400ms;
+    &:active {
+      color: var(--color-accent);
+    }
+  }
+  .btn-outline {
+    border-radius: 0.25rem;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-accent);
+    background-color: transparent;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 1);
+    color: var(--color-accent);
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+    &:active {
+      color: var(--color-accent);
+    }
+  }
+  .btn-small {
+    padding-inline: calc(var(--spacing) * 2);
+    padding-block: calc(var(--spacing) * 1);
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .btn-large {
+    padding-inline: calc(var(--spacing) * 8);
+    padding-block: calc(var(--spacing) * 3);
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .downarrow {
     filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg) brightness(118%) contrast(119%);
@@ -1062,6 +1088,15 @@ table {
   }
   .downarrow-active {
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg) brightness(104%) contrast(97%);
+  }
+  .text-stroke {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+    text-stroke: 1px var(--accent);
+  }
+  .text-stroke-fallback {
+    color: transparent;
+    text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent);
   }
   .bg-animation {
     position: fixed;
@@ -1327,6 +1362,11 @@ table {
       }
     }
   }
+}
+nav .btn-outline {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
 }
 @property --tw-rotate-x {
   syntax: "*";

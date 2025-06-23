@@ -793,14 +793,50 @@ table {
 
 /* Tailwind Components */
 @layer components {
+  .btn-primary, .btn-secondary, .btn-outline {
+    position: relative;
+    overflow: hidden;
+  }
+  .wipe-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    z-index: 0;
+    transition: none; /* anime.js will handle transitions */
+    pointer-events: none;
+  }
+  .btn-primary .wipe-bg {
+    background: var(--active, hotpink);
+  }
+  .btn-secondary .wipe-bg {
+    background: var(--gray3, #666581);
+  }
+  .btn-outline .wipe-bg {
+    background: var(--accent, deeppink);
+  }
+  .btn-text {
+    position: relative;
+    z-index: 3;
+  }
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 2;
+    background: var(--yellow);
+  }
   .btn-primary {
-    @apply bg-accent text-white border border-accent px-4 py-1 rounded;
+    @apply bg-accent text-white border active:text-accent border-accent px-4 py-1 rounded;
   }
   .btn-secondary {
-    @apply bg-gray2 text-white border border-gray2  px-4 py-1 rounded transition-colors duration-400;
+    @apply bg-gray2 text-white border active:text-accent border-gray2 px-4 py-1 rounded transition-colors duration-400;
   }
   .btn-outline {
-    @apply bg-transparent text-accent hover:text-white border border-accent px-4 py-1 rounded ;
+    @apply bg-transparent text-accent hover:text-white border active:text-accent border-accent px-4 py-1 rounded;
   }
   .btn-small {
     @apply px-2 py-1 text-sm;
@@ -808,24 +844,6 @@ table {
   .btn-large {
     @apply px-8 py-3 text-lg;
   }
-
-  .btn-primary, .btn-secondary, .btn-outline {
-    position: relative;
-    overflow: hidden;
-  }
-  .wipe-bg {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 0;
-    z-index: 0;
-    transition: none;
-    pointer-events: none;
-  }
-  .btn-primary .wipe-bg { background: var(--active, hotpink); }
-  .btn-secondary .wipe-bg { background: var(--gray3, #666581); }
-  .btn-outline .wipe-bg { background: var(--accent, deeppink); }
-  .btn-text { position: relative; z-index: 1; }
-  
   
   /* SVG Coloring */
   .downarrow {
@@ -851,6 +869,21 @@ table {
   .downarrow-active {
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg) brightness(104%) contrast(97%);
     /* Hot pink active color */
+  }
+  
+  .text-stroke {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+    text-stroke: 1px var(--accent);
+  }
+  
+  .text-stroke-fallback {
+    color: transparent;
+    text-shadow: 
+      -1px -1px 0 var(--accent),
+       1px -1px 0 var(--accent),
+      -1px  1px 0 var(--accent),
+       1px  1px 0 var(--accent);
   }
   
   .bg-animation {
@@ -1085,4 +1118,11 @@ table {
   a.btn-outline {
     @apply text-accent hover:text-white no-underline;
   }
+}
+
+/* Ensure nav buttons have proper overflow handling */
+nav .btn-outline {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
 }

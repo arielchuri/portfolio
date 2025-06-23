@@ -1,4 +1,3 @@
-console.log("Hello world!");
 var showContact = false;
 
 // Background animation scroll fade
@@ -116,7 +115,6 @@ var contactinfo =
       </section> ';
 
 function showDiv() {
-  console.log(window.pageYOffset);
   var div = document.getElementById("contactDiv");
   if (window.pageYOffset > 200) {
     div.style.display = "block";
@@ -124,56 +122,105 @@ function showDiv() {
   } else {
     div.style.display = div.style.display == "none" ? "block" : "none";
     // showContact = showContact == false ? true : false;
-    console.log(showContact);
   }
 }
 // END show contact div
 //
-document.getElementById("contactDiv").innerHTML = contactinfo;
-
-document.getElementById("returnbutton").innerHTML =
-  '<a href="index.html" class="btn-outline btn-small">&#8617; Return</a>';
-
-document.getElementById("resumebutton").innerHTML =
-  '<a href="resume.html" class="btn-outline btn-small">r&eacute;sum&eacute;</a>';
-
-user = "&#97;&#99;";
-site =
-  "&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;";
-
-// document.getElementById("emailbutton").innerHTML =
-//   '<a class="button button-primary" href=\"mailto:' + user + '@' + site + '\">' +
-//   user + '@' + site + '</a>' ;
-
-document.getElementById("contactbutton").innerHTML =
-  '<a class="btn-outline btn-small" onclick="showDiv()">contact</a>';
-
-document.getElementById("footer").innerHTML =
-  '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
-  contactinfo +
-  // '<h6>Colophon</h6>' +
-  '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
-  "This document was written in vanilla HTML, javascript, and CSS. " +
-  'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>';
-
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".btn-primary, .btn-secondary, .btn-outline").forEach((btn) => {
-    const bg = btn.querySelector(".wipe-bg");
-    if (!bg) return;
-    btn.addEventListener("mouseenter", () => {
-      anime({
-        targets: bg,
-        width: ["0%", "100%"],
-        duration: 500,
-        easing: "easeInOutCubic",
+  // Create nav buttons
+  const returnButton = document.getElementById("returnbutton");
+  const resumeButton = document.getElementById("resumebutton");
+  const contactButton = document.getElementById("contactbutton");
+  
+  if (returnButton) {
+    returnButton.innerHTML = '<a href="index.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">&#8617; Return</span></a>';
+  }
+  
+  if (resumeButton) {
+    resumeButton.innerHTML = '<a href="resume.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">r&eacute;sum&eacute;</span></a>';
+  }
+
+  user = "&#97;&#99;";
+  site = "&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;";
+
+  if (contactButton) {
+    contactButton.innerHTML = '<a class="btn-outline btn-small inline-block" onclick="showDiv()" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">contact</span></a>';
+  }
+
+  const contactDiv = document.getElementById("contactDiv");
+  if (contactDiv) {
+    contactDiv.innerHTML = contactinfo;
+  }
+
+  const footer = document.getElementById("footer");
+  if (footer) {
+    footer.innerHTML =
+      '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
+      contactinfo +
+      // '<h6>Colophon</h6>' +
+      '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
+      "This document was written in vanilla HTML, javascript, and CSS. " +
+      'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>';
+  }
+
+  // Button animations (wipe + ripple)
+  const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-outline');
+  
+  buttons.forEach((btn) => {
+    
+    // Wipe animation
+    const bg = btn.querySelector('.wipe-bg');
+    if (bg) {
+      btn.addEventListener('mouseenter', () => {
+        anime({
+          targets: bg,
+          width: ['0%', '100%'],
+          duration: 500,
+          easing: 'easeInOutCubic'
+        });
       });
-    });
-    btn.addEventListener("mouseleave", () => {
+      btn.addEventListener('mouseleave', () => {
+        anime({
+          targets: bg,
+          width: ['100%', '0%'],
+          duration: 500,
+          easing: 'easeInOutCubic'
+        });
+      });
+    }
+
+    // Ripple animation
+    btn.addEventListener('click', function(e) {
+      
+      // Remove any existing ripple
+      const oldRipple = btn.querySelector('.ripple');
+      if (oldRipple) oldRipple.remove();
+
+      // Get click position relative to button
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 2; // Back to 2x for better effect
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+
+      // Create ripple
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+
+      btn.appendChild(ripple);
+
       anime({
-        targets: bg,
-        width: ["100%", "0%"],
-        duration: 500,
-        easing: "easeInOutCubic",
+        targets: ripple,
+        scale: [0, 1],
+        // opacity: [0.95, 0],
+        easing: 'easeOutCubic',
+        duration: 300,
+        complete: function() {
+          ripple.remove();
+        }
       });
     });
   });
