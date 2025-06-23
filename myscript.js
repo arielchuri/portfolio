@@ -198,30 +198,139 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Get click position relative to button
       const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height) * 2; // Back to 2x for better effect
-      const x = e.clientX - rect.left - size / 2;
-      const y = e.clientY - rect.top - size / 2;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-      // Create ripple
+      // Create ripple element
       const ripple = document.createElement('span');
       ripple.className = 'ripple';
-
-      ripple.style.width = ripple.style.height = size + 'px';
       ripple.style.left = x + 'px';
       ripple.style.top = y + 'px';
-
       btn.appendChild(ripple);
 
+      // Animate ripple
       anime({
         targets: ripple,
-        scale: [0, 1],
-        // opacity: [0.95, 0],
+        scale: [0, 4],
+        opacity: [1, 0],
+        duration: 600,
         easing: 'easeOutCubic',
-        duration: 300,
-        complete: function() {
-          ripple.remove();
-        }
+        complete: () => ripple.remove()
       });
     });
   });
+
+  // Page slide-in animation for index page
+  const isIndexPage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+  if (isIndexPage) {
+    console.log('Index page detected, setting up slide-in animation');
+    
+    // Find the main content container
+    const mainContent = document.querySelector('.max-w-\\[2000px\\]');
+    
+    if (mainContent) {
+      console.log('Found main content container, starting slide-in animation');
+      
+      // Set initial position (off-screen to the left) immediately
+      mainContent.style.transform = 'translateX(-100%)';
+      mainContent.style.opacity = '0';
+      
+      // Find background animation element
+      const backgroundAnimation = document.getElementById('background-animation');
+      
+      // Find nav element
+      const nav = document.querySelector('nav');
+      
+      // Set initial opacity for background and nav (faded out)
+      if (backgroundAnimation) {
+        backgroundAnimation.style.opacity = '0';
+      }
+      if (nav) {
+        nav.style.opacity = '0';
+        nav.style.transform = 'translateY(-20px)';
+      }
+      
+      // Start animations immediately
+      anime({
+        targets: mainContent,
+        translateX: [0],
+        opacity: [1],
+        duration: 800,
+        easing: 'easeInOutCubic',
+        delay: 100,
+        begin: function() {
+          // Ensure opacity is set to 0 before animation starts
+          mainContent.style.opacity = '0';
+        }
+      });
+      
+      // Fade in background
+      if (backgroundAnimation) {
+        anime({
+          targets: backgroundAnimation,
+          opacity: [1],
+          duration: 1000,
+          easing: 'easeInOutCubic',
+          delay: 200
+        });
+      }
+      
+      // Fade in nav from top
+      if (nav) {
+        anime({
+          targets: nav,
+          opacity: [1],
+          translateY: [0],
+          duration: 600,
+          easing: 'easeInOutCubic',
+          delay: 300
+        });
+      }
+      
+      // Handle internal link clicks for slide-out
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
+          e.preventDefault();
+          console.log('Internal link clicked, starting slide-out animation:', link.href);
+          
+          // Fade out nav first
+          if (nav) {
+            anime({
+              targets: nav,
+              opacity: [0],
+              translateY: [-20],
+              duration: 300,
+              easing: 'easeInOutCubic'
+            });
+          }
+          
+          // Fade out background
+          if (backgroundAnimation) {
+            anime({
+              targets: backgroundAnimation,
+              opacity: [0],
+              duration: 900,
+              easing: 'easeInOutCubic'
+            });
+          }
+          
+          // Slide out to the left
+          anime({
+            targets: mainContent,
+            translateX: [-100],
+            duration: 600,
+            easing: 'easeInOutCubic',
+            delay: 200,
+            complete: function() {
+              // Navigate after animation completes
+              window.location.href = link.href;
+            }
+          });
+        }
+      });
+    } else {
+      console.log('Main content container not found');
+    }
+  }
 });
