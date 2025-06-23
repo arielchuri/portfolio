@@ -216,6 +216,12 @@
       max-width: 96rem;
     }
   }
+  .m-6 {
+    margin: calc(var(--spacing) * 6);
+  }
+  .m-8 {
+    margin: calc(var(--spacing) * 8);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -224,6 +230,9 @@
   }
   .mb-24 {
     margin-bottom: calc(var(--spacing) * 24);
+  }
+  .ml-0 {
+    margin-left: calc(var(--spacing) * 0);
   }
   .block {
     display: block;
@@ -300,6 +309,9 @@
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-12 {
+    padding-inline: calc(var(--spacing) * 12);
   }
   .pb-48 {
     padding-bottom: calc(var(--spacing) * 48);
@@ -1043,7 +1055,7 @@ table {
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .btn-large {
-    padding-inline: calc(var(--spacing) * 6);
+    padding-inline: calc(var(--spacing) * 8);
     padding-block: calc(var(--spacing) * 3);
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -1062,6 +1074,235 @@ table {
   }
   .downarrow-active {
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg) brightness(104%) contrast(97%);
+  }
+  .bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .platonic-solid {
+    position: absolute;
+    border: 1px solid var(--accent);
+    opacity: 0.1;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .tetrahedron {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-name: rotate3d;
+    transform-style: preserve-3d;
+  }
+  .tetrahedron::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    transform: rotateX(45deg) rotateY(45deg);
+  }
+  .cube {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    right: 15%;
+    animation-name: rotate3d-reverse;
+    transform-style: preserve-3d;
+  }
+  .cube::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    transform: rotateX(30deg) rotateY(30deg);
+  }
+  .octahedron {
+    width: 50px;
+    height: 50px;
+    top: 40%;
+    left: 70%;
+    animation-name: float-rotate;
+    animation-duration: 15s;
+  }
+  .octahedron::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    transform: rotateX(60deg) rotateY(60deg);
+  }
+  .floating-dots {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 8s infinite ease-in-out;
+  }
+  .dot-1 {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  .dot-2 {
+    top: 25%;
+    right: 25%;
+    animation-delay: 2s;
+  }
+  .dot-3 {
+    top: 70%;
+    left: 30%;
+    animation-delay: 4s;
+  }
+  .dot-4 {
+    top: 80%;
+    right: 40%;
+    animation-delay: 6s;
+  }
+  .bg-animation-css {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+  .bg-animation-css.scrolled {
+    opacity: 0;
+  }
+  .platonic-solid-css {
+    position: absolute;
+    border: 1px solid var(--accent);
+    opacity: 0.1;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .tetrahedron-css {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-name: rotate3d;
+    transform-style: preserve-3d;
+  }
+  .tetrahedron-css::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    transform: rotateX(45deg) rotateY(45deg);
+  }
+  .cube-css {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    right: 15%;
+    animation-name: rotate3d-reverse;
+    transform-style: preserve-3d;
+  }
+  .cube-css::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    transform: rotateX(30deg) rotateY(30deg);
+  }
+  .octahedron-css {
+    width: 50px;
+    height: 50px;
+    top: 40%;
+    left: 70%;
+    animation-name: float-rotate;
+    animation-duration: 15s;
+  }
+  .octahedron-css::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    transform: rotateX(60deg) rotateY(60deg);
+  }
+  .floating-dots-css {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 8s infinite ease-in-out;
+  }
+  .dot-1-css {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  .dot-2-css {
+    top: 25%;
+    right: 25%;
+    animation-delay: 2s;
+  }
+  .dot-3-css {
+    top: 70%;
+    left: 30%;
+    animation-delay: 4s;
+  }
+  .dot-4-css {
+    top: 80%;
+    right: 40%;
+    animation-delay: 6s;
+  }
+}
+@keyframes rotate3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+@keyframes rotate3d-reverse {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(-360deg) rotateY(-360deg) rotateZ(-360deg);
+  }
+}
+@keyframes float-rotate {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(180deg) rotateY(180deg);
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.5);
+    opacity: 0.4;
   }
 }
 @layer base {

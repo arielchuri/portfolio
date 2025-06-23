@@ -810,7 +810,7 @@ table {
   }
   
   .btn-large {
-    @apply px-6 py-3 text-lg;
+    @apply px-8 py-3 text-lg;
   }
   
   /* SVG Coloring */
@@ -1053,7 +1053,7 @@ table {
     opacity: 0.4;
   }
 }
-}
+
 
 /* Global link styles */
 @layer base {
