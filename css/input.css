@@ -367,7 +367,6 @@ hr.zag {
 a {
   /* color: var(--accent); */
   /* text-decoration: none; */
-  mix-blend-mode: multiply;
 }
 
 a.shape {
@@ -387,7 +386,6 @@ nav {
   position: fixed;
   z-index: 9999;
   margin: 1rem;
-  mix-blend-mode: multiply;
 }
 
 span > .button.button-primary {
@@ -819,7 +817,7 @@ table {
     @apply bg-gray2 text-white border active:text-accent border-gray2 px-4 py-1 rounded transition-colors duration-400;
   }
   .btn-outline {
-    @apply bg-transparent text-accent hover:text-white border active:text-accent border-accent px-4 py-1 rounded;
+    @apply bg-white/70  text-accent hover:text-white border active:text-accent border-accent backdrop-blur-xl px-4 py-1 rounded;
   }
   .btn-small {
     @apply px-2 py-1 text-sm;
@@ -1116,12 +1114,12 @@ nav .btn-outline {
   left: 0;
   width: 100vw;
   z-index: 1000;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(20px);
+  background: rgba(245,245,245,0.5);
+  backdrop-filter: blur(60px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0;
   margin: 0;
-  transition: transform 1s cubic-bezier(.77,0,.18,1), opacity 1s cubic-bezier(.77,0,.18,1);
+  transition: transform 2s cubic-bezier(.77,0,.18,1);
 }
 #contactDiv .contact-inner {
   max-width: 2000px;
@@ -1137,12 +1135,10 @@ nav .btn-outline {
 }
 #contactDiv.hide {
   transform: translateY(-100%);
-  opacity: 0;
   pointer-events: none;
 }
 #contactDiv.show {
   transform: translateY(0);
-  opacity: 1;
   pointer-events: auto;
 }
 

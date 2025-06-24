@@ -4,9 +4,8 @@
 var contactinfo =
 
   '<section class="" style="padding-bottom:0vh;padding-top:0vh"> \
-          <div class="flex flex-col sm:flex-row justify-start gap-4"> \
+          <div class="flex flex-col sm:flex-row justify-start gap-8"> \
           <ul  class="list-none flex justify-end flex-col"> \
-                  <li><strong>Ariel Churi</strong></li> \
                   <li><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></li> \
                   <li><a href="tel:646-450-4576">(646) 450-4576</a></li> \
                   <li><a href="https://calendly.com/arielchuri/30min">Create a 30min. meeting.</a></li> \
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const contactDiv = document.getElementById("contactDiv");
   if (contactDiv) {
-    contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 pt-10 pb-6 flex items-start">${contactinfo}</div>`;
+    contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 pt-14 pb-2 flex items-start  ">${contactinfo}</div>`;
     contactDiv.classList.add("hide");
   }
 
