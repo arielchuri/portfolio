@@ -298,16 +298,6 @@ mark {
   height: calc(1000px / 4.6);
 }
 
-.flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: stretch;
-  gap: 2rem;
-}
-.flex > *:not(.shape) {
-  flex: 1;
-}
 hr {
   border: 0;
   border-top: 1px solid var(--black);
@@ -746,13 +736,6 @@ table {
     break-inside: avoid-column;
     break-inside: avoid;
   }
-  #contactDiv {
-    /* position:absolute; */
-    transition: 1s all ease;
-  }
-  .flex {
-    flex-direction: row;
-  }
   .mobile {
     display: none;
   }
@@ -1126,3 +1109,45 @@ nav .btn-outline {
   overflow: hidden !important;
   isolation: isolate;
 }
+
+#contactDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0;
+  margin: 0;
+  transition: transform 1s cubic-bezier(.77,0,.18,1), opacity 1s cubic-bezier(.77,0,.18,1);
+}
+#contactDiv .contact-inner {
+  max-width: 2000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+  /* match your main content's padding */
+  display: flex;
+  align-items: flex-start;
+}
+#contactDiv.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+#contactDiv.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.preload {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+

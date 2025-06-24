@@ -1,172 +1,46 @@
-var showContact = false;
-
-// Background animation scroll fade
-function handleBackgroundFade() {
-  const scrollY = window.scrollY || window.pageYOffset;
-  const fadeStart = 100; // Start fading after 100px scroll
-  const fadeEnd = 500; // Completely faded out after 500px scroll
-
-  // For CSS version
-  const bgAnimation = document.querySelector(".bg-animation-css");
-  if (bgAnimation) {
-    if (scrollY > fadeStart) {
-      bgAnimation.classList.add("scrolled");
-    } else {
-      bgAnimation.classList.remove("scrolled");
-    }
-  }
-}
-
-// Add scroll event listener for background fade
-window.addEventListener("scroll", handleBackgroundFade);
-
-// scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
-function reveal() {
-  var reveals = document.querySelectorAll(".reveal");
-  for (var i = 0; i < reveals.length; i++) {
-    var windowHeight = window.innerHeight;
-    var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 450;
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
-    } else {
-      reveals[i].classList.remove("active");
-    }
-  }
-}
-
-window.addEventListener("scroll", reveal);
-
-// To check the scroll position on page load
-reveal();
-// END scroll animation https://alvarotrigo.com/blog/css-animations-scroll/
-// function to hide contact info on scroll
-// window.onscroll = function() {scrollcheck()};
-// scrollcheck = () => {
-//   if (document.documentElement.scrollTop > 200) {
-//     contactDiv.style.display = "none";
-//     showContact = false;
-//   }
 // }
 // // END
 // show contact div
 var contactinfo =
+
   '<section class="" style="padding-bottom:0vh;padding-top:0vh"> \
-        <div class="row"> \
-          <div class="three columns"> \
-            <table> \
-              <thead> \
-                <tr> \
-                  <th></th> \
-                </tr> \
-              </thead> \
-              <tbody> \
-                <tr> \
-                  <td><strong>Ariel Churi</strong></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="tel:646-450-4576">(646) 450-4576</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://calendly.com/arielchuri/30min">Create a 30min. meeting.</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com">arielchuri.sparklelabs.com</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://linkedin.com/in/arielchuri/">linkedin.com/in/arielchuri</a></td> \
-                </tr> \
-              </tbody> \
-            </table> \
-          </div> \
-          <div class="three columns bottomspace"> \
-            <table> \
-              <thead> \
-                <tr> \
-                  <th></th> \
-                </tr> \
-              </thead> \
-              <tbody> \
-                <tr> \
-                  <td style="visibility:hidden">.</a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99">Montclair, NJ</a></td> \
-                </tr> \
-                <tr> \
-                  <td>he/him or they/them</td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></td> \
-                </tr> \
-                <tr> \
-                  <td><a href="https://github.com/arielchuri/">github.com/arielchuri</a></td> \
-                </tr> \
-              </tbody> \
-            </table> \
-          </div> \
+          <div class="flex flex-col sm:flex-row justify-start gap-4"> \
+          <ul  class="list-none flex justify-end flex-col"> \
+                  <li><strong>Ariel Churi</strong></li> \
+                  <li><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></li> \
+                  <li><a href="tel:646-450-4576">(646) 450-4576</a></li> \
+                  <li><a href="https://calendly.com/arielchuri/30min">Create a 30min. meeting.</a></li> \
+                  <li><a href="https://arielchuri.sparklelabs.com">arielchuri.sparklelabs.com</a></li> \
+                  <li><a href="https://linkedin.com/in/arielchuri/">linkedin.com/in/arielchuri</a></li> \
+          </ul> \
+          <ul class="list-none flex justify-end flex-col" > \
+                  <li><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99">Montclair, NJ</a></li> \
+                  <li>he/him or they/them</li> \
+                  <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
+                  <li><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></li> \
+                  <li><a href="https://github.com/arielchuri/">github.com/arielchuri</a></li> \
+          </ul> \
         </div> \
       </section> ';
 
-function showDiv() {
-  var div = document.getElementById("contactDiv");
-  
-  // Toggle visibility
-  const isVisible = div.style.display === "block";
-  
-  if (!isVisible) {
-    // Move div to body for proper absolute positioning
-    document.body.appendChild(div);
-    
-    // Show contact div with slide-in animation
-    div.style.display = "block";
-    div.style.position = "fixed";
-    div.style.top = "0";
-    div.style.left = "0";
-    div.style.right = "0";
-    div.style.zIndex = "1000";
-    div.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
-    div.style.backdropFilter = "blur(20px)";
-    div.style.webkitBackdropFilter = "blur(20px)";
-    div.style.padding = "2rem";
-    div.style.transform = "translateY(-50px)";
-    div.style.opacity = "0";
-    
-    // Slide in from above
-    anime({
-      targets: div,
-      translateY: [0],
-      opacity: [1],
-      duration: 600,
-      easing: 'easeInOutCubic'
-    });
+function toggleContactBar(forceHide = false) {
+  const div = document.getElementById("contactDiv");
+  if (!div) return;
+
+  const isVisible = div.classList.contains("show");
+  if (isVisible || forceHide) {
+    div.classList.remove("show");
+    div.classList.add("hide");
+    setTimeout(() => { div.style.display = "none"; }, 1000);
   } else {
-    // Hide contact div with slide-out animation
-    anime({
-      targets: div,
-      translateY: [-50],
-      opacity: [0],
-      duration: 400,
-      easing: 'easeInOutCubic',
-      complete: function() {
-        div.style.display = "none";
-        // Move div back to its original location
-        const originalContainer = document.querySelector('.mx-auto.max-w-\\[2000px\\]');
-        if (originalContainer) {
-          originalContainer.appendChild(div);
-        }
-      }
-    });
+    div.style.display = "block";
+    void div.offsetHeight;
+    div.classList.remove("hide");
+    div.classList.add("show");
   }
 }
-// END show contact div
-//
+
+// Setup contact bar and events
 document.addEventListener("DOMContentLoaded", function () {
   // Create nav buttons
   const returnButton = document.getElementById("returnbutton");
@@ -185,12 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
   site = "&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;";
 
   if (contactButton) {
-    contactButton.innerHTML = '<a class="btn-outline btn-small inline-block" onclick="showDiv()" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">contact</span></a>';
+    contactButton.innerHTML = '<a class="btn-outline btn-small inline-block" onclick="toggleContactBar()" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">contact</span></a>';
   }
 
   const contactDiv = document.getElementById("contactDiv");
   if (contactDiv) {
-    contactDiv.innerHTML = contactinfo;
+    contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 pt-10 pb-6 flex items-start">${contactinfo}</div>`;
+    contactDiv.classList.add("hide");
   }
 
   const footer = document.getElementById("footer");
@@ -264,17 +139,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Page slide-in animation for index page
   const isIndexPage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
   if (isIndexPage) {
-    console.log('Index page detected, setting up slide-in animation');
     
     // Find the main content container
-    const mainContent = document.querySelector('.max-w-\\[2000px\\]');
-    
+    const mainContent = document.getElementById('mainContent');
     if (mainContent) {
-      console.log('Found main content container, starting slide-in animation');
-      
-      // Set initial position (off-screen to the left) immediately
-      mainContent.style.transform = 'translateX(-100%)';
-      mainContent.style.opacity = '0';
+      mainContent.classList.remove('preload');
+      mainContent.style.opacity = '1';
+      mainContent.style.transform = 'translateX(0%)';
+      anime({
+        targets: mainContent,
+        translateX: ['-100%', '0%'],
+        opacity: [0, 1],
+        duration: 800,
+        easing: 'easeInOutCubic',
+        delay: 100
+      });
       
       // Find background animation element
       const backgroundAnimation = document.getElementById('background-animation');
@@ -294,15 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // Start animations immediately
       anime({
         targets: mainContent,
-        translateX: [0],
-        opacity: [1],
+        translateX: ['-100%', '0%'],
+        opacity: [0, 1],
         duration: 800,
         easing: 'easeInOutCubic',
-        delay: 100,
-        begin: function() {
-          // Ensure opacity is set to 0 before animation starts
-          mainContent.style.opacity = '0';
-        }
+        delay: 100
       });
       
       // Fade in background
@@ -333,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const link = e.target.closest('a');
         if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
           e.preventDefault();
-          console.log('Internal link clicked, starting slide-out animation:', link.href);
           
           // Fade out nav first
           if (nav) {
@@ -371,7 +245,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     } else {
-      console.log('Main content container not found');
     }
   }
+
+  // Hide contact bar on scroll
+  window.addEventListener("scroll", function () {
+    toggleContactBar(true);
+  });
 });
