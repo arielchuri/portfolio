@@ -138,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Page slide-in animation for index page
   const isIndexPage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
   if (isIndexPage) {
-    
     // Find the main content container
     const mainContent = document.getElementById('mainContent');
     if (mainContent) {
@@ -208,6 +207,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
           e.preventDefault();
           
+          // Determine slide direction based on destination
+          const isGoingToIndex = link.href.includes('index.html') || link.href.endsWith('/');
+          const slideOutDirection = isGoingToIndex ? 'right' : 'left';
+          
           // Fade out nav first
           if (nav) {
             anime({
@@ -229,10 +232,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           }
           
-          // Slide out to the left
+          // Slide out based on direction
           anime({
             targets: mainContent,
-            translateX: [-100],
+            translateX: slideOutDirection === 'right' ? [100] : [-100],
             duration: 600,
             easing: 'easeInOutCubic',
             delay: 200,
@@ -243,7 +246,51 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         }
       });
-    } else {
+    }
+  } else {
+    // Non-index pages: slide in from right
+    const mainContent = document.querySelector('.mx-auto.max-w-\\[2000px\\]');
+    if (mainContent) {
+      // Add slide-in-from-right class initially
+      mainContent.classList.add('slide-in-from-right');
+      
+      // Force reflow
+      void mainContent.offsetHeight;
+      
+      // Animate in from right
+      anime({
+        targets: mainContent,
+        translateX: ['100%', '0%'],
+        opacity: [0, 1],
+        duration: 800,
+        easing: 'easeInOutCubic',
+        delay: 100
+      });
+      
+      // Handle internal link clicks for slide-out
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
+          e.preventDefault();
+          
+          // Determine slide direction based on destination
+          const isGoingToIndex = link.href.includes('index.html') || link.href.endsWith('/');
+          const slideOutDirection = isGoingToIndex ? 'right' : 'left';
+          
+          // Slide out based on direction
+          anime({
+            targets: mainContent,
+            translateX: slideOutDirection === 'right' ? [100] : [-100],
+            duration: 600,
+            easing: 'easeInOutCubic',
+            delay: 200,
+            complete: function() {
+              // Navigate after animation completes
+              window.location.href = link.href;
+            }
+          });
+        }
+      });
     }
   }
 

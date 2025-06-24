@@ -161,7 +161,7 @@ h6 {
 .reveal {
   position: relative;
   transform: translateY(0px);
-  opacity: 0;
+  opacity: 1;
   transition: 1s all ease;
 }
 .reveal.active {
@@ -1145,5 +1145,18 @@ nav .btn-outline {
 .preload {
   opacity: 0;
   transform: translateX(-100%);
+}
+
+.slide-in-from-right {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-out-to-left {
+  transform: translateX(-100%);
+}
+
+.slide-out-to-right {
+  transform: translateX(100%);
 }
 

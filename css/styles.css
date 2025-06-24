@@ -22,7 +22,6 @@
     --radius-md: 0.375rem;
     --animate-bounce: bounce 1s infinite;
     --blur-xl: 24px;
-    --blur-2xl: 40px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -534,7 +533,7 @@ h6 {
 .reveal {
   position: relative;
   transform: translateY(0px);
-  opacity: 0;
+  opacity: 1;
   transition: 1s all ease;
 }
 .reveal.active {
@@ -1412,6 +1411,16 @@ nav .btn-outline {
 .preload {
   opacity: 0;
   transform: translateX(-100%);
+}
+.slide-in-from-right {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.slide-out-to-left {
+  transform: translateX(-100%);
+}
+.slide-out-to-right {
+  transform: translateX(100%);
 }
 @property --tw-rotate-x {
   syntax: "*";
