@@ -137,6 +137,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Page slide-in animation for index page
   const isIndexPage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+  const isResumePage = window.location.pathname.endsWith('resume.html');
+  
+  // Nav animation for all pages
+  const nav = document.querySelector('nav');
+  if (nav) {
+    // Set initial state for nav (faded out and moved up)
+    nav.style.opacity = '0';
+    nav.style.transform = 'translateY(-20px)';
+    
+    // Fade in nav from top
+    anime({
+      targets: nav,
+      opacity: [1],
+      translateY: [0],
+      duration: 600,
+      easing: 'easeInOutCubic',
+      delay: 300
+    });
+  }
+  
   if (isIndexPage) {
     // Find the main content container
     const mainContent = document.getElementById('mainContent');
@@ -156,16 +176,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Find background animation element
       const backgroundAnimation = document.getElementById('background-animation');
       
-      // Find nav element
-      const nav = document.querySelector('nav');
-      
-      // Set initial opacity for background and nav (faded out)
+      // Set initial opacity for background (faded out)
       if (backgroundAnimation) {
         backgroundAnimation.style.opacity = '0';
-      }
-      if (nav) {
-        nav.style.opacity = '0';
-        nav.style.transform = 'translateY(-20px)';
       }
       
       // Start animations immediately
@@ -186,18 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 1000,
           easing: 'easeInOutCubic',
           delay: 200
-        });
-      }
-      
-      // Fade in nav from top
-      if (nav) {
-        anime({
-          targets: nav,
-          opacity: [1],
-          translateY: [0],
-          duration: 600,
-          easing: 'easeInOutCubic',
-          delay: 300
         });
       }
       
@@ -248,8 +249,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   } else {
-    // Non-index pages: slide in from right
-    const mainContent = document.querySelector('.mx-auto.max-w-\\[2000px\\]');
+    // Non-index pages (including resume.html): slide in from right
+    const mainContent = document.querySelector('.main-content');
     if (mainContent) {
       // Add slide-in-from-right class initially
       mainContent.classList.add('slide-in-from-right');
@@ -276,6 +277,17 @@ document.addEventListener("DOMContentLoaded", function () {
           // Determine slide direction based on destination
           const isGoingToIndex = link.href.includes('index.html') || link.href.endsWith('/');
           const slideOutDirection = isGoingToIndex ? 'right' : 'left';
+          
+          // Fade out nav first
+          if (nav) {
+            anime({
+              targets: nav,
+              opacity: [0],
+              translateY: [-20],
+              duration: 300,
+              easing: 'easeInOutCubic'
+            });
+          }
           
           // Slide out based on direction
           anime({
