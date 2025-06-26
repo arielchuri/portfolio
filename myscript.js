@@ -22,6 +22,39 @@ var contactinfo =
         </div> \
       </section> ';
 
+// Simple section tracking for return button
+function getCurrentSection() {
+  const sections = [
+    'sparkle-labs', 'bridgestone', 'sothebys', 'calvin-klein', 
+    'unilever', 'ibm-holobot', 'moma-killscreen', 'more-work'
+  ];
+  
+  const scrollPosition = window.scrollY + window.innerHeight / 2;
+  
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = document.getElementById(sections[i]);
+    if (section && section.offsetTop <= scrollPosition) {
+      return sections[i];
+    }
+  }
+  return ''; // No anchor if at top
+}
+
+function saveCurrentSection() {
+  const currentSection = getCurrentSection();
+  sessionStorage.setItem('indexSection', currentSection);
+}
+
+function updateReturnButton() {
+  const returnButton = document.getElementById("returnbutton");
+  if (returnButton) {
+    // Get saved section from sessionStorage
+    const savedSection = sessionStorage.getItem('indexSection') || '';
+    const anchor = savedSection ? `#${savedSection}` : '';
+    returnButton.innerHTML = `<a href="index.html${anchor}" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">&#8617; Return</span></a>`;
+  }
+}
+
 function toggleContactBar(forceHide = false) {
   const div = document.getElementById("contactDiv");
   if (!div) return;
@@ -47,7 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactButton = document.getElementById("contactbutton");
   
   if (returnButton) {
-    returnButton.innerHTML = '<a href="index.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">&#8617; Return</span></a>';
+    updateReturnButton();
+    
+    // Update return button as user scrolls (only on index page)
+    if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+      window.addEventListener('scroll', function() {
+        saveCurrentSection(); // Save current section as user scrolls
+        updateReturnButton();
+      });
+    }
   }
   
   if (resumeButton) {
@@ -208,6 +249,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
           e.preventDefault();
           
+          // Save current section before navigating
+          saveCurrentSection();
+          
           // Determine slide direction based on destination
           const isGoingToIndex = link.href.includes('index.html') || link.href.endsWith('/');
           const slideOutDirection = isGoingToIndex ? 'right' : 'left';
@@ -273,6 +317,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const link = e.target.closest('a');
         if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
           e.preventDefault();
+          
+          // Save current section before navigating
+          saveCurrentSection();
           
           // Determine slide direction based on destination
           const isGoingToIndex = link.href.includes('index.html') || link.href.endsWith('/');
