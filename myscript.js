@@ -246,7 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Handle internal link clicks for slide-out
       document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
-        if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
+        if (link && link.href && link.href.includes(window.location.origin) && 
+            (!link.href.includes('#') || link.href.includes('index.html'))) {
           e.preventDefault();
           
           // Save current section before navigating
@@ -315,7 +316,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Handle internal link clicks for slide-out
       document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
-        if (link && link.href && link.href.includes(window.location.origin) && !link.href.includes('#')) {
+        if (link && link.href && link.href.includes(window.location.origin) && 
+            (!link.href.includes('#') || link.href.includes('index.html'))) {
           e.preventDefault();
           
           // Save current section before navigating
