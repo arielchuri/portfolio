@@ -301,7 +301,6 @@ mark {
 hr {
   border: 0;
   border-top: 1px solid var(--black);
-  margin: 12em auto 3em auto;
   max-width: 100%;
   background-position: 50%;
   box-sizing: border-box;
@@ -362,7 +361,6 @@ hr.zag {
   margin-top: -28px;
 }
 /*Copied from skeleton css in order to use css variables here*/
-
 
 a {
   /* color: var(--accent); */
@@ -774,7 +772,9 @@ table {
 
 /* Tailwind Components */
 @layer components {
-  .btn-primary, .btn-secondary, .btn-outline {
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
     position: relative;
     overflow: hidden;
   }
@@ -825,48 +825,52 @@ table {
   .btn-large {
     @apply px-8 py-3 text-lg;
   }
-  
+
   /* SVG Coloring */
   .downarrow {
-    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg) brightness(118%) contrast(119%);
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg)
+      brightness(118%) contrast(119%);
     /* This creates a pink color similar to your accent color */
   }
-  
+
   .downarrow-white {
     filter: brightness(0) invert(1);
     /* Makes it white */
   }
-  
+
   .downarrow-gray {
-    filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(89%) contrast(86%);
+    filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%)
+      hue-rotate(0deg) brightness(89%) contrast(86%);
     /* Makes it gray */
   }
-  
+
   .downarrow-accent {
-    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg) brightness(118%) contrast(119%);
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(320deg)
+      brightness(118%) contrast(119%);
     /* Pink accent color */
   }
-  
+
   .downarrow-active {
-    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg) brightness(104%) contrast(97%);
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg)
+      brightness(104%) contrast(97%);
     /* Hot pink active color */
   }
-  
+
   .text-stroke {
     color: transparent;
     -webkit-text-stroke: 1px var(--accent);
     text-stroke: 1px var(--accent);
   }
-  
+
   .text-stroke-fallback {
     color: transparent;
-    text-shadow: 
+    text-shadow:
       -1px -1px 0 var(--accent),
-       1px -1px 0 var(--accent),
-      -1px  1px 0 var(--accent),
-       1px  1px 0 var(--accent);
+      1px -1px 0 var(--accent),
+      -1px 1px 0 var(--accent),
+      1px 1px 0 var(--accent);
   }
-  
+
   .bg-animation {
     position: fixed;
     top: 0;
@@ -877,7 +881,7 @@ table {
     overflow: hidden;
     pointer-events: none;
   }
-  
+
   .platonic-solid {
     position: absolute;
     border: 1px solid var(--accent);
@@ -886,7 +890,7 @@ table {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
-  
+
   .tetrahedron {
     width: 60px;
     height: 60px;
@@ -895,16 +899,16 @@ table {
     animation-name: rotate3d;
     transform-style: preserve-3d;
   }
-  
+
   .tetrahedron::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent);
     transform: rotateX(45deg) rotateY(45deg);
   }
-  
+
   .cube {
     width: 80px;
     height: 80px;
@@ -913,16 +917,16 @@ table {
     animation-name: rotate3d-reverse;
     transform-style: preserve-3d;
   }
-  
+
   .cube::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent);
     transform: rotateX(30deg) rotateY(30deg);
   }
-  
+
   .octahedron {
     width: 50px;
     height: 50px;
@@ -931,16 +935,16 @@ table {
     animation-name: float-rotate;
     animation-duration: 15s;
   }
-  
+
   .octahedron::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent);
     transform: rotateX(60deg) rotateY(60deg);
   }
-  
+
   .floating-dots {
     position: absolute;
     width: 4px;
@@ -950,12 +954,28 @@ table {
     opacity: 0.2;
     animation: float 8s infinite ease-in-out;
   }
-  
-  .dot-1 { top: 15%; left: 20%; animation-delay: 0s; }
-  .dot-2 { top: 25%; right: 25%; animation-delay: 2s; }
-  .dot-3 { top: 70%; left: 30%; animation-delay: 4s; }
-  .dot-4 { top: 80%; right: 40%; animation-delay: 6s; }
-  
+
+  .dot-1 {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  .dot-2 {
+    top: 25%;
+    right: 25%;
+    animation-delay: 2s;
+  }
+  .dot-3 {
+    top: 70%;
+    left: 30%;
+    animation-delay: 4s;
+  }
+  .dot-4 {
+    top: 80%;
+    right: 40%;
+    animation-delay: 6s;
+  }
+
   .bg-animation-css {
     position: fixed;
     top: 0;
@@ -968,11 +988,11 @@ table {
     opacity: 1;
     transition: opacity 0.3s ease-out;
   }
-  
+
   .bg-animation-css.scrolled {
     opacity: 0;
   }
-  
+
   .platonic-solid-css {
     position: absolute;
     border: 1px solid var(--accent);
@@ -981,7 +1001,7 @@ table {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
-  
+
   .tetrahedron-css {
     width: 60px;
     height: 60px;
@@ -990,16 +1010,16 @@ table {
     animation-name: rotate3d;
     transform-style: preserve-3d;
   }
-  
+
   .tetrahedron-css::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent);
     transform: rotateX(45deg) rotateY(45deg);
   }
-  
+
   .cube-css {
     width: 80px;
     height: 80px;
@@ -1008,16 +1028,16 @@ table {
     animation-name: rotate3d-reverse;
     transform-style: preserve-3d;
   }
-  
+
   .cube-css::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent);
     transform: rotateX(30deg) rotateY(30deg);
   }
-  
+
   .octahedron-css {
     width: 50px;
     height: 50px;
@@ -1026,16 +1046,16 @@ table {
     animation-name: float-rotate;
     animation-duration: 15s;
   }
-  
+
   .octahedron-css::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     border: 1px solid var(--accent);
     transform: rotateX(60deg) rotateY(60deg);
   }
-  
+
   .floating-dots-css {
     position: absolute;
     width: 4px;
@@ -1045,57 +1065,82 @@ table {
     opacity: 0.2;
     animation: float 8s infinite ease-in-out;
   }
-  
-  .dot-1-css { top: 15%; left: 20%; animation-delay: 0s; }
-  .dot-2-css { top: 25%; right: 25%; animation-delay: 2s; }
-  .dot-3-css { top: 70%; left: 30%; animation-delay: 4s; }
-  .dot-4-css { top: 80%; right: 40%; animation-delay: 6s; }
+
+  .dot-1-css {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  .dot-2-css {
+    top: 25%;
+    right: 25%;
+    animation-delay: 2s;
+  }
+  .dot-3-css {
+    top: 70%;
+    left: 30%;
+    animation-delay: 4s;
+  }
+  .dot-4-css {
+    top: 80%;
+    right: 40%;
+    animation-delay: 6s;
+  }
 }
 
 @keyframes rotate3d {
-  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
 }
 
 @keyframes rotate3d-reverse {
-  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-  100% { transform: rotateX(-360deg) rotateY(-360deg) rotateZ(-360deg); }
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(-360deg) rotateY(-360deg) rotateZ(-360deg);
+  }
 }
 
 @keyframes float-rotate {
-  0%, 100% { 
+  0%,
+  100% {
     transform: translateY(0px) rotateX(0deg) rotateY(0deg);
   }
-  50% { 
+  50% {
     transform: translateY(-20px) rotateX(180deg) rotateY(180deg);
   }
 }
 
 @keyframes float {
-  0%, 100% { 
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
     opacity: 0.2;
   }
-  50% { 
+  50% {
     transform: translateY(-30px) scale(1.5);
     opacity: 0.4;
   }
 }
-
 
 /* Global link styles */
 @layer base {
   a {
     @apply text-accent hover:text-active decoration-dotted underline transition-colors duration-200;
   }
-  
+
   /* Exclude buttons from global link styles */
   a.btn-primary,
   a.btn-secondary,
   a.btn-outline {
     @apply text-white hover:text-white no-underline;
   }
-  
+
   a.btn-outline {
     @apply text-accent hover:text-white no-underline;
   }
@@ -1114,12 +1159,12 @@ nav .btn-outline {
   left: 0;
   width: 100vw;
   z-index: 1000;
-  background: rgba(245,245,245,0.5);
+  background: rgba(245, 245, 245, 0.5);
   backdrop-filter: blur(60px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0;
   margin: 0;
-  transition: transform 2s cubic-bezier(.77,0,.18,1);
+  transition: transform 2s cubic-bezier(0.77, 0, 0.18, 1);
 }
 #contactDiv .contact-inner {
   max-width: 2000px;
@@ -1165,4 +1210,3 @@ nav .btn-outline {
 .slide-out-to-right {
   transform: translateX(100%);
 }
-

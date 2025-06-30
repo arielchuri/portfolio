@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -226,17 +226,23 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-24 {
+    margin-block: calc(var(--spacing) * 24);
+  }
+  .my-36 {
+    margin-block: calc(var(--spacing) * 36);
+  }
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
-  }
-  .mt-12 {
-    margin-top: calc(var(--spacing) * 12);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-12 {
+    margin-bottom: calc(var(--spacing) * 12);
   }
   .mb-24 {
     margin-bottom: calc(var(--spacing) * 24);
@@ -354,10 +360,6 @@
   .text-5xl {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
-  }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .text-xl {
     font-size: var(--text-xl);
@@ -685,7 +687,6 @@ mark {
 hr {
   border: 0;
   border-top: 1px solid var(--black);
-  margin: 12em auto 3em auto;
   max-width: 100%;
   background-position: 50%;
   box-sizing: border-box;
@@ -1162,7 +1163,7 @@ table {
     transform-style: preserve-3d;
   }
   .tetrahedron::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1178,7 +1179,7 @@ table {
     transform-style: preserve-3d;
   }
   .cube::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1194,7 +1195,7 @@ table {
     animation-duration: 15s;
   }
   .octahedron::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1262,7 +1263,7 @@ table {
     transform-style: preserve-3d;
   }
   .tetrahedron-css::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1278,7 +1279,7 @@ table {
     transform-style: preserve-3d;
   }
   .cube-css::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1294,7 +1295,7 @@ table {
     animation-duration: 15s;
   }
   .octahedron-css::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1411,12 +1412,12 @@ nav .btn-outline {
   left: 0;
   width: 100vw;
   z-index: 1000;
-  background: rgba(245,245,245,0.5);
+  background: rgba(245, 245, 245, 0.5);
   backdrop-filter: blur(60px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0;
   margin: 0;
-  transition: transform 2s cubic-bezier(.77,0,.18,1);
+  transition: transform 2s cubic-bezier(0.77, 0, 0.18, 1);
 }
 #contactDiv .contact-inner {
   max-width: 2000px;
