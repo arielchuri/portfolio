@@ -1213,7 +1213,6 @@ nav .btn-outline {
 .slide-out-to-right {
   transform: translateX(100%);
 }
-
 .responsive-gallery {
   @apply grid grid-cols-1 gap-3.5 mb-8;
   @apply sm:grid-cols-2 sm:gap-4;
