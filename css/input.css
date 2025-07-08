@@ -328,6 +328,7 @@ hr.hrred {
   background-size: 3px 100%;
   /* width: 60%; */
 }
+
 hr.zig,
 hr.zag {
   border: none;
@@ -1203,10 +1204,23 @@ nav .btn-outline {
   transform: translateX(100%);
 }
 
-.slide-out-to-left {
+.slide-out-to-left  {
   transform: translateX(-100%);
 }
 
 .slide-out-to-right {
   transform: translateX(100%);
+}
+
+.responsive-gallery {
+  @apply grid grid-cols-1 gap-3.5 mb-8;
+  @apply sm:grid-cols-2 sm:gap-4;
+  @apply md:grid-cols-3 md:gap-5;
+  @apply lg:grid-cols-4 lg:gap-6;
+  @apply xl:grid-cols-5 xl:gap-7;
+  @apply 2xl:grid-cols-6 2xl:gap-8;
+}
+
+.gallery-item {
+  @apply w-full h-full object-cover block rounded-sm;
 }
