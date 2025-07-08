@@ -7,14 +7,13 @@
     <title>Installations Gallery</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-
     <div class="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-        <h1 class="title"><span>Installations Gallery</span></h1>
+         <div class=" text-5xl font-thin uppercase"><span>Installations </span></div>
+       <div class="mb-48 "><a class="mr-4 !text-gray-400" href="#biotelies">biotelies</a> <a class="mr-4 !text-gray-400" href="#button">button</a> <a class="mr-4 !text-gray-400" href="#calvinklein">calvinklein</a> <a class="mr-4 !text-gray-400" href="#holobot">holobot</a> <a class="mr-4 !text-gray-400" href="#platy">platypus amoeba</a></div>
 
         <!-- Bio-telie Gallery -->
-        <h2 class="mt-24 leading-1.0">biotelies</h2>
+        <h2 id="biotelies" class="mt-24 leading-1.0">biotelies</h2>
         <p class="mb-6 md:w-1/2">Biotelies are personal <em>biotelemetry devices</em> designed to create an <strong>intimate connection</strong>
             between partners who are separated by distance. These wearable systems utilize a wearable sensor and
             Bluetooth technology to transmit real-time <strong>biometric data</strong>&mdash;including <em>heart rate</em> and <em>stress levels</em>&mdash;to a
@@ -41,7 +40,7 @@
         </div>
 
         <!-- Button Gallery -->
-        <h2 class="mt-24 leading-1.1">button</h2>
+        <h2 id="button" class="mt-24 leading-1.1">button</h2>
         <p class="mb-6 md:w-1/2">
             Button was developed for an installation at the <em>Metropolitan Museum of Art</em>, requiring a <strong>robust wireless system</strong> capable of withstanding <em>intensive user interaction</em>. The design parameters necessitated a <strong>portable, battery-powered device</strong> that could endure repeated <em>high-impact usage</em>, as participants would apply substantial physical force—potentially their <strong>full body weight</strong>—in competitive gameplay.
         </p>
@@ -60,7 +59,7 @@
         </div>
 
         <!-- Calvinklein Gallery -->
-        <h2 class="mt-24 leading-1.1">calvinklein</h2>
+        <h2 id="calvinklein" class="mt-24 leading-1.1">calvinklein</h2>
         <p class="mb-6 md:w-1/2">
             Calvin Klein commissioned an interactive mannequin system for their flagship retail locations, enabling customers to digitally customize garments through large-format touchscreens. The system allows users to modify clothing selections, color variations, and fit parameters on virtual models, with full <strong>360-degree rotational viewing</strong> to examine garments from multiple perspectives.
         </p>
@@ -74,7 +73,7 @@
             <img src="images/installations/calvinklein/ckexp-3.jpg" class="gallery-item ar-l" alt="CK Exp 3" data-lightbox="calvinklein">
             <img src="images/installations/calvinklein/ckexp-7.jpg" class="gallery-item ar-l" alt="CK Exp 7" data-lightbox="calvinklein">
             <!-- <img src="images/installations/calvinklein/ckexp-8.jpg" class="gallery-item ar-l" alt="CK Exp 8" data-lightbox="calvinklein"> -->
-            <img src="images/installations/calvinklein/ckfitguide.gif" class="gallery-item ar-s lg:row-span-2"
+            <img src="images/installations/calvinklein/ckfitguide.gif" class="mix-blend-multiply gallery-item ar-s lg:row-span-2"
                 alt="CK Fit Guide" data-lightbox="calvinklein">
             <img src="images/installations/calvinklein/ckphotos-0.jpg" class="gallery-item ar-l" alt="CK Photos 0" data-lightbox="calvinklein">
             <img src="images/installations/calvinklein/ckphotos-1.jpg" class="gallery-item ar-l" alt="CK Photos 1" data-lightbox="calvinklein">
@@ -106,9 +105,13 @@
     </div> -->
 
         <!-- Holobot Gallery -->
-        <h2 class="mt-24 leading-1.1">holobot</h2>
-        <p class="mb-6 md:w-1/2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
-            eros elementum tristique.</p>
+        <h2 id="holobot" class="mt-24 leading-1.1">holobot</h2>
+        <p class="mb-6 md:w-1/2">
+            While not technically classified as an installation, the Holobot project encompasses <em>custom-designed physical objects</em>, <em>three-dimensional spatial interaction</em>, and <em>comprehensive human factors considerations</em>. C-suite sales prospects received a <strong>luxury, hand-crafted presentation box</strong> containing a new iPad device configured <strong>specifically for the demonstration experience</strong>.
+        </p>
+        <p class="mb-6 md:w-1/2">
+            Upon removing and activating the iPad, users encounter the camera interface with instructions to direct the device toward any flat surface. A <em>three-dimensional structure emerges</em> from the targeted surface through <em>animated sequences</em> that systematically demonstrate <em>key product features and capabilities</em>. Users can then <strong>navigate spatially around and through the augmented reality environment</strong>, moving toward and away from the virtual structure to examine all aspects of the product presentation and explore feature sets from <strong>multiple vantage points</strong>.
+        </p>
         <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
             <!-- <img src="images/installations/holobot/holobot_think1.jpg" class="gallery-item ar-l" alt="Holobot Think1" data-lightbox="holobot"> -->
             <!-- <img src="images/installations/holobot/holobot_think2.jpg" class="gallery-item ar-l" alt="Holobot Think2" data-lightbox="holobot"> -->
@@ -128,7 +131,7 @@
         </div>
 
         <!-- Lightbox Modal for All Groups -->
-        <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-300/50 backdrop-blur-2xl hidden transition-opacity duration-300">
             <button id="lightbox-close" type="button" class="absolute top-4 right-4 text-gray-800 text-3xl font-bold hover:text-gray-600 transition-colors duration-200">&times;</button>
             <button id="lightbox-prev" type="button" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-800 text-3xl font-bold hidden hover:text-gray-600 transition-colors duration-200">&#8592;</button>
             <div id="lightbox-content" class="max-w-full max-h-full flex items-center justify-center transition-all duration-300 ease-in-out"></div>
@@ -293,7 +296,7 @@
         </script>
 
         <!-- Platy Gallery -->
-        <h2 class="mt-24 leading-1.1">platy</h2>
+        <h2 id="platy" class="mt-24 leading-1.1">platypus amoeba</h2>
         <p class="mb-6 md:w-1/2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
             eros elementum tristique.</p>
         <div class="mb-64 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4">
