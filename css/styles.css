@@ -203,12 +203,6 @@
   .top-40 {
     top: calc(var(--spacing) * 40);
   }
-  .col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-  .row-span-2 {
-    grid-row: span 2 / span 2;
-  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -548,6 +542,7 @@ h1 {
   font-size: 6rem;
   font-weight: 800;
   letter-spacing: 0.01em;
+  line-height: 1.2;
 }
 h2 {
   font-size: 5rem;
@@ -573,7 +568,8 @@ h6 {
 .title > h1 {
   font-size: 6rem;
   margin-top: 4rem;
-  margin-bottom: 0rem;
+  margin-bottom: 2rem;
+  line-height: 1;
 }
 .title {
   font-size: 2rem;
