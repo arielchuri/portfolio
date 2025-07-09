@@ -347,7 +347,7 @@ hr.zig {
   background-position: center bottom;
   background-repeat: repeat-x;
   background-size: 20px 40px;
-  z-index: 100;
+  z-index: 1;
   position: relative;
 }
 
