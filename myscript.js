@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
       anime({
         targets: mainContent,
         translateX: ["100%", "0%"],
-        opacity: [0, 1],
+        // opacity: [0, 1],
         duration: 800,
         easing: "easeInOutCubic",
         delay: 100,
@@ -387,5 +387,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // Hide contact bar on scroll
   window.addEventListener("scroll", function () {
     toggleContactBar(true);
+  });
+
+  // Reveal animation on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.1, // Trigger when 10% of element is visible
+    rootMargin: '0px 0px -50px 0px' // Trigger 50px before element enters viewport
+  });
+  
+  reveals.forEach(reveal => {
+    observer.observe(reveal);
   });
 });

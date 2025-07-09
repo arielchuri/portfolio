@@ -163,7 +163,7 @@ h6 {
 .reveal {
   position: relative;
   transform: translateY(0px);
-  opacity: 1;
+  opacity: 0;
   transition: 1s all ease;
 }
 .reveal.active {
@@ -1191,18 +1191,18 @@ nav .btn-outline {
 }
 
 .preload {
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateX(-100%);
 }
 
 /* Default hidden state for main content containers */
 .main-content {
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateX(100%);
 }
 
 .slide-in-from-right {
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateX(100%);
 }
 
@@ -1213,6 +1213,7 @@ nav .btn-outline {
 .slide-out-to-right {
   transform: translateX(100%);
 }
+
 .responsive-gallery {
   @apply grid grid-cols-1 gap-3.5 mb-8;
   @apply sm:grid-cols-2 sm:gap-4;
