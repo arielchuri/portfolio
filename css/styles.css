@@ -230,6 +230,12 @@
   .z-50 {
     z-index: 50;
   }
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+  .row-span-3 {
+    grid-row: span 3 / span 3;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -441,6 +447,9 @@
   }
   .pt-14 {
     padding-top: calc(var(--spacing) * 14);
+  }
+  .pt-24 {
+    padding-top: calc(var(--spacing) * 24);
   }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
@@ -750,6 +759,11 @@
       grid-column: span 5 / span 5;
     }
   }
+  .xl\:col-start-2 {
+    @media (width >= 80rem) {
+      grid-column-start: 2;
+    }
+  }
   .xl\:grid-cols-4 {
     @media (width >= 80rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -770,6 +784,11 @@
       padding-inline: calc(var(--spacing) * 32);
     }
   }
+  .\32 xl\:col-span-1 {
+    @media (width >= 96rem) {
+      grid-column: span 1 / span 1;
+    }
+  }
   .\32 xl\:col-span-2 {
     @media (width >= 96rem) {
       grid-column: span 2 / span 2;
@@ -788,6 +807,11 @@
   .\32 xl\:col-span-6 {
     @media (width >= 96rem) {
       grid-column: span 6 / span 6;
+    }
+  }
+  .\32 xl\:col-start-3 {
+    @media (width >= 96rem) {
+      grid-column-start: 3;
     }
   }
   .\32 xl\:grid-cols-4 {
