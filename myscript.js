@@ -86,8 +86,8 @@ function toggleContactBar(forceHide = false) {
   }
 }
 
-// Setup contact bar and events
-document.addEventListener("DOMContentLoaded", function () {
+// Animation initialization function
+function initializePageAnimations() {
   // Create nav buttons
   const returnButton = document.getElementById("returnbutton");
   const resumeButton = document.getElementById("resumebutton");
@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Nav animation for all pages
   const nav = document.querySelector("nav");
   if (nav) {
-    // Set initial state for nav (faded out and moved up)
+    // Reset initial state for nav (important for browser back/forward)
     nav.style.opacity = "0";
     nav.style.transform = "translateY(-20px)";
 
@@ -250,9 +250,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Find the main content container
     const mainContent = document.getElementById("mainContent");
     if (mainContent) {
+      // Reset initial state (important for browser back/forward)
       mainContent.classList.remove("preload");
-      mainContent.style.opacity = "1";
-      mainContent.style.transform = "translateX(0%)";
+      mainContent.style.opacity = "0";
+      mainContent.style.transform = "translateX(-100%)";
+      
       anime({
         targets: mainContent,
         translateX: ["-100%", "0%"],
@@ -267,20 +269,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "background-animation",
       );
 
-      // Set initial opacity for background (faded out)
+      // Reset initial opacity for background (important for browser back/forward)  
       if (backgroundAnimation) {
         backgroundAnimation.style.opacity = "0";
       }
-
-      // Start animations immediately
-      anime({
-        targets: mainContent,
-        translateX: ["-100%", "0%"],
-        opacity: [0, 1],
-        duration: 800,
-        easing: "easeInOutCubic",
-        delay: 100,
-      });
 
       // Fade in background
       if (backgroundAnimation) {
@@ -352,7 +344,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Non-index pages (including resume.html): slide in from right
     const mainContent = document.querySelector(".main-content");
     if (mainContent) {
-      // Add slide-in-from-right class initially
+      // Reset position first (important for browser back/forward)
+      mainContent.style.transform = "translateX(100%)";
       mainContent.classList.add("slide-in-from-right");
 
       // Force reflow
@@ -649,4 +642,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+}
+
+// Setup contact bar and events
+document.addEventListener("DOMContentLoaded", initializePageAnimations);
+
+// Handle browser back/forward navigation
+window.addEventListener("pageshow", function(event) {
+  // Only reinitialize animations if coming from cache
+  if (event.persisted) {
+    initializePageAnimations();
+  }
 });
+
+// Note: Slide-out animations during browser forward/back navigation are not
+// reliably supported due to browser performance optimizations. The browser
+// may terminate JavaScript execution before animations can complete.
