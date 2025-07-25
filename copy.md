@@ -1,4 +1,4 @@
-File for converting md to html with sh ./mdtohtml.sh
+Resume copy
 
 # Unilever
 Supply-chain management moves from the sourcing of manufacturing ingredients to the store shelf.

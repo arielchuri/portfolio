@@ -569,4 +569,36 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     initLightbox();
   }
+
+  // Add click-anywhere scroll functionality for the first section (index page only)
+  if (isIndexPage) {
+    const firstSection = document.querySelector('section[style*="height: 100vh"]');
+    const nav = document.querySelector('nav');
+    
+    if (firstSection) {
+      firstSection.style.cursor = 'pointer';
+      
+      firstSection.addEventListener('click', function(e) {
+        // Don't scroll if clicking on nav buttons or their children
+        if (nav && nav.contains(e.target)) {
+          return;
+        }
+        
+        // Don't scroll if clicking on the existing arrow link or its children
+        const arrowLink = firstSection.querySelector('a[href="#sparkle-labs"]');
+        if (arrowLink && arrowLink.contains(e.target)) {
+          return;
+        }
+        
+        // Scroll to the sparkle-labs section
+        const targetSection = document.getElementById('sparkle-labs');
+        if (targetSection) {
+          targetSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    }
+  }
 });

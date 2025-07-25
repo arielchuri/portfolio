@@ -29,6 +29,14 @@ portfolio/
 
 ## Development Setup
 
+### server
+
+python -m venv ~/myvenv
+
+source ~/myvenv/bin/activate
+
+python -m reloadserver
+
 ### Prerequisites
 - Tailwind CSS standalone CLI tool installed
 
