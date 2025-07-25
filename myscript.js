@@ -92,6 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const returnButton = document.getElementById("returnbutton");
   const resumeButton = document.getElementById("resumebutton");
   const contactButton = document.getElementById("contactbutton");
+  const projectsButton = document.getElementById("projectsbutton");
+  const physicalButton = document.getElementById("physicalbutton");
+  const mobileButton = document.getElementById("mobilebutton");
 
   if (returnButton) {
     updateReturnButton();
@@ -113,6 +116,21 @@ document.addEventListener("DOMContentLoaded", function () {
       '<a href="resume.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">r&eacute;sum&eacute;</span></a>';
   }
 
+  if (projectsButton) {
+    projectsButton.innerHTML =
+      '<a href="index.html#sparkle-labs" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>';
+  }
+
+  if (mobileButton) {
+    mobileButton.innerHTML =
+      '<a href="g_mobile.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">mobile screens</span></a>';
+  }
+
+  if (physicalButton) {
+    physicalButton.innerHTML =
+      '<a href="g_physical.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical/spatial</span></a>';
+  }
+
   user = "&#97;&#99;";
   site =
     "&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;";
@@ -125,10 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactDiv = document.getElementById("contactDiv");
   if (contactDiv) {
     // Move contactDiv to document body if it's nested inside other containers
-    if (contactDiv.parentElement && !contactDiv.parentElement.matches('body')) {
+    if (contactDiv.parentElement && !contactDiv.parentElement.matches("body")) {
       document.body.insertBefore(contactDiv, document.body.firstChild);
     }
-    
+
     contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-14 pb-2 flex items-start">${contactinfo}</div>`;
     // Ensure consistent initial state across all pages
     contactDiv.style.display = "none";
@@ -406,35 +424,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Reveal animation on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, {
-    threshold: 0.1, // Trigger when 10% of element is visible
-    rootMargin: '0px 0px -50px 0px' // Trigger 50px before element enters viewport
-  });
-  
-  reveals.forEach(reveal => {
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    {
+      threshold: 0.1, // Trigger when 10% of element is visible
+      rootMargin: "0px 0px -50px 0px", // Trigger 50px before element enters viewport
+    },
+  );
+
+  reveals.forEach((reveal) => {
     observer.observe(reveal);
   });
 
   // Lightbox functionality for gallery pages
   function initLightbox() {
-    const lightbox = document.getElementById('lightbox');
+    const lightbox = document.getElementById("lightbox");
     if (!lightbox) return;
     let group = null;
     let items = [];
     let current = 0;
     let targetSize = { width: 0, height: 0 };
-    const content = document.getElementById('lightbox-content');
-    const closeBtn = document.getElementById('lightbox-close');
-    const prevBtn = document.getElementById('lightbox-prev');
-    const nextBtn = document.getElementById('lightbox-next');
+    const content = document.getElementById("lightbox-content");
+    const closeBtn = document.getElementById("lightbox-close");
+    const prevBtn = document.getElementById("lightbox-prev");
+    const nextBtn = document.getElementById("lightbox-next");
 
     // Preload all images in the group and calculate the largest dimension
     function preloadAndCalculateSize(groupItems) {
@@ -443,8 +464,8 @@ document.addEventListener("DOMContentLoaded", function () {
       let loaded = 0;
       const total = groupItems.length;
       return new Promise((resolve) => {
-        groupItems.forEach(item => {
-          if (item.tagName === 'IMG') {
+        groupItems.forEach((item) => {
+          if (item.tagName === "IMG") {
             const img = new window.Image();
             img.onload = function () {
               maxWidth = Math.max(maxWidth, img.naturalWidth);
@@ -452,7 +473,10 @@ document.addEventListener("DOMContentLoaded", function () {
               loaded++;
               if (loaded === total) {
                 const largerDimension = Math.max(maxWidth, maxHeight);
-                targetSize = { width: largerDimension, height: largerDimension };
+                targetSize = {
+                  width: largerDimension,
+                  height: largerDimension,
+                };
                 resolve();
               }
             };
@@ -460,12 +484,15 @@ document.addEventListener("DOMContentLoaded", function () {
               loaded++;
               if (loaded === total) {
                 const largerDimension = Math.max(maxWidth, maxHeight);
-                targetSize = { width: largerDimension, height: largerDimension };
+                targetSize = {
+                  width: largerDimension,
+                  height: largerDimension,
+                };
                 resolve();
               }
             };
             img.src = item.src;
-          } else if (item.tagName === 'VIDEO') {
+          } else if (item.tagName === "VIDEO") {
             // Use a default size for videos
             maxWidth = Math.max(maxWidth, 1920);
             maxHeight = Math.max(maxHeight, 1080);
@@ -484,19 +511,19 @@ document.addEventListener("DOMContentLoaded", function () {
       current = index;
       const el = items[index];
       // Add fade-out animation for content
-      content.style.opacity = '0';
-      content.style.transform = 'scale(0.95)';
+      content.style.opacity = "0";
+      content.style.transform = "scale(0.95)";
       setTimeout(() => {
-        content.innerHTML = '';
+        content.innerHTML = "";
         // Create a wrapper for sizing and centering only
-        const wrapper = document.createElement('div');
+        const wrapper = document.createElement("div");
         wrapper.style.width = `${targetSize.width}px`;
         wrapper.style.height = `${targetSize.height}px`;
-        wrapper.style.maxWidth = '90vw';
-        wrapper.style.maxHeight = '80vh';
-        wrapper.className = 'flex items-center justify-center';
+        wrapper.style.maxWidth = "90vw";
+        wrapper.style.maxHeight = "80vh";
+        wrapper.className = "flex items-center justify-center";
         // Add click handler to close lightbox
-        wrapper.addEventListener('click', function (e) {
+        wrapper.addEventListener("click", function (e) {
           // Prevent closing if clicking navigation or close buttons
           if (
             e.target === prevBtn ||
@@ -507,39 +534,41 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           close();
         });
-        if (el.tagName === 'IMG') {
-          const img = document.createElement('img');
+        if (el.tagName === "IMG") {
+          const img = document.createElement("img");
           img.src = el.src;
           img.alt = el.alt;
-          img.className = 'object-contain max-w-full max-h-full rounded';
+          img.className = "object-contain max-w-full max-h-full rounded";
           wrapper.appendChild(img);
-        } else if (el.tagName === 'VIDEO') {
-          const video = document.createElement('video');
+        } else if (el.tagName === "VIDEO") {
+          const video = document.createElement("video");
           video.src = el.src;
           video.muted = true;
           video.loop = true;
           video.playsInline = true;
-          video.className = 'object-contain max-w-full max-h-full rounded';
+          video.className = "object-contain max-w-full max-h-full rounded";
           wrapper.appendChild(video);
           video.play();
         }
         content.appendChild(wrapper);
         // Add fade-in animation
         setTimeout(() => {
-          content.style.opacity = '1';
-          content.style.transform = 'scale(1)';
+          content.style.opacity = "1";
+          content.style.transform = "scale(1)";
         }, 50);
       }, 150);
-      prevBtn.classList.toggle('hidden', current === 0);
-      nextBtn.classList.toggle('hidden', current === items.length - 1);
-      lightbox.classList.remove('hidden');
+      prevBtn.classList.toggle("hidden", current === 0);
+      nextBtn.classList.toggle("hidden", current === items.length - 1);
+      lightbox.classList.remove("hidden");
     }
 
-    document.querySelectorAll('[data-lightbox]').forEach((el) => {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', function () {
-        group = el.getAttribute('data-lightbox');
-        items = Array.from(document.querySelectorAll('[data-lightbox="' + group + '"]'));
+    document.querySelectorAll("[data-lightbox]").forEach((el) => {
+      el.style.cursor = "pointer";
+      el.addEventListener("click", function () {
+        group = el.getAttribute("data-lightbox");
+        items = Array.from(
+          document.querySelectorAll('[data-lightbox="' + group + '"]'),
+        );
         preloadAndCalculateSize(items).then(() => {
           show(items.indexOf(el));
         });
@@ -548,70 +577,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function close() {
       // Add fade-out animation
-      content.style.opacity = '0';
-      content.style.transform = 'scale(0.95)';
+      content.style.opacity = "0";
+      content.style.transform = "scale(0.95)";
       setTimeout(() => {
-        lightbox.classList.add('hidden');
-        content.innerHTML = '';
-        content.style.opacity = '';
-        content.style.transform = '';
+        lightbox.classList.add("hidden");
+        content.innerHTML = "";
+        content.style.opacity = "";
+        content.style.transform = "";
       }, 300);
     }
 
-    closeBtn.addEventListener('click', close);
-    lightbox.addEventListener('click', (e) => {
+    closeBtn.addEventListener("click", close);
+    lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) close();
     });
 
-    prevBtn.addEventListener('click', (e) => {
+    prevBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       if (current > 0) show(current - 1);
     });
-    nextBtn.addEventListener('click', (e) => {
+    nextBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       if (current < items.length - 1) show(current + 1);
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.classList.contains('hidden')) return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft' && current > 0) show(current - 1);
-      if (e.key === 'ArrowRight' && current < items.length - 1) show(current + 1);
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.classList.contains("hidden")) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft" && current > 0) show(current - 1);
+      if (e.key === "ArrowRight" && current < items.length - 1)
+        show(current + 1);
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLightbox);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLightbox);
   } else {
     initLightbox();
   }
 
   // Add click-anywhere scroll functionality for the first section (index page only)
   if (isIndexPage) {
-    const firstSection = document.querySelector('section[style*="height: 100vh"]');
-    const nav = document.querySelector('nav');
-    
+    const firstSection = document.querySelector(
+      'section[style*="height: 100vh"]',
+    );
+    const nav = document.querySelector("nav");
+
     if (firstSection) {
-      firstSection.style.cursor = 'pointer';
-      
-      firstSection.addEventListener('click', function(e) {
+      firstSection.style.cursor = "pointer";
+
+      firstSection.addEventListener("click", function (e) {
         // Don't scroll if clicking on nav buttons or their children
         if (nav && nav.contains(e.target)) {
           return;
         }
-        
+
         // Don't scroll if clicking on the existing arrow link or its children
         const arrowLink = firstSection.querySelector('a[href="#sparkle-labs"]');
         if (arrowLink && arrowLink.contains(e.target)) {
           return;
         }
-        
+
         // Scroll to the sparkle-labs section
-        const targetSection = document.getElementById('sparkle-labs');
+        const targetSection = document.getElementById("sparkle-labs");
         if (targetSection) {
-          targetSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
+          targetSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
           });
         }
       });
