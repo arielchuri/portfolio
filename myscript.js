@@ -18,7 +18,7 @@ var contactinfo =
                   <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank>ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
                   <li><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank>arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></li> \
                   <li><a href="https://github.com/arielchuri/" target=_blank>github.com/arielchuri</a></li> \
-                  <li><a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/searchLicense.jsp" target=_blank>KD2LPU</a></li> \
+                  <li><a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3835821" target=_blank>KD2LPU</a></li> \
           </ul> \
         </div> \
       </section> ';
