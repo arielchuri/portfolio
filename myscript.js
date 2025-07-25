@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.insertBefore(contactDiv, document.body.firstChild);
     }
     
-    contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 pt-14 pb-2 flex items-start  ">${contactinfo}</div>`;
+    contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-14 pb-2 flex items-start">${contactinfo}</div>`;
     // Ensure consistent initial state across all pages
     contactDiv.style.display = "none";
     contactDiv.classList.remove("show", "hide");
