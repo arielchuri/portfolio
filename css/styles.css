@@ -1704,7 +1704,7 @@ nav .btn-outline {
   -webkit-backdrop-filter: blur(20px);
   padding: 0;
   margin: 0;
-  transition: transform 2s cubic-bezier(0.77, 0, 0.18, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
 }
 #contactDiv .contact-inner {
   max-width: 2000px;

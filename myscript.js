@@ -71,13 +71,18 @@ function toggleContactBar(forceHide = false) {
     div.classList.remove("show");
     div.classList.add("hide");
     setTimeout(() => {
-      div.style.display = "none";
+      if (div.classList.contains("hide")) {
+        div.style.display = "none";
+      }
     }, 1000);
   } else {
+    // Reset state before showing
     div.style.display = "block";
-    void div.offsetHeight;
+    div.classList.remove("show");
+    div.classList.add("hide"); // Start in hidden position
+    void div.offsetHeight; // Force reflow
     div.classList.remove("hide");
-    div.classList.add("show");
+    div.classList.add("show"); // Then animate to visible
   }
 }
 
@@ -119,7 +124,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const contactDiv = document.getElementById("contactDiv");
   if (contactDiv) {
+    // Move contactDiv to document body if it's nested inside other containers
+    if (contactDiv.parentElement && !contactDiv.parentElement.matches('body')) {
+      document.body.insertBefore(contactDiv, document.body.firstChild);
+    }
+    
     contactDiv.innerHTML = `<div class="max-w-[2000px] mx-auto px-4 pt-14 pb-2 flex items-start  ">${contactinfo}</div>`;
+    // Ensure consistent initial state across all pages
+    contactDiv.style.display = "none";
+    contactDiv.classList.remove("show", "hide");
     contactDiv.classList.add("hide");
   }
 
@@ -386,7 +399,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Hide contact bar on scroll
   window.addEventListener("scroll", function () {
-    toggleContactBar(true);
+    const div = document.getElementById("contactDiv");
+    if (div && div.classList.contains("show")) {
+      toggleContactBar(true);
+    }
   });
 
   // Reveal animation on scroll
