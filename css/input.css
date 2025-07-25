@@ -1206,7 +1206,7 @@ nav .btn-outline {
   transform: translateX(100%);
 }
 
-.slide-out-to-left  {
+.slide-out-to-left {
   transform: translateX(-100%);
 }
 
@@ -1224,5 +1224,5 @@ nav .btn-outline {
 }
 
 .gallery-item {
-  @apply w-full h-full object-cover block rounded-sm;
+  @apply w-full h-full object-cover block;
 }
