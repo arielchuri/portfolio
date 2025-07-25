@@ -825,6 +825,11 @@ table {
   .btn-small {
     @apply px-2 py-1 text-sm;
   }
+
+  .btn-extrasmall {
+    @apply px-2 py-1 text-xs;
+  }
+
   .btn-large {
     @apply px-8 py-3 text-lg;
   }

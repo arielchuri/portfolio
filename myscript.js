@@ -58,7 +58,7 @@ function updateReturnButton() {
     // Get saved section from sessionStorage
     const savedSection = sessionStorage.getItem("indexSection") || "";
     const anchor = savedSection ? `#${savedSection}` : "";
-    returnButton.innerHTML = `<a href="index.html${anchor}" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">&#8617; Return</span></a>`;
+    returnButton.innerHTML = `<a href="index.html${anchor}" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">&#8617; Return</span></a>`;
   }
 }
 
@@ -113,22 +113,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (resumeButton) {
     resumeButton.innerHTML =
-      '<a href="resume.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">r&eacute;sum&eacute;</span></a>';
+      '<a href="resume.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">r&eacute;sum&eacute;</span></a>';
   }
 
   if (projectsButton) {
     projectsButton.innerHTML =
-      '<a href="index.html#sparkle-labs" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>';
+      '<a href="index.html#sparkle-labs" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>';
   }
 
   if (mobileButton) {
     mobileButton.innerHTML =
-      '<a href="g_mobile.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">mobile screens</span></a>';
+      '<a href="g_mobile.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">mobile screens</span></a>';
   }
 
   if (physicalButton) {
     physicalButton.innerHTML =
-      '<a href="g_physical.html" class="btn-outline btn-small inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical/spatial</span></a>';
+      '<a href="g_physical.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical/spatial</span></a>';
   }
 
   user = "&#97;&#99;";
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (contactButton) {
     contactButton.innerHTML =
-      '<a class="btn-outline btn-small inline-block" onclick="toggleContactBar()" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">contact</span></a>';
+      '<a class="btn-outline btn-extrasmall inline-block" onclick="toggleContactBar()" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">contact</span></a>';
   }
 
   const contactDiv = document.getElementById("contactDiv");
