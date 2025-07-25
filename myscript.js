@@ -6,19 +6,19 @@ var contactinfo =
           <div class="flex flex-col sm:flex-row justify-start gap-8"> \
           <ul  class="list-none flex justify-end flex-col"> \
                   <li><strong>Ariel Churi</strong></li> \
-                  <li><a href="mailto:ac@sparklelabs.com">ac@sparklelabs.com</a></li> \
-                  <li><a href="tel:646-450-4576">(646) 450-4576</a></li> \
-                  <li><a href="https://calendly.com/arielchuri/30min" target=_blank>Create a 30min. meeting.</a></li> \
-                  <li><a href="https://arielchuri.sparklelabs.com" target=_blank>arielchuri.sparklelabs.com</a></li> \
-                  <li><a href="https://linkedin.com/in/arielchuri/" target=_blank>linkedin.com/in/arielchuri</a></li> \
+                  <li><a href="mailto:ac@sparklelabs.com" class="link-slide">ac@sparklelabs.com</a></li> \
+                  <li><a href="tel:646-450-4576" class="link-slide">(646) 450-4576</a></li> \
+                  <li><a href="https://calendly.com/arielchuri/30min" target=_blank class="link-slide">Create a 30min. meeting.</a></li> \
+                  <li><a href="https://arielchuri.sparklelabs.com" target=_blank class="link-slide">arielchuri.sparklelabs.com</a></li> \
+                  <li><a href="https://linkedin.com/in/arielchuri/" target=_blank class="link-slide">linkedin.com/in/arielchuri</a></li> \
           </ul> \
           <ul class="list-none flex justify-end flex-col" > \
-                  <li><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99" target=_blank>Montclair, NJ</a></li> \
+                  <li><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99" target=_blank class="link-slide">Montclair, NJ</a></li> \
                   <li>he/him or they/them</li> \
-                  <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank>ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
-                  <li><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank>arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></li> \
-                  <li><a href="https://github.com/arielchuri/" target=_blank>github.com/arielchuri</a></li> \
-                  <li><a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3835821" target=_blank>KD2LPU</a></li> \
+                  <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
+                  <li><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank class="link-slide">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank class="link-slide"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></li> \
+                  <li><a href="https://github.com/arielchuri/" target=_blank class="link-slide">github.com/arielchuri</a></li> \
+                  <li><a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3835821" target=_blank class="link-slide">KD2LPU</a></li> \
           </ul> \
         </div> \
       </section> ';
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // '<h6>Colophon</h6>' +
       '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
       "This document was written in vanilla HTML, javascript, and CSS. " +
-      'The CSS started from <a href="http:www.getskeleton.com" target="_blank">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank">Inter</a>.  </p></div></section>';
+      'The CSS started from <a href="http:www.getskeleton.com" target="_blank" class="link-slide">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank" class="link-slide">Inter</a>.  </p></div></section>';
   }
 
   // Button animations (wipe + ripple)

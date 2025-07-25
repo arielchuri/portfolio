@@ -1094,6 +1094,36 @@ table {
     right: 40%;
     animation-delay: 6s;
   }
+
+  /* Sliding background animation for regular text links */
+  .link-slide {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.2;
+    padding: 2px 0;
+  }
+
+  .link-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
+
+  .link-slide:hover::before {
+    left: 0;
+  }
+
+  .link-slide:hover {
+    color: var(--white);
+  }
 }
 
 @keyframes rotate3d {
