@@ -264,6 +264,38 @@ function initializePageAnimations() {
         delay: 100,
       });
 
+      // Add scroll-based animation for "Ariel Churi" title
+      const arielTitle = document.getElementById("ariel-churi-title");
+      if (arielTitle) {
+        let ticking = false;
+        
+        function updateTitlePosition() {
+          const scrollTop = window.scrollY;
+          const maxScroll = window.innerHeight; // First viewport height
+          const scrollProgress = Math.min(scrollTop / maxScroll, 1);
+          
+          // Move left as we scroll down (0 to -100vw)
+          const translateX = scrollProgress * -100;
+          
+          // Use anime.js set to maintain exact positioning
+          anime.set(arielTitle, {
+            translateX: `${translateX}vw`,
+            translateY: '-50%'
+          });
+          
+          ticking = false;
+        }
+        
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(updateTitlePosition);
+            ticking = true;
+          }
+        }
+        
+        window.addEventListener("scroll", onScroll);
+      }
+
       // Find background animation element
       const backgroundAnimation = document.getElementById(
         "background-animation",
