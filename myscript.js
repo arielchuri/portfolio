@@ -267,6 +267,15 @@ function initializePageAnimations() {
       // Add scroll-based animation for "Ariel Churi" title
       const arielTitle = document.getElementById("ariel-churi-title");
       if (arielTitle) {
+        // Fade in title
+        anime({
+          targets: arielTitle,
+          opacity: [0, 1],
+          duration: 800,
+          easing: "easeInOutCubic",
+          delay: 300,
+        });
+        
         let ticking = false;
         
         function updateTitlePosition() {
@@ -336,12 +345,23 @@ function initializePageAnimations() {
             link.href.includes("index.html") || link.href.endsWith("/");
           const slideOutDirection = isGoingToIndex ? "right" : "left";
 
-          // Fade out nav first
+          // Fade out nav and title first
           if (nav) {
             anime({
               targets: nav,
               opacity: [0],
               translateY: [-20],
+              duration: 300,
+              easing: "easeInOutCubic",
+            });
+          }
+          
+          // Fade out title on page transition
+          const arielTitleTransition = document.getElementById("ariel-churi-title");
+          if (arielTitleTransition) {
+            anime({
+              targets: arielTitleTransition,
+              opacity: [0],
               duration: 300,
               easing: "easeInOutCubic",
             });
