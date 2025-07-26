@@ -642,6 +642,24 @@ function initializePageAnimations() {
       });
     }
   }
+
+  // Add click-to-scroll functionality for Sparkle Labs hero section
+  const sparkleHeroSection = document.getElementById("sparkle-hero-section");
+  if (sparkleHeroSection) {
+    sparkleHeroSection.addEventListener("click", function (e) {
+      // Don't scroll if clicking on nav buttons
+      const nav = document.querySelector("nav");
+      if (nav && nav.contains(e.target)) {
+        return;
+      }
+
+      // Scroll down 100vh
+      window.scrollBy({
+        top: window.innerHeight,
+        behavior: "smooth"
+      });
+    });
+  }
 }
 
 // Setup contact bar and events
