@@ -35,7 +35,6 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
-    --leading-tight: 1.25;
     --leading-snug: 1.375;
     --radius-xs: 0.125rem;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -281,9 +280,6 @@
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
-  .mt-48 {
-    margin-top: calc(var(--spacing) * 48);
-  }
   .mt-64 {
     margin-top: calc(var(--spacing) * 64);
   }
@@ -295,9 +291,6 @@
   }
   .\!mb-12 {
     margin-bottom: calc(var(--spacing) * 12) !important;
-  }
-  .\!mb-24 {
-    margin-bottom: calc(var(--spacing) * 24) !important;
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -316,9 +309,6 @@
   }
   .mb-24 {
     margin-bottom: calc(var(--spacing) * 24);
-  }
-  .mb-28 {
-    margin-bottom: calc(var(--spacing) * 28);
   }
   .mb-32 {
     margin-bottom: calc(var(--spacing) * 32);
@@ -445,9 +435,6 @@
   .px-12 {
     padding-inline: calc(var(--spacing) * 12);
   }
-  .pt-0 {
-    padding-top: calc(var(--spacing) * 0);
-  }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
@@ -460,12 +447,6 @@
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
   }
-  .pt-48 {
-    padding-top: calc(var(--spacing) * 48);
-  }
-  .pt-64 {
-    padding-top: calc(var(--spacing) * 64);
-  }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
   }
@@ -475,21 +456,9 @@
   .pb-64 {
     padding-bottom: calc(var(--spacing) * 64);
   }
-  .\!text-4xl {
-    font-size: var(--text-4xl) !important;
-    line-height: var(--tw-leading, var(--text-4xl--line-height)) !important;
-  }
   .\!text-6xl {
     font-size: var(--text-6xl) !important;
     line-height: var(--tw-leading, var(--text-6xl--line-height)) !important;
-  }
-  .\!text-7xl {
-    font-size: var(--text-7xl) !important;
-    line-height: var(--tw-leading, var(--text-7xl--line-height)) !important;
-  }
-  .\!text-lg {
-    font-size: var(--text-lg) !important;
-    line-height: var(--tw-leading, var(--text-lg--line-height)) !important;
   }
   .\!text-sm {
     font-size: var(--text-sm) !important;
@@ -507,57 +476,17 @@
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
   }
-  .text-6xl {
-    font-size: var(--text-6xl);
-    line-height: var(--tw-leading, var(--text-6xl--line-height));
-  }
   .text-7xl {
     font-size: var(--text-7xl);
     line-height: var(--tw-leading, var(--text-7xl--line-height));
-  }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
-  .\!leading-\[1\] {
-    --tw-leading: 1 !important;
-    line-height: 1 !important;
-  }
-  .\!leading-none {
-    --tw-leading: 1 !important;
-    line-height: 1 !important;
-  }
   .\!leading-snug {
     --tw-leading: var(--leading-snug) !important;
     line-height: var(--leading-snug) !important;
-  }
-  .leading-0\.5 {
-    --tw-leading: calc(var(--spacing) * 0.5);
-    line-height: calc(var(--spacing) * 0.5);
-  }
-  .leading-1 {
-    --tw-leading: calc(var(--spacing) * 1);
-    line-height: calc(var(--spacing) * 1);
-  }
-  .leading-22 {
-    --tw-leading: calc(var(--spacing) * 22);
-    line-height: calc(var(--spacing) * 22);
-  }
-  .leading-none {
-    --tw-leading: 1;
-    line-height: 1;
-  }
-  .leading-tight {
-    --tw-leading: var(--leading-tight);
-    line-height: var(--leading-tight);
   }
   .font-black {
     --tw-font-weight: var(--font-weight-black);
@@ -1761,6 +1690,12 @@ table {
     transform: translateY(-30px) scale(1.5);
     opacity: 0.4;
   }
+}
+body {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" fill="%2335a7f4"/><rect x="8" y="8" width="4" height="4" fill="%23FF1493"/></svg>') 8 8, auto;
+}
+a, button, .btn-primary, .btn-secondary, .btn-outline, .cursor-pointer, [role="button"] {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g stroke="%238B5CF6" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="5.64" y1="5.64" x2="18.36" y2="18.36"/><line x1="5.64" y1="18.36" x2="18.36" y2="5.64"/></g><rect x="10" y="10" width="4" height="4" fill="%23FFA500"/></svg>') 12 12, auto;
 }
 @layer base {
   a {
