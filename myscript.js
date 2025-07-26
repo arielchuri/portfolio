@@ -267,6 +267,18 @@ function initializePageAnimations() {
       // Add scroll-based animation for "Ariel Churi" title
       const arielTitle = document.getElementById("ariel-churi-title");
       if (arielTitle) {
+        // Calculate initial position based on current scroll position
+        const initialScrollTop = window.scrollY;
+        const maxScroll = window.innerHeight;
+        const initialScrollProgress = Math.min(initialScrollTop / maxScroll, 1);
+        const initialTranslateX = initialScrollProgress * -100;
+        
+        // Set initial position before fading in
+        anime.set(arielTitle, {
+          translateX: `${initialTranslateX}vw`,
+          translateY: '-50%'
+        });
+        
         // Fade in title
         anime({
           targets: arielTitle,
