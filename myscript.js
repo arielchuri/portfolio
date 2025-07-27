@@ -118,7 +118,7 @@ function initializePageAnimations() {
 
   if (projectsButton) {
     projectsButton.innerHTML =
-      '<a href="index.html#sparkle-labs" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>';
+      '<a href="#sparkle-labs" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>';
   }
 
   if (mobileButton) {
@@ -257,11 +257,15 @@ function initializePageAnimations() {
       
       anime({
         targets: mainContent,
-        translateX: ["-100%", "0%"],
+        translateX: ["-100%", "0px"],
         opacity: [0, 1],
         duration: 800,
         easing: "easeInOutCubic",
         delay: 100,
+        complete: function() {
+          // Ensure final position is exactly 0
+          mainContent.style.transform = "translateX(0px)";
+        }
       });
 
       // Add scroll-based animation for "Ariel Churi" title
@@ -293,7 +297,7 @@ function initializePageAnimations() {
         function updateTitlePosition() {
           const scrollTop = window.scrollY;
           const maxScroll = window.innerHeight; // First viewport height
-          const scrollProgress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+          const scrollProgress = Math.min(scrollTop / maxScroll, 1);
           
           // Move left as we scroll down (0 to -100vw)
           const translateX = scrollProgress * -100;
@@ -345,7 +349,8 @@ function initializePageAnimations() {
           link &&
           link.href &&
           link.href.includes(window.location.origin) &&
-          (!link.href.includes("#") || link.href.includes("index.html"))
+          (!link.href.includes("#") || link.href.includes("index.html")) &&
+          !link.getAttribute("href").startsWith("#")
         ) {
           e.preventDefault();
 
@@ -432,7 +437,8 @@ function initializePageAnimations() {
           link &&
           link.href &&
           link.href.includes(window.location.origin) &&
-          (!link.href.includes("#") || link.href.includes("index.html"))
+          (!link.href.includes("#") || link.href.includes("index.html")) &&
+          !link.getAttribute("href").startsWith("#")
         ) {
           e.preventDefault();
 
