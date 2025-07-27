@@ -293,7 +293,7 @@ function initializePageAnimations() {
         function updateTitlePosition() {
           const scrollTop = window.scrollY;
           const maxScroll = window.innerHeight; // First viewport height
-          const scrollProgress = Math.min(scrollTop / maxScroll, 1);
+          const scrollProgress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
           
           // Move left as we scroll down (0 to -100vw)
           const translateX = scrollProgress * -100;
