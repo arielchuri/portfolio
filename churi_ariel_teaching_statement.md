@@ -1,0 +1,30 @@
+Ariel Churi  
+[churia@newschool.edu](mailto:churia@newschool.edu)  
+2020.01.13
+
+### **Conceptualization of learning**
+
+Learning can be considered the process of ingesting information that allows for a greater latitude of free will. Either through the expression of free will in the world by creating artifacts, or through greater cognitive abilities. 
+
+### **Conceptualization of teaching**
+
+I have always associated the act learning as a pleasurable experience. The brain rewards  a  self generated understanding or conclusion with a feeling of pleasure. I believe this indicates that the brain’s conceptualization of learning is when the brain creates new connections rather than having information presented to it. Therefore, teaching can be the process of creating opportunities for the brain to make the realizations that allow for greater capabilities in the future.
+
+### **Goals for students**
+
+I ask a lot of my students. I want them to understand the material. I want them to express their understanding. I want them to use their understanding in novel ways. And, I expect them to be able to articulate the reasoning behind their decisions. I give them the freedom to experiment as well as fail. I make it clear that failure should come from reaching too far, not from lack of effort.
+
+### **Implementation of philosophy**
+
+As a society, our expectations for any designed system has been rapidly changing. We have less patience for any process we perceive as unnecessary. This effect is magnified in any learning endeavor as learning requires effort. In light of this I am realigning the way I teach and considering course design to be a user experience problem. What are the user’s (student) goals in taking the course. What are the user’s expectations over the entire time period of the course? How can I generate delight in the materials they are learning? I will answer these questions in two ways. By designing the course in such a way as to be as easy to complete as possible while providing opportunities to reward mastery of the material. I will also create a nurturing but honest environment in the classroom. An environment where students can feel comfortable and with plenty of opportunities for one on one interaction.
+
+I employ a variety of teaching methods. A particular subject may include  a reading and then, a lecture with text, imagery, and video. I try to provide case studies or examples of applications of the material in the real world. The lecture is accompanied by an in-class activity such as structured brainstorming, mind-mapping, or a world cafe style discussion. Most subjects we cover require an assignment that is due the following week. Some assignments are aided by the opportunity for peer-review which is done in groups using Canvas’ group discussions feature.
+
+I look for evidence of learning from a number of sources. Often, information given during a lecture is utilized and reviewed during the class period. Direct evidence can also come in the form of successfully completed assignments and from class participation. I hope to see the student applying the information gained in class to novel situations.
+
+A pedagogical challenge I have encountered is the student’s apprehension to the material due to stress caused by a lack of resources. In these cases I have found that a small amount of personal attention coupled with an “easy win” goes a long way to making the student feel comfortable with the material. 
+
+After reviewing my course evaluations I have changed the structure of my courses to allow students more time to digest and use the material we cover in class. I have tracked student interactions to ensure each student receives a more personalized experience. I am more careful to be sure that students can understand the requirements of each assignment and receive feedback specific to each assignment in the week following the assignment’s due date. I have also instituted a reverse mid-term evaluation where the students provide feedback on the course as it is underway.
+
+A specific change to the teaching process I have made in order to both address issues highlighted in my course evaluations and to further facilitate active learning in the classroom is to break lectures into smaller sections divided by group workshops where students work in assigned groups to complete a simple activity. I have facilitated ice breakers where students learn each other’s names and interests. As well as a peer review process where students submit their individual work to their group for feedback. I also establish simple ground rules for discussion such as asking that we all use each other's preferred names and pronouns, we not interrupt one another, and we make room for each other’s questions.
+

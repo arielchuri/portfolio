@@ -117,8 +117,10 @@ function initializePageAnimations() {
   }
 
   if (projectsButton) {
+    const isCurrentlyOnIndex = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
+    const href = isCurrentlyOnIndex ? "#sparkle-labs" : "index.html#sparkle-labs";
     projectsButton.innerHTML =
-      '<a href="#sparkle-labs" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>';
+      `<a href="${href}" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>`;
   }
 
   if (mobileButton) {
@@ -679,38 +681,30 @@ function initializePageAnimations() {
     initLightbox();
   }
 
-  // Add click-anywhere scroll functionality for the first section (index page only)
+  // Add click-anywhere scroll functionality for the first viewport (index page only)
   if (isIndexPage) {
-    const firstSection = document.querySelector(
-      'section[style*="height: 100vh"]',
-    );
-    const nav = document.querySelector("nav");
-
-    if (firstSection) {
-      firstSection.style.cursor = "pointer";
-
-      firstSection.addEventListener("click", function (e) {
-        // Don't scroll if clicking on nav buttons or their children
-        if (nav && nav.contains(e.target)) {
-          return;
-        }
-
-        // Don't scroll if clicking on the existing arrow link or its children
-        const arrowLink = firstSection.querySelector('a[href="#sparkle-labs"]');
-        if (arrowLink && arrowLink.contains(e.target)) {
-          return;
-        }
-
-        // Scroll to the sparkle-labs section
-        const targetSection = document.getElementById("sparkle-labs");
-        if (targetSection) {
-          targetSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      });
+    const overlay = document.getElementById("viewport-click-overlay");
+    
+    function updateOverlay() {
+      if (window.scrollY === 0) {
+        overlay.style.pointerEvents = "auto";
+      } else {
+        overlay.style.pointerEvents = "none";
+      }
     }
+    
+    updateOverlay();
+    window.addEventListener("scroll", updateOverlay);
+
+    overlay.addEventListener("click", function() {
+      const targetSection = document.getElementById("sparkle-labs");
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
   }
 
   // Add click-to-scroll functionality for Sparkle Labs hero section

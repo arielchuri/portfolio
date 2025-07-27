@@ -1694,7 +1694,7 @@ table {
 body {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" fill="%2335a7f4"/><rect x="8" y="8" width="4" height="4" fill="%23FF1493"/></svg>') 8 8, auto;
 }
-a, button, .btn-primary, .btn-secondary, .btn-outline, .cursor-pointer, [role="button"], .gallery-item, img[data-lightbox], [data-lightbox], input[type="submit"], input[type="button"], input[type="reset"], select, [onclick], [tabindex]:not([tabindex="-1"]), section[style*="height: 100vh"] {
+a, button, .btn-primary, .btn-secondary, .btn-outline, .cursor-pointer, [role="button"], .gallery-item, img[data-lightbox], [data-lightbox], input[type="submit"], input[type="button"], input[type="reset"], select, [onclick], [tabindex]:not([tabindex="-1"]), section[style*="height: 100vh"], #viewport-click-overlay {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g stroke="%238B5CF6" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="5.64" y1="5.64" x2="18.36" y2="18.36"/><line x1="5.64" y1="18.36" x2="18.36" y2="5.64"/></g><rect x="10" y="10" width="4" height="4" fill="%23FFA500"/></svg>') 12 12, auto !important;
 }
 @layer base {
