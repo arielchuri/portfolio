@@ -1035,6 +1035,9 @@ nav {
   z-index: 9999;
   margin: 1rem;
 }
+#projectsbutton {
+  transition: transform 0.3s ease;
+}
 span > .button.button-primary {
   height: 20px;
   line-height: 20px;

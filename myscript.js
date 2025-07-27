@@ -399,7 +399,7 @@ function initializePageAnimations() {
           // Slide out based on direction
           anime({
             targets: mainContent,
-            translateX: slideOutDirection === "right" ? [100] : [-100],
+            translateX: slideOutDirection === "right" ? ["0%", "100%"] : ["0%", "-100%"],
             duration: 600,
             easing: "easeInOutCubic",
             delay: 200,
@@ -466,7 +466,7 @@ function initializePageAnimations() {
           // Slide out based on direction
           anime({
             targets: mainContent,
-            translateX: slideOutDirection === "right" ? [100] : [-100],
+            translateX: slideOutDirection === "right" ? ["0%", "100%"] : ["0%", "-100%"],
             duration: 600,
             easing: "easeInOutCubic",
             delay: 200,
@@ -684,12 +684,15 @@ function initializePageAnimations() {
   // Add click-anywhere scroll functionality for the first viewport (index page only)
   if (isIndexPage) {
     const overlay = document.getElementById("viewport-click-overlay");
+    const projectsBtn = document.getElementById("projectsbutton");
     
     function updateOverlay() {
       if (window.scrollY === 0) {
         overlay.style.pointerEvents = "auto";
+        if (projectsBtn) projectsBtn.style.transform = "translateY(0)";
       } else {
         overlay.style.pointerEvents = "none";
+        if (projectsBtn) projectsBtn.style.transform = "translateY(-100px)";
       }
     }
     
