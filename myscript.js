@@ -791,7 +791,7 @@ function initializeDownArrowScroll() {
     placeholder.innerHTML = `
       <div class="down-arrow-nav" style="max-width: 32px; position: fixed; bottom: 2rem; left: 2rem; z-index: 51;">
         <svg width="59.068542" height="68.325569" viewBox="0 0 59.068542 68.325569" version="1.1"
-          class="animate-bounce w-8 h-8 text-accent hover:text-active transition-colors duration-200"
+          class="w-8 h-8 text-accent hover:text-active"
           xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(-20.473987,-20.89831)">
             <path

@@ -1722,11 +1722,11 @@ table {
 }
 .down-arrow-nav svg {
   filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(100%) contrast(100%);
-  transition: filter 0.2s ease, transform 0.3s ease-in-out;
+  transition: filter 0.2s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center;
 }
 .down-arrow-nav.flipped svg {
-  transform: rotate(180deg) !important;
+  transform: rotate(180deg);
 }
 .down-arrow-nav:hover svg {
   filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(110%) contrast(100%);
