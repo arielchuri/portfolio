@@ -836,14 +836,11 @@ function initializeDownArrowScroll() {
         behavior: "smooth"
       });
     } else {
-      // If not flipped (pointing down), scroll to first section
-      const targetSection = document.getElementById("sparkle-labs");
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+      // If not flipped (pointing down), scroll down 100vh
+      window.scrollBy({
+        top: window.innerHeight,
+        behavior: "smooth"
+      });
     }
   });
 }
