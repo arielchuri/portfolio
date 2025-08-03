@@ -1170,6 +1170,58 @@ table {
   }
 }
 
+/* Right arrow navigation styling */
+.right-arrow-nav {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.right-arrow-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.right-arrow-nav img {
+  /* Apply deeppink color to the SVG using CSS filter */
+  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(100%) contrast(100%);
+  transition: filter 0.2s ease;
+}
+
+.right-arrow-nav:hover img {
+  /* Slightly lighter/brighter on hover */
+  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(110%) contrast(100%);
+}
+
+/* Down arrow navigation styling */
+.down-arrow-nav {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.down-arrow-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.down-arrow-nav svg {
+  /* Apply deeppink color to the SVG using CSS filter */
+  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(100%) contrast(100%);
+  transition: filter 0.2s ease, transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+.down-arrow-nav.flipped svg {
+  transform: rotate(180deg) !important;
+}
+
+.down-arrow-nav:hover svg {
+  /* Slightly lighter/brighter on hover */
+  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(110%) contrast(100%);
+}
+
 /* Custom cursors */
 body {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" fill="%2335a7f4"/><rect x="8" y="8" width="4" height="4" fill="%23FF1493"/></svg>') 8 8, auto;

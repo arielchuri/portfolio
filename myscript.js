@@ -117,10 +117,13 @@ function initializePageAnimations() {
   }
 
   if (projectsButton) {
-    const isCurrentlyOnIndex = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
-    const href = isCurrentlyOnIndex ? "#sparkle-labs" : "index.html#sparkle-labs";
-    projectsButton.innerHTML =
-      `<a href="${href}" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>`;
+    const isCurrentlyOnIndex =
+      window.location.pathname === "/" ||
+      window.location.pathname.endsWith("index.html");
+    const href = isCurrentlyOnIndex
+      ? "#sparkle-labs"
+      : "index.html#sparkle-labs";
+    projectsButton.innerHTML = `<a href="${href}" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>`;
   }
 
   if (mobileButton) {
@@ -256,7 +259,7 @@ function initializePageAnimations() {
       mainContent.classList.remove("preload");
       mainContent.style.opacity = "0";
       mainContent.style.transform = "translateX(-100%)";
-      
+
       anime({
         targets: mainContent,
         translateX: ["-100%", "0px"],
@@ -264,10 +267,10 @@ function initializePageAnimations() {
         duration: 800,
         easing: "easeInOutCubic",
         delay: 100,
-        complete: function() {
+        complete: function () {
           // Ensure final position is exactly 0
           mainContent.style.transform = "translateX(0px)";
-        }
+        },
       });
 
       // Add scroll-based animation for "Ariel Churi" title
@@ -278,13 +281,13 @@ function initializePageAnimations() {
         const maxScroll = window.innerHeight;
         const initialScrollProgress = Math.min(initialScrollTop / maxScroll, 1);
         const initialTranslateX = initialScrollProgress * -100;
-        
+
         // Set initial position before fading in
         anime.set(arielTitle, {
           translateX: `${initialTranslateX}vw`,
-          translateY: '-50%'
+          translateY: "-50%",
         });
-        
+
         // Fade in title
         anime({
           targets: arielTitle,
@@ -293,33 +296,33 @@ function initializePageAnimations() {
           easing: "easeInOutCubic",
           delay: 300,
         });
-        
+
         let ticking = false;
-        
+
         function updateTitlePosition() {
           const scrollTop = window.scrollY;
           const maxScroll = window.innerHeight; // First viewport height
           const scrollProgress = Math.min(scrollTop / maxScroll, 1);
-          
+
           // Move left as we scroll down (0 to -100vw)
           const translateX = scrollProgress * -100;
-          
+
           // Use anime.js set to maintain exact positioning
           anime.set(arielTitle, {
             translateX: `${translateX}vw`,
-            translateY: '-50%'
+            translateY: "-50%",
           });
-          
+
           ticking = false;
         }
-        
+
         function onScroll() {
           if (!ticking) {
             requestAnimationFrame(updateTitlePosition);
             ticking = true;
           }
         }
-        
+
         window.addEventListener("scroll", onScroll);
       }
 
@@ -328,7 +331,7 @@ function initializePageAnimations() {
         "background-animation",
       );
 
-      // Reset initial opacity for background (important for browser back/forward)  
+      // Reset initial opacity for background (important for browser back/forward)
       if (backgroundAnimation) {
         backgroundAnimation.style.opacity = "0";
       }
@@ -374,9 +377,10 @@ function initializePageAnimations() {
               easing: "easeInOutCubic",
             });
           }
-          
+
           // Fade out title on page transition
-          const arielTitleTransition = document.getElementById("ariel-churi-title");
+          const arielTitleTransition =
+            document.getElementById("ariel-churi-title");
           if (arielTitleTransition) {
             anime({
               targets: arielTitleTransition,
@@ -399,7 +403,8 @@ function initializePageAnimations() {
           // Slide out based on direction
           anime({
             targets: mainContent,
-            translateX: slideOutDirection === "right" ? ["0%", "100%"] : ["0%", "-100%"],
+            translateX:
+              slideOutDirection === "right" ? ["0%", "100%"] : ["0%", "-100%"],
             duration: 600,
             easing: "easeInOutCubic",
             delay: 200,
@@ -466,7 +471,8 @@ function initializePageAnimations() {
           // Slide out based on direction
           anime({
             targets: mainContent,
-            translateX: slideOutDirection === "right" ? ["0%", "100%"] : ["0%", "-100%"],
+            translateX:
+              slideOutDirection === "right" ? ["0%", "100%"] : ["0%", "-100%"],
             duration: 600,
             easing: "easeInOutCubic",
             delay: 200,
@@ -685,7 +691,7 @@ function initializePageAnimations() {
   if (isIndexPage) {
     const overlay = document.getElementById("viewport-click-overlay");
     const projectsBtn = document.getElementById("projectsbutton");
-    
+
     function updateOverlay() {
       if (window.scrollY === 0) {
         overlay.style.pointerEvents = "auto";
@@ -695,11 +701,11 @@ function initializePageAnimations() {
         if (projectsBtn) projectsBtn.style.transform = "translateY(-100px)";
       }
     }
-    
+
     updateOverlay();
     window.addEventListener("scroll", updateOverlay);
 
-    overlay.addEventListener("click", function() {
+    overlay.addEventListener("click", function () {
       const targetSection = document.getElementById("sparkle-labs");
       if (targetSection) {
         targetSection.scrollIntoView({
@@ -723,20 +729,21 @@ function initializePageAnimations() {
       // Scroll down 100vh
       window.scrollBy({
         top: window.innerHeight,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   }
 }
 
 // Setup contact bar and events
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   initializePageAnimations();
   initializeRightArrowScroll();
+  initializeDownArrowScroll();
 });
 
 // Handle browser back/forward navigation
-window.addEventListener("pageshow", function(event) {
+window.addEventListener("pageshow", function (event) {
   // Only reinitialize animations if coming from cache
   if (event.persisted) {
     initializePageAnimations();
@@ -749,29 +756,94 @@ window.addEventListener("pageshow", function(event) {
 
 // Right arrow navigation scroll behavior
 function initializeRightArrowScroll() {
-  const rightArrow = document.querySelector('.right-arrow-nav');
-  
+  const rightArrow = document.querySelector(".right-arrow-nav");
+
   if (!rightArrow) return;
-  
+
   function handleScroll() {
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     // Show arrow after scrolling 100% of viewport height
-    const showThreshold = clientHeight;
-    
+    const showThreshold = clientHeight / 2;
+
     if (scrollTop > showThreshold) {
-      rightArrow.classList.add('visible');
+      rightArrow.classList.add("visible");
     } else {
-      rightArrow.classList.remove('visible');
+      rightArrow.classList.remove("visible");
     }
   }
-  
+
   // Initial check
   handleScroll();
-  
+
   // Listen for scroll events
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener("scroll", handleScroll, { passive: true });
 }
 
+// Down arrow navigation scroll behavior
+function initializeDownArrowScroll() {
+  // Create down arrow element if placeholder exists
+  const placeholder = document.getElementById("down-arrow-placeholder");
+  
+  if (placeholder) {
+    placeholder.innerHTML = `
+      <div class="down-arrow-nav" style="max-width: 32px; position: fixed; bottom: 2rem; left: 2rem; z-index: 51;">
+        <svg width="59.068542" height="68.325569" viewBox="0 0 59.068542 68.325569" version="1.1"
+          class="animate-bounce w-8 h-8 text-accent hover:text-active transition-colors duration-200"
+          xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(-20.473987,-20.89831)">
+            <path
+              style="fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+              d="M 50.008257,22.14831 V 87.973876" />
+            <path
+              style="fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;paint-order:stroke fill markers"
+              d="M 78.292529,59.689608 50.008258,87.973879 21.723987,59.689608" />
+          </g>
+        </svg>
+      </div>
+    `;
+  }
+
+  const downArrow = document.querySelector(".down-arrow-nav");
+
+  if (!downArrow) return;
+
+  function handleScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Flip arrow after scrolling down
+    if (scrollTop > 50) {
+      downArrow.classList.add("flipped");
+    } else {
+      downArrow.classList.remove("flipped");
+    }
+  }
+
+  // Initial check - show by default at top (not flipped)
+  downArrow.classList.add("visible");
+
+  // Listen for scroll events
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  // Add click handler with different behavior based on flip state
+  downArrow.addEventListener("click", function() {
+    if (downArrow.classList.contains("flipped")) {
+      // If flipped (pointing up), scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    } else {
+      // If not flipped (pointing down), scroll to first section
+      const targetSection = document.getElementById("sparkle-labs");
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  });
+}
