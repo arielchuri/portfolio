@@ -2032,3 +2032,26 @@ nav .btn-outline {
     }
   }
 }
+
+/* Right arrow navigation styling */
+.right-arrow-nav {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.right-arrow-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.right-arrow-nav img {
+  /* Apply deeppink color to the SVG using CSS filter */
+  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(100%) contrast(100%);
+  transition: filter 0.2s ease;
+}
+
+.right-arrow-nav:hover img {
+  /* Slightly lighter/brighter on hover */
+  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(110%) contrast(100%);
+}

@@ -730,7 +730,10 @@ function initializePageAnimations() {
 }
 
 // Setup contact bar and events
-document.addEventListener("DOMContentLoaded", initializePageAnimations);
+document.addEventListener("DOMContentLoaded", function() {
+  initializePageAnimations();
+  initializeRightArrowScroll();
+});
 
 // Handle browser back/forward navigation
 window.addEventListener("pageshow", function(event) {
@@ -743,3 +746,32 @@ window.addEventListener("pageshow", function(event) {
 // Note: Slide-out animations during browser forward/back navigation are not
 // reliably supported due to browser performance optimizations. The browser
 // may terminate JavaScript execution before animations can complete.
+
+// Right arrow navigation scroll behavior
+function initializeRightArrowScroll() {
+  const rightArrow = document.querySelector('.right-arrow-nav');
+  
+  if (!rightArrow) return;
+  
+  function handleScroll() {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Show arrow after scrolling 100% of viewport height
+    const showThreshold = clientHeight;
+    
+    if (scrollTop > showThreshold) {
+      rightArrow.classList.add('visible');
+    } else {
+      rightArrow.classList.remove('visible');
+    }
+  }
+  
+  // Initial check
+  handleScroll();
+  
+  // Listen for scroll events
+  window.addEventListener('scroll', handleScroll, { passive: true });
+}
+
