@@ -1643,7 +1643,7 @@ table {
     padding: 2px 0;
   }
   .link-slide::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -1694,42 +1694,54 @@ table {
     opacity: 0.4;
   }
 }
-.right-arrow-nav {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+.right-arrow-nav, .down-arrow-nav {
   pointer-events: none;
+  position: fixed;
+  bottom: calc(var(--spacing) * 4);
+  z-index: 50;
+  max-width: calc(var(--spacing) * 8);
+  opacity: 0%;
+  transition-property: opacity;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  @media (width >= 48rem) {
+    bottom: calc(var(--spacing) * 8);
+  }
 }
-.right-arrow-nav.visible {
-  opacity: 1;
+.right-arrow-nav {
+  right: calc(var(--spacing) * 4);
+  @media (width >= 48rem) {
+    right: calc(var(--spacing) * 8);
+  }
+}
+.down-arrow-nav {
+  left: calc(var(--spacing) * 4);
+  cursor: pointer;
+  @media (width >= 48rem) {
+    left: calc(var(--spacing) * 8);
+  }
+}
+.right-arrow-nav.visible, .down-arrow-nav.visible {
   pointer-events: auto;
+  opacity: 100%;
 }
-.right-arrow-nav img {
+.right-arrow-nav img, .down-arrow-nav svg {
   filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(100%) contrast(100%);
   transition: filter 0.2s ease;
 }
-.right-arrow-nav:hover img {
+.right-arrow-nav:hover img, .down-arrow-nav:hover svg {
   filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(110%) contrast(100%);
 }
-.down-arrow-nav {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
-  cursor: pointer;
-}
-.down-arrow-nav.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
 .down-arrow-nav svg {
-  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(100%) contrast(100%);
   transition: filter 0.2s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center;
 }
 .down-arrow-nav.flipped svg {
   transform: rotate(180deg);
-}
-.down-arrow-nav:hover svg {
-  filter: invert(20%) sepia(100%) saturate(7480%) hue-rotate(320deg) brightness(110%) contrast(100%);
 }
 body {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" fill="%2335a7f4"/><rect x="8" y="8" width="4" height="4" fill="%23FF1493"/></svg>') 8 8, auto;

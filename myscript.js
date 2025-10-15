@@ -128,12 +128,12 @@ function initializePageAnimations() {
 
   if (mobileButton) {
     mobileButton.innerHTML =
-      '<a href="g_mobile.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">mobile screens</span></a>';
+      '<a href="g_mobile.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">mobile</span></a>';
   }
 
   if (physicalButton) {
     physicalButton.innerHTML =
-      '<a href="g_physical.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical/spatial</span></a>';
+      '<a href="g_physical.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical</span></a>';
   }
 
   user = "&#97;&#99;";
@@ -789,7 +789,7 @@ function initializeDownArrowScroll() {
   
   if (placeholder) {
     placeholder.innerHTML = `
-      <div class="down-arrow-nav" style="max-width: 32px; position: fixed; bottom: 2rem; left: 2rem; z-index: 51;">
+      <div class="down-arrow-nav">
         <svg width="59.068542" height="68.325569" viewBox="0 0 59.068542 68.325569" version="1.1"
           class="w-8 h-8 text-accent hover:text-active"
           xmlns="http://www.w3.org/2000/svg">
@@ -828,18 +828,18 @@ function initializeDownArrowScroll() {
   window.addEventListener("scroll", handleScroll, { passive: true });
 
   // Add click handler with different behavior based on flip state
-  downArrow.addEventListener("click", function() {
+  downArrow.addEventListener("click", function () {
     if (downArrow.classList.contains("flipped")) {
       // If flipped (pointing up), scroll to top
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     } else {
       // If not flipped (pointing down), scroll down 100vh
       window.scrollBy({
         top: window.innerHeight,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   });
