@@ -29,16 +29,28 @@ portfolio/
 
 ## Development Setup
 
-### server
-
-python -m venv ~/myvenv
-
-source ~/myvenv/bin/activate
-
-python -m reloadserver
-
 ### Prerequisites
-- Tailwind CSS standalone CLI tool installed
+- Node.js (for Tailwind CSS and development server)
+
+### Development Server
+
+**Recommended: Use live-server (auto-reload on file changes)**
+```bash
+npx live-server
+```
+
+This will:
+- Start a local server at `http://127.0.0.1:8080`
+- Automatically open your browser
+- Auto-reload the page whenever any file changes
+
+**Alternative: Python reloadserver**
+```bash
+python -m venv ~/myvenv
+source ~/myvenv/bin/activate
+pip install reloadserver
+python -m reloadserver
+```
 
 ### CSS Processing
 
@@ -53,6 +65,22 @@ tailwindcss -i css/input.css -o css/styles.css
 ```bash
 tailwindcss -i css/input.css -o css/styles.css --watch
 ```
+
+### Recommended Development Workflow
+
+Run these two commands in separate terminals:
+
+**Terminal 1 - CSS watch mode:**
+```bash
+tailwindcss -i css/input.css -o css/styles.css --watch
+```
+
+**Terminal 2 - Dev server:**
+```bash
+npx live-server
+```
+
+This setup will automatically rebuild CSS and reload your browser on any file changes.
 
 ### File Structure for Styling
 
