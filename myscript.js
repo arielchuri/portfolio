@@ -3,8 +3,8 @@
 // show contact div
 var contactinfo =
   '<section class="" style="padding-bottom:0vh;padding-top:0vh"> \
-          <div class="flex flex-col sm:flex-row justify-start gap-8"> \
-          <ul  class="list-none flex justify-end flex-col"> \
+          <div class="flex flex-col sm:flex-row justify-start items-start gap-8"> \
+          <ul  class="list-none flex flex-col"> \
                   <li><strong>Ariel Churi</strong></li> \
                   <li><a href="mailto:ac@sparklelabs.com" class="link-slide">ac@sparklelabs.com</a></li> \
                   <li><a href="tel:646-450-4576" class="link-slide">(646) 450-4576</a></li> \
@@ -12,7 +12,7 @@ var contactinfo =
                   <li><a href="https://arielchuri.sparklelabs.com" target=_blank class="link-slide">arielchuri.sparklelabs.com</a></li> \
                   <li><a href="https://linkedin.com/in/arielchuri/" target=_blank class="link-slide">linkedin.com/in/arielchuri</a></li> \
           </ul> \
-          <ul class="list-none flex justify-end flex-col" > \
+          <ul class="list-none flex flex-col" > \
                   <li><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99" target=_blank class="link-slide">Montclair, NJ</a></li> \
                   <li>he/him or they/them</li> \
                   <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
@@ -162,10 +162,10 @@ function initializePageAnimations() {
   const footer = document.getElementById("footer");
   if (footer) {
     footer.innerHTML =
-      '<hr class="zig"> <hr class="zag"> <div class="container"><div class="twelve columns small">' +
+      '<hr class="zig"> <hr class="zag"> <div class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20"><div class="twelve columns small">' +
       contactinfo +
       // '<h6>Colophon</h6>' +
-      '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2022.</br>' +
+      '<p class="small" style="padding:0px;">🄯 Ariel Churi in 2026.</br>' +
       "This document was written in vanilla HTML, javascript, and CSS. " +
       'The CSS started from <a href="http:www.getskeleton.com" target="_blank" class="link-slide">Skeleton</a>. The typeface is <a href="https:rsms.me/inter/" target="_blank" class="link-slide">Inter</a>.  </p></div></section>';
   }
@@ -786,7 +786,7 @@ function initializeRightArrowScroll() {
 function initializeDownArrowScroll() {
   // Create down arrow element if placeholder exists
   const placeholder = document.getElementById("down-arrow-placeholder");
-  
+
   if (placeholder) {
     placeholder.innerHTML = `
       <div class="down-arrow-nav">
