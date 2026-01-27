@@ -810,14 +810,31 @@ function initializeDownArrowScroll() {
 
   if (!downArrow) return;
 
+  // Check if we're on index page
+  const isIndexPage =
+    window.location.pathname === "/" ||
+    window.location.pathname.endsWith("index.html");
+
+  // Track if user has scrolled during this session
+  let hasScrolled = false;
+
   function handleScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Flip arrow after scrolling down
+    // Mark that user has scrolled
     if (scrollTop > 50) {
+      hasScrolled = true;
       downArrow.classList.add("flipped");
     } else {
-      downArrow.classList.remove("flipped");
+      // At top of page
+      if (hasScrolled && !isIndexPage) {
+        // User has scrolled before and returned to top - show back arrow (only on non-index pages)
+        downArrow.classList.remove("flipped");
+        downArrow.classList.add("back");
+      } else {
+        // User hasn't scrolled yet OR on index page - show down arrow
+        downArrow.classList.remove("flipped", "back");
+      }
     }
   }
 
@@ -827,16 +844,19 @@ function initializeDownArrowScroll() {
   // Listen for scroll events
   window.addEventListener("scroll", handleScroll, { passive: true });
 
-  // Add click handler with different behavior based on flip state
+  // Add click handler with different behavior based on state
   downArrow.addEventListener("click", function () {
-    if (downArrow.classList.contains("flipped")) {
+    if (downArrow.classList.contains("back") && !isIndexPage) {
+      // If showing back arrow and NOT on index page, go back in history
+      window.history.back();
+    } else if (downArrow.classList.contains("flipped")) {
       // If flipped (pointing up), scroll to top
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
     } else {
-      // If not flipped (pointing down), scroll down 100vh
+      // If pointing down, scroll down 100vh
       window.scrollBy({
         top: window.innerHeight,
         behavior: "smooth",
