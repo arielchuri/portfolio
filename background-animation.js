@@ -66,7 +66,7 @@ function setup() {
       random(-width/3, width/3),
       random(-height/3, height/3),
       random(20, 60),
-      random(['tetrahedron', 'cube', 'octahedron', 'torus', 'cone', 'cylinder']),
+      random(['tetrahedron', 'cube', 'octahedron', 'cone', 'cylinder']),
       i // Pass index for color
     ));
   }
@@ -178,8 +178,6 @@ class PlatonicSolid {
       this.drawCube(opacity);
     } else if (this.type === 'octahedron') {
       this.drawOctahedron(opacity);
-    } else if (this.type === 'torus') {
-      this.drawTorus(opacity);
     } else if (this.type === 'cone') {
       this.drawCone(opacity);
     } else if (this.type === 'cylinder') {
@@ -303,52 +301,13 @@ class PlatonicSolid {
     endShape(CLOSE);
   }
 
-  drawTorus(opacity) {
-    const [r, g, b, a] = this.getColor(opacity);
-    stroke(r, g, b, a);
-
-    const tubeRadius = this.size / 6;
-    const radius = this.size / 2;
-    const segments = 16;
-
-    // Draw circular rings around the torus
-    for (let i = 0; i < segments; i++) {
-      const theta = (i / segments) * TWO_PI;
-      const nextTheta = ((i + 1) / segments) * TWO_PI;
-
-      beginShape();
-      for (let j = 0; j <= segments; j++) {
-        const phi = (j / segments) * TWO_PI;
-        const x = (radius + tubeRadius * cos(phi)) * cos(theta);
-        const y = (radius + tubeRadius * cos(phi)) * sin(theta);
-        const z = tubeRadius * sin(phi);
-        vertex(x, y, z);
-      }
-      endShape();
-    }
-
-    // Draw cross-sectional circles
-    for (let i = 0; i < 8; i++) {
-      const theta = (i / 8) * TWO_PI;
-      beginShape();
-      for (let j = 0; j <= segments; j++) {
-        const phi = (j / segments) * TWO_PI;
-        const x = (radius + tubeRadius * cos(phi)) * cos(theta);
-        const y = (radius + tubeRadius * cos(phi)) * sin(theta);
-        const z = tubeRadius * sin(phi);
-        vertex(x, y, z);
-      }
-      endShape(CLOSE);
-    }
-  }
-
   drawCone(opacity) {
     const [r, g, b, a] = this.getColor(opacity);
     stroke(r, g, b, a);
 
     const radius = this.size / 2;
     const height = this.size;
-    const segments = 16;
+    const segments = 8;
 
     // Draw lines from apex to base
     for (let i = 0; i < segments; i++) {
