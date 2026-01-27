@@ -2,15 +2,23 @@
 let shapes = [];
 let particles = [];
 let scrollOpacity = 1;
+let webglAvailable = true;
 
 function setup() {
-  const canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-  canvas.parent('background-animation');
-  canvas.style('position', 'fixed');
-  canvas.style('top', '0');
-  canvas.style('left', '0');
-  canvas.style('z-index', '-1');
-  canvas.style('pointer-events', 'none');
+  try {
+    const canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+    canvas.parent('background-animation');
+    canvas.style('position', 'fixed');
+    canvas.style('top', '0');
+    canvas.style('left', '0');
+    canvas.style('z-index', '-1');
+    canvas.style('pointer-events', 'none');
+  } catch (error) {
+    console.warn('WebGL not available, disabling background animation:', error);
+    webglAvailable = false;
+    noLoop(); // Stop p5.js from running
+    return;
+  }
   
   // Create platonic solids
   for (let i = 0; i < 5; i++) {
@@ -33,6 +41,9 @@ function setup() {
 }
 
 function draw() {
+  // Don't draw if WebGL isn't available
+  if (!webglAvailable) return;
+
   // Calculate scroll-based opacity
   const scrollY = window.scrollY || window.pageYOffset;
   const fadeStart = 100; // Start fading after 100px scroll
@@ -75,6 +86,7 @@ function draw() {
 }
 
 function windowResized() {
+  if (!webglAvailable) return;
   resizeCanvas(windowWidth, windowHeight);
 }
 
