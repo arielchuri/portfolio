@@ -64,7 +64,7 @@ function draw() {
   }
   
   background(255, 0); // Transparent background
-  stroke(255, 20, 147, 30 * scrollOpacity); // Deep pink with scroll-based opacity
+  stroke(255, 20, 147, 80 * scrollOpacity); // Deep pink with scroll-based opacity
   strokeWeight(1);
   noFill();
   
@@ -133,7 +133,7 @@ class PlatonicSolid {
   
   drawTetrahedron(opacity) {
     const s = this.size / 2;
-    stroke(255, 20, 147, 30 * opacity);
+    stroke(255, 20, 147, 80 * opacity);
     
     beginShape();
     vertex(s, s, s);
@@ -162,7 +162,7 @@ class PlatonicSolid {
   
   drawCube(opacity) {
     const s = this.size / 2;
-    stroke(255, 20, 147, 30 * opacity);
+    stroke(255, 20, 147, 80 * opacity);
     
     // Front face
     beginShape();
@@ -189,7 +189,7 @@ class PlatonicSolid {
   
   drawOctahedron(opacity) {
     const s = this.size / 2;
-    stroke(255, 20, 147, 30 * opacity);
+    stroke(255, 20, 147, 80 * opacity);
     
     // Top pyramid
     beginShape();
@@ -275,7 +275,7 @@ class Particle {
   display(opacity = 1) {
     push();
     translate(this.x, this.y, this.z);
-    const baseOpacity = map(this.z, -100, 100, 10, 40);
+    const baseOpacity = map(this.z, -100, 100, 30, 100);
     stroke(255, 20, 147, baseOpacity * opacity);
     strokeWeight(this.size);
     point(0, 0);
