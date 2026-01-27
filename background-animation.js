@@ -60,13 +60,13 @@ function setup() {
   startingHueOffset = random() > 0.5 ? 3 * colorStep : -3 * colorStep;
   hueDirection = startingHueOffset > 0 ? -1 : 1; // Move opposite to starting offset
 
-  // Create platonic solids
+  // Create platonic solids and other shapes
   for (let i = 0; i < 5; i++) {
     shapes.push(new PlatonicSolid(
       random(-width/3, width/3),
       random(-height/3, height/3),
       random(20, 60),
-      random(['tetrahedron', 'cube', 'octahedron']),
+      random(['tetrahedron', 'cube', 'octahedron', 'torus', 'cone', 'cylinder']),
       i // Pass index for color
     ));
   }
@@ -178,6 +178,12 @@ class PlatonicSolid {
       this.drawCube(opacity);
     } else if (this.type === 'octahedron') {
       this.drawOctahedron(opacity);
+    } else if (this.type === 'torus') {
+      this.drawTorus(opacity);
+    } else if (this.type === 'cone') {
+      this.drawCone(opacity);
+    } else if (this.type === 'cylinder') {
+      this.drawCylinder(opacity);
     }
     
     pop();
@@ -295,6 +301,122 @@ class PlatonicSolid {
     vertex(0, 0, -s);
     vertex(s, 0, 0);
     endShape(CLOSE);
+  }
+
+  drawTorus(opacity) {
+    const [r, g, b, a] = this.getColor(opacity);
+    stroke(r, g, b, a);
+
+    const tubeRadius = this.size / 6;
+    const radius = this.size / 2;
+    const segments = 16;
+
+    // Draw circular rings around the torus
+    for (let i = 0; i < segments; i++) {
+      const theta = (i / segments) * TWO_PI;
+      const nextTheta = ((i + 1) / segments) * TWO_PI;
+
+      beginShape();
+      for (let j = 0; j <= segments; j++) {
+        const phi = (j / segments) * TWO_PI;
+        const x = (radius + tubeRadius * cos(phi)) * cos(theta);
+        const y = (radius + tubeRadius * cos(phi)) * sin(theta);
+        const z = tubeRadius * sin(phi);
+        vertex(x, y, z);
+      }
+      endShape();
+    }
+
+    // Draw cross-sectional circles
+    for (let i = 0; i < 8; i++) {
+      const theta = (i / 8) * TWO_PI;
+      beginShape();
+      for (let j = 0; j <= segments; j++) {
+        const phi = (j / segments) * TWO_PI;
+        const x = (radius + tubeRadius * cos(phi)) * cos(theta);
+        const y = (radius + tubeRadius * cos(phi)) * sin(theta);
+        const z = tubeRadius * sin(phi);
+        vertex(x, y, z);
+      }
+      endShape(CLOSE);
+    }
+  }
+
+  drawCone(opacity) {
+    const [r, g, b, a] = this.getColor(opacity);
+    stroke(r, g, b, a);
+
+    const radius = this.size / 2;
+    const height = this.size;
+    const segments = 16;
+
+    // Draw lines from apex to base
+    for (let i = 0; i < segments; i++) {
+      const angle = (i / segments) * TWO_PI;
+      const x = radius * cos(angle);
+      const z = radius * sin(angle);
+
+      line(0, -height / 2, 0, x, height / 2, z);
+    }
+
+    // Draw base circle
+    beginShape();
+    for (let i = 0; i <= segments; i++) {
+      const angle = (i / segments) * TWO_PI;
+      const x = radius * cos(angle);
+      const z = radius * sin(angle);
+      vertex(x, height / 2, z);
+    }
+    endShape(CLOSE);
+
+    // Draw a middle circle for depth
+    const midRadius = radius / 2;
+    beginShape();
+    for (let i = 0; i <= segments; i++) {
+      const angle = (i / segments) * TWO_PI;
+      const x = midRadius * cos(angle);
+      const z = midRadius * sin(angle);
+      vertex(x, 0, z);
+    }
+    endShape(CLOSE);
+  }
+
+  drawCylinder(opacity) {
+    const [r, g, b, a] = this.getColor(opacity);
+    stroke(r, g, b, a);
+
+    const radius = this.size / 2;
+    const height = this.size;
+    const segments = 16;
+
+    // Draw top circle
+    beginShape();
+    for (let i = 0; i <= segments; i++) {
+      const angle = (i / segments) * TWO_PI;
+      const x = radius * cos(angle);
+      const z = radius * sin(angle);
+      vertex(x, -height / 2, z);
+    }
+    endShape(CLOSE);
+
+    // Draw bottom circle
+    beginShape();
+    for (let i = 0; i <= segments; i++) {
+      const angle = (i / segments) * TWO_PI;
+      const x = radius * cos(angle);
+      const z = radius * sin(angle);
+      vertex(x, height / 2, z);
+    }
+    endShape(CLOSE);
+
+    // Draw vertical lines connecting top and bottom
+    for (let i = 0; i < segments; i += 2) {
+      const angle = (i / segments) * TWO_PI;
+      const x = radius * cos(angle);
+      const z = radius * sin(angle);
+
+      line(x, -height / 2, z, x, height / 2, z);
+    }
   }
 }
 
