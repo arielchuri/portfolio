@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic Page Needs
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8" />
+    <title>TAZ OS - Ariel Churi</title>
+    <meta name="description" content="Temporary Autonomous Zone (TAZ) OS - An offline-first mutual aid and community resilience platform engineered for local mesh networks." />
+    <meta name="author" content="Ariel Churi" />
+
+    <!-- Mobile Specific Metas
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FONT
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- CSS
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="fonts/inter.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Favicon
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+  </head>
+
+  <body>
+    <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
+    <nav>
+      <span id="returnbutton"></span> <span id="resumebutton"></span>
+      <span id="contactbutton"></span>
+      <span class="" id="projectsbutton"></span>
+      <span class="" id="physicalbutton"></span>
+      <span class="" id="mobilebutton"></span>
+    </nav>
+    <!-- Down arrow navigation (populated by JavaScript) -->
+    <div id="down-arrow-placeholder"></div>
+    <div
+      class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 main-content"
+    >
+      <div id="contactDiv" style="display: none; width: 100%"></div>
+      <div class="row">
+        <!-- Hero section -->
+      </div>
+      <div
+        class="h-screen flex items-center twelve columns bottomspace"
+        id="taz-hero-section"
+      >
+        <img
+          class="pb-48 px-2 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 rounded-xs"
+          src="images/taz/taz_dashboard.png"
+          alt="TAZ OS Dashboard Interface"
+        />
+      </div>
+    </div>
+
+    <div
+      class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
+    >
+      <hr class="dots my-36" />
+
+      <div class="row">
+        <div class="twelve columns title">
+          <div class="inline-block bg-[#D35B50] text-white font-mono text-xs uppercase px-2.5 py-1 mb-3 font-bold tracking-wider rounded-xs">
+            ★ Work in Progress
+          </div>
+          <h1 class="mb-2">TAZ OS</h1>
+          <p class="text-xl font-thin uppercase tracking-wide text-gray-500">
+            Temporary Autonomous Zone — Offline Mesh Operating System
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="four columns">
+          <p>
+            <strong>TAZ OS</strong> is an open-source, non-hierarchical community self-management operating system engineered for local resilience and off-grid coordination.
+          </p>
+          <p>
+            When municipal infrastructure, cellular grids, or internet connections fail, communities need immediate horizontal coordination tools. TAZ provides a unified interface for peer-to-peer mutual aid matching, microgrid power telemetry, localized cartography, and direct consensus democracy without any internet dependencies.
+          </p>
+          <p>
+            <strong>Key Principles:</strong>
+          </p>
+          <ul>
+            <li><strong>Zero-Cloud Mesh:</strong> Runs entirely on local 915MHz LoRa mesh networks and captive Wi-Fi portals on low-power devices like Raspberry Pis.</li>
+            <li><strong>Peer-to-Peer Mutual Aid:</strong> Direct "Give &amp; Take" surplus matching without currency, middlemen, or corporate algorithms.</li>
+            <li><strong>Neo-Brutal UI:</strong> High-contrast, tactile, utilitarian design system built for maximum legibility in low-power and high-stress field conditions.</li>
+            <li><strong>Direct Democracy:</strong> Horizontal assembly voting and consensus charters.</li>
+          </ul>
+
+          <div class="my-6 p-4 bg-gray-100 rounded-xs border border-gray-300">
+            <h5 class="text-sm font-bold uppercase font-mono mb-2">Live Project Links</h5>
+            <p class="text-sm mb-2">
+              <a href="https://arielchuri.github.io/TAZ/" target="_blank" rel="noopener noreferrer" class="link-slide font-semibold">
+                ↗ Launch Live App (GitHub Pages)
+              </a>
+            </p>
+            <p class="text-sm">
+              <a href="https://github.com/arielchuri/TAZ" target="_blank" rel="noopener noreferrer" class="link-slide font-semibold">
+                ↗ Source Code on GitHub
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="eight columns">
+          <img
+            class="multiply box-shadow rounded-xs bottomspace"
+            src="images/taz/taz_dashboard.png"
+            alt="TAZ Dashboard Full Overview"
+            data-lightbox="taz"
+          />
+        </div>
+      </div>
+
+      <hr class="dots my-36" />
+
+      <!-- Paper Prototyping & Design Process -->
+      <div class="row mb-12">
+        <div class="four columns">
+          <h3 class="text-3xl font-thin uppercase mb-2">Paper Prototyping</h3>
+          <p>
+            The interface architecture originated with hand-drawn paper wireframes to define information hierarchy and spatial organization before code.
+          </p>
+          <p>
+            Every quadrant corresponds to an essential survival and social layer: network and telemetry gauges at the top, spatial cartography and resource boards in the primary viewport, and bottom status strips for working groups and labor rosters.
+          </p>
+          <p>
+            Rapid physical paper prototyping allowed rapid stress-testing of dense layouts to ensure critical actions (such as one-touch mesh SOS broadcasts and urgent insulin/water requests) remained instantly accessible.
+          </p>
+        </div>
+        <div class="eight columns">
+          <img
+            class="rounded-xs box-shadow bottomspace"
+            src="images/taz/dashboard-layout.jpg"
+            alt="Paper Prototyping Dashboard Layout Wireframe"
+            data-lightbox="taz"
+          />
+        </div>
+      </div>
+
+      <hr class="dots my-36" />
+
+      <!-- Cartography & Spatial Context -->
+      <div class="row mb-12">
+        <div class="four columns">
+          <h3 class="text-3xl font-thin uppercase mb-2">Localized Cartography</h3>
+          <p>
+            Spatial awareness is paramount during localized emergencies. TAZ integrates calibrated 8×8 grid cartography (Sector 4 grid) rendering topographic contours, emergency shelters, food distribution depots, and water catchment points.
+          </p>
+          <p>
+            The map is rendered offline with layered vector geometry, allowing users to cross-reference active LoRa peer positions with natural landmarks and shelter infrastructure.
+          </p>
+        </div>
+        <div class="eight columns">
+          <img
+            class="rounded-xs box-shadow bottomspace"
+            src="images/taz/map.png"
+            alt="TAZ Local Zone Cartography"
+            data-lightbox="taz"
+          />
+        </div>
+      </div>
+
+      <hr class="dots my-36" />
+
+      <!-- Core Modules Breakdown -->
+      <div class="row mb-12">
+        <div class="twelve columns">
+          <h2 class="mb-4">System Architecture &amp; Modules</h2>
+        </div>
+      </div>
+
+      <div class="row mb-12">
+        <div class="four columns">
+          <h3 class="text-2xl font-thin uppercase mb-2">Mutual Aid Matcher</h3>
+          <p>
+            A lightweight bilateral matching engine connecting surplus community skills ("Offers") with vital supply requests ("Needs") flagged by urgency.
+          </p>
+        </div>
+        <div class="four columns">
+          <h3 class="text-2xl font-thin uppercase mb-2">Microgrid Telemetry</h3>
+          <p>
+            Real-time telemetry monitoring community battery storage banks (LiFePO4), solar MPPT charge controllers, and water catchment gauges.
+          </p>
+        </div>
+        <div class="four columns">
+          <h3 class="text-2xl font-thin uppercase mb-2">Mesh Comms &amp; SOS</h3>
+          <p>
+            Encrypted local communication over 915MHz LoRa packets with a dedicated hold-to-activate emergency SOS beacon broadcast.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mb-12">
+        <div class="four columns">
+          <h3 class="text-2xl font-thin uppercase mb-2">Collective Labor Roster</h3>
+          <p>
+            Organized volunteer labor brigades (barn-raising) for timber framing, solar canopy assembly, and bio-filter maintenance.
+          </p>
+        </div>
+        <div class="four columns">
+          <h3 class="text-2xl font-thin uppercase mb-2">Consensus Governance</h3>
+          <p>
+            Non-hierarchical direct democracy modules supporting assembly proposals, supermajority voting, and neighborhood charters.
+          </p>
+        </div>
+        <div class="four columns">
+          <h3 class="text-2xl font-thin uppercase mb-2">Offline Knowledge Base</h3>
+          <p>
+            Self-hosted offline library of medical triage manuals, permaculture guides, RF antenna tuning diagrams, and equipment repair specs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Floating right arrow for navigation -->
+      <a href="p_more.html">
+        <div class="right-arrow-nav">
+          <img
+            src="rightarrow.svg"
+            alt="Next"
+            class="animate-bounce w-8 h-8 text-accent hover:text-active transition-colors duration-200"
+          />
+        </div>
+      </a>
+    </div>
+
+    <!-- Lightbox Modal for All Groups -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-gray-300/50 backdrop-blur-2xl hidden transition-opacity duration-300"
+    >
+      <button
+        id="lightbox-close"
+        type="button"
+        class="absolute top-4 right-4 text-gray-800 text-3xl font-bold hover:text-gray-600 transition-colors duration-200"
+      >
+        &times;
+      </button>
+      <button
+        id="lightbox-prev"
+        type="button"
+        class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-800 text-3xl font-bold hidden hover:text-gray-600 transition-colors duration-200"
+      >
+        &#8592;
+      </button>
+      <div
+        id="lightbox-content"
+        class="max-w-full max-h-full flex items-center justify-center transition-all duration-300 ease-in-out"
+      ></div>
+      <button
+        id="lightbox-next"
+        type="button"
+        class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-800 text-3xl font-bold hidden hover:text-gray-600 transition-colors duration-200"
+      >
+        &#8594;
+      </button>
+    </div>
+
+    <div id="footer"></div>
+    <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="myscript.js"></script>
+  </body>
+</html>

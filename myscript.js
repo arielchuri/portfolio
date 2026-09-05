@@ -27,12 +27,14 @@ var contactinfo =
 function getCurrentSection() {
   const sections = [
     "sparkle-labs",
+    "teaching",
     "bridgestone",
     "sothebys",
     "calvin-klein",
     "unilever",
     "ibm-holobot",
     "moma-killscreen",
+    "taz",
     "more-work",
   ];
 
