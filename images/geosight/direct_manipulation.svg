@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="680" fill="#f8fafc" rx="8"/>
+
+  <!-- Main Workspace Canvas -->
+  <g transform="translate(60, 50)" filter="url(#shadow-card)">
+    <rect width="1080" height="580" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    
+    <!-- Top Prompt Bar with Interactive Chips -->
+    <rect x="30" y="25" width="1020" height="54" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="50" y="58" font-family="'Inter', sans-serif" font-size="15" fill="#1e293b">Filtered by: [ Corridor: Midwest ] &#215;  [ Dwell Time &gt; 3.5h ] &#215;  [ Weather: Rain/Storm ] &#215;</text>
+
+    <!-- Map with interactive bounding box & slider overlay -->
+    <rect x="30" y="105" width="680" height="445" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    
+    <!-- Spatial Grid Lines -->
+    <line x1="30" y1="200" x2="710" y2="200" stroke="#edf2f7"/>
+    <line x1="30" y1="320" x2="710" y2="320" stroke="#edf2f7"/>
+    <line x1="30" y1="440" x2="710" y2="440" stroke="#edf2f7"/>
+    <line x1="200" y1="105" x2="200" y2="550" stroke="#edf2f7"/>
+    <line x1="420" y1="105" x2="420" y2="550" stroke="#edf2f7"/>
+
+    <!-- Interactive bounding box with control handles -->
+    <rect x="180" y="180" width="340" height="230" rx="4" fill="#6366f1" fill-opacity="0.08" stroke="#4f46e5" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="174" y="174" width="12" height="12" rx="2" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+    <rect x="514" y="174" width="12" height="12" rx="2" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+    <rect x="174" y="404" width="12" height="12" rx="2" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+    <rect x="514" y="404" width="12" height="12" rx="2" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+    <text x="200" y="210" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#4338ca">Selected Polygon: Area 4B</text>
+
+    <!-- Floating Interactive Controls -->
+    <g transform="translate(735, 105)">
+      <rect width="315" height="445" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+      <text x="25" y="40" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#0f172a">Direct Control Panel</text>
+      
+      <!-- Slider 1 -->
+      <text x="25" y="90" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#64748b">LATENCY TOLERANCE (SECONDS)</text>
+      <rect x="25" y="110" width="265" height="8" rx="4" fill="#e2e8f0"/>
+      <rect x="25" y="110" width="160" height="8" rx="4" fill="#6366f1"/>
+      <circle cx="185" cy="114" r="9" fill="#ffffff" stroke="#6366f1" stroke-width="3"/>
+      <text x="25" y="145" font-family="'Inter', sans-serif" font-size="12" fill="#0f172a">Current: 45s cutoff</text>
+
+      <!-- Slider 2 -->
+      <text x="25" y="200" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#64748b">ANOMALY SENSITIVITY</text>
+      <rect x="25" y="220" width="265" height="8" rx="4" fill="#e2e8f0"/>
+      <rect x="25" y="220" width="210" height="8" rx="4" fill="#10b981"/>
+      <circle cx="235" cy="224" r="9" fill="#ffffff" stroke="#10b981" stroke-width="3"/>
+      <text x="25" y="255" font-family="'Inter', sans-serif" font-size="12" fill="#0f172a">High (Z-score &gt; 2.2)</text>
+
+      <!-- Multi-select toggle buttons -->
+      <text x="25" y="310" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#64748b">ACTIVE TELEMETRY LAYERS</text>
+      <rect x="25" y="330" width="125" height="32" rx="16" fill="#1e293b"/>
+      <text x="45" y="351" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#ffffff">Rail Grid</text>
+      <rect x="160" y="330" width="130" height="32" rx="16" fill="#f1f5f9" stroke="#cbd5e1"/>
+      <text x="180" y="351" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#475569">Vessel AIS</text>
+
+      <rect x="25" y="375" width="265" height="42" rx="6" fill="#4f46e5"/>
+      <text x="80" y="401" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#ffffff">Sync AI Query With Canvas</text>
+    </g>
+  </g>
+</svg>

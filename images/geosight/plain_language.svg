@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="680" fill="#f8fafc" rx="8"/>
+  <rect x="50" y="40" width="1100" height="600" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#card-shadow)"/>
+  
+  <!-- Conversational Search Bar -->
+  <rect x="80" y="80" width="1040" height="64" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <circle cx="120" cy="112" r="14" fill="#6366f1" opacity="0.15"/>
+  <text x="114" y="118" font-family="'Inter', sans-serif" font-size="18" fill="#4f46e5">✦</text>
+  <text x="150" y="118" font-family="'Inter', sans-serif" font-size="16" fill="#1e293b" font-weight="500">
+    "Show severe congestion and delayed assets across the Eastern Seaboard from yesterday"
+  </text>
+  
+  <!-- Semantic Parsing Chips -->
+  <g transform="translate(80, 165)">
+    <text x="0" y="24" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#64748b" text-transform="uppercase" letter-spacing="0.05em">Parsed Intent:</text>
+    <rect x="110" y="5" width="145" height="32" rx="16" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="125" y="26" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#1d4ed8">Entity: Rail &amp; Fleet</text>
+    
+    <rect x="270" y="5" width="170" height="32" rx="16" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="285" y="26" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#047857">Region: Eastern Seaboard</text>
+    
+    <rect x="455" y="5" width="140" height="32" rx="16" fill="#fef3c7" stroke="#fde68a"/>
+    <text x="470" y="26" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#b45309">Window: T - 24h</text>
+  </g>
+
+  <!-- Realtime Generated Layout Widgets -->
+  <g transform="translate(80, 225)">
+    <!-- Map Widget -->
+    <rect x="0" y="0" width="680" height="380" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="25" y="38" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#0f172a">Spatial Hotspot Layer</text>
+    <line x1="25" y1="55" x2="655" y2="55" stroke="#e2e8f0"/>
+    <circle cx="240" cy="190" r="45" fill="#ef4444" opacity="0.25"/>
+    <circle cx="240" cy="190" r="18" fill="#ef4444" opacity="0.7"/>
+    <circle cx="480" cy="270" r="60" fill="#f59e0b" opacity="0.2"/>
+    <circle cx="480" cy="270" r="22" fill="#f59e0b" opacity="0.7"/>
+
+    <!-- Right Side Metrics Card -->
+    <rect x="705" y="0" width="335" height="180" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="730" y="38" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#64748b">Delayed Freight Dwell</text>
+    <text x="730" y="85" font-family="'Inter', sans-serif" font-size="34" font-weight="700" fill="#0f172a">+34.8%</text>
+    <text x="730" y="115" font-family="'Inter', sans-serif" font-size="12" fill="#ef4444">&uarr; vs 7-day average</text>
+    <rect x="730" y="135" width="285" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="730" y="135" width="200" height="8" rx="4" fill="#ef4444"/>
+
+    <!-- Anomaly Timeline -->
+    <rect x="705" y="200" width="335" height="180" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="730" y="235" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#64748b">Bottleneck Frequency</text>
+    <polyline points="730,340 770,330 810,310 850,335 890,270 930,285 970,250 1010,260" fill="none" stroke="#6366f1" stroke-width="3"/>
+  </g>
+</svg>

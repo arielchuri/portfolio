@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-audit" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="680" fill="#f8fafc" rx="8"/>
+  
+  <!-- Left Side: Data Card with Confidence & Verification -->
+  <g transform="translate(60, 50)" filter="url(#shadow-audit)">
+    <rect width="520" height="580" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="520" height="55" rx="10" fill="#f1f5f9"/>
+    <text x="25" y="35" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#0f172a">Verified Metric Summary</text>
+    <rect x="390" y="14" width="105" height="26" rx="13" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="405" y="32" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#047857">&#10003; VERIFIED</text>
+    
+    <text x="25" y="100" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#64748b" text-transform="uppercase">Metric Name</text>
+    <text x="25" y="130" font-family="'Inter', sans-serif" font-size="24" font-weight="700" fill="#1e293b">Asset Throughput Efficiency</text>
+    
+    <!-- Trust Score Breakdown -->
+    <rect x="25" y="165" width="470" height="110" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="45" y="195" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1e293b">Model Reliability &amp; Data Lineage</text>
+    <rect x="45" y="215" width="430" height="10" rx="5" fill="#e2e8f0"/>
+    <rect x="45" y="215" width="410" height="10" rx="5" fill="#10b981"/>
+    <text x="45" y="250" font-family="'Inter', sans-serif" font-size="12" fill="#059669" font-weight="600">96.4% Lineage Confidence Score</text>
+    
+    <!-- Provenance List -->
+    <g transform="translate(25, 305)">
+      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#334155">Primary Feeds</text>
+      <circle cx="12" cy="55" r="4" fill="#3b82f6"/>
+      <text x="26" y="60" font-family="'Inter', sans-serif" font-size="13" fill="#1e293b">GPS Telemetry Cluster (1,420 nodes)</text>
+      <circle cx="12" cy="95" r="4" fill="#3b82f6"/>
+      <text x="26" y="100" font-family="'Inter', sans-serif" font-size="13" fill="#1e293b">Port Authority Vessel AIS Records</text>
+      <circle cx="12" cy="135" r="4" fill="#3b82f6"/>
+      <text x="26" y="140" font-family="'Inter', sans-serif" font-size="13" fill="#1e293b">National Weather Service Storm Alerts</text>
+    </g>
+    
+    <rect x="25" y="495" width="470" height="50" rx="6" fill="#111827"/>
+    <text x="180" y="526" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#ffffff">Open Provenance Drawer</text>
+  </g>
+
+  <!-- Right Side: Inspectable Query Drawer -->
+  <g transform="translate(620, 50)" filter="url(#shadow-audit)">
+    <rect width="520" height="580" rx="10" fill="#1e293b"/>
+    <rect x="0" y="0" width="520" height="55" rx="10" fill="#0f172a"/>
+    <text x="25" y="35" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#f8fafc">SQL Query Transparency</text>
+    <rect x="420" y="14" width="75" height="26" rx="4" fill="#334155"/>
+    <text x="435" y="32" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Copy</text>
+    
+    <!-- Code Box -->
+    <g transform="translate(25, 80)">
+      <text x="0" y="25" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">SELECT</text>
+      <text x="65" y="25" font-family="'Consolas', monospace" font-size="13" fill="#93c5fd">node_id, geom, avg(dwell_hours)</text>
+      <text x="0" y="55" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">FROM</text>
+      <text x="50" y="55" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">mercury_operational_telemetry</text>
+      <text x="0" y="85" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">WHERE</text>
+      <text x="60" y="85" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">recorded_at &gt;= NOW() - INTERVAL '48 hours'</text>
+      <text x="0" y="115" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">AND</text>
+      <text x="40" y="115" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">ST_Intersects(geom, ST_MakeEnvelope(...))</text>
+      <text x="0" y="145" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">GROUP BY</text>
+      <text x="85" y="145" font-family="'Consolas', monospace" font-size="13" fill="#93c5fd">node_id, geom</text>
+      <text x="0" y="175" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">HAVING</text>
+      <text x="70" y="175" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">count(*) &gt; 15</text>
+    </g>
+
+    <rect x="25" y="320" width="470" height="220" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="45" y="355" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">&#9881; Parameter Overrides</text>
+    <text x="45" y="385" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Confidence Threshold: 90% (Strict)</text>
+    <text x="45" y="415" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Outlier Rejection: Enabled (IQR 1.5)</text>
+    <text x="45" y="445" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Data Latency Warning: Active (&lt; 60s)</text>
+  </g>
+</svg>

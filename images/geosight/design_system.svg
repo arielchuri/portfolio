@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-ds" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="680" fill="#f8fafc" rx="8"/>
+  
+  <g transform="translate(60, 50)" filter="url(#shadow-ds)">
+    <rect width="1080" height="580" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1080" height="60" rx="10" fill="#f1f5f9"/>
+    <text x="35" y="38" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#0f172a">Mercury-GeoSight Design System &amp; AI Component Kit</text>
+    
+    <!-- Column 1: Color Palette & Semantics -->
+    <g transform="translate(35, 90)">
+      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#334155">AI &amp; Data Semantic Colors</text>
+      
+      <circle cx="20" cy="55" r="16" fill="#4f46e5"/>
+      <text x="50" y="60" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#1e293b">Generative Accent (#4F46E5)</text>
+      
+      <circle cx="20" cy="105" r="16" fill="#10b981"/>
+      <text x="50" y="110" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#1e293b">Verified Provenance (#10B981)</text>
+
+      <circle cx="20" cy="155" r="16" fill="#f59e0b"/>
+      <text x="50" y="160" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#1e293b">Uncertainty Warning (#F59E0B)</text>
+
+      <circle cx="20" cy="205" r="16" fill="#ef4444"/>
+      <text x="50" y="210" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#1e293b">Anomaly Alert (#EF4444)</text>
+
+      <circle cx="20" cy="255" r="16" fill="#0f172a"/>
+      <text x="50" y="260" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#1e293b">Dark Telemetry Surface (#0F172A)</text>
+    </g>
+
+    <!-- Column 2: Interactive Prompt & Intent Badges -->
+    <g transform="translate(380, 90)">
+      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#334155">Semantic Intent Components</text>
+      
+      <rect x="0" y="45" width="280" height="42" rx="21" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="25" y="71" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#1d4ed8">Entity: Spatial Corridor</text>
+
+      <rect x="0" y="105" width="280" height="42" rx="21" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="25" y="131" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#15803d">Confidence: 98.4% (High)</text>
+
+      <rect x="0" y="165" width="280" height="42" rx="21" fill="#fffbeb" stroke="#fcd34d"/>
+      <text x="25" y="191" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#b45309">Ambiguity: Needs Clarification</text>
+
+      <rect x="0" y="225" width="280" height="42" rx="6" fill="#1e293b"/>
+      <text x="25" y="251" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#ffffff">Audit Provenance [SQL &rarr;]</text>
+    </g>
+
+    <!-- Column 3: Telemetry Cards & Micro-charts -->
+    <g transform="translate(720, 90)">
+      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#334155">Modular Dashboard Tiles</text>
+      
+      <rect x="0" y="45" width="310" height="120" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+      <text x="20" y="75" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#64748b">Sensor Dwell Time</text>
+      <text x="20" y="110" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="#0f172a">4.2 hrs</text>
+      <polyline points="180,120 205,100 230,115 255,80 280,95" fill="none" stroke="#6366f1" stroke-width="2.5"/>
+
+      <rect x="0" y="185" width="310" height="120" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+      <text x="20" y="215" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#64748b">Route Capacity Index</text>
+      <text x="20" y="250" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="#0f172a">92.1%</text>
+      <polyline points="180,260 205,250 230,230 255,240 280,210" fill="none" stroke="#10b981" stroke-width="2.5"/>
+    </g>
+  </g>
+</svg>
