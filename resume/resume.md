@@ -32,7 +32,7 @@ document.write(user + '@' + site + '</a>');
  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
  | [Montclair, NJ](https://goo.gl/maps/oHnA1aaUuyH7s5W99)                                                                                                                                                                                    |
  | he/him                                                                                                                                                                                                                                    |
- | [ari-EL choo-REE](https://arielchuri.sparklelabs.com/resume/pronounce.mp3) [<img style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/>](https://arielchuri.sparklelabs.com/resume/pronounce.mp3)                |
+ | [ari-EL chur-EE](https://arielchuri.sparklelabs.com/resume/pronounce.mp3) [<img style="height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/>](https://arielchuri.sparklelabs.com/resume/pronounce.mp3)                |
  | [arielchuri_resume.pdf](https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf) [<img style="height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg">](https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf) |
  | [github.com/arielchuri](https://github.com/arielchuri/)                                                                                                                                                                                   |
 </div>

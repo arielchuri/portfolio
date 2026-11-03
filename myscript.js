@@ -15,7 +15,7 @@ var contactinfo =
           <ul class="list-none flex flex-col" > \
                   <li><a href="https://goo.gl/maps/oHnA1aaUuyH7s5W99" target=_blank class="link-slide">Montclair, NJ</a></li> \
                   <li>he/him or they/them</li> \
-                  <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide">ari-EL choo-REE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
+                  <li><a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide">ari-EL chur-EE</a> <a href="https://arielchuri.sparklelabs.com/resume/pronounce.mp3" target=_blank class="link-slide"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/audio-document.svg"/></a></li> \
                   <li><a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank class="link-slide">arielchuri_resume.pdf</a> <a href="https://arielchuri.sparklelabs.com/resume/arielchuri_resume.pdf" target=_blank class="link-slide"><img style="display:inline-block;height:18px;width:18px;vertical-align:middle" src="resume/pdf-file.svg"></a></li> \
                   <li><a href="https://github.com/arielchuri/" target=_blank class="link-slide">github.com/arielchuri</a></li> \
                   <li><a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3835821" target=_blank class="link-slide">KD2LPU</a></li> \
@@ -26,6 +26,7 @@ var contactinfo =
 // Simple section tracking for return button
 function getCurrentSection() {
   const sections = [
+    "geosightai",
     "sparkle-labs",
     "teaching",
     "bridgestone",
@@ -123,8 +124,8 @@ function initializePageAnimations() {
       window.location.pathname === "/" ||
       window.location.pathname.endsWith("index.html");
     const href = isCurrentlyOnIndex
-      ? "#sparkle-labs"
-      : "index.html#sparkle-labs";
+      ? "#geosightai"
+      : "index.html#geosightai";
     projectsButton.innerHTML = `<a href="${href}" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>`;
   }
 
@@ -708,7 +709,9 @@ function initializePageAnimations() {
     window.addEventListener("scroll", updateOverlay);
 
     overlay.addEventListener("click", function () {
-      const targetSection = document.getElementById("sparkle-labs");
+      const targetSection =
+        document.getElementById("geosightai") ||
+        document.getElementById("sparkle-labs");
       if (targetSection) {
         targetSection.scrollIntoView({
           behavior: "smooth",
