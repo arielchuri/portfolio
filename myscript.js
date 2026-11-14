@@ -37,6 +37,7 @@ function getCurrentSection() {
     "moma-killscreen",
     "taz",
     "more-work",
+    "experiments",
   ];
 
   const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -137,6 +138,21 @@ function initializePageAnimations() {
   if (physicalButton) {
     physicalButton.innerHTML =
       '<a href="g_physical.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical</span></a>';
+  }
+
+  let experimentsButton = document.getElementById("experimentsbutton");
+  const isExperimentsPage = window.location.pathname.endsWith("experiments.html");
+  if (!experimentsButton && !isExperimentsPage) {
+    const navEl = document.querySelector("nav");
+    if (navEl) {
+      experimentsButton = document.createElement("span");
+      experimentsButton.id = "experimentsbutton";
+      navEl.appendChild(experimentsButton);
+    }
+  }
+  if (experimentsButton && !isExperimentsPage) {
+    experimentsButton.innerHTML =
+      '<a href="experiments.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">experiments</span></a>';
   }
 
   user = "&#97;&#99;";

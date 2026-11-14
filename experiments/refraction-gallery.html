@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sculptural Glass & Optical Dispersion Gallery</title>
+  <meta name="description" content="High-end studio optical glass refraction with chromatic dispersion and liquid spectral refractions.">
+  <link rel="stylesheet" href="../fonts/inter.css">
+  <style>
+    :root {
+      --black: #243131;
+      --accent: deeppink;
+      --active: hotpink;
+      --accent2: paleturquoise;
+      --gray3: #666581;
+      --gray2: #9190aa;
+      --gray1: #d7d6ec;
+      --white: whitesmoke;
+      --yellow: #fad13e;
+      --bg: var(--white);
+      --card-bg: rgba(245, 245, 245, 0.34);
+      --border: none;
+      --fg: var(--black);
+      --dim: var(--gray3);
+      --ctrl-bg: rgba(255, 255, 255, 0.42);
+      --ctrl-border: rgba(145, 144, 170, 0.42);
+      --ctrl-hover-bg: rgba(255, 20, 147, 0.10);
+      --slider-track: rgba(145, 144, 170, 0.45);
+      --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body.dark-bg {
+      --bg: #050608;
+      --card-bg: rgba(14, 18, 20, 0.36);
+      --fg: var(--white);
+      --dim: var(--gray2);
+      --ctrl-bg: rgba(36, 49, 49, 0.44);
+      --ctrl-border: rgba(215, 214, 236, 0.24);
+      --ctrl-hover-bg: rgba(255, 20, 147, 0.18);
+      --slider-track: rgba(215, 214, 236, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
+      letter-spacing: -0.004em;
+      line-height: 1.45;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" fill="%2335a7f4"/><rect x="8" y="8" width="4" height="4" fill="%23FF1493"/></svg>')
+          8 8,
+        auto;
+    }
+
+    button,
+    select,
+    input[type="range"],
+    [role="button"] {
+      cursor:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g stroke="%238B5CF6" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="5.64" y1="5.64" x2="18.36" y2="18.36"/><line x1="5.64" y1="18.36" x2="18.36" y2="5.64"/></g><rect x="10" y="10" width="4" height="4" fill="%23FFA500"/></svg>')
+          12 12,
+        auto !important;
+    }
+
+    #webgl-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    header {
+      pointer-events: auto;
+      max-width: 36rem;
+      background: var(--card-bg);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: none;
+      border-radius: 0;
+      border-bottom-right-radius: 2px;
+      padding: 0.85rem 1.25rem;
+      transition: background-color 0.25s ease;
+    }
+
+    h1 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.12rem 0.42rem;
+      border-radius: 2px;
+      background: rgba(175, 238, 238, 0.34);
+      color: var(--black);
+      border: 1px solid var(--accent2);
+    }
+
+    body.dark-bg .badge {
+      background: rgba(175, 238, 238, 0.14);
+      color: var(--accent2);
+    }
+
+    header p {
+      font-size: 0.8rem;
+      color: var(--dim);
+      line-height: 1.45;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    .back-link:hover {
+      color: var(--active);
+    }
+
+    .controls-panel {
+      pointer-events: auto;
+      width: 100%;
+      max-width: none;
+      background: var(--card-bg);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: none;
+      border-radius: 0;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 0.85rem 1.35rem;
+      margin-top: auto;
+      transition: background-color 0.25s ease;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.32rem;
+    }
+
+    .control-label {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: var(--dim);
+    }
+
+    select.ctrl-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: var(--ctrl-bg);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666581' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.55rem center;
+      border: 1px solid var(--ctrl-border);
+      color: var(--fg);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.34rem 1.85rem 0.34rem 0.58rem;
+      border-radius: 2px;
+      outline: none;
+      min-width: 10.5rem;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    body.dark-bg select.ctrl-select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239190aa' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    }
+
+    select.ctrl-select:hover,
+    select.ctrl-select:focus {
+      background-color: var(--ctrl-hover-bg);
+      border-color: var(--accent);
+    }
+
+    select.ctrl-select option {
+      background: #f5f5f5;
+      color: #243131;
+    }
+
+    body.dark-bg select.ctrl-select option {
+      background: #141a1c;
+      color: #f5f5f5;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    button.icon-btn {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
+      color: var(--fg);
+      border-radius: 2px;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    button.icon-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.85;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    button.icon-btn:hover {
+      background: var(--ctrl-hover-bg);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    button.icon-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    button.icon-btn.active:hover {
+      background: var(--active);
+      border-color: var(--active);
+      color: #ffffff;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      height: 30px;
+      font-size: 0.78rem;
+      color: var(--fg);
+      font-variant-numeric: tabular-nums;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 3px;
+      background: var(--slider-track);
+      border-radius: 2px;
+      outline: none;
+      width: 96px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background: var(--accent);
+      border: 1.5px solid var(--white);
+      box-shadow: 0 1px 4px rgba(36, 49, 49, 0.35);
+      transition: transform 0.12s ease, background-color 0.12s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: var(--active);
+      transform: scale(1.1);
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      height: 30px;
+    }
+
+    input[type="color"].color-swatch {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 1px solid var(--ctrl-border);
+      border-radius: 2px;
+      background: transparent;
+    }
+
+    input[type="color"].color-swatch::-webkit-color-swatch-wrapper {
+      padding: 2px;
+    }
+
+    input[type="color"].color-swatch::-webkit-color-swatch {
+      border: none;
+      border-radius: 1px;
+    }
+
+    input[type="color"].color-swatch:hover {
+      border-color: var(--accent);
+    }
+
+    .status-hint {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--dim);
+      background: var(--card-bg);
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 0;
+      border-bottom-left-radius: 2px;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      pointer-events: none;
+    }
+
+    .select-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.28rem;
+    }
+
+    @media (max-width: 768px) {
+      .controls-panel { padding: 0.7rem 0.85rem; gap: 0.65rem 0.9rem; }
+      header { padding: 0.7rem 0.85rem; }
+      .status-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <div class="hud-overlay">
+    <header>
+      <a href="../experiments.html" class="back-link">&larr; Experiments</a>
+      <h1>Sculptural Glass & Optical Dispersion <span class="badge">Experiment 01</span></h1>
+      <p>Continuous curved glass refraction with volumetric thickness and internal spectral dispersion inspired by the Aluminium OS aesthetic.</p>
+    </header>
+
+    <div class="status-hint">Click &amp; Drag to Rotate • &larr;/&rarr; Model • &uarr;/&darr; Color • Scroll to Zoom</div>
+
+    <div class="controls-panel">
+      <!-- Shape selection -->
+      <div class="control-group">
+        <label class="control-label" for="shape-select">Glass Geometry</label>
+        <div class="select-nav">
+          <button type="button" id="prev-shape" class="icon-btn" title="Previous Model (&larr; or [)" aria-label="Previous Model">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <select id="shape-select" class="ctrl-select">
+            <option value="ribbon" selected>Curved Ribbon</option>
+            <option value="sphere">Glass Sphere</option>
+            <option value="torus">Torus</option>
+            <option value="torusknot">Torus Knot</option>
+            <option value="cylinder">Cylinder</option>
+            <option value="hourglass">Hour Glass</option>
+            <option value="starfruit">Star Fruit</option>
+            <option value="dragonfruit">Dragon Fruit</option>
+            <option value="prism">Triangular Prism</option>
+            <option value="crystal">Quartz Crystal</option>
+            <option value="diamond">Faceted Diamond</option>
+            <option value="icosa">Icosahedron</option>
+            <option value="octa">Octahedron</option>
+            <option value="lens">Biconvex Lens</option>
+            <option value="helix">Spiral Helix</option>
+          </select>
+          <button type="button" id="next-shape" class="icon-btn" title="Next Model (&rarr; or ])" aria-label="Next Model">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Color Palette & Custom Color Swatches -->
+      <div class="control-group">
+        <label class="control-label" for="palette-select">Palette</label>
+        <div class="select-nav">
+          <button type="button" id="prev-palette" class="icon-btn" title="Previous Color Palette (&uarr;)" aria-label="Previous Color Palette">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <select id="palette-select" class="ctrl-select">
+            <option value="aluminium" selected>Aluminium OS</option>
+            <option value="sunset">Warm Coral &amp; Violet</option>
+            <option value="prism">Newton Spectrum</option>
+            <option value="emerald">Lagoon &amp; Emerald</option>
+            <option value="aurora">Arctic Aurora</option>
+            <option value="rose">Rose &amp; Peach</option>
+            <option value="ultraviolet">Ultraviolet Neon</option>
+            <option value="monochrome">Silver &amp; Ice</option>
+            <option value="saffron">Saffron &amp; Vermilion</option>
+            <option value="reef">Bioluminescent Reef</option>
+            <option value="pastel">Pastel Prism</option>
+            <option value="oilslick">Iridescent Oil Slick</option>
+            <option value="amber">Champagne &amp; Amber</option>
+            <option value="cyberpunk">Cyberpunk Tokyo</option>
+            <option value="custom">Custom Colors</option>
+          </select>
+          <button type="button" id="next-palette" class="icon-btn" title="Next Color Palette (&darr;)" aria-label="Next Color Palette">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Colors</span>
+        <div class="color-row">
+          <input type="color" id="color-0" class="color-swatch" value="#f28f2e" title="Color Stop 1">
+          <input type="color" id="color-1" class="color-swatch" value="#73cc6b" title="Color Stop 2">
+          <input type="color" id="color-2" class="color-swatch" value="#47c2e0" title="Color Stop 3">
+          <input type="color" id="color-3" class="color-swatch" value="#6355e8" title="Color Stop 4">
+        </div>
+      </div>
+
+      <!-- Optical Camera Controls -->
+      <div class="control-group">
+        <span class="control-label">Camera Focal Length</span>
+        <div class="slider-row">
+          <input type="range" id="focal-slider" min="20" max="105" step="1" value="50">
+          <span id="focal-val">50mm</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Camera Zoom</span>
+        <div class="slider-row">
+          <input type="range" id="zoom-slider" min="0.85" max="8.25" step="0.05" value="1.75">
+          <span id="zoom-val">1.75x</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Lens Chromatic Aberration</span>
+        <div class="slider-row">
+          <input type="range" id="lens-ca-slider" min="0.0" max="2.5" step="0.05" value="0.00">
+          <span id="lens-ca-val">0.00</span>
+        </div>
+      </div>
+
+      <!-- Glass Properties -->
+      <div class="control-group">
+        <span class="control-label">Glass Thickness</span>
+        <div class="slider-row">
+          <input type="range" id="thickness-slider" min="0.5" max="5.0" step="0.1" value="3.0">
+          <span id="thickness-val">3.0</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Glass Chromatic Aberration</span>
+        <div class="slider-row">
+          <input type="range" id="dispersion-slider" min="0.0" max="1.5" step="0.02" value="0.35">
+          <span id="dispersion-val">0.35</span>
+        </div>
+      </div>
+
+      <!-- Orbit Axis -->
+      <div class="control-group">
+        <label class="control-label" for="axis-select">Orbit Axis</label>
+        <select id="axis-select" class="ctrl-select" style="min-width: 7.2rem;">
+          <option value="diagonal" selected>Diagonal Tilt</option>
+          <option value="figure8">Figure-8</option>
+          <option value="pitch">Pitch (X)</option>
+          <option value="yaw">Yaw (Y)</option>
+          <option value="roll">Roll (Z)</option>
+        </select>
+      </div>
+
+      <!-- Motion & Studio controls -->
+      <div class="control-group">
+        <span class="control-label">Studio &amp; Motion</span>
+        <div class="button-row">
+          <button type="button" id="toggle-bg" class="icon-btn" title="Switch to Black Background" aria-label="Toggle Light/Dark Background">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" id="toggle-spin" class="icon-btn active" title="Toggle Auto Orbit" aria-label="Toggle Auto Orbit">
+            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><polyline points="3 3 3 8 8 8"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><polyline points="16 16 21 16 21 21"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>
+          </button>
+          <button type="button" id="reset-view" class="icon-btn" title="Reset Camera &amp; View" aria-label="Reset Camera View">
+            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+          <button type="button" id="save-image" class="icon-btn" title="Save Image (PNG)" aria-label="Save Image as PNG">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js';
+
+    // --- State ---
+    const state = {
+      shape: 'ribbon',
+      palette: 'aluminium',
+      thickness: 3.0,
+      dispersion: 0.35,
+      focalLength: 50,
+      zoom: 1.75,
+      lensCA: 0.0,
+      orbitAxis: 'diagonal',
+      orbitPhase: 0,
+      autoSpin: true,
+      darkBg: false,
+      time: 0
+    };
+
+    // --- Renderer Setup ---
+    const canvas = document.getElementById('webgl-canvas');
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    renderer.transmissionResolutionScale = 1.0; // Crisp 1:1 physical refraction buffer
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdce5ee);
+
+    const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.05, 100);
+    camera.setFocalLength(state.focalLength);
+    camera.position.set(0, 0.4, 5.8 / state.zoom);
+
+    // --- Shared 360° Rainbow Gradient Mesh + Viewport Studio Field GLSL ---
+    const sharedEnvironmentGLSL = `
+      uniform float uTime;
+      uniform vec3 uViewportDir;
+      uniform float uDarkBg;
+      uniform vec3 uColor0;
+      uniform vec3 uColor1;
+      uniform vec3 uColor2;
+      uniform vec3 uColor3;
+
+      vec3 getGradientColor(float t) {
+        t = fract(t);
+        if (t < 0.25) return mix(uColor0, uColor1, t * 4.0);
+        if (t < 0.50) return mix(uColor1, uColor2, (t - 0.25) * 4.0);
+        if (t < 0.75) return mix(uColor2, uColor3, (t - 0.50) * 4.0);
+        return mix(uColor3, uColor0, (t - 0.75) * 4.0);
+      }
+
+      vec3 sampleEnvironment(vec3 dir) {
+        dir = normalize(dir);
+
+        // 1. 360-degree continuous rainbow gradient mesh surrounding the entire space
+        float azimuth = atan(dir.x, dir.y) / 6.2831853 + 0.5;
+        float waveMesh = sin(dir.x * 2.4 + uTime * 0.18) * 0.09 + cos(dir.z * 2.4 - uTime * 0.14) * 0.09;
+        float t = fract(azimuth + waveMesh + dir.z * 0.18);
+        vec3 rainbowColor = getGradientColor(t);
+        rainbowColor *= (0.90 + 0.22 * sin(dir.y * 3.2 + uTime * 0.25));
+
+        // 2. Viewport studio background field (white or deep black forward cone)
+        float viewDot = dot(dir, normalize(uViewportDir));
+        float whiteMask = smoothstep(0.64, 0.78, viewDot);
+        vec3 studioWhite = mix(vec3(0.975, 0.980, 0.988), vec3(0.89, 0.92, 0.96), clamp((1.0 - viewDot) * 2.2, 0.0, 1.0));
+        vec3 studioBlack = mix(vec3(0.015, 0.017, 0.022), vec3(0.045, 0.050, 0.062), clamp((1.0 - viewDot) * 2.2, 0.0, 1.0));
+        vec3 studioField = mix(studioWhite, studioBlack, uDarkBg);
+
+        return mix(rainbowColor, studioField, whiteMask);
+      }
+    `;
+
+    const rainbowSphereVertexShader = `
+      varying vec3 vWorldPos;
+      void main() {
+        vec4 worldP = modelMatrix * vec4(position, 1.0);
+        vWorldPos = worldP.xyz;
+        gl_Position = projectionMatrix * viewMatrix * worldP;
+      }
+    `;
+
+    const rainbowSphereFragmentShader = sharedEnvironmentGLSL + `
+      varying vec3 vWorldPos;
+      void main() {
+        vec3 col = sampleEnvironment(vWorldPos);
+        // Subtle 8-bit dither to prevent gradient banding on bright studio backdrop
+        float dither = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715)))) - 0.5;
+        gl_FragColor = vec4(col + dither / 255.0, 1.0);
+      }
+    `;
+
+    const rainbowSphereMaterial = new THREE.ShaderMaterial({
+      vertexShader: rainbowSphereVertexShader,
+      fragmentShader: rainbowSphereFragmentShader,
+      uniforms: {
+        uTime: { value: 0 },
+        uViewportDir: { value: new THREE.Vector3(0, -0.06, -1).normalize() },
+        uDarkBg: { value: 0.0 },
+        uColor0: { value: new THREE.Color('#f28f2e') },
+        uColor1: { value: new THREE.Color('#73cc6b') },
+        uColor2: { value: new THREE.Color('#47c2e0') },
+        uColor3: { value: new THREE.Color('#6355e8') }
+      },
+      side: THREE.BackSide,
+      depthWrite: true,
+      transparent: false
+    });
+
+    const envSphere = new THREE.Mesh(
+      new THREE.SphereGeometry(25, 64, 64),
+      rainbowSphereMaterial
+    );
+    scene.add(envSphere);
+
+    // --- Back-Face Normal Render Target (16-bit HalfFloat + MSAA to eliminate zoomed-in pixelation) ---
+    const drawingSize = new THREE.Vector2();
+    renderer.getDrawingBufferSize(drawingSize);
+
+    const canHalfFloat = renderer.capabilities.isWebGL2 &&
+      (renderer.extensions.has('EXT_color_buffer_half_float') || renderer.extensions.has('EXT_color_buffer_float'));
+
+    const backFaceRenderTarget = new THREE.WebGLRenderTarget(drawingSize.x, drawingSize.y, {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat,
+      type: canHalfFloat ? THREE.HalfFloatType : THREE.UnsignedByteType,
+      samples: renderer.capabilities.isWebGL2 ? 4 : 0,
+      depthBuffer: true
+    });
+
+    // --- Camera Lens Post-Processing Target (Lateral Chromatic Aberration) ---
+    const sceneRenderTarget = new THREE.WebGLRenderTarget(drawingSize.x, drawingSize.y, {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat,
+      type: THREE.UnsignedByteType,
+      samples: renderer.capabilities.isWebGL2 ? 4 : 0,
+      depthBuffer: true
+    });
+
+    const lensPostMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = vec4(position.xy, 0.0, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform float uLensCA;
+        varying vec2 vUv;
+
+        vec3 lensSpectralWeight(float w) {
+          float dR = (w - 0.14) / 0.22;
+          float dV = (w - 0.92) / 0.14;
+          float dG = (w - 0.48) / 0.21;
+          float dB = (w - 0.80) / 0.20;
+          float r = exp(-dR * dR) + 0.28 * exp(-dV * dV);
+          float g = exp(-dG * dG);
+          float b = exp(-dB * dB);
+          return vec3(r, g, b);
+        }
+
+        void main() {
+          vec2 centered = vUv - 0.5;
+          float r2 = dot(centered, centered);
+          vec2 maxShift = centered * (0.045 * uLensCA * (0.35 + 1.8 * r2));
+          float jitter = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+
+          vec3 accum = vec3(0.0);
+          vec3 wSum = vec3(0.0);
+          for (int i = 0; i < 12; i++) {
+            float w = (float(i) + jitter) / 12.0;
+            vec3 weight = lensSpectralWeight(w);
+            vec2 sampleUv = clamp(vUv - maxShift * (w - 0.5), 0.001, 0.999);
+            accum += texture2D(tDiffuse, sampleUv).rgb * weight;
+            wSum += weight;
+          }
+          gl_FragColor = vec4(accum / max(wSum, vec3(0.0001)), 1.0);
+        }
+      `,
+      uniforms: {
+        tDiffuse: { value: sceneRenderTarget.texture },
+        uLensCA: { value: 0.0 }
+      },
+      depthTest: false,
+      depthWrite: false
+    });
+
+    const postScene = new THREE.Scene();
+    const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), lensPostMaterial));
+
+    const backFaceMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        varying vec3 vWorldNormal;
+        void main() {
+          vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec3 vWorldNormal;
+        void main() {
+          vec3 n = normalize(vWorldNormal);
+          gl_FragColor = vec4(n * 0.5 + 0.5, 1.0);
+        }
+      `,
+      side: THREE.BackSide
+    });
+
+    const palettePresets = {
+      aluminium: ['#f28f2e', '#73cc6b', '#47c2e0', '#6355e8'],
+      sunset: ['#ff5224', '#faa30f', '#f52e8c', '#7529f0'],
+      prism: ['#ff1a1a', '#ffd400', '#00e676', '#4d2bff'],
+      emerald: ['#0ac285', '#0a998f', '#0580db', '#8fd61a'],
+      aurora: ['#2eebdb', '#3de08f', '#386bf5', '#943df0'],
+      rose: ['#fa6b8f', '#ffad6b', '#fad694', '#db3875'],
+      ultraviolet: ['#9e1fff', '#ff1fb8', '#14dbff', '#293df5'],
+      monochrome: ['#242e42', '#8ca8d1', '#ebf5ff', '#5275ad'],
+      saffron: ['#fabd14', '#ff6b0f', '#eb2929', '#8f0f42'],
+      reef: ['#05f0c7', '#1457f5', '#85fad6', '#ff6175'],
+      pastel: ['#ffadd1', '#a3dbff', '#a8fad6', '#ccb8ff'],
+      oilslick: ['#eb24ad', '#0f9eb8', '#c2f524', '#3d1f9e'],
+      amber: ['#fad670', '#eb8f29', '#faf0d1', '#9e4714'],
+      cyberpunk: ['#8fff29', '#ff1494', '#0ab8ff', '#5214b8']
+    };
+
+    const colorSwatches = [
+      document.getElementById('color-0'),
+      document.getElementById('color-1'),
+      document.getElementById('color-2'),
+      document.getElementById('color-3')
+    ];
+
+    function applyGradientColors(hexStops) {
+      hexStops.forEach((hex, i) => {
+        const key = 'uColor' + i;
+        rainbowSphereMaterial.uniforms[key].value.set(hex);
+        glassMaterial.uniforms[key].value.set(hex);
+        if (colorSwatches[i]) colorSwatches[i].value = hex;
+      });
+    }
+
+    function buildChromaticField(paletteKey) {
+      if (palettePresets[paletteKey]) {
+        state.palette = paletteKey;
+        applyGradientColors(palettePresets[paletteKey]);
+      }
+    }
+
+    // --- Optical Double-Refraction & 16-Band Jittered Dispersion Crystal Material ---
+    const glassMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        varying vec3 vWorldPos;
+        varying vec3 vWorldNormal;
+        void main() {
+          vec4 worldP = modelMatrix * vec4(position, 1.0);
+          vWorldPos = worldP.xyz;
+          vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+          gl_Position = projectionMatrix * viewMatrix * worldP;
+        }
+      `,
+      fragmentShader: sharedEnvironmentGLSL + `
+        uniform sampler2D uBackNormalMap;
+        uniform vec2 uResolution;
+        uniform float uIor;
+        uniform float uThickness;
+        uniform float uDispersion;
+
+        varying vec3 vWorldPos;
+        varying vec3 vWorldNormal;
+
+        // Interleaved Gradient Noise to eliminate spectral banding and quantization
+        float ign(vec2 p) {
+          return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715))));
+        }
+
+        // Smooth continuous 16-band Gaussian spectral curve (normalized to 1,1,1 sum)
+        vec3 spectralWeight(float w) {
+          float dR = (w - 0.14) / 0.22;
+          float dV = (w - 0.92) / 0.14;
+          float dG = (w - 0.48) / 0.21;
+          float dB = (w - 0.80) / 0.20;
+          float r = exp(-dR * dR) + 0.28 * exp(-dV * dV);
+          float g = exp(-dG * dG);
+          float b = exp(-dB * dB);
+          return vec3(r, g, b) * vec3(0.1671, 0.1680, 0.1910);
+        }
+
+        // Soft 4-tap back-face normal filter for smooth close-up curves
+        vec4 sampleBackNormal(vec2 uv) {
+          vec2 texel = 1.5 / uResolution;
+          vec4 s0 = texture2D(uBackNormalMap, uv + vec2(-texel.x, -texel.y));
+          vec4 s1 = texture2D(uBackNormalMap, uv + vec2( texel.x, -texel.y));
+          vec4 s2 = texture2D(uBackNormalMap, uv + vec2(-texel.x,  texel.y));
+          vec4 s3 = texture2D(uBackNormalMap, uv + vec2( texel.x,  texel.y));
+          return (s0 + s1 + s2 + s3) * 0.25;
+        }
+
+        void main() {
+          vec3 V = normalize(vWorldPos - cameraPosition);
+          vec3 N1 = normalize(vWorldNormal);
+          vec2 screenUv = gl_FragCoord.xy / uResolution;
+          float jitter = ign(gl_FragCoord.xy);
+
+          vec3 refractedAccum = vec3(0.0);
+
+          // Trace 16 jittered spectral wavelengths for continuous band-free dispersion
+          for (int i = 0; i < 16; i++) {
+            float w = (float(i) + jitter) / 16.0;
+            float iorOffset = (w - 0.5) * uDispersion * 0.55;
+            float ior = clamp(uIor + iorOffset, 1.05, 2.8);
+
+            // 1. Enter crystal (Air -> Glass)
+            vec3 r1 = refract(V, N1, 1.0 / ior);
+            if (length(r1) < 0.01) r1 = reflect(V, N1);
+
+            // 2. Sample back-face exit normal displaced by thickness
+            vec2 backUv = clamp(screenUv + r1.xy * (0.045 * uThickness), 0.002, 0.998);
+            vec4 backSample = sampleBackNormal(backUv);
+            vec3 backNorm = normalize(backSample.rgb * 2.0 - 1.0);
+            vec3 N2 = normalize(mix(-N1, backNorm, smoothstep(0.05, 0.95, backSample.a)));
+
+            // 3. Exit crystal (Glass -> Air) with Total Internal Reflection fallback
+            vec3 r2 = refract(r1, -N2, ior);
+            if (length(r2) < 0.01) {
+              r2 = reflect(r1, -N2);
+              r2 = normalize(mix(r2, -r1, 0.25));
+            }
+
+            vec3 envSample = sampleEnvironment(r2);
+            refractedAccum += envSample * spectralWeight(w);
+          }
+
+          // Fresnel reflection & crisp studio contrast on white backdrop
+          float NdotV = max(0.0, dot(-V, N1));
+          float fresnel = pow(1.0 - NdotV, 3.2);
+          vec3 reflDir = reflect(V, N1);
+          vec3 envRefl = sampleEnvironment(reflDir);
+
+          // Studio softbox specular highlights + adaptive rim definition for light/black backdrop
+          float spec1 = pow(max(0.0, dot(reflDir, normalize(vec3(0.5, 0.7, 0.5)))), 48.0);
+          float spec2 = pow(max(0.0, dot(reflDir, normalize(vec3(-0.6, -0.3, 0.7)))), 20.0) * 0.4;
+          float darkRim = smoothstep(0.0, 0.35, NdotV);
+
+          vec3 baseRefracted = refractedAccum * mix(1.0, 1.25, uDarkBg);
+          vec3 glassColor = mix(baseRefracted, envRefl, fresnel * 0.65);
+          glassColor *= mix(mix(0.68, 1.0, darkRim), 1.0, uDarkBg);
+          glassColor += envRefl * (fresnel * 0.32 * uDarkBg);
+          glassColor += vec3(1.0) * (spec1 * 0.9 + spec2);
+          glassColor += (jitter - 0.5) / 255.0;
+
+          gl_FragColor = vec4(clamp(glassColor, 0.0, 1.0), 1.0);
+        }
+      `,
+      uniforms: {
+        uBackNormalMap: { value: backFaceRenderTarget.texture },
+        uResolution: { value: drawingSize.clone() },
+        uTime: { value: 0 },
+        uViewportDir: { value: new THREE.Vector3(0, -0.06, -1).normalize() },
+        uDarkBg: { value: 0.0 },
+        uColor0: { value: new THREE.Color('#f28f2e') },
+        uColor1: { value: new THREE.Color('#73cc6b') },
+        uColor2: { value: new THREE.Color('#47c2e0') },
+        uColor3: { value: new THREE.Color('#6355e8') },
+        uIor: { value: 1.58 },
+        uThickness: { value: state.thickness },
+        uDispersion: { value: state.dispersion }
+      },
+      side: THREE.FrontSide
+    });
+
+    buildChromaticField('aluminium');
+
+    // --- Glass Sculpture Geometries ---
+    function createRibbonGeometry() {
+      // Sweeping 3D Mobius loop like the Aluminium OS ribbon
+      const points = [];
+      const steps = 140;
+      for (let i = 0; i <= steps; i++) {
+        const u = (i / steps) * Math.PI * 2;
+        const x = Math.sin(u) * 1.55 + Math.sin(u * 2) * 0.35;
+        const y = Math.cos(u * 1.5) * 1.05;
+        const z = Math.sin(u * 2) * 0.65;
+        points.push(new THREE.Vector3(x, y, z));
+      }
+      const curve = new THREE.CatmullRomCurve3(points, true);
+      const geom = new THREE.TubeGeometry(curve, 240, 0.36, 64, true);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createSphereGeometry() {
+      return new THREE.SphereGeometry(1.25, 96, 96);
+    }
+
+    function createPrismGeometry() {
+      // Equilateral triangular optical prism
+      const shape = new THREE.Shape();
+      const r = 1.35;
+      for (let i = 0; i < 3; i++) {
+        const a = (i * 2 * Math.PI) / 3 - Math.PI / 2;
+        const x = r * Math.cos(a);
+        const y = r * Math.sin(a);
+        if (i === 0) shape.moveTo(x, y);
+        else shape.lineTo(x, y);
+      }
+      shape.closePath();
+      const geom = new THREE.ExtrudeGeometry(shape, {
+        depth: 2.2,
+        bevelEnabled: true,
+        bevelSegments: 2,
+        steps: 1,
+        bevelSize: 0.05,
+        bevelThickness: 0.05
+      });
+      geom.center();
+      return geom;
+    }
+
+    function createCrystalGeometry() {
+      // Hexagonal quartz crystal wand with pointed pyramidal tip
+      const geom = new THREE.CylinderGeometry(0.08, 0.95, 2.6, 6);
+      geom.computeVertexNormals();
+      return geom.toNonIndexed(); // Crisp flat crystal facets
+    }
+
+    function createDiamondGeometry() {
+      // Faceted brilliant diamond cut
+      const geom = new THREE.ConeGeometry(1.4, 1.6, 8, 2);
+      geom.scale(1.15, 0.95, 1.15);
+      geom.computeVertexNormals();
+      return geom.toNonIndexed(); // Crisp gem facets
+    }
+
+    function createTorusGeometry() {
+      const geom = new THREE.TorusGeometry(1.15, 0.45, 72, 144);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createTorusKnotGeometry() {
+      const geom = new THREE.TorusKnotGeometry(1.0, 0.34, 220, 48, 2, 3);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createCylinderGeometry() {
+      const pts = [];
+      const radius = 0.92;
+      const halfH = 1.45;
+      const bevel = 0.14;
+      pts.push(new THREE.Vector2(0, -halfH));
+      for (let i = 0; i <= 10; i++) {
+        const a = -Math.PI / 2 + (i / 10) * (Math.PI / 2);
+        pts.push(new THREE.Vector2((radius - bevel) + Math.cos(a) * bevel, -(halfH - bevel) + Math.sin(a) * bevel));
+      }
+      for (let i = 0; i <= 10; i++) {
+        const a = (i / 10) * (Math.PI / 2);
+        pts.push(new THREE.Vector2((radius - bevel) + Math.cos(a) * bevel, (halfH - bevel) + Math.sin(a) * bevel));
+      }
+      pts.push(new THREE.Vector2(0, halfH));
+      const geom = new THREE.LatheGeometry(pts, 96);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createHourglassGeometry() {
+      const pts = [];
+      const steps = 90;
+      const halfH = 1.75;
+      pts.push(new THREE.Vector2(0, -halfH));
+      for (let i = 0; i <= steps; i++) {
+        const v = i / steps;
+        const u = v * 2 - 1;
+        const absU = Math.abs(u);
+        const cap = Math.pow(Math.max(0, 1 - Math.pow(absU, 10)), 0.35);
+        const waist = 0.22 + 0.96 * Math.pow(Math.sin(absU * Math.PI * 0.5), 1.65);
+        pts.push(new THREE.Vector2(cap * waist, u * halfH));
+      }
+      pts.push(new THREE.Vector2(0, halfH));
+      const geom = new THREE.LatheGeometry(pts, 96);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    /**
+     * Generates a seamless watertight parametric surface closed with bottom/top poles.
+     */
+    function buildParametricSolid(uSegs, vSegs, evalFn) {
+      const positions = [];
+      const indices = [];
+
+      const bot = evalFn(0, 0);
+      positions.push(bot.x, bot.y, bot.z);
+
+      for (let iv = 1; iv < vSegs; iv++) {
+        const v = iv / vSegs;
+        for (let iu = 0; iu < uSegs; iu++) {
+          const theta = (iu / uSegs) * Math.PI * 2;
+          const p = evalFn(theta, v);
+          positions.push(p.x, p.y, p.z);
+        }
+      }
+
+      const top = evalFn(0, 1);
+      const topIdx = 1 + (vSegs - 1) * uSegs;
+      positions.push(top.x, top.y, top.z);
+
+      for (let iu = 0; iu < uSegs; iu++) {
+        const next = (iu + 1) % uSegs;
+        indices.push(0, 1 + iu, 1 + next);
+      }
+
+      for (let iv = 0; iv < vSegs - 2; iv++) {
+        const rowA = 1 + iv * uSegs;
+        const rowB = 1 + (iv + 1) * uSegs;
+        for (let iu = 0; iu < uSegs; iu++) {
+          const next = (iu + 1) % uSegs;
+          const a = rowA + iu;
+          const b = rowB + iu;
+          const c = rowA + next;
+          const d = rowB + next;
+          indices.push(a, b, d);
+          indices.push(a, d, c);
+        }
+      }
+
+      const lastRow = 1 + (vSegs - 2) * uSegs;
+      for (let iu = 0; iu < uSegs; iu++) {
+        const next = (iu + 1) % uSegs;
+        indices.push(topIdx, lastRow + next, lastRow + iu);
+      }
+
+      const geom = new THREE.BufferGeometry();
+      geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geom.setIndex(indices);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createStarFruitGeometry() {
+      return buildParametricSolid(128, 84, (theta, v) => {
+        const y = (v - 0.5) * 3.1;
+        if (v <= 0 || v >= 1) return new THREE.Vector3(0, y, 0);
+        const env = Math.pow(Math.sin(v * Math.PI), 0.72);
+        const rib = 0.56 + 0.62 * Math.pow(0.5 + 0.5 * Math.cos(5 * theta + v * 0.65), 1.5);
+        const r = env * rib;
+        return new THREE.Vector3(Math.cos(theta) * r, y, Math.sin(theta) * r);
+      });
+    }
+
+    function createDragonFruitGeometry() {
+      const bracts = [];
+      const count = 18;
+      for (let k = 0; k < count; k++) {
+        bracts.push({
+          theta: k * 2.39996323,
+          v: 0.16 + 0.68 * (k / (count - 1))
+        });
+      }
+      return buildParametricSolid(144, 112, (theta, v) => {
+        const yBase = (v - 0.5) * 2.95;
+        if (v <= 0 || v >= 1) return new THREE.Vector3(0, yBase, 0);
+        const env = Math.pow(Math.sin(v * Math.PI), 0.62) * (0.92 + 0.18 * (1 - v));
+        let flareR = 0;
+        let flareY = 0;
+        for (let k = 0; k < bracts.length; k++) {
+          const b = bracts[k];
+          const dv = v - b.v;
+          if (dv < -0.02 || dv > 0.22) continue;
+          const dTheta = Math.atan2(Math.sin(theta - b.theta), Math.cos(theta - b.theta));
+          const angMask = Math.exp(-(dTheta * dTheta) / 0.085);
+          const vMask = Math.sin(THREE.MathUtils.clamp((dv + 0.02) / 0.24, 0, 1) * Math.PI);
+          const bractProfile = angMask * Math.pow(vMask, 1.3);
+          flareR += bractProfile * (0.24 + 0.9 * Math.max(0, dv));
+          flareY += bractProfile * 0.14;
+        }
+        const r = env + flareR;
+        return new THREE.Vector3(Math.cos(theta) * r, yBase + flareY, Math.sin(theta) * r);
+      });
+    }
+
+    function createIcosaGeometry() {
+      const geom = new THREE.IcosahedronGeometry(1.3, 0);
+      geom.computeVertexNormals();
+      return geom.toNonIndexed();
+    }
+
+    function createOctaGeometry() {
+      const geom = new THREE.OctahedronGeometry(1.4, 0);
+      geom.computeVertexNormals();
+      return geom.toNonIndexed();
+    }
+
+    function createLensGeometry() {
+      const geom = new THREE.SphereGeometry(1.45, 96, 96);
+      geom.scale(1.0, 1.0, 0.38);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createHelixGeometry() {
+      const points = [];
+      const steps = 240;
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const angle = t * Math.PI * 8.0;
+        const r = 1.15 - Math.abs(t - 0.5) * 0.35;
+        points.push(new THREE.Vector3(Math.cos(angle) * r, (t - 0.5) * 4.8, Math.sin(angle) * r));
+      }
+      const curve = new THREE.CatmullRomCurve3(points, false);
+      const geom = new THREE.TubeGeometry(curve, 340, 0.27, 56, false);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    const geometries = {
+      ribbon: createRibbonGeometry(),
+      sphere: createSphereGeometry(),
+      torus: createTorusGeometry(),
+      torusknot: createTorusKnotGeometry(),
+      cylinder: createCylinderGeometry(),
+      hourglass: createHourglassGeometry(),
+      starfruit: createStarFruitGeometry(),
+      dragonfruit: createDragonFruitGeometry(),
+      prism: createPrismGeometry(),
+      crystal: createCrystalGeometry(),
+      diamond: createDiamondGeometry(),
+      icosa: createIcosaGeometry(),
+      octa: createOctaGeometry(),
+      lens: createLensGeometry(),
+      helix: createHelixGeometry()
+    };
+
+    // --- Glass Sculpture Container ---
+    const glassGroup = new THREE.Group();
+    scene.add(glassGroup);
+
+    let activeGlassMeshes = [];
+
+    function updateSculptureShape() {
+      activeGlassMeshes.forEach(m => glassGroup.remove(m));
+      activeGlassMeshes = [];
+
+      const geom = geometries[state.shape] || geometries.ribbon;
+      const mesh = new THREE.Mesh(geom, glassMaterial);
+      if (state.shape === 'sphere') {
+        // Offset sphere from origin so rotation orbits around an off-center pivot
+        mesh.position.set(0.85, 0.15, 0.35);
+      }
+      glassGroup.add(mesh);
+      activeGlassMeshes.push(mesh);
+    }
+
+    updateSculptureShape();
+
+    // --- Soft Ambient Contact Shadow ---
+    // Gives the sculpture tactile grounded presence against the studio floor
+    const shadowCanvas = document.createElement('canvas');
+    shadowCanvas.width = 128;
+    shadowCanvas.height = 128;
+    const sctx = shadowCanvas.getContext('2d');
+    const grad = sctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+    grad.addColorStop(0, 'rgba(30, 45, 65, 0.35)');
+    grad.addColorStop(0.5, 'rgba(40, 55, 75, 0.15)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    sctx.fillStyle = grad;
+    sctx.fillRect(0, 0, 128, 128);
+
+    const shadowTex = new THREE.CanvasTexture(shadowCanvas);
+    const contactShadow = new THREE.Mesh(
+      new THREE.PlaneGeometry(5.5, 5.5),
+      new THREE.MeshBasicMaterial({
+        map: shadowTex,
+        transparent: true,
+        depthWrite: false
+      })
+    );
+    contactShadow.position.set(0, -1.5, 0);
+    contactShadow.rotation.x = -Math.PI / 2;
+    scene.add(contactShadow);
+
+    // --- User Interaction & Orbiting (Click & Drag within Bounded Arc) ---
+    let isDragging = false;
+    let prevPointer = { x: 0, y: 0 };
+    let targetRotation = { x: 0.25, y: -0.35 };
+    let currentRotation = { x: 0.25, y: -0.35, z: 0 };
+    let dragVelocity = { x: 0, y: 0 };
+    const MAX_ROT_ARC = 1.25; // ±71.6°, constrained below 360°
+
+    window.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('.controls-panel') || e.target.closest('header')) return;
+      isDragging = true;
+      dragVelocity.x = 0;
+      dragVelocity.y = 0;
+      prevPointer = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - prevPointer.x;
+      const dy = e.clientY - prevPointer.y;
+      const vx = dy * 0.008;
+      const vy = dx * 0.008;
+      targetRotation.x = THREE.MathUtils.clamp(targetRotation.x + vx, -MAX_ROT_ARC, MAX_ROT_ARC);
+      targetRotation.y = THREE.MathUtils.clamp(targetRotation.y + vy, -MAX_ROT_ARC, MAX_ROT_ARC);
+      dragVelocity.x = dragVelocity.x * 0.4 + vx * 0.6;
+      dragVelocity.y = dragVelocity.y * 0.4 + vy * 0.6;
+      prevPointer = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('pointerup', () => { isDragging = false; });
+    window.addEventListener('pointercancel', () => { isDragging = false; });
+
+    window.addEventListener('wheel', (e) => {
+      if (e.target.closest('.controls-panel')) return;
+      camera.position.z = THREE.MathUtils.clamp(camera.position.z + e.deltaY * 0.003, 0.7, 6.8);
+      state.zoom = 5.8 / camera.position.z;
+      zoomSlider.value = state.zoom.toFixed(2);
+      zoomVal.textContent = state.zoom.toFixed(2) + 'x';
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.getDrawingBufferSize(drawingSize);
+      backFaceRenderTarget.setSize(drawingSize.x, drawingSize.y);
+      sceneRenderTarget.setSize(drawingSize.x, drawingSize.y);
+      glassMaterial.uniforms.uResolution.value.copy(drawingSize);
+    });
+
+    // --- UI Controls Binding ---
+    const shapeSelect = document.getElementById('shape-select');
+    const paletteSelect = document.getElementById('palette-select');
+
+    /** Steps a select dropdown forward/backward, skipping excluded option values. */
+    function stepSelect(selectEl, delta, onSelect, skipValue = null) {
+      const opts = selectEl.options;
+      let nextIdx = selectEl.selectedIndex;
+      for (let tries = 0; tries < opts.length; tries++) {
+        nextIdx = (nextIdx + delta + opts.length) % opts.length;
+        if (opts[nextIdx].value !== skipValue) break;
+      }
+      selectEl.selectedIndex = nextIdx;
+      onSelect(opts[nextIdx].value);
+    }
+
+    const selectShape = (val) => {
+      state.shape = val;
+      updateSculptureShape();
+    };
+    const selectPalette = (val) => {
+      if (val !== 'custom') buildChromaticField(val);
+    };
+
+    shapeSelect.addEventListener('change', (e) => selectShape(e.target.value));
+    paletteSelect.addEventListener('change', (e) => selectPalette(e.target.value));
+
+    document.getElementById('prev-shape').addEventListener('click', () => stepSelect(shapeSelect, -1, selectShape));
+    document.getElementById('next-shape').addEventListener('click', () => stepSelect(shapeSelect, 1, selectShape));
+    document.getElementById('prev-palette').addEventListener('click', () => stepSelect(paletteSelect, -1, selectPalette, 'custom'));
+    document.getElementById('next-palette').addEventListener('click', () => stepSelect(paletteSelect, 1, selectPalette, 'custom'));
+
+    window.addEventListener('keydown', (e) => {
+      const tag = document.activeElement && document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft' || e.key === '[') {
+        e.preventDefault();
+        stepSelect(shapeSelect, -1, selectShape);
+      } else if (e.key === 'ArrowRight' || e.key === ']') {
+        e.preventDefault();
+        stepSelect(shapeSelect, 1, selectShape);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        stepSelect(paletteSelect, -1, selectPalette, 'custom');
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        stepSelect(paletteSelect, 1, selectPalette, 'custom');
+      }
+    });
+
+    colorSwatches.forEach((input, idx) => {
+      input.addEventListener('input', (e) => {
+        const key = 'uColor' + idx;
+        rainbowSphereMaterial.uniforms[key].value.set(e.target.value);
+        glassMaterial.uniforms[key].value.set(e.target.value);
+        state.palette = 'custom';
+        paletteSelect.value = 'custom';
+      });
+    });
+
+    const axisSelect = document.getElementById('axis-select');
+    axisSelect.addEventListener('change', (e) => {
+      state.orbitAxis = e.target.value;
+    });
+
+    const focalSlider = document.getElementById('focal-slider');
+    const focalVal = document.getElementById('focal-val');
+    focalSlider.addEventListener('input', (e) => {
+      const v = parseFloat(e.target.value);
+      state.focalLength = v;
+      focalVal.textContent = v + 'mm';
+      camera.setFocalLength(v);
+      camera.updateProjectionMatrix();
+    });
+
+    const zoomSlider = document.getElementById('zoom-slider');
+    const zoomVal = document.getElementById('zoom-val');
+    zoomSlider.addEventListener('input', (e) => {
+      const v = parseFloat(e.target.value);
+      state.zoom = v;
+      zoomVal.textContent = v.toFixed(2) + 'x';
+      camera.position.z = THREE.MathUtils.clamp(5.8 / v, 0.7, 6.8);
+    });
+
+    const lensCaSlider = document.getElementById('lens-ca-slider');
+    const lensCaVal = document.getElementById('lens-ca-val');
+    lensCaSlider.addEventListener('input', (e) => {
+      const v = parseFloat(e.target.value);
+      state.lensCA = v;
+      lensCaVal.textContent = v.toFixed(2);
+      lensPostMaterial.uniforms.uLensCA.value = v;
+    });
+
+    const thicknessSlider = document.getElementById('thickness-slider');
+    const thicknessVal = document.getElementById('thickness-val');
+    thicknessSlider.addEventListener('input', (e) => {
+      const v = parseFloat(e.target.value);
+      state.thickness = v;
+      thicknessVal.textContent = v.toFixed(1);
+      glassMaterial.uniforms.uThickness.value = v;
+    });
+
+    const dispersionSlider = document.getElementById('dispersion-slider');
+    const dispersionVal = document.getElementById('dispersion-val');
+    dispersionSlider.addEventListener('input', (e) => {
+      const v = parseFloat(e.target.value);
+      state.dispersion = v;
+      dispersionVal.textContent = v.toFixed(2);
+      glassMaterial.uniforms.uDispersion.value = v;
+    });
+
+    const MOON_SVG = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    const SUN_SVG = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
+
+    const toggleBgBtn = document.getElementById('toggle-bg');
+    toggleBgBtn.addEventListener('click', () => {
+      state.darkBg = !state.darkBg;
+      document.body.classList.toggle('dark-bg', state.darkBg);
+      toggleBgBtn.classList.toggle('active', state.darkBg);
+      toggleBgBtn.innerHTML = state.darkBg ? SUN_SVG : MOON_SVG;
+      toggleBgBtn.title = state.darkBg ? 'Switch to Light Background' : 'Switch to Black Background';
+      const darkUniform = state.darkBg ? 1.0 : 0.0;
+      rainbowSphereMaterial.uniforms.uDarkBg.value = darkUniform;
+      glassMaterial.uniforms.uDarkBg.value = darkUniform;
+      scene.background.setHex(state.darkBg ? 0x050608 : 0xdce5ee);
+    });
+
+    const toggleSpinBtn = document.getElementById('toggle-spin');
+    toggleSpinBtn.addEventListener('click', () => {
+      state.autoSpin = !state.autoSpin;
+      toggleSpinBtn.classList.toggle('active', state.autoSpin);
+      toggleSpinBtn.title = state.autoSpin ? 'Auto Orbit: ON (click to pause)' : 'Auto Orbit: PAUSED (click to resume)';
+    });
+
+    const resetViewBtn = document.getElementById('reset-view');
+    resetViewBtn.addEventListener('click', () => {
+      targetRotation.x = 0.25;
+      targetRotation.y = -0.35;
+      state.orbitPhase = 0;
+      dragVelocity.x = 0;
+      dragVelocity.y = 0;
+      state.zoom = 1.75;
+      camera.position.set(0, 0.4, 5.8 / state.zoom);
+      zoomSlider.value = '1.75';
+      zoomVal.textContent = '1.75x';
+      camera.setFocalLength(50);
+      focalSlider.value = 50;
+      focalVal.textContent = '50mm';
+      camera.updateProjectionMatrix();
+    });
+
+    const saveImageBtn = document.getElementById('save-image');
+    saveImageBtn.addEventListener('click', () => {
+      renderFrame();
+      const filename = `refraction-${state.shape}-${state.palette}.png`;
+      if (canvas.toBlob) {
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = filename;
+          link.click();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }, 'image/png');
+      } else {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = filename;
+        link.click();
+      }
+    });
+
+    // --- Render Loop ---
+    const clock = new THREE.Clock();
+    const prevClearColor = new THREE.Color();
+    const shadowTargetPos = new THREE.Vector3();
+
+    function renderFrame() {
+      // Pass 1: Render crystal back-face normals to offscreen buffer
+      envSphere.visible = false;
+      contactShadow.visible = false;
+      activeGlassMeshes.forEach(m => { m.material = backFaceMaterial; });
+
+      renderer.getClearColor(prevClearColor);
+      const prevClearAlpha = renderer.getClearAlpha();
+      renderer.setRenderTarget(backFaceRenderTarget);
+      renderer.setClearColor(0x808080, 0.0);
+      renderer.clear();
+      renderer.render(scene, camera);
+
+      // Pass 2: Render scene with double-refraction & 16-band dispersion
+      renderer.setClearColor(prevClearColor, prevClearAlpha);
+      envSphere.visible = true;
+      contactShadow.visible = !state.darkBg;
+      activeGlassMeshes.forEach(m => { m.material = glassMaterial; });
+
+      if (state.lensCA > 0.001) {
+        renderer.setRenderTarget(sceneRenderTarget);
+        renderer.clear();
+        renderer.render(scene, camera);
+
+        // Pass 3: Camera lens radial lateral chromatic aberration
+        renderer.setRenderTarget(null);
+        renderer.render(postScene, postCamera);
+      } else {
+        renderer.setRenderTarget(null);
+        renderer.render(scene, camera);
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      state.time += delta;
+
+      if (state.autoSpin && !isDragging) {
+        state.orbitPhase += delta * 0.42;
+      }
+
+      if (!isDragging) {
+        targetRotation.x = THREE.MathUtils.clamp(targetRotation.x + dragVelocity.x, -MAX_ROT_ARC, MAX_ROT_ARC);
+        targetRotation.y = THREE.MathUtils.clamp(targetRotation.y + dragVelocity.y, -MAX_ROT_ARC, MAX_ROT_ARC);
+        // Viscous fluid drag damping
+        dragVelocity.x *= 0.915;
+        dragVelocity.y *= 0.915;
+      }
+
+      // Non-360° bounded oscillation along the chosen rotation axis
+      const swing = state.autoSpin ? Math.sin(state.orbitPhase) * 0.78 : 0;
+      let axisX = 0;
+      let axisY = 0;
+      let axisZ = 0;
+      if (state.orbitAxis === 'diagonal') {
+        axisX = swing * 0.45;
+        axisY = swing * 0.85;
+        axisZ = swing * 0.34;
+      } else if (state.orbitAxis === 'figure8') {
+        axisX = Math.sin(state.orbitPhase) * 0.55;
+        axisY = Math.sin(state.orbitPhase * 2.0) * 0.48;
+        axisZ = Math.cos(state.orbitPhase) * 0.32;
+      } else if (state.orbitAxis === 'pitch') {
+        axisX = swing;
+      } else if (state.orbitAxis === 'yaw') {
+        axisY = swing;
+      } else if (state.orbitAxis === 'roll') {
+        axisZ = swing;
+      }
+
+      currentRotation.x += (targetRotation.x + axisX - currentRotation.x) * 0.055;
+      currentRotation.y += (targetRotation.y + axisY - currentRotation.y) * 0.055;
+      currentRotation.z += (axisZ - currentRotation.z) * 0.055;
+
+      glassGroup.rotation.x = currentRotation.x;
+      glassGroup.rotation.y = currentRotation.y;
+      glassGroup.rotation.z = currentRotation.z;
+      glassGroup.updateMatrixWorld();
+
+      // Animate rainbow gradient mesh
+      rainbowSphereMaterial.uniforms.uTime.value = state.time;
+      glassMaterial.uniforms.uTime.value = state.time;
+
+      // Synchronize contact shadow position under orbiting mesh
+      if (activeGlassMeshes.length > 0) {
+        activeGlassMeshes[0].getWorldPosition(shadowTargetPos);
+        contactShadow.position.x = shadowTargetPos.x;
+        contactShadow.position.z = shadowTargetPos.z;
+      }
+      contactShadow.position.y = -1.45 + Math.sin(state.time * 0.5) * 0.05;
+
+      renderFrame();
+    }
+
+    animate();
+  </script>
+</body>
+</html>
