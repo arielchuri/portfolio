@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refractive Crystal Lenses &amp; Wall Caustics — Pure p5.js 1.7.0 WEBGL</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #eae9f1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    #fps-badge {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 20;
+      padding: 3px 7px;
+      font-size: 11px;
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+      color: #243131;
+      background: rgba(245, 245, 245, 0.72);
+      border: 1px solid rgba(145, 144, 170, 0.45);
+      border-radius: 3px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+    #webgl-fallback {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      color: #243131;
+      background: #eae9f1;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="fps-badge">-- fps</div>
+  <div id="webgl-fallback">WebGL is unavailable in this browser or context.</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // =========================================================================
+      // Scene & Optical Constants
+      // =========================================================================
+      const WALL_Z = -1.4;
+      const CAM_Z = 7.2;
+      const LIGHT_EYE = [-1.35, -1.55, 3.8];
+      const LIGHT_CENTER = [0.15, 0.15, -0.4];
+      const LIGHT_ORTHO_HALF = 2.65;
+      const LIGHT_NEAR = 1.5;
+      const LIGHT_FAR = 7.5;
+      const CAUSTIC_BOUNDS_MIN = [-2.6, -2.2];
+      const CAUSTIC_BOUNDS_MAX = [2.6, 2.2];
+
+      let webglOk = true;
+      let frontFBO = null;
+      let backFBO = null;
+      let causticFBO = null;
+      let wallFBO = null;
+
+      let lightPassShader = null;
+      let causticShader = null;
+      let wallShader = null;
+      let blitShader = null;
+      let crystalShader = null;
+
+      let quadGeom = null;
+      let wallGeom = null;
+      let solids = [];
+
+      let lightDirWorld = [0, 0, 1];
+      let lightVP = null;
+      let invLightVP = null;
+
+      // Animation & FPS state
+      let simTime = 0;
+      let lastNowMs = 0;
+      let fpsFrames = 0;
+      let fpsAccumMs = 0;
+      let lastFpsCheckMs = 0;
+      const fpsBadgeEl = document.getElementById('fps-badge');
+      const fallbackEl = document.getElementById('webgl-fallback');
+
+      // =========================================================================
+      // Minimal 4x4 Column-Major Matrix Utilities
+      // =========================================================================
+      function normalize3(v) {
+        const len = Math.hypot(v[0], v[1], v[2]) || 1;
+        return [v[0] / len, v[1] / len, v[2] / len];
+      }
+
+      function sub3(a, b) {
+        return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+      }
+
+      function cross3(a, b) {
+        return [
+          a[1] * b[2] - a[2] * b[1],
+          a[2] * b[0] - a[0] * b[2],
+          a[0] * b[1] - a[1] * b[0]
+        ];
+      }
+
+      function dot3(a, b) {
+        return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+      }
+
+      function mat4LookAt(eye, center, up) {
+        const z = normalize3(sub3(eye, center));
+        const x = normalize3(cross3(up, z));
+        const y = cross3(z, x);
+        return [
+          x[0], y[0], z[0], 0,
+          x[1], y[1], z[1], 0,
+          x[2], y[2], z[2], 0,
+          -dot3(x, eye), -dot3(y, eye), -dot3(z, eye), 1
+        ];
+      }
+
+      function mat4Ortho(l, r, b, t, n, f) {
+        const rl = 1 / (r - l);
+        const tb = 1 / (t - b);
+        const fn = 1 / (f - n);
+        return [
+          2 * rl, 0, 0, 0,
+          0, 2 * tb, 0, 0,
+          0, 0, -2 * fn, 0,
+          -(r + l) * rl, -(t + b) * tb, -(f + n) * fn, 1
+        ];
+      }
+
+      function mat4Mul(a, b) {
+        const out = new Array(16);
+        for (let col = 0; col < 4; col++) {
+          const c = col * 4;
+          for (let row = 0; row < 4; row++) {
+            out[c + row] =
+              a[row] * b[c] +
+              a[4 + row] * b[c + 1] +
+              a[8 + row] * b[c + 2] +
+              a[12 + row] * b[c + 3];
+          }
+        }
+        return out;
+      }
+
+      function mat4Invert(m) {
+        const out = new Array(16);
+        const m00 = m[0], m01 = m[1], m02 = m[2], m03 = m[3];
+        const m10 = m[4], m11 = m[5], m12 = m[6], m13 = m[7];
+        const m20 = m[8], m21 = m[9], m22 = m[10], m23 = m[11];
+        const m30 = m[12], m31 = m[13], m32 = m[14], m33 = m[15];
+
+        const b00 = m00 * m11 - m01 * m10;
+        const b01 = m00 * m12 - m02 * m10;
+        const b02 = m00 * m13 - m03 * m10;
+        const b03 = m01 * m12 - m02 * m11;
+        const b04 = m01 * m13 - m03 * m11;
+        const b05 = m02 * m13 - m03 * m12;
+        const b06 = m20 * m31 - m21 * m30;
+        const b07 = m20 * m32 - m22 * m30;
+        const b08 = m20 * m33 - m23 * m30;
+        const b09 = m21 * m32 - m22 * m31;
+        const b10 = m21 * m33 - m23 * m31;
+        const b11 = m22 * m33 - m23 * m32;
+
+        let det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
+        if (!det) return null;
+        det = 1.0 / det;
+
+        out[0] = (m11 * b11 - m12 * b10 + m13 * b09) * det;
+        out[1] = (m02 * b10 - m01 * b11 - m03 * b09) * det;
+        out[2] = (m31 * b05 - m32 * b04 + m33 * b03) * det;
+        out[3] = (m22 * b04 - m21 * b05 - m23 * b03) * det;
+        out[4] = (m12 * b08 - m10 * b11 - m13 * b07) * det;
+        out[5] = (m00 * b11 - m02 * b08 + m03 * b07) * det;
+        out[6] = (m32 * b02 - m30 * b05 - m33 * b01) * det;
+        out[7] = (m20 * b05 - m22 * b02 + m23 * b01) * det;
+        out[8] = (m10 * b10 - m11 * b08 + m13 * b06) * det;
+        out[9] = (m01 * b08 - m00 * b10 - m03 * b06) * det;
+        out[10] = (m30 * b04 - m31 * b02 + m33 * b00) * det;
+        out[11] = (m21 * b02 - m20 * b04 - m23 * b00) * det;
+        out[12] = (m11 * b07 - m10 * b09 - m12 * b06) * det;
+        out[13] = (m00 * b09 - m01 * b07 + m02 * b06) * det;
+        out[14] = (m31 * b01 - m30 * b03 - m32 * b00) * det;
+        out[15] = (m20 * b03 - m21 * b01 + m22 * b00) * det;
+        return out;
+      }
+
+      // =========================================================================
+      // Closed Flat-Faceted p5.Geometry Builders
+      // =========================================================================
+      function addFlatTriangle(geom, p0, p1, p2, center) {
+        const e1 = p5.Vector.sub(p1, p0);
+        const e2 = p5.Vector.sub(p2, p0);
+        const n = p5.Vector.cross(e1, e2);
+        const centroid = p5.Vector.add(p0, p1).add(p2).div(3);
+        const outward = p5.Vector.sub(centroid, center);
+
+        let a = p0;
+        let b = p1;
+        let c = p2;
+        if (p5.Vector.dot(n, outward) < 0) {
+          b = p2;
+          c = p1;
+          n.mult(-1);
+        }
+        n.normalize();
+
+        const idx = geom.vertices.length;
+        geom.vertices.push(a.copy(), b.copy(), c.copy());
+        geom.vertexNormals.push(n.copy(), n.copy(), n.copy());
+        geom.uvs.push(0, 0, 1, 0, 0.5, 1);
+        geom.faces.push([idx, idx + 1, idx + 2]);
+      }
+
+      function addFlatQuad(geom, p0, p1, p2, p3, center) {
+        addFlatTriangle(geom, p0, p1, p2, center);
+        addFlatTriangle(geom, p0, p2, p3, center);
+      }
+
+      function buildTetrahedronGeometry(radius) {
+        const g = new p5.Geometry();
+        g.gid = 'crystal_tetrahedron';
+        const c = createVector(0, 0, 0);
+        const scale = radius / Math.sqrt(3);
+        const v0 = createVector(scale, scale, scale);
+        const v1 = createVector(-scale, -scale, scale);
+        const v2 = createVector(-scale, scale, -scale);
+        const v3 = createVector(scale, -scale, -scale);
+
+        addFlatTriangle(g, v0, v1, v2, c);
+        addFlatTriangle(g, v0, v2, v3, c);
+        addFlatTriangle(g, v0, v3, v1, c);
+        addFlatTriangle(g, v1, v3, v2, c);
+        return g;
+      }
+
+      function buildCubeGeometry(halfSize) {
+        const g = new p5.Geometry();
+        g.gid = 'crystal_cube';
+        const c = createVector(0, 0, 0);
+        const s = halfSize;
+        const p = [
+          createVector(-s, -s,  s), // 0: L B F
+          createVector( s, -s,  s), // 1: R B F
+          createVector( s,  s,  s), // 2: R T F
+          createVector(-s,  s,  s), // 3: L T F
+          createVector(-s, -s, -s), // 4: L B B
+          createVector( s, -s, -s), // 5: R B B
+          createVector( s,  s, -s), // 6: R T B
+          createVector(-s,  s, -s)  // 7: L T B
+        ];
+
+        addFlatQuad(g, p[0], p[1], p[2], p[3], c); // +Z
+        addFlatQuad(g, p[5], p[4], p[7], p[6], c); // -Z
+        addFlatQuad(g, p[1], p[5], p[6], p[2], c); // +X
+        addFlatQuad(g, p[4], p[0], p[3], p[7], c); // -X
+        addFlatQuad(g, p[3], p[2], p[6], p[7], c); // +Y
+        addFlatQuad(g, p[4], p[5], p[1], p[0], c); // -Y
+        return g;
+      }
+
+      function buildOctahedronGeometry(radius) {
+        const g = new p5.Geometry();
+        g.gid = 'crystal_octahedron';
+        const c = createVector(0, 0, 0);
+        const r = radius;
+        const top = createVector(0, -r, 0);
+        const bot = createVector(0, r, 0);
+        const px = createVector(r, 0, 0);
+        const nx = createVector(-r, 0, 0);
+        const pz = createVector(0, 0, r);
+        const nz = createVector(0, 0, -r);
+
+        const ring = [px, pz, nx, nz];
+        for (let i = 0; i < 4; i++) {
+          const a = ring[i];
+          const b = ring[(i + 1) % 4];
+          addFlatTriangle(g, top, b, a, c);
+          addFlatTriangle(g, bot, a, b, c);
+        }
+        return g;
+      }
+
+      function buildConeGeometry(radius, height, segments) {
+        const g = new p5.Geometry();
+        g.gid = 'crystal_cone';
+        const c = createVector(0, 0, 0);
+        const apex = createVector(0, -height * 0.5, 0);
+        const baseCenter = createVector(0, height * 0.5, 0);
+        const ring = [];
+        for (let i = 0; i < segments; i++) {
+          const ang = (i / segments) * Math.PI * 2;
+          ring.push(createVector(radius * Math.cos(ang), height * 0.5, radius * Math.sin(ang)));
+        }
+        for (let i = 0; i < segments; i++) {
+          const a = ring[i];
+          const b = ring[(i + 1) % segments];
+          addFlatTriangle(g, apex, b, a, c);
+          addFlatTriangle(g, baseCenter, a, b, c);
+        }
+        return g;
+      }
+
+      function buildCylinderGeometry(radius, height, segments) {
+        const g = new p5.Geometry();
+        g.gid = 'crystal_cylinder';
+        const c = createVector(0, 0, 0);
+        const hy = height * 0.5;
+        const topCenter = createVector(0, -hy, 0);
+        const botCenter = createVector(0, hy, 0);
+        const topRing = [];
+        const botRing = [];
+        for (let i = 0; i < segments; i++) {
+          const ang = (i / segments) * Math.PI * 2;
+          const x = radius * Math.cos(ang);
+          const z = radius * Math.sin(ang);
+          topRing.push(createVector(x, -hy, z));
+          botRing.push(createVector(x, hy, z));
+        }
+        for (let i = 0; i < segments; i++) {
+          const next = (i + 1) % segments;
+          addFlatQuad(g, topRing[i], topRing[next], botRing[next], botRing[i], c);
+          addFlatTriangle(g, topCenter, topRing[next], topRing[i], c);
+          addFlatTriangle(g, botCenter, botRing[i], botRing[next], c);
+        }
+        return g;
+      }
+
+      function buildClipQuadGeometry() {
+        const g = new p5.Geometry();
+        g.gid = 'screen_quad';
+        const c = createVector(0, 0, -1);
+        const p0 = createVector(-1, -1, 0);
+        const p1 = createVector( 1, -1, 0);
+        const p2 = createVector( 1,  1, 0);
+        const p3 = createVector(-1,  1, 0);
+        addFlatQuad(g, p0, p1, p2, p3, c);
+        return g;
+      }
+
+      function buildWallGeometry(halfSpan, wallZ) {
+        const g = new p5.Geometry();
+        g.gid = 'studio_wall';
+        const c = createVector(0, 0, wallZ - 1);
+        const p0 = createVector(-halfSpan, -halfSpan, wallZ);
+        const p1 = createVector( halfSpan, -halfSpan, wallZ);
+        const p2 = createVector( halfSpan,  halfSpan, wallZ);
+        const p3 = createVector(-halfSpan,  halfSpan, wallZ);
+        addFlatQuad(g, p0, p1, p2, p3, c);
+        return g;
+      }
+
+      // =========================================================================
+      // GLSL ES 1.00 Shaders (WebGL1 & WebGL2 Compatible)
+      // =========================================================================
+      const PRECISION_HEADER = [
+        '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+        'precision highp float;',
+        '#else',
+        'precision mediump float;',
+        '#endif'
+      ].join('\n');
+
+      // 1. Light-Space Normal + Depth FBO Shader (frontFBO / backFBO)
+      const LIGHT_PASS_VERT = `
+        attribute vec3 aPosition;
+        attribute vec3 aNormal;
+        uniform mat4 uModelViewMatrix;
+        uniform mat3 uNormalMatrix;
+        uniform mat4 uLightVP;
+        varying vec3 vWorldNormal;
+        varying float vLightDepth;
+        void main() {
+          vec4 worldPos = uModelViewMatrix * vec4(aPosition, 1.0);
+          vec4 clipPos = uLightVP * worldPos;
+          gl_Position = clipPos;
+          vWorldNormal = normalize(uNormalMatrix * aNormal);
+          vLightDepth = clipPos.z * 0.5 + 0.5;
+        }
+      `;
+
+      const LIGHT_PASS_FRAG = PRECISION_HEADER + `
+        varying vec3 vWorldNormal;
+        varying float vLightDepth;
+        void main() {
+          vec3 n = normalize(vWorldNormal);
+          float d = clamp(vLightDepth, 0.04, 1.0);
+          gl_FragColor = vec4(n * 0.5 + 0.5, d);
+        }
+      `;
+
+      // 2. Reverse-Gathering Chromatic Caustics Shader (causticFBO)
+      const QUAD_VERT = `
+        attribute vec3 aPosition;
+        varying vec2 vUv;
+        void main() {
+          vUv = aPosition.xy * 0.5 + 0.5;
+          gl_Position = vec4(aPosition.xy, 0.0, 1.0);
+        }
+      `;
+
+      const CAUSTIC_FRAG = PRECISION_HEADER + `
+        uniform sampler2D uFrontFBO;
+        uniform sampler2D uBackFBO;
+        uniform mat4 uLightVP;
+        uniform mat4 uInvLightVP;
+        uniform vec3 uLightDir;
+        uniform float uWallZ;
+        uniform float uLightDepthSpan;
+        uniform vec2 uBoundsMin;
+        uniform vec2 uBoundsMax;
+        varying vec2 vUv;
+
+        float ign(vec2 p) {
+          return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715))));
+        }
+
+        vec3 exitRay(vec3 r1, vec3 nExit, float ior) {
+          vec3 r2 = refract(r1, nExit, ior);
+          if (dot(r2, r2) < 0.01) {
+            // Soft fallback at grazing TIR edges so rays still carry grazing prism energy
+            r2 = normalize(mix(reflect(r1, nExit), r1, 0.55));
+          }
+          return normalize(r2);
+        }
+
+        void main() {
+          vec2 wallXY = mix(uBoundsMin, uBoundsMax, vUv);
+          vec4 wallClip = uLightVP * vec4(wallXY, uWallZ, 1.0);
+          vec2 baseLightUV = wallClip.xy * 0.5 + 0.5;
+
+          vec3 lightRay = normalize(-uLightDir);
+          vec2 jitter = (vec2(ign(gl_FragCoord.xy), ign(gl_FragCoord.xy + vec2(17.0, 31.0))) - 0.5) * 0.036;
+
+          const float STEP_UV = 0.046;
+          const float KERNEL_R = 0.215;
+          const float INV_R2 = 1.0 / (KERNEL_R * KERNEL_R);
+
+          vec3 acc = vec3(0.0);
+
+          for (int iy = -3; iy <= 3; iy++) {
+            for (int ix = -3; ix <= 3; ix++) {
+              vec2 qUV = baseLightUV + vec2(float(ix), float(iy)) * STEP_UV + jitter;
+              if (qUV.x <= 0.01 || qUV.x >= 0.99 || qUV.y <= 0.01 || qUV.y >= 0.99) {
+                continue;
+              }
+
+              vec4 fData = texture2D(uFrontFBO, qUV);
+              if (fData.a < 0.04) {
+                continue;
+              }
+
+              vec3 nIn = normalize(fData.rgb * 2.0 - 1.0);
+              if (dot(lightRay, nIn) > 0.0) {
+                nIn = -nIn;
+              }
+
+              float zIn = fData.a * 2.0 - 1.0;
+              vec3 pIn = (uInvLightVP * vec4(qUV * 2.0 - 1.0, zIn, 1.0)).xyz;
+
+              vec3 r1 = refract(lightRay, nIn, 1.0 / 1.53);
+              if (dot(r1, r1) < 0.01) {
+                r1 = lightRay;
+              } else {
+                r1 = normalize(r1);
+              }
+
+              vec4 b0 = texture2D(uBackFBO, qUV);
+              float estThickness = (b0.a > fData.a + 0.005)
+                ? (b0.a - fData.a) * uLightDepthSpan
+                : 0.28;
+              estThickness = clamp(estThickness, 0.06, 1.4);
+
+              vec3 pMid = pIn + r1 * (estThickness * 0.72);
+              vec2 exitUV = (uLightVP * vec4(pMid, 1.0)).xy * 0.5 + 0.5;
+              vec4 bData = (exitUV.x > 0.01 && exitUV.x < 0.99 && exitUV.y > 0.01 && exitUV.y < 0.99)
+                ? texture2D(uBackFBO, exitUV)
+                : b0;
+
+              vec2 usedExitUV = exitUV;
+              if (bData.a < 0.04) {
+                bData = b0;
+                usedExitUV = qUV;
+              }
+              if (bData.a < 0.04) {
+                continue;
+              }
+
+              float zOut = bData.a * 2.0 - 1.0;
+              vec3 pOut = (uInvLightVP * vec4(usedExitUV * 2.0 - 1.0, zOut, 1.0)).xyz;
+              vec3 nOut = normalize(bData.rgb * 2.0 - 1.0);
+              vec3 nExit = (dot(r1, nOut) > 0.0) ? -nOut : nOut;
+
+              // Fresnel transmission weighting
+              float ndotl = clamp(dot(-lightRay, nIn), 0.0, 1.0);
+              float trans = 1.0 - 0.5 * pow(1.0 - ndotl, 3.0);
+
+              vec3 r2R = exitRay(r1, nExit, 1.43);
+              vec3 r2G = exitRay(r1, nExit, 1.53);
+              vec3 r2B = exitRay(r1, nExit, 1.65);
+
+              if (r2R.z < -0.10) {
+                float tR = (uWallZ - pOut.z) / r2R.z;
+                vec2 hitR = pOut.xy + r2R.xy * tR;
+                vec2 dR = hitR - wallXY;
+                acc.r += exp(-dot(dR, dR) * INV_R2) * trans;
+              }
+              if (r2G.z < -0.10) {
+                float tG = (uWallZ - pOut.z) / r2G.z;
+                vec2 hitG = pOut.xy + r2G.xy * tG;
+                vec2 dG = hitG - wallXY;
+                acc.g += exp(-dot(dG, dG) * INV_R2) * trans;
+              }
+              if (r2B.z < -0.10) {
+                float tB = (uWallZ - pOut.z) / r2B.z;
+                vec2 hitB = pOut.xy + r2B.xy * tB;
+                vec2 dB = hitB - wallXY;
+                acc.b += exp(-dot(dB, dB) * INV_R2) * trans;
+              }
+            }
+          }
+
+          // Normalize & softly compress HDR caustic energy
+          vec3 energy = acc * 0.145;
+          energy = energy / (vec3(1.0) + energy * 0.42);
+          gl_FragColor = vec4(clamp(energy, 0.0, 1.0), 1.0);
+        }
+      `;
+
+      // 3. Rear Studio Wall Shader (Matte #eae9f1 + Soft PCF Shadow + Caustics)
+      const WALL_VERT = `
+        attribute vec3 aPosition;
+        uniform mat4 uModelViewMatrix;
+        uniform mat4 uProjectionMatrix;
+        varying vec3 vWorldPos;
+        void main() {
+          vWorldPos = aPosition;
+          gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aPosition, 1.0);
+        }
+      `;
+
+      const WALL_FRAG = PRECISION_HEADER + `
+        uniform sampler2D uFrontFBO;
+        uniform sampler2D uCausticFBO;
+        uniform mat4 uLightVP;
+        uniform vec2 uBoundsMin;
+        uniform vec2 uBoundsMax;
+        uniform vec2 uCausticTexel;
+        varying vec3 vWorldPos;
+
+        float sampleShadow(vec2 uv, float wallDepth) {
+          if (uv.x <= 0.01 || uv.x >= 0.99 || uv.y <= 0.01 || uv.y >= 0.99) {
+            return 0.0;
+          }
+          vec4 f = texture2D(uFrontFBO, uv);
+          if (f.a > 0.04 && f.a < wallDepth - 0.012) {
+            return 1.0;
+          }
+          return 0.0;
+        }
+
+        void main() {
+          // Base studio matte off-white (#eae9f1) with subtle top-left directional studio falloff
+          vec3 baseWall = vec3(0.9176, 0.9137, 0.9451);
+          float grad = clamp(0.5 - 0.08 * vWorldPos.x - 0.09 * vWorldPos.y, 0.0, 1.0);
+          vec3 wallCol = baseWall * (0.96 + 0.07 * grad);
+
+          // Soft 9-tap PCF shadow from light-space frontFBO
+          vec4 lightClip = uLightVP * vec4(vWorldPos, 1.0);
+          vec2 luv = lightClip.xy * 0.5 + 0.5;
+          float wallDepth = lightClip.z * 0.5 + 0.5;
+          float pcf = 0.0;
+          const float S = 0.0085;
+          pcf += sampleShadow(luv + vec2(-S, -S), wallDepth);
+          pcf += sampleShadow(luv + vec2(0.0, -S), wallDepth);
+          pcf += sampleShadow(luv + vec2( S, -S), wallDepth);
+          pcf += sampleShadow(luv + vec2(-S, 0.0), wallDepth);
+          pcf += sampleShadow(luv, wallDepth) * 1.4;
+          pcf += sampleShadow(luv + vec2( S, 0.0), wallDepth);
+          pcf += sampleShadow(luv + vec2(-S,  S), wallDepth);
+          pcf += sampleShadow(luv + vec2(0.0,  S), wallDepth);
+          pcf += sampleShadow(luv + vec2( S,  S), wallDepth);
+          pcf /= 9.4;
+
+          // Cool architectural shadow tint
+          vec3 shadowTint = wallCol * vec3(0.73, 0.72, 0.80);
+          wallCol = mix(wallCol, shadowTint, pcf * 0.68);
+
+          // Sample causticFBO with soft 5-tap tent filter for silky dispersion
+          vec2 cUV = (vWorldPos.xy - uBoundsMin) / (uBoundsMax - uBoundsMin);
+          vec3 caustic = vec3(0.0);
+          if (cUV.x > 0.0 && cUV.x < 1.0 && cUV.y > 0.0 && cUV.y < 1.0) {
+            vec2 o = uCausticTexel * 1.35;
+            caustic += texture2D(uCausticFBO, clamp(cUV, 0.002, 0.998)).rgb * 0.40;
+            caustic += texture2D(uCausticFBO, clamp(cUV + vec2( o.x, 0.0), 0.002, 0.998)).rgb * 0.15;
+            caustic += texture2D(uCausticFBO, clamp(cUV + vec2(-o.x, 0.0), 0.002, 0.998)).rgb * 0.15;
+            caustic += texture2D(uCausticFBO, clamp(cUV + vec2(0.0,  o.y), 0.002, 0.998)).rgb * 0.15;
+            caustic += texture2D(uCausticFBO, clamp(cUV + vec2(0.0, -o.y), 0.002, 0.998)).rgb * 0.15;
+          }
+
+          // Enhance RGB / magenta / cyan prism separation while keeping white-hot focus cores
+          float chromaSpread = max(max(caustic.r, caustic.g), caustic.b) - min(min(caustic.r, caustic.g), caustic.b);
+          vec3 prismBoost = vec3(
+            caustic.r * 1.15 + chromaSpread * 0.28,
+            caustic.g * 0.96,
+            caustic.b * 1.18 + chromaSpread * 0.24
+          );
+
+          // Add luminous caustic energy (brightens even inside glass shadow!)
+          wallCol += prismBoost * 0.92;
+          // Soft white-hot highlight compression
+          wallCol = wallCol / (vec3(1.0) + max(wallCol - vec3(0.95), vec3(0.0)) * 0.55);
+
+          gl_FragColor = vec4(clamp(wallCol, 0.0, 1.0), 1.0);
+        }
+      `;
+
+      // 4. Fullscreen Blit Shader (draws wallFBO without Y-flip mismatch)
+      const BLIT_FRAG = PRECISION_HEADER + `
+        uniform sampler2D uTex;
+        varying vec2 vUv;
+        void main() {
+          gl_FragColor = texture2D(uTex, vUv);
+        }
+      `;
+
+      // 5. Crystal Chromatic Dispersion Shader (samples shaded wallFBO + Fresnel + specular)
+      const CRYSTAL_VERT = `
+        attribute vec3 aPosition;
+        attribute vec3 aNormal;
+        uniform mat4 uModelViewMatrix;
+        uniform mat4 uProjectionMatrix;
+        uniform mat3 uNormalMatrix;
+        uniform vec3 uLightDir;
+        varying vec3 vViewPos;
+        varying vec3 vViewNormal;
+        varying vec4 vClipPos;
+        varying vec3 vLightView;
+        void main() {
+          vec4 viewPos = uModelViewMatrix * vec4(aPosition, 1.0);
+          vViewPos = viewPos.xyz;
+          vViewNormal = normalize(uNormalMatrix * aNormal);
+          vClipPos = uProjectionMatrix * viewPos;
+          gl_Position = vClipPos;
+
+          // Detect projection Y orientation dynamically so L_view always matches View space
+          float projSign = (uProjectionMatrix * vec4(0.0, 1.0, -5.0, 1.0)).y < 0.0 ? 1.0 : -1.0;
+          vLightView = normalize(vec3(uLightDir.x, uLightDir.y * projSign, uLightDir.z));
+        }
+      `;
+
+      const CRYSTAL_FRAG = PRECISION_HEADER + `
+        uniform sampler2D uWallFBO;
+        uniform mat4 uProjectionMatrix;
+        uniform vec3 uTint;
+        varying vec3 vViewPos;
+        varying vec3 vViewNormal;
+        varying vec4 vClipPos;
+        varying vec3 vLightView;
+
+        vec2 projectOffset(vec3 viewDir, float depthScale) {
+          vec4 p = uProjectionMatrix * vec4(vViewPos + viewDir * depthScale, 1.0);
+          return clamp((p.xy / p.w) * 0.5 + 0.5, 0.003, 0.997);
+        }
+
+        void main() {
+          vec3 N = normalize(vViewNormal);
+          if (!gl_FrontFacing) {
+            N = -N;
+          }
+          vec3 V = normalize(-vViewPos);
+          float ndotv = clamp(dot(N, V), 0.0, 1.0);
+          float fresnel = pow(1.0 - ndotv, 2.8);
+
+          // Chromatic dispersion through crystal facets
+          vec3 refrR = refract(-V, N, 1.0 / 1.44);
+          vec3 refrG = refract(-V, N, 1.0 / 1.53);
+          vec3 refrB = refract(-V, N, 1.0 / 1.65);
+
+          if (dot(refrR, refrR) < 0.01) refrR = reflect(-V, N);
+          if (dot(refrG, refrG) < 0.01) refrG = reflect(-V, N);
+          if (dot(refrB, refrB) < 0.01) refrB = reflect(-V, N);
+
+          // Combine direct refracted direction with subtle normal bending for rich facet distortion
+          float dispDepth = 0.52;
+          vec2 uvR = projectOffset(refrR + N * 0.16, dispDepth);
+          vec2 uvG = projectOffset(refrG + N * 0.12, dispDepth);
+          vec2 uvB = projectOffset(refrB + N * 0.08, dispDepth);
+
+          // Multi-channel optical wall sampling
+          float colR = texture2D(uWallFBO, uvR).r;
+          float colG = texture2D(uWallFBO, uvG).g;
+          float colB = texture2D(uWallFBO, uvB).b;
+          vec3 refracted = vec3(colR, colG, colB);
+
+          // Subtle spectral crown-glass tint per solid
+          refracted *= mix(vec3(1.0), uTint, 0.24);
+
+          // Studio environment reflection on grazing facets (softbox + magenta/cyan edge)
+          vec3 R = reflect(-V, N);
+          float envUp = clamp(R.y * 0.5 + 0.5, 0.0, 1.0);
+          vec3 envCol = mix(vec3(0.84, 0.85, 0.93), vec3(1.0, 0.99, 1.0), envUp);
+          vec3 iridescence = mix(vec3(1.0, 0.20, 0.62), vec3(0.45, 0.94, 0.96), clamp(N.x * 0.5 + 0.5, 0.0, 1.0));
+          envCol = mix(envCol, iridescence, 0.28);
+
+          // Crisp key-light specular & facet diffuse glint
+          vec3 L = normalize(vLightView);
+          vec3 H = normalize(L + V);
+          float spec = pow(max(dot(N, H), 0.0), 110.0);
+          float softSpec = pow(max(dot(N, H), 0.0), 18.0);
+          float facetShade = max(dot(N, L), 0.0);
+
+          vec3 col = mix(refracted, envCol, clamp(fresnel * 0.72 + 0.04, 0.0, 0.85));
+          col += vec3(0.98, 0.98, 1.0) * (spec * 0.95 + softSpec * 0.12);
+          col += uTint * (facetShade * 0.05);
+
+          gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
+        }
+      `;
+
+      // =========================================================================
+      // Responsive Camera Framing Helper
+      // =========================================================================
+      function computeResponsiveFovy(w, h) {
+        const aspect = Math.max(0.25, w / Math.max(1, h));
+        // Guarantee horizontal half-extent >= 2.38 and vertical half-extent >= 1.88 at z = 0
+        const minTanY = 1.88 / CAM_Z;
+        const minTanX = 2.38 / CAM_Z;
+        const tanHalf = Math.max(minTanY, minTanX / aspect);
+        return 2.0 * Math.atan(tanHalf);
+      }
+
+      // =========================================================================
+      // Fallback Display Helper
+      // =========================================================================
+      function failWebGL(err) {
+        webglOk = false;
+        if (err) {
+          console.warn('WebGL pipeline disabled:', err);
+        }
+        if (fallbackEl) {
+          fallbackEl.style.display = 'flex';
+        }
+        if (fpsBadgeEl) {
+          fpsBadgeEl.textContent = 'WebGL N/A';
+        }
+        if (typeof noLoop === 'function') {
+          noLoop();
+        }
+      }
+
+      // =========================================================================
+      // p5.js Lifecycle
+      // =========================================================================
+      window.setup = function () {
+        try {
+          pixelDensity(1);
+          const w = Math.max(1, windowWidth);
+          const h = Math.max(1, windowHeight);
+          createCanvas(w, h, WEBGL);
+
+          const gl = drawingContext;
+          if (!gl || typeof createFramebuffer !== 'function' || typeof createShader !== 'function') {
+            throw new Error('Required p5.js WEBGL / createFramebuffer API unavailable');
+          }
+
+          // Light View-Projection matrices
+          lightDirWorld = normalize3(sub3(LIGHT_EYE, LIGHT_CENTER));
+          const lightView = mat4LookAt(LIGHT_EYE, LIGHT_CENTER, [0, 1, 0]);
+          const lightProj = mat4Ortho(
+            -LIGHT_ORTHO_HALF,
+             LIGHT_ORTHO_HALF,
+            -LIGHT_ORTHO_HALF,
+             LIGHT_ORTHO_HALF,
+            LIGHT_NEAR,
+            LIGHT_FAR
+          );
+          lightVP = mat4Mul(lightProj, lightView);
+          invLightVP = mat4Invert(lightVP);
+          if (!invLightVP) {
+            throw new Error('Failed to invert light view-projection matrix');
+          }
+
+          // Offscreen Framebuffers (8-bit RGBA UNSIGNED_BYTE, density: 1)
+          frontFBO = createFramebuffer({
+            width: 256,
+            height: 256,
+            density: 1,
+            depth: true,
+            textureFiltering: LINEAR
+          });
+          backFBO = createFramebuffer({
+            width: 256,
+            height: 256,
+            density: 1,
+            depth: true,
+            textureFiltering: LINEAR
+          });
+          causticFBO = createFramebuffer({
+            width: 224,
+            height: 224,
+            density: 1,
+            depth: false,
+            textureFiltering: LINEAR
+          });
+          wallFBO = createFramebuffer({
+            width: w,
+            height: h,
+            density: 1,
+            depth: false,
+            textureFiltering: LINEAR
+          });
+
+          // Custom p5.Shaders
+          lightPassShader = createShader(LIGHT_PASS_VERT, LIGHT_PASS_FRAG);
+          causticShader = createShader(QUAD_VERT, CAUSTIC_FRAG);
+          wallShader = createShader(WALL_VERT, WALL_FRAG);
+          blitShader = createShader(QUAD_VERT, BLIT_FRAG);
+          crystalShader = createShader(CRYSTAL_VERT, CRYSTAL_FRAG);
+
+          // Geometries
+          quadGeom = buildClipQuadGeometry();
+          wallGeom = buildWallGeometry(12.0, WALL_Z);
+
+          // 5 closed flat-faceted crystal solids matching background-animation.js
+          solids = [
+            {
+              geom: buildTetrahedronGeometry(0.45),
+              pos: [-1.42, -0.76, 0.12],
+              rot: [0.35, 0.80, 0.15],
+              speed: [0.0085, 0.0115, 0.0055],
+              tint: [1.0, 0.84, 0.94]
+            },
+            {
+              geom: buildCubeGeometry(0.30),
+              pos: [-0.22, -0.18, 0.22],
+              rot: [0.55, 0.45, 0.25],
+              speed: [0.0065, -0.0095, 0.0045],
+              tint: [0.95, 0.97, 1.0]
+            },
+            {
+              geom: buildOctahedronGeometry(0.44),
+              pos: [0.96, -0.72, 0.08],
+              rot: [0.20, 0.65, -0.35],
+              speed: [-0.0075, 0.0105, 0.0065],
+              tint: [0.85, 0.97, 1.0]
+            },
+            {
+              geom: buildConeGeometry(0.37, 0.78, 12),
+              pos: [-1.30, 0.48, 0.06],
+              rot: [0.50, 0.20, 0.45],
+              speed: [0.0070, 0.0080, -0.0090],
+              tint: [0.93, 0.87, 1.0]
+            },
+            {
+              geom: buildCylinderGeometry(0.32, 0.72, 16),
+              pos: [0.92, 0.46, 0.10],
+              rot: [0.65, -0.30, 0.35],
+              speed: [-0.0060, 0.0090, 0.0075],
+              tint: [0.86, 0.98, 0.96]
+            }
+          ];
+
+          lastNowMs = performance.now();
+          lastFpsCheckMs = lastNowMs;
+        } catch (err) {
+          failWebGL(err);
+        }
+      };
+
+      function renderLightFaceFBO(fbo, cullFaceMode) {
+        const gl = drawingContext;
+        fbo.begin();
+        gl.disable(gl.BLEND);
+        gl.enable(gl.DEPTH_TEST);
+        gl.depthFunc(gl.LESS);
+        gl.depthMask(true);
+        gl.enable(gl.CULL_FACE);
+        gl.frontFace(gl.CCW);
+        gl.cullFace(cullFaceMode);
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+        resetMatrix();
+        shader(lightPassShader);
+        lightPassShader.setUniform('uLightVP', lightVP);
+        noStroke();
+
+        for (let i = 0; i < solids.length; i++) {
+          const s = solids[i];
+          push();
+          translate(s.pos[0], s.pos[1], s.pos[2]);
+          rotateX(s.rot[0]);
+          rotateY(s.rot[1]);
+          rotateZ(s.rot[2]);
+          model(s.geom);
+          pop();
+        }
+        fbo.end();
+      }
+
+      window.draw = function () {
+        if (!webglOk) return;
+
+        try {
+          const now = performance.now();
+          const dtMs = Math.min(50, Math.max(0, now - lastNowMs));
+          lastNowMs = now;
+          const dtFactor = dtMs / 16.6667;
+          simTime += dtMs * 0.001;
+
+          // Update FPS badge every ~250ms
+          fpsFrames += 1;
+          fpsAccumMs += dtMs;
+          if (now - lastFpsCheckMs >= 250 && fpsAccumMs > 0) {
+            const fps = Math.round((fpsFrames * 1000) / fpsAccumMs);
+            if (fpsBadgeEl) {
+              fpsBadgeEl.textContent = fps + ' fps';
+            }
+            fpsFrames = 0;
+            fpsAccumMs = 0;
+            lastFpsCheckMs = now;
+          }
+
+          // Rotate each crystal solid around its own center
+          for (let i = 0; i < solids.length; i++) {
+            const s = solids[i];
+            s.rot[0] += s.speed[0] * dtFactor;
+            s.rot[1] += s.speed[1] * dtFactor;
+            s.rot[2] += s.speed[2] * dtFactor;
+          }
+
+          const gl = drawingContext;
+          const fovy = computeResponsiveFovy(width, height);
+          const aspect = width / Math.max(1, height);
+
+          // Pass 1 & 2: Light-space front & back normal+depth FBOs
+          renderLightFaceFBO(frontFBO, gl.BACK);
+          renderLightFaceFBO(backFBO, gl.FRONT);
+
+          // Pass 3: Reverse-gathering chromatic caustics FBO
+          causticFBO.begin();
+          gl.disable(gl.BLEND);
+          gl.disable(gl.DEPTH_TEST);
+          gl.disable(gl.CULL_FACE);
+          gl.clearColor(0, 0, 0, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+
+          resetMatrix();
+          shader(causticShader);
+          causticShader.setUniform('uFrontFBO', frontFBO);
+          causticShader.setUniform('uBackFBO', backFBO);
+          causticShader.setUniform('uLightVP', lightVP);
+          causticShader.setUniform('uInvLightVP', invLightVP);
+          causticShader.setUniform('uLightDir', lightDirWorld);
+          causticShader.setUniform('uWallZ', WALL_Z);
+          causticShader.setUniform('uLightDepthSpan', LIGHT_FAR - LIGHT_NEAR);
+          causticShader.setUniform('uBoundsMin', CAUSTIC_BOUNDS_MIN);
+          causticShader.setUniform('uBoundsMax', CAUSTIC_BOUNDS_MAX);
+          noStroke();
+          model(quadGeom);
+          causticFBO.end();
+
+          // Pass 4: Shaded rear studio wall (matte #eae9f1 + PCF shadows + caustics) into wallFBO
+          wallFBO.begin();
+          gl.disable(gl.BLEND);
+          gl.disable(gl.DEPTH_TEST);
+          gl.disable(gl.CULL_FACE);
+          gl.clearColor(0.9176, 0.9137, 0.9451, 1.0);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+
+          perspective(fovy, aspect, 0.5, 30.0);
+          resetMatrix();
+          camera(0, 0, CAM_Z, 0, 0, 0, 0, 1, 0);
+          shader(wallShader);
+          wallShader.setUniform('uFrontFBO', frontFBO);
+          wallShader.setUniform('uCausticFBO', causticFBO);
+          wallShader.setUniform('uLightVP', lightVP);
+          wallShader.setUniform('uBoundsMin', CAUSTIC_BOUNDS_MIN);
+          wallShader.setUniform('uBoundsMax', CAUSTIC_BOUNDS_MAX);
+          wallShader.setUniform('uCausticTexel', [1 / causticFBO.width, 1 / causticFBO.height]);
+          noStroke();
+          model(wallGeom);
+          wallFBO.end();
+
+          // Pass 5: Blit shaded rear studio wall onto main canvas
+          gl.disable(gl.BLEND);
+          gl.disable(gl.DEPTH_TEST);
+          gl.disable(gl.CULL_FACE);
+          resetMatrix();
+          shader(blitShader);
+          blitShader.setUniform('uTex', wallFBO);
+          noStroke();
+          model(quadGeom);
+
+          // Pass 6: Draw 5 refractive crystal solids sampling shaded wallFBO
+          gl.enable(gl.DEPTH_TEST);
+          gl.depthFunc(gl.LESS);
+          gl.depthMask(true);
+          gl.clear(gl.DEPTH_BUFFER_BIT);
+
+          perspective(fovy, aspect, 0.5, 30.0);
+          resetMatrix();
+          camera(0, 0, CAM_Z, 0, 0, 0, 0, 1, 0);
+          shader(crystalShader);
+          crystalShader.setUniform('uWallFBO', wallFBO);
+          crystalShader.setUniform('uLightDir', lightDirWorld);
+          noStroke();
+
+          for (let i = 0; i < solids.length; i++) {
+            const s = solids[i];
+            crystalShader.setUniform('uTint', s.tint);
+            push();
+            translate(s.pos[0], s.pos[1], s.pos[2]);
+            rotateX(s.rot[0]);
+            rotateY(s.rot[1]);
+            rotateZ(s.rot[2]);
+            model(s.geom);
+            pop();
+          }
+        } catch (err) {
+          failWebGL(err);
+        }
+      };
+
+      window.windowResized = function () {
+        if (!webglOk) return;
+        try {
+          const w = Math.max(1, windowWidth);
+          const h = Math.max(1, windowHeight);
+          resizeCanvas(w, h);
+          if (wallFBO && (wallFBO.width !== w || wallFBO.height !== h)) {
+            wallFBO.resize(w, h);
+          }
+        } catch (err) {
+          failWebGL(err);
+        }
+      };
+
+      document.addEventListener('visibilitychange', function () {
+        if (!webglOk) return;
+        if (document.hidden) {
+          if (typeof noLoop === 'function') noLoop();
+        } else {
+          lastNowMs = performance.now();
+          lastFpsCheckMs = lastNowMs;
+          fpsFrames = 0;
+          fpsAccumMs = 0;
+          if (typeof loop === 'function') loop();
+        }
+      });
+
+      window.addEventListener('load', function () {
+        if (typeof window.p5 === 'undefined') {
+          failWebGL(new Error('p5.js library failed to load'));
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

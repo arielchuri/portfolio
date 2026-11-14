@@ -1349,3 +1349,9 @@ nav .btn-outline {
       12 12,
     auto !important;
 }
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}

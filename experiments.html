@@ -47,6 +47,7 @@
         <a class="mr-4 link-slide" href="#refraction-gallery"
           >Sculptural Glass &amp; Optical Dispersion</a
         >
+        <a class="mr-4 link-slide" href="#dankelf-vtt">Dank Elf VTT</a>
       </div>
       <p class="mb-12 md:w-1/2">
         Interactive sketches exploring real-time optics, procedural geometry,
@@ -112,13 +113,68 @@
           </div>
         </div>
       </section>
+
+      <hr
+        id="dankelf-vtt"
+        class="dots my-24"
+        style="border-color: var(--gray2)"
+      />
+
+      <section>
+        <div class="row reveal">
+          <div class="four columns">
+            <div
+              class="inline-block bg-[#38145c] text-white font-mono text-xs uppercase px-2.5 py-0.5 mb-3 font-bold tracking-wider rounded-xs"
+            >
+              Canvas / Local-First Web App
+            </div>
+            <h2 class="mb-2 text-4xl font-thin uppercase">Dank Elf VTT</h2>
+            <p>
+              A zero-build RPG virtual tabletop built with vanilla HTML, CSS,
+              and Canvas—designed around physical paper sheets, mimeo-violet
+              drop shadows, and fast tabletop improvisation.
+            </p>
+            <ul>
+              <li>
+                <strong>Dynamic Sheets &amp; Maps:</strong> Editable cream
+                character sheets, goldenrod notes, and cyan-blue vector map
+                drafting with tokens and grid/hex overlays.
+              </li>
+              <li>
+                <strong>3D Polyhedral Dice:</strong> Tabletop roller supporting
+                d2–d50, d%, and DCC Zocchi solids with P2P sync.
+              </li>
+              <li>
+                <strong>Local-First &amp; P2P:</strong> Persists locally via
+                localStorage/IndexedDB with JSON import/export and WebRTC
+                multiplayer support.
+              </li>
+            </ul>
+            <a
+              href="experiments/dankelf-vtt/index.html"
+              class="btn-outline m-6 ml-0 px-12 inline-block"
+            >
+              <span class="wipe-bg"></span>
+              <span class="btn-text">Launch Experiment</span>
+            </a>
+          </div>
+          <div class="eight columns">
+            <a href="experiments/dankelf-vtt/index.html">
+              <img
+                src="experiments/dankelf-vtt-preview.png"
+                class="rounded-xs box-shadow"
+                alt="Dank Elf VTT Tabletop Experiment"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div id="footer"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="myscript.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <script src="background-animation.js"></script>
+    <script type="module" src="experiments/crystal-background.js"></script>
   </body>
 </html>

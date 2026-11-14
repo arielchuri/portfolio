@@ -1,0 +1,1098 @@
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js';
+
+    const WALL_Z = -4.2;
+    const ORTHO_SIZE = 10.6;
+    const ORTHO_HALF = ORTHO_SIZE * 0.5;
+    const LIGHT_NEAR = 1.5;
+    const LIGHT_FAR = 13.5;
+    const LIGHT_DEPTH_SPAN = LIGHT_FAR - LIGHT_NEAR;
+    const VIEW_NEAR = 0.5;
+    const VIEW_FAR = 26.0;
+    const VIEW_DEPTH_SPAN = VIEW_FAR - VIEW_NEAR;
+    const PHOTON_GRID = 128;
+    const CAUSTIC_RES = 640;
+    const LIGHT_RT_RES = 512;
+    const CAUSTIC_CENTER = new THREE.Vector2(0.0, 0.0);
+    const CAUSTIC_HALF_SIZE = 9.2;
+
+    // Portfolio palette helper matching background-animation.js (baseHue=328, 30deg steps)
+    function hslToThreeColor(h, s = 100, l = 54) {
+      const c = new THREE.Color();
+      c.setHSL((((h % 360) + 360) % 360) / 360, s / 100, l / 100);
+      return c;
+    }
+
+    const BASE_HUE = 328;
+    const COLOR_STEP = 30;
+    const HUE_OFFSET = Math.random() > 0.5 ? 3 * COLOR_STEP : -3 * COLOR_STEP;
+    const HUE_DIR = HUE_OFFSET > 0 ? -1 : 1;
+    function portfolioColor(index, l = 54) {
+      return hslToThreeColor(BASE_HUE + HUE_OFFSET + index * HUE_DIR * COLOR_STEP, 100, l);
+    }
+
+    // Renderer setup (DPR capped at 1.5)
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      powerPreference: 'high-performance',
+      alpha: false
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.NoToneMapping;
+    renderer.autoClear = false;
+    const bgMount = document.getElementById('background-animation') || document.body;
+    renderer.domElement.style.position = 'fixed';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.zIndex = '-1';
+    renderer.domElement.style.pointerEvents = 'none';
+    bgMount.appendChild(renderer.domElement);
+
+    const gl = renderer.getContext();
+    const supportsHalfFloatRT = Boolean(
+      gl.getExtension('EXT_color_buffer_float') ||
+      gl.getExtension('EXT_color_buffer_half_float')
+    );
+    const floatBufferType = supportsHalfFloatRT ? THREE.HalfFloatType : THREE.UnsignedByteType;
+
+    // Cameras
+    const camera = new THREE.PerspectiveCamera(
+      42,
+      Math.max(window.innerWidth, 1) / Math.max(window.innerHeight, 1),
+      VIEW_NEAR,
+      VIEW_FAR
+    );
+    const lightPos = new THREE.Vector3(-1.05, 1.35, 7.0);
+    const lightTarget = new THREE.Vector3(0, 0, 0);
+    const lightDir = new THREE.Vector3().subVectors(lightTarget, lightPos).normalize();
+
+    const lightCam = new THREE.OrthographicCamera(
+      -ORTHO_HALF,
+      ORTHO_HALF,
+      ORTHO_HALF,
+      -ORTHO_HALF,
+      LIGHT_NEAR,
+      LIGHT_FAR
+    );
+    lightCam.position.copy(lightPos);
+    lightCam.lookAt(lightTarget);
+    lightCam.updateMatrixWorld(true);
+    lightCam.updateProjectionMatrix();
+
+    const lightViewProj = new THREE.Matrix4().multiplyMatrices(
+      lightCam.projectionMatrix,
+      lightCam.matrixWorldInverse
+    );
+
+    // Render targets
+    function createNormalDepthRT(width, height) {
+      return new THREE.WebGLRenderTarget(width, height, {
+        type: floatBufferType,
+        format: THREE.RGBAFormat,
+        minFilter: THREE.NearestFilter,
+        magFilter: THREE.NearestFilter,
+        depthBuffer: true,
+        stencilBuffer: false
+      });
+    }
+
+    const lightFrontRT = createNormalDepthRT(LIGHT_RT_RES, LIGHT_RT_RES);
+    const lightBackRT = createNormalDepthRT(LIGHT_RT_RES, LIGHT_RT_RES);
+
+    const drawSize = new THREE.Vector2();
+    renderer.getDrawingBufferSize(drawSize);
+    const viewBackRT = createNormalDepthRT(
+      Math.max(drawSize.x, 1),
+      Math.max(drawSize.y, 1)
+    );
+
+    const causticRT = new THREE.WebGLRenderTarget(CAUSTIC_RES, CAUSTIC_RES, {
+      type: floatBufferType,
+      format: THREE.RGBAFormat,
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      depthBuffer: false,
+      stencilBuffer: false
+    });
+
+    // Helper: create cleanly closed flat-faceted crystal geometry with per-solid portfolio tint attribute
+    function makeCrystalGeometry(geo, tintColor) {
+      const nonIndexed = geo.index ? geo.toNonIndexed() : geo;
+      if (nonIndexed !== geo) geo.dispose();
+      nonIndexed.computeVertexNormals();
+      const count = nonIndexed.attributes.position.count;
+      const tints = new Float32Array(count * 3);
+      for (let i = 0; i < count; i++) {
+        tints[i * 3] = tintColor.r;
+        tints[i * 3 + 1] = tintColor.g;
+        tints[i * 3 + 2] = tintColor.b;
+      }
+      nonIndexed.setAttribute('aTint', new THREE.BufferAttribute(tints, 3));
+      return nonIndexed;
+    }
+
+    // 5 Closed Faceted Crystal Shapes spread wide across a large circular orbital motion
+    const crystalSpecs = [
+      {
+        name: 'tetrahedron',
+        geo: makeCrystalGeometry(new THREE.TetrahedronGeometry(0.25, 0), portfolioColor(0)),
+        pos: new THREE.Vector3(-2.4, 1.3, 0.3),
+        orbitRx: 2.85,
+        orbitRy: 1.65,
+        orbitRz: 0.72,
+        orbitSpeed: 0.34,
+        orbitPhase: 0.25,
+        subRadius: 0.52,
+        subSpeed: 0.85,
+        rot: new THREE.Euler(0.55, 0.80, 0.25),
+        vel: new THREE.Vector3(0.86, 1.08, -0.62)
+      },
+      {
+        name: 'cube',
+        geo: makeCrystalGeometry(new THREE.BoxGeometry(0.30, 0.30, 0.30), portfolioColor(1)),
+        pos: new THREE.Vector3(0.1, 0.9, 0.6),
+        orbitRx: 2.15,
+        orbitRy: 1.35,
+        orbitRz: 0.85,
+        orbitSpeed: -0.29,
+        orbitPhase: 1.55,
+        subRadius: 0.65,
+        subSpeed: 0.72,
+        rot: new THREE.Euler(0.48, 0.62, 0.18),
+        vel: new THREE.Vector3(-0.72, 0.96, 0.78)
+      },
+      {
+        name: 'octahedron',
+        geo: makeCrystalGeometry(new THREE.OctahedronGeometry(0.24, 0), portfolioColor(2)),
+        pos: new THREE.Vector3(2.3, 1.2, -0.2),
+        orbitRx: 3.15,
+        orbitRy: 1.85,
+        orbitRz: 0.78,
+        orbitSpeed: 0.26,
+        orbitPhase: 2.85,
+        subRadius: 0.58,
+        subSpeed: -0.92,
+        rot: new THREE.Euler(0.32, -0.50, 0.40),
+        vel: new THREE.Vector3(-1.02, -0.78, 0.65)
+      },
+      {
+        name: 'cone',
+        geo: makeCrystalGeometry(new THREE.ConeGeometry(0.20, 0.38, 7, 1, false), portfolioColor(3)),
+        pos: new THREE.Vector3(-1.9, -1.3, -0.4),
+        orbitRx: 2.60,
+        orbitRy: 1.55,
+        orbitRz: 0.68,
+        orbitSpeed: -0.37,
+        orbitPhase: 4.10,
+        subRadius: 0.48,
+        subSpeed: 0.95,
+        rot: new THREE.Euler(0.75, 0.20, -0.35),
+        vel: new THREE.Vector3(0.78, -1.04, -0.88)
+      },
+      {
+        name: 'cylinder',
+        geo: makeCrystalGeometry(new THREE.CylinderGeometry(0.18, 0.18, 0.36, 8, 1, false), portfolioColor(4)),
+        pos: new THREE.Vector3(2.1, -1.2, 0.4),
+        orbitRx: 3.35,
+        orbitRy: 1.95,
+        orbitRz: 0.80,
+        orbitSpeed: 0.31,
+        orbitPhase: 5.35,
+        subRadius: 0.55,
+        subSpeed: -0.78,
+        rot: new THREE.Euler(-0.52, 0.44, 0.60),
+        vel: new THREE.Vector3(-0.82, 0.72, -0.98)
+      }
+    ];
+
+    // Pass 1 scenes & materials (Normal + Linear Depth)
+    const normalDepthVert = /* glsl */ `
+      varying vec3 vWorldNormal;
+      varying float vLinearDepth;
+      uniform float uNear;
+      uniform float uDepthSpan;
+
+      void main() {
+        vWorldNormal = normalize(mat3(modelMatrix) * normal);
+        vec4 worldPos = modelMatrix * vec4(position, 1.0);
+        vec4 viewPos = viewMatrix * worldPos;
+        vLinearDepth = (-viewPos.z - uNear) / uDepthSpan;
+        gl_Position = projectionMatrix * viewPos;
+      }
+    `;
+
+    const normalDepthFrag = /* glsl */ `
+      varying vec3 vWorldNormal;
+      varying float vLinearDepth;
+
+      void main() {
+        vec3 n = normalize(vWorldNormal);
+        float d = clamp(vLinearDepth, 0.01, 1.0);
+        gl_FragColor = vec4(n * 0.5 + 0.5, d);
+      }
+    `;
+
+    function makeNormalDepthMat(side, near, span) {
+      return new THREE.ShaderMaterial({
+        side,
+        vertexShader: normalDepthVert,
+        fragmentShader: normalDepthFrag,
+        uniforms: {
+          uNear: { value: near },
+          uDepthSpan: { value: span }
+        }
+      });
+    }
+
+    const lightFrontMat = makeNormalDepthMat(THREE.FrontSide, LIGHT_NEAR, LIGHT_DEPTH_SPAN);
+    const lightBackMat = makeNormalDepthMat(THREE.BackSide, LIGHT_NEAR, LIGHT_DEPTH_SPAN);
+    const viewBackMat = makeNormalDepthMat(THREE.BackSide, VIEW_NEAR, VIEW_DEPTH_SPAN);
+
+    // Shared wall & shadow/caustic evaluation snippet for Pass 3 (Wall + Refracted Crystal View)
+    const wallEvalGLSL = /* glsl */ `
+      uniform sampler2D uLightFrontRT;
+      uniform sampler2D uCausticRT;
+      uniform mat4 uLightViewProj;
+      uniform float uWallZ;
+      uniform vec2 uCausticCenter;
+      uniform float uCausticHalfSize;
+      uniform vec3 uWallColor;
+
+      vec3 evalStudioWall(vec2 wallXY) {
+        // Subtle studio cyclorama lighting gradient around the matte off-white wall
+        float radial = length(wallXY - vec2(-0.5, 0.6));
+        float studioGrad = clamp(1.04 - radial * 0.028, 0.86, 1.04);
+        vec3 baseWall = uWallColor * studioGrad;
+
+        // Projected 9-tap PCF silhouette shadow from lightFrontRT
+        vec4 lightClip = uLightViewProj * vec4(wallXY, uWallZ, 1.0);
+        vec2 lUV = lightClip.xy / lightClip.w * 0.5 + 0.5;
+        float shadow = 0.0;
+        if (lUV.x >= 0.0 && lUV.x <= 1.0 && lUV.y >= 0.0 && lUV.y <= 1.0) {
+          float texel = 2.2 / ${LIGHT_RT_RES}.0;
+          for (int sx = -1; sx <= 1; sx++) {
+            for (int sy = -1; sy <= 1; sy++) {
+              vec2 tap = lUV + vec2(float(sx), float(sy)) * texel;
+              float hit = texture2D(uLightFrontRT, tap).a;
+              shadow += step(0.005, hit);
+            }
+          }
+          shadow /= 9.0;
+        }
+        vec3 shadowedWall = baseWall * mix(1.0, 0.56, shadow);
+
+        // 4-tap blurred spectral causticRT prisms
+        vec2 cUV = (wallXY - uCausticCenter) / (uCausticHalfSize * 2.0) + 0.5;
+        vec3 caustic = vec3(0.0);
+        if (cUV.x >= 0.0 && cUV.x <= 1.0 && cUV.y >= 0.0 && cUV.y <= 1.0) {
+          float d = 1.55 / ${CAUSTIC_RES}.0;
+          caustic += texture2D(uCausticRT, cUV + vec2( d,  d)).rgb;
+          caustic += texture2D(uCausticRT, cUV + vec2(-d,  d)).rgb;
+          caustic += texture2D(uCausticRT, cUV + vec2( d, -d)).rgb;
+          caustic += texture2D(uCausticRT, cUV + vec2(-d, -d)).rgb;
+          caustic *= 0.25;
+        }
+
+        // Preserve vibrant prism chroma against the off-white wall instead of clipping to white
+        float cPeak = max(caustic.r, max(caustic.g, caustic.b));
+        float cAvg = dot(caustic, vec3(0.3333));
+        vec3 cChroma = max(caustic - vec3(cAvg * 0.45), vec3(0.0));
+        vec3 tintedWall = shadowedWall * (1.0 - 0.36 * clamp(cPeak, 0.0, 1.0));
+        return tintedWall + caustic * 0.62 + cChroma * 0.68;
+      }
+
+      vec3 softToneRoll(vec3 c) {
+        // Hue-preserving studio highlight rolloff so vivid prism colors never wash to flat white
+        float maxC = max(c.r, max(c.g, c.b));
+        if (maxC <= 0.94) return c;
+        float excess = maxC - 0.94;
+        float rolled = 0.94 + excess / (1.0 + excess * 2.4);
+        return c * (rolled / maxC);
+      }
+    `;
+
+    // Pass 3 Rear Wall
+    const wallMat = new THREE.ShaderMaterial({
+      uniforms: {
+        uLightFrontRT: { value: lightFrontRT.texture },
+        uCausticRT: { value: causticRT.texture },
+        uLightViewProj: { value: lightViewProj },
+        uWallZ: { value: WALL_Z },
+        uCausticCenter: { value: CAUSTIC_CENTER },
+        uCausticHalfSize: { value: CAUSTIC_HALF_SIZE },
+        uWallColor: { value: new THREE.Color(0xeae9f1) }
+      },
+      vertexShader: /* glsl */ `
+        varying vec2 vWallXY;
+        void main() {
+          vec4 worldPos = modelMatrix * vec4(position, 1.0);
+          vWallXY = worldPos.xy;
+          gl_Position = projectionMatrix * viewMatrix * worldPos;
+        }
+      `,
+      fragmentShader: /* glsl */ `
+        varying vec2 vWallXY;
+        ${wallEvalGLSL}
+        void main() {
+          vec3 col = softToneRoll(evalStudioWall(vWallXY));
+          gl_FragColor = vec4(col, 1.0);
+          #include <colorspace_fragment>
+        }
+      `
+    });
+
+    // Pass 3 Refractive Crystal Material (12-band IGN-jittered double refraction + portfolio & gallery color)
+    const crystalMat = new THREE.ShaderMaterial({
+      side: THREE.FrontSide,
+      uniforms: {
+        uLightFrontRT: { value: lightFrontRT.texture },
+        uCausticRT: { value: causticRT.texture },
+        uViewBackRT: { value: viewBackRT.texture },
+        uLightViewProj: { value: lightViewProj },
+        uViewProj: { value: new THREE.Matrix4() },
+        uLightDir: { value: lightDir },
+        uResolution: { value: new THREE.Vector2(drawSize.x, drawSize.y) },
+        uViewDepthSpan: { value: VIEW_DEPTH_SPAN },
+        uViewNear: { value: VIEW_NEAR },
+        uWallZ: { value: WALL_Z },
+        uCausticCenter: { value: CAUSTIC_CENTER },
+        uCausticHalfSize: { value: CAUSTIC_HALF_SIZE },
+        uWallColor: { value: new THREE.Color(0xeae9f1) },
+        uColor0: { value: new THREE.Color('#f28f2e') },
+        uColor1: { value: new THREE.Color('#73cc6b') },
+        uColor2: { value: new THREE.Color('#47c2e0') },
+        uColor3: { value: new THREE.Color('#ff1493') }
+      },
+      vertexShader: /* glsl */ `
+        attribute vec3 aTint;
+        varying vec3 vWorldPos;
+        varying vec3 vWorldNormal;
+        varying float vFrontViewZ;
+        varying vec3 vTint;
+
+        void main() {
+          vec4 worldPos = modelMatrix * vec4(position, 1.0);
+          vWorldPos = worldPos.xyz;
+          vWorldNormal = normalize(mat3(modelMatrix) * normal);
+          vec4 viewPos = viewMatrix * worldPos;
+          vFrontViewZ = -viewPos.z;
+          vTint = aTint;
+          gl_Position = projectionMatrix * viewPos;
+        }
+      `,
+      fragmentShader: /* glsl */ `
+        varying vec3 vWorldPos;
+        varying vec3 vWorldNormal;
+        varying float vFrontViewZ;
+        varying vec3 vTint;
+
+        uniform sampler2D uViewBackRT;
+        uniform mat4 uViewProj;
+        uniform vec3 uLightDir;
+        uniform vec2 uResolution;
+        uniform float uViewDepthSpan;
+        uniform float uViewNear;
+        uniform vec3 uColor0;
+        uniform vec3 uColor1;
+        uniform vec3 uColor2;
+        uniform vec3 uColor3;
+
+        ${wallEvalGLSL}
+
+        // Gaussian 3-peak spectral curve matching refraction-gallery.html
+        vec3 spectralWeight(float w) {
+          float dR = (w - 0.14) / 0.22;
+          float dV = (w - 0.92) / 0.14;
+          float dG = (w - 0.48) / 0.21;
+          float dB = (w - 0.80) / 0.20;
+          float r = exp(-dR * dR) + 0.28 * exp(-dV * dV);
+          float g = exp(-dG * dG);
+          float b = exp(-dB * dB);
+          return vec3(r, g, b) * vec3(0.2228, 0.2240, 0.2546);
+        }
+
+        vec3 evalPalette(float t) {
+          t = fract(t);
+          if (t < 0.25) return mix(uColor0, uColor1, t * 4.0);
+          if (t < 0.50) return mix(uColor1, uColor2, (t - 0.25) * 4.0);
+          if (t < 0.75) return mix(uColor2, uColor3, (t - 0.50) * 4.0);
+          return mix(uColor3, uColor0, (t - 0.75) * 4.0);
+        }
+
+        vec3 evalStudioEnv(vec3 dir, float w) {
+          vec3 d = normalize(dir);
+          // Vibrant 4-stop spectral studio field ported from refraction-gallery.html
+          float angle = atan(d.y, d.x) / 6.2831853 + 0.5 + d.z * 0.22 + w * 0.18;
+          vec3 spectralBand = evalPalette(angle);
+
+          float up = d.y * 0.5 + 0.5;
+          vec3 studioBase = mix(vec3(0.86, 0.86, 0.93), vec3(1.00, 0.99, 1.00), smoothstep(0.15, 0.85, up));
+          vec3 env = mix(studioBase, spectralBand * 1.12, 0.62);
+
+          // Studio softbox & prism edge highlights
+          float keyBox = smoothstep(0.74, 0.95, dot(d, normalize(vec3(-0.35, 0.55, 0.75))));
+          env += vec3(0.45, 0.46, 0.52) * keyBox;
+          float prismStrip = smoothstep(0.28, 0.04, abs(d.x - 0.48));
+          env = mix(env, spectralBand * 1.18, prismStrip * 0.45);
+          return env;
+        }
+
+        void main() {
+          vec3 V = normalize(vWorldPos - cameraPosition);
+          vec3 N1 = normalize(vWorldNormal);
+          vec2 screenUV = gl_FragCoord.xy / uResolution;
+
+          vec4 backCenter = texture2D(uViewBackRT, screenUV);
+          vec3 N2Base = backCenter.a > 0.005
+            ? normalize(backCenter.rgb * 2.0 - 1.0)
+            : -N1;
+          float backViewZ = backCenter.a > 0.005
+            ? (uViewNear + backCenter.a * uViewDepthSpan)
+            : (vFrontViewZ + 0.42);
+          float thickness = clamp(backViewZ - vFrontViewZ, 0.05, 1.5);
+
+          // Interleaved Gradient Noise (IGN) per-pixel jitter
+          float ign = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+
+          vec3 refrAccum = vec3(0.0);
+          vec3 weightSum = vec3(0.0);
+
+          for (int i = 0; i < 12; i++) {
+            float t = clamp((float(i) + ign) / 12.0, 0.0, 1.0);
+            float ior = mix(1.24, 1.98, t);
+
+            // Entry refraction
+            vec3 r1 = refract(V, N1, 1.0 / ior);
+            if (dot(r1, r1) < 0.01) r1 = reflect(V, N1);
+            vec3 exitApprox = vWorldPos + r1 * thickness;
+
+            // Sample viewBackRT at refracted exit UV
+            vec4 exitClip = uViewProj * vec4(exitApprox, 1.0);
+            vec2 exitUV = exitClip.xy / exitClip.w * 0.5 + 0.5;
+            vec4 backSample = (exitUV.x >= 0.0 && exitUV.x <= 1.0 && exitUV.y >= 0.0 && exitUV.y <= 1.0)
+              ? texture2D(uViewBackRT, exitUV)
+              : backCenter;
+
+            vec3 N2 = backSample.a > 0.005
+              ? normalize(backSample.rgb * 2.0 - 1.0)
+              : N2Base;
+            if (dot(r1, N2) < 0.0) N2 = -N2;
+
+            // Exit refraction
+            vec3 r2 = refract(r1, -N2, ior);
+            bool isTIR = dot(r2, r2) < 0.01;
+            if (isTIR) {
+              r2 = reflect(r1, -N2);
+            }
+
+            // Blend rear wall shadow/caustics with chromatic refraction field so rays spread into jewel colors
+            vec3 envSample = evalStudioEnv(r2, t);
+            vec3 sampleColor = envSample;
+            if (r2.z < -0.02) {
+              float tWall = (uWallZ - exitApprox.z) / r2.z;
+              vec2 hitXY = exitApprox.xy + r2.xy * max(tWall, 0.0);
+              vec3 wallCol = evalStudioWall(hitXY);
+              float bend = clamp(length(r2.xy - V.xy) * 2.2, 0.0, 1.0);
+              sampleColor = mix(wallCol, envSample, 0.42 + 0.46 * bend);
+              if (isTIR) sampleColor = mix(sampleColor, envSample * 1.08, 0.55);
+            }
+
+            vec3 w = spectralWeight(t);
+            refrAccum += sampleColor * w;
+            weightSum += w;
+          }
+
+          vec3 transmitted = refrAccum / max(weightSum, vec3(0.001));
+          // Optical crystal absorption using each shape's vivid portfolio hue + spectral dispersion
+          vec3 jewelFilter = mix(vec3(1.0), vTint * 1.18, 0.52);
+          transmitted *= jewelFilter;
+
+          // Crisp Fresnel + spectral reflection
+          float ndotv = clamp(dot(-V, N1), 0.0, 1.0);
+          float fresnel = 0.05 + 0.95 * pow(1.0 - ndotv, 3.4);
+
+          vec3 reflDir = reflect(V, N1);
+          vec3 reflEnv = evalStudioEnv(reflDir, ndotv);
+
+          vec3 H = normalize(-uLightDir - V);
+          float spec = pow(max(dot(N1, H), 0.0), 85.0) * 1.25;
+          vec3 rimGlow = vTint * (pow(1.0 - ndotv, 2.0) * 0.42);
+
+          vec3 finalCol = mix(transmitted, reflEnv, fresnel * 0.58) + vec3(spec) + rimGlow;
+          finalCol = softToneRoll(finalCol);
+
+          gl_FragColor = vec4(finalCol, 1.0);
+          #include <colorspace_fragment>
+        }
+      `
+    });
+
+    // Scenes for Pass 1 (light & view buffers) and Pass 3 (composite)
+    const crystalOnlyScene = new THREE.Scene();
+    const compositeScene = new THREE.Scene();
+
+    const pass1Group = new THREE.Group();
+    const compositeGroup = new THREE.Group();
+    crystalOnlyScene.add(pass1Group);
+    compositeScene.add(compositeGroup);
+
+    // Wall mesh in composite scene
+    const wallMesh = new THREE.Mesh(new THREE.PlaneGeometry(42, 30), wallMat);
+    wallMesh.position.set(0, 0, WALL_Z);
+    compositeScene.add(wallMesh);
+
+    // Crystal meshes synced across crystalOnlyScene and compositeScene
+    const crystalPairs = crystalSpecs.map((spec) => {
+      const solidComposite = new THREE.Mesh(spec.geo, crystalMat);
+      solidComposite.position.copy(spec.pos);
+      solidComposite.rotation.copy(spec.rot);
+      compositeGroup.add(solidComposite);
+
+      const solidPass1 = new THREE.Mesh(spec.geo, lightFrontMat);
+      solidPass1.position.copy(spec.pos);
+      solidPass1.rotation.copy(spec.rot);
+      pass1Group.add(solidPass1);
+
+      return {
+        spec,
+        solidComposite,
+        solidPass1,
+        offset: new THREE.Vector3(),
+        spinBoost: 0
+      };
+    });
+
+    // 15 Floating refractive micro-particles spread wide matching background-animation.js
+    const particleSpecs = Array.from({ length: 15 }, (_, i) => {
+      const radius = 0.036 + Math.random() * 0.044;
+      const geo = makeCrystalGeometry(new THREE.OctahedronGeometry(radius, 0), portfolioColor(i + 5));
+      const mesh = new THREE.Mesh(geo, crystalMat);
+      const pos = new THREE.Vector3(
+        (Math.random() - 0.5) * 7.6,
+        (Math.random() - 0.5) * 4.4,
+        (Math.random() - 0.5) * 2.2
+      );
+      mesh.position.copy(pos);
+      mesh.rotation.set(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, 0);
+      compositeGroup.add(mesh);
+      return {
+        geo,
+        mesh,
+        vel: new THREE.Vector3(
+          (Math.random() - 0.5) * 0.55,
+          (Math.random() - 0.5) * 0.55,
+          (Math.random() - 0.5) * 0.45
+        ),
+        spin: new THREE.Vector3(
+          (Math.random() - 0.5) * 1.4,
+          (Math.random() - 0.5) * 1.4,
+          0
+        ),
+        floatOffset: Math.random() * Math.PI * 2
+      };
+    });
+
+    // Pass 2: Static 96x96 (9,216) photon grid x 4 spectral bands = 36,864 splats
+    const photonCount = PHOTON_GRID * PHOTON_GRID * 4;
+    const positions = new Float32Array(photonCount * 3);
+    const lightUVs = new Float32Array(photonCount * 2);
+    const bands = new Float32Array(photonCount);
+
+    let ptr2 = 0;
+    let ptr3 = 0;
+    let ptr1 = 0;
+    for (let gy = 0; gy < PHOTON_GRID; gy++) {
+      const v = (gy + 0.5) / PHOTON_GRID;
+      for (let gx = 0; gx < PHOTON_GRID; gx++) {
+        const u = (gx + 0.5) / PHOTON_GRID;
+        for (let b = 0; b < 4; b++) {
+          positions[ptr3++] = u;
+          positions[ptr3++] = v;
+          positions[ptr3++] = b;
+          lightUVs[ptr2++] = u;
+          lightUVs[ptr2++] = v;
+          bands[ptr1++] = b;
+        }
+      }
+    }
+
+    const photonGeo = new THREE.BufferGeometry();
+    photonGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    photonGeo.setAttribute('aLightUV', new THREE.BufferAttribute(lightUVs, 2));
+    photonGeo.setAttribute('aBand', new THREE.BufferAttribute(bands, 1));
+
+    const photonMat = new THREE.ShaderMaterial({
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      depthTest: false,
+      depthWrite: false,
+      uniforms: {
+        uLightFrontRT: { value: lightFrontRT.texture },
+        uLightBackRT: { value: lightBackRT.texture },
+        uLightDir: { value: lightDir },
+        uLightInvView: { value: lightCam.matrixWorld },
+        uLightViewProj: { value: lightViewProj },
+        uOrthoHalf: { value: ORTHO_HALF },
+        uLightNear: { value: LIGHT_NEAR },
+        uLightDepthSpan: { value: LIGHT_DEPTH_SPAN },
+        uWallZ: { value: WALL_Z },
+        uCausticCenter: { value: CAUSTIC_CENTER },
+        uCausticHalfSize: { value: CAUSTIC_HALF_SIZE },
+        uGridStep: { value: 1.0 / PHOTON_GRID }
+      },
+      vertexShader: /* glsl */ `
+        attribute vec2 aLightUV;
+        attribute float aBand;
+
+        uniform sampler2D uLightFrontRT;
+        uniform sampler2D uLightBackRT;
+        uniform vec3 uLightDir;
+        uniform mat4 uLightInvView;
+        uniform mat4 uLightViewProj;
+        uniform float uOrthoHalf;
+        uniform float uLightNear;
+        uniform float uLightDepthSpan;
+        uniform float uWallZ;
+        uniform vec2 uCausticCenter;
+        uniform float uCausticHalfSize;
+        uniform float uGridStep;
+
+        varying vec3 vColor;
+        varying float vEnergy;
+
+        void tracePhoton(vec2 uv, float ior, out vec3 hitPos, out vec3 exitN, out bool valid) {
+          hitPos = vec3(0.0);
+          exitN = vec3(0.0, 0.0, 1.0);
+          valid = false;
+
+          if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) return;
+
+          vec4 frontSample = texture2D(uLightFrontRT, uv);
+          if (frontSample.a < 0.005) return;
+
+          vec3 N1 = normalize(frontSample.rgb * 2.0 - 1.0);
+          if (dot(uLightDir, N1) > 0.0) N1 = -N1;
+
+          vec3 viewP1 = vec3(
+            (uv.x * 2.0 - 1.0) * uOrthoHalf,
+            (uv.y * 2.0 - 1.0) * uOrthoHalf,
+            -(uLightNear + frontSample.a * uLightDepthSpan)
+          );
+          vec3 P1 = (uLightInvView * vec4(viewP1, 1.0)).xyz;
+
+          vec3 r1 = refract(uLightDir, N1, 1.0 / ior);
+
+          vec4 backApprox = texture2D(uLightBackRT, uv);
+          if (backApprox.a < 0.005) return;
+
+          float depthDiff = max((backApprox.a - frontSample.a) * uLightDepthSpan, 0.02);
+          float rayLen = depthDiff / max(dot(r1, uLightDir), 0.25);
+          vec3 P2Approx = P1 + r1 * rayLen;
+
+          vec4 clip2 = uLightViewProj * vec4(P2Approx, 1.0);
+          vec2 uv2 = clip2.xy / clip2.w * 0.5 + 0.5;
+          vec4 backSample = (uv2.x >= 0.0 && uv2.x <= 1.0 && uv2.y >= 0.0 && uv2.y <= 1.0)
+            ? texture2D(uLightBackRT, uv2)
+            : backApprox;
+          if (backSample.a < 0.005) {
+            backSample = backApprox;
+            uv2 = uv;
+          }
+
+          vec3 N2 = normalize(backSample.rgb * 2.0 - 1.0);
+          if (dot(r1, N2) < 0.0) N2 = -N2;
+
+          vec3 viewP2 = vec3(
+            (uv2.x * 2.0 - 1.0) * uOrthoHalf,
+            (uv2.y * 2.0 - 1.0) * uOrthoHalf,
+            -(uLightNear + backSample.a * uLightDepthSpan)
+          );
+          vec3 P2 = (uLightInvView * vec4(viewP2, 1.0)).xyz;
+
+          vec3 r2 = refract(r1, -N2, ior);
+          if (dot(r2, r2) < 0.01 || r2.z >= -0.05) return;
+
+          float tWall = (uWallZ - P2.z) / r2.z;
+          if (tWall < 0.0) return;
+
+          hitPos = P2 + r2 * tWall;
+          exitN = N2;
+          valid = true;
+        }
+
+        void main() {
+          float ior = 1.30;
+          vec3 bandCol = vec3(1.00, 0.42, 0.14); // Vivid Amber-Orange
+          if (aBand > 2.5) {
+            ior = 1.88;
+            bandCol = vec3(1.00, 0.08, 0.62); // DeepPink / Magenta
+          } else if (aBand > 1.5) {
+            ior = 1.66;
+            bandCol = vec3(0.08, 0.84, 1.00); // Electric Cyan
+          } else if (aBand > 0.5) {
+            ior = 1.48;
+            bandCol = vec3(0.24, 0.96, 0.44); // Emerald Green
+          }
+
+          vec3 hitC, nC;
+          bool okC;
+          tracePhoton(aLightUV, ior, hitC, nC, okC);
+
+          if (!okC) {
+            gl_Position = vec4(9.0, 9.0, 0.0, 1.0);
+            gl_PointSize = 0.0;
+            vColor = vec3(0.0);
+            vEnergy = 0.0;
+            return;
+          }
+
+          vec3 hitR, nR, hitL, nL, hitU, nU, hitD, nD;
+          bool okR, okL, okU, okD;
+          tracePhoton(aLightUV + vec2(uGridStep, 0.0), ior, hitR, nR, okR);
+          tracePhoton(aLightUV - vec2(uGridStep, 0.0), ior, hitL, nL, okL);
+          tracePhoton(aLightUV + vec2(0.0, uGridStep), ior, hitU, nU, okU);
+          tracePhoton(aLightUV - vec2(0.0, uGridStep), ior, hitD, nD, okD);
+
+          okR = okR && (dot(nC, nR) > 0.85);
+          okL = okL && (dot(nC, nL) > 0.85);
+          okU = okU && (dot(nC, nU) > 0.85);
+          okD = okD && (dot(nC, nD) > 0.85);
+
+          vec2 dX = (okR && okL) ? (hitR.xy - hitL.xy) * 0.5
+                  : (okR ? (hitR.xy - hitC.xy)
+                  : (okL ? (hitC.xy - hitL.xy) : vec2(0.0)));
+          vec2 dY = (okU && okD) ? (hitU.xy - hitD.xy) * 0.5
+                  : (okU ? (hitU.xy - hitC.xy)
+                  : (okD ? (hitC.xy - hitD.xy) : vec2(0.0)));
+
+          float cell = 2.0 * uOrthoHalf * uGridStep;
+          float refArea = cell * cell;
+          float wallArea = abs(dX.x * dY.y - dX.y * dY.x);
+
+          float jacobian = 1.0;
+          if ((okR || okL) && (okU || okD) && wallArea > 1e-6) {
+            jacobian = clamp(refArea / wallArea, 0.35, 3.2);
+          }
+
+          vec2 causticUV = (hitC.xy - uCausticCenter) / (uCausticHalfSize * 2.0) + 0.5;
+          gl_Position = vec4(causticUV * 2.0 - 1.0, 0.0, 1.0);
+          gl_PointSize = mix(7.6, 4.4, clamp((jacobian - 0.35) / 2.2, 0.0, 1.0));
+          vColor = bandCol;
+          vEnergy = 0.36 * jacobian;
+        }
+      `,
+      fragmentShader: /* glsl */ `
+        varying vec3 vColor;
+        varying float vEnergy;
+
+        void main() {
+          vec2 d = gl_PointCoord - 0.5;
+          float r2 = dot(d, d) * 4.0;
+          if (r2 > 1.0) discard;
+          float w = exp(-r2 * 3.1) * (1.0 - r2);
+          gl_FragColor = vec4(vColor * vEnergy * w, 1.0);
+        }
+      `
+    });
+
+    const photonScene = new THREE.Scene();
+    const photonPoints = new THREE.Points(photonGeo, photonMat);
+    photonPoints.frustumCulled = false;
+    photonScene.add(photonPoints);
+
+    // Dummy camera for Pass 2 orthographic NDC splatting
+    const dummyCam = new THREE.Camera();
+
+    // Interactive pointer tracking (spotlight sweep + parallax + cursor scatter + click impulse)
+    const targetMouse = { x: 0, y: 0, active: false };
+    const smoothMouse = { x: 0, y: 0 };
+    let baseCamDist = 6.8;
+    let pulseEnergy = 0;
+
+    function updatePointerFromEvent(e) {
+      const w = Math.max(window.innerWidth, 1);
+      const h = Math.max(window.innerHeight, 1);
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      targetMouse.x = Math.max(-1, Math.min(1, (clientX / w) * 2 - 1));
+      targetMouse.y = Math.max(-1, Math.min(1, -((clientY / h) * 2 - 1)));
+      targetMouse.active = true;
+    }
+
+    function onPointerLeave() {
+      targetMouse.active = false;
+    }
+
+    function onPointerDown(e) {
+      updatePointerFromEvent(e);
+      pulseEnergy = Math.min(pulseEnergy + 1.15, 2.2);
+      for (const pair of crystalPairs) {
+        pair.spinBoost = Math.min(pair.spinBoost + 2.4, 4.5);
+      }
+    }
+
+    window.addEventListener('pointermove', updatePointerFromEvent, { passive: true });
+    window.addEventListener('touchmove', updatePointerFromEvent, { passive: true });
+    window.addEventListener('pointerdown', onPointerDown, { passive: true });
+    window.addEventListener('pointerleave', onPointerLeave, { passive: true });
+
+    // Responsive framing so any viewport size stays balanced
+    function updateFraming() {
+      const w = Math.max(window.innerWidth, 1);
+      const h = Math.max(window.innerHeight, 1);
+      const aspect = w / h;
+
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.setSize(w, h);
+
+      camera.aspect = aspect;
+      const refDist = 6.8;
+      baseCamDist = aspect < 1.25 ? refDist * (1.25 / Math.max(aspect, 0.65)) : refDist;
+      camera.position.set(0, 0.04, baseCamDist);
+      camera.lookAt(0, -0.08, -1.0);
+      camera.updateProjectionMatrix();
+      camera.updateMatrixWorld(true);
+
+      renderer.getDrawingBufferSize(drawSize);
+      const rtW = Math.max(drawSize.x, 1);
+      const rtH = Math.max(drawSize.y, 1);
+      if (viewBackRT.width !== rtW || viewBackRT.height !== rtH) {
+        viewBackRT.setSize(rtW, rtH);
+      }
+      crystalMat.uniforms.uResolution.value.set(rtW, rtH);
+      crystalMat.uniforms.uViewProj.value.multiplyMatrices(
+        camera.projectionMatrix,
+        camera.matrixWorldInverse
+      );
+    }
+
+    updateFraming();
+
+    // Animation loop, FPS badge, and document.hidden pause handling
+    let rafId = 0;
+    let elapsed = 0;
+    let lastTime = performance.now();
+    let fpsAccum = 0;
+    let fpsFrames = 0;
+    let lastFpsUpdate = lastTime;
+
+    function stepAndRender(now) {
+      rafId = 0;
+      if (document.hidden) return;
+
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const scrollOpacity = scrollY <= 100 ? 1 : (scrollY >= 500 ? 0 : 1 - (scrollY - 100) / 400);
+      renderer.domElement.style.opacity = String(scrollOpacity);
+      if (scrollOpacity <= 0) {
+        lastTime = now;
+        rafId = requestAnimationFrame(stepAndRender);
+        return;
+      }
+
+      const dt = Math.min((now - lastTime) * 0.001, 0.05);
+      lastTime = now;
+      elapsed += dt;
+
+      // Smooth pointer spring & subtle idle drift when pointer is outside
+      const goalX = targetMouse.active ? targetMouse.x : Math.sin(elapsed * 0.35) * 0.25;
+      const goalY = targetMouse.active ? targetMouse.y : Math.cos(elapsed * 0.28) * 0.18;
+      const lerpAlpha = 1 - Math.exp(-7.5 * dt);
+      smoothMouse.x += (goalX - smoothMouse.x) * lerpAlpha;
+      smoothMouse.y += (goalY - smoothMouse.y) * lerpAlpha;
+      pulseEnergy *= Math.exp(-3.4 * dt);
+
+      // Interactive key light sweep so wall shadows & caustics respond live to cursor
+      lightPos.set(
+        -0.95 + smoothMouse.x * 2.65,
+        1.25 + smoothMouse.y * 1.95,
+        7.0
+      );
+      lightDir.subVectors(lightTarget, lightPos).normalize();
+      lightCam.position.copy(lightPos);
+      lightCam.lookAt(lightTarget);
+      lightCam.updateMatrixWorld(true);
+      lightViewProj.multiplyMatrices(lightCam.projectionMatrix, lightCam.matrixWorldInverse);
+
+      // Subtle camera parallax + updated view-projection for crystal double refraction
+      camera.position.set(
+        smoothMouse.x * 0.46,
+        0.04 + smoothMouse.y * 0.30,
+        baseCamDist
+      );
+      camera.lookAt(0, -0.08, -1.0);
+      camera.updateMatrixWorld(true);
+      crystalMat.uniforms.uViewProj.value.multiplyMatrices(
+        camera.projectionMatrix,
+        camera.matrixWorldInverse
+      );
+
+      // Cursor target in approximate crystal-plane world XY
+      const cursorWorldX = smoothMouse.x * 4.2;
+      const cursorWorldY = smoothMouse.y * 2.4;
+
+      // Gentle constellation drift + interactive pointer tilt
+      compositeGroup.rotation.x = Math.sin(elapsed * 0.22) * 0.26 - smoothMouse.y * 0.22;
+      compositeGroup.rotation.y = Math.cos(elapsed * 0.17) * 0.32 + smoothMouse.x * 0.28;
+      compositeGroup.rotation.z += (0.11 + pulseEnergy * 0.18) * dt;
+      pass1Group.rotation.copy(compositeGroup.rotation);
+
+      // Move each crystal along a large circular/epicyclic path + cursor repulsion & spin boost
+      for (const pair of crystalPairs) {
+        const { spec, solidComposite, solidPass1, offset } = pair;
+        const a = spec.orbitPhase + elapsed * spec.orbitSpeed;
+        const sa = spec.orbitPhase * 1.7 + elapsed * spec.subSpeed;
+        const bx = Math.cos(a) * spec.orbitRx + Math.cos(sa) * spec.subRadius;
+        const by = Math.sin(a) * spec.orbitRy + Math.sin(sa) * spec.subRadius;
+        const bz = Math.sin(a + spec.orbitPhase * 0.5) * spec.orbitRz + Math.cos(sa * 0.8) * 0.22;
+
+        const dx = bx - cursorWorldX;
+        const dy = by - cursorWorldY;
+        const dist = Math.hypot(dx, dy);
+        let pushX = 0;
+        let pushY = 0;
+        let pushZ = 0;
+        if (targetMouse.active && dist < 2.2) {
+          const strength = Math.pow(1 - dist / 2.2, 2) * (0.95 + pulseEnergy * 1.1);
+          const invD = dist > 0.001 ? 1 / dist : 1;
+          pushX = dx * invD * strength;
+          pushY = dy * invD * strength;
+          pushZ = strength * 0.55;
+          pair.spinBoost = Math.min(pair.spinBoost + dt * 3.8 * strength, 4.5);
+        }
+        const pushLerp = 1 - Math.exp(-8.5 * dt);
+        offset.x += (pushX - offset.x) * pushLerp;
+        offset.y += (pushY - offset.y) * pushLerp;
+        offset.z += (pushZ - offset.z) * pushLerp;
+        pair.spinBoost *= Math.exp(-2.6 * dt);
+
+        const spinMult = 1 + pair.spinBoost;
+        solidComposite.position.set(bx + offset.x, by + offset.y, bz + offset.z);
+        solidComposite.rotation.x += spec.vel.x * spinMult * dt;
+        solidComposite.rotation.y += spec.vel.y * spinMult * dt;
+        solidComposite.rotation.z += spec.vel.z * spinMult * dt;
+        solidPass1.rotation.copy(solidComposite.rotation);
+        solidPass1.position.copy(solidComposite.position);
+      }
+
+      // Drift, wrap & gently scatter 15 refractive micro-particles around cursor
+      for (const p of particleSpecs) {
+        p.mesh.position.x += p.vel.x * dt;
+        p.mesh.position.y += p.vel.y * dt + Math.sin(elapsed * 1.2 + p.floatOffset) * 0.16 * dt;
+        p.mesh.position.z += p.vel.z * dt;
+
+        if (targetMouse.active) {
+          const pdx = p.mesh.position.x - cursorWorldX;
+          const pdy = p.mesh.position.y - cursorWorldY;
+          const pdist = Math.hypot(pdx, pdy);
+          if (pdist < 1.8 && pdist > 0.001) {
+            const pPush = (1 - pdist / 1.8) * (1.8 + pulseEnergy * 2.5) * dt;
+            p.mesh.position.x += (pdx / pdist) * pPush;
+            p.mesh.position.y += (pdy / pdist) * pPush;
+          }
+        }
+
+        p.mesh.rotation.x += p.spin.x * (1 + pulseEnergy) * dt;
+        p.mesh.rotation.y += p.spin.y * (1 + pulseEnergy) * dt;
+
+        if (p.mesh.position.x > 3.8) p.mesh.position.x = -3.8;
+        if (p.mesh.position.x < -3.8) p.mesh.position.x = 3.8;
+        if (p.mesh.position.y > 2.2) p.mesh.position.y = -2.2;
+        if (p.mesh.position.y < -2.2) p.mesh.position.y = 2.2;
+        if (p.mesh.position.z > 1.2) p.mesh.position.z = -1.2;
+        if (p.mesh.position.z < -1.2) p.mesh.position.z = 1.2;
+      }
+
+      // Pass 1A & 1B: Light-space front & back normal+depth buffers (256x256)
+      renderer.setClearColor(0x000000, 0);
+
+      crystalOnlyScene.overrideMaterial = lightFrontMat;
+      renderer.setRenderTarget(lightFrontRT);
+      renderer.clear();
+      renderer.render(crystalOnlyScene, lightCam);
+
+      crystalOnlyScene.overrideMaterial = lightBackMat;
+      renderer.setRenderTarget(lightBackRT);
+      renderer.clear();
+      renderer.render(crystalOnlyScene, lightCam);
+
+      // Pass 1C: View-camera back-face normal+depth buffer
+      crystalOnlyScene.overrideMaterial = viewBackMat;
+      renderer.setRenderTarget(viewBackRT);
+      renderer.clear();
+      renderer.render(crystalOnlyScene, camera);
+      crystalOnlyScene.overrideMaterial = null;
+
+      // Pass 2: Photon splatting into causticRT (512x512, AdditiveBlending)
+      renderer.setRenderTarget(causticRT);
+      renderer.clear();
+      renderer.render(photonScene, dummyCam);
+
+      // Pass 3: Composite matte wall + shadows + caustics + refractive crystals
+      renderer.setRenderTarget(null);
+      renderer.setClearColor(0xeae9f1, 1);
+      renderer.clear();
+      renderer.render(compositeScene, camera);
+
+      rafId = requestAnimationFrame(stepAndRender);
+    }
+
+    function startLoop() {
+      if (!rafId && !document.hidden) {
+        lastTime = performance.now();
+        lastFpsUpdate = lastTime;
+        fpsAccum = 0;
+        fpsFrames = 0;
+        rafId = requestAnimationFrame(stepAndRender);
+      }
+    }
+
+    function stopLoop() {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    }
+
+    function onVisibilityChange() {
+      if (document.hidden) {
+        stopLoop();
+      } else {
+        startLoop();
+      }
+    }
+
+    const resizeObserver = new ResizeObserver(updateFraming);
+    resizeObserver.observe(document.body);
+    window.addEventListener('resize', updateFraming);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    window.addEventListener('pagehide', () => {
+      stopLoop();
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateFraming);
+      window.removeEventListener('pointermove', updatePointerFromEvent);
+      window.removeEventListener('touchmove', updatePointerFromEvent);
+      window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointerleave', onPointerLeave);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      lightFrontRT.dispose();
+      lightBackRT.dispose();
+      viewBackRT.dispose();
+      causticRT.dispose();
+      photonGeo.dispose();
+      photonMat.dispose();
+      wallMesh.geometry.dispose();
+      wallMat.dispose();
+      crystalMat.dispose();
+      lightFrontMat.dispose();
+      lightBackMat.dispose();
+      viewBackMat.dispose();
+      for (const pair of crystalPairs) pair.spec.geo.dispose();
+      for (const p of particleSpecs) p.geo.dispose();
+      renderer.dispose();
+    });
+
+    startLoop();

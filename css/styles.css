@@ -2136,3 +2136,9 @@ nav .btn-outline {
     }
   }
 }
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}

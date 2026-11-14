@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opt 1 — Analytical Dispersion Lenses &amp; Wall Caustics</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #e4e3ee;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    #fps {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 10;
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: rgba(24, 24, 34, 0.42);
+      color: rgba(246, 246, 252, 0.92);
+      font-size: 11px;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="fps">--:-- fps</div>
+
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js';
+
+    const LENS_COUNT = 6;
+    const WALL_Z = -4.2;
+    const LIGHT_DIR = new THREE.Vector3(0.35, 0.45, -1.0).normalize();
+
+    const fpsEl = document.getElementById('fps');
+
+    // WebGL renderer (single-pass, 0 FBOs, DPR capped at 1.5)
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      powerPreference: 'high-performance',
+      alpha: false
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.body.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xe4e3ee);
+
+    const camera = new THREE.PerspectiveCamera(
+      38,
+      window.innerWidth / Math.max(1, window.innerHeight),
+      0.1,
+      40
+    );
+    camera.position.set(0, 0, 5.8);
+    camera.lookAt(0, 0, 0);
+
+    // Shared lens uniform arrays
+    const lensPosUniform = Array.from({ length: LENS_COUNT }, () => new THREE.Vector3());
+    const lensInvMatUniform = Array.from({ length: LENS_COUNT }, () => new THREE.Matrix4());
+    const lensRadiusUniform = new Float32Array(LENS_COUNT);
+    const wallHalfSize = new THREE.Vector2(4.0, 3.0);
+
+    // Shared GLSL snippet: exact studio wall shading + 6-lens shadow penumbra & 4-wavelength caustics
+    const WALL_EVAL_GLSL = /* glsl */ `
+      uniform vec3 uLensPos[6];
+      uniform mat4 uLensInvMat[6];
+      uniform float uLensRadius[6];
+      uniform vec3 uLightDir;
+      uniform vec2 uWallHalfSize;
+
+      vec3 mulMat3Transpose(mat4 m, vec3 v) {
+        return vec3(
+          dot(m[0].xyz, v),
+          dot(m[1].xyz, v),
+          dot(m[2].xyz, v)
+        );
+      }
+
+      vec3 spectralCausticColor(int w) {
+        if (w == 0) return vec3(1.18, 0.38, 0.08); // Red / Amber
+        if (w == 1) return vec3(0.64, 1.02, 0.22); // Gold / Green
+        if (w == 2) return vec3(0.10, 0.88, 1.08); // Cyan
+        return vec3(0.84, 0.18, 1.14);             // Blue / DeepPink
+      }
+
+      vec3 evaluateWall(vec3 wallPos) {
+        // Matte cool-gray/lavender studio wall (#eae9f1 center -> #e0dfea vignette)
+        vec2 wallNorm = wallPos.xy / max(uWallHalfSize, vec2(0.001));
+        float radial = length(wallNorm * vec2(0.92, 1.0));
+        float vig = smoothstep(0.12, 1.08, radial);
+        vec3 baseWall = mix(
+          vec3(0.9176, 0.9137, 0.9451),
+          vec3(0.8784, 0.8745, 0.9176),
+          vig
+        );
+
+        vec3 L = normalize(uLightDir);
+        float shadowMul = 1.0;
+        vec3 causticAccum = vec3(0.0);
+
+        for (int i = 0; i < 6; i++) {
+          vec3 o = (uLensInvMat[i] * vec4(wallPos, 1.0)).xyz;
+          vec3 dObj = (uLensInvMat[i] * vec4(L, 0.0)).xyz;
+          vec3 dn = normalize(dObj);
+
+          // Closest point on the shadow ray to lens unit-sphere center
+          float tClosest = -dot(o, dn);
+          vec3 q = o + tClosest * dn;
+          float b = length(q);
+
+          float distToWall = max(0.25, (uLensPos[i].z - wallPos.z) / max(-L.z, 0.1));
+          float penumbra = 0.14 + 0.022 * distToWall;
+          float occ = 1.0 - smoothstep(1.0 - penumbra, 1.0 + penumbra, b);
+
+          // Subtle darker grazing-refraction rim inside shadow boundary
+          float rimDark = smoothstep(0.55, 0.96, b) * (1.0 - smoothstep(0.96, 1.14, b));
+          shadowMul *= (1.0 - 0.31 * occ - 0.09 * rimDark);
+
+          // Skip expensive caustic trig/exp outside outer halo
+          if (b < 1.38) {
+            vec3 qDir = (b > 0.0005) ? (q / b) : vec3(1.0, 0.0, 0.0);
+            float curvPower = length(mulMat3Transpose(uLensInvMat[i], qDir)) * uLensRadius[i];
+            curvPower = clamp(curvPower, 0.65, 2.75);
+
+            // Tilt-induced refraction offset projected perpendicular to ray in object space
+            vec3 axisWorldGrad = mulMat3Transpose(uLensInvMat[i], dn);
+            vec3 tiltWorld = axisWorldGrad - dot(axisWorldGrad, L) * L;
+            vec3 tiltObj = (uLensInvMat[i] * vec4(tiltWorld, 0.0)).xyz;
+            tiltObj -= dot(tiltObj, dn) * dn;
+
+            for (int w = 0; w < 4; w++) {
+              float wf = float(w) * 0.3333333;
+              float disp = 0.86 + 0.36 * wf;
+              vec3 qDisp = q - tiltObj * (0.042 * disp);
+              float bd = length(qDisp);
+
+              float conv = clamp(0.27 * curvPower * disp * (distToWall * 0.25), 0.12, 0.96);
+              float rRing = mix(0.70, 0.22, conv);
+              float ringSigma = 0.052 + 0.024 * (1.0 - conv);
+
+              float ringDiff = (bd - rRing) / ringSigma;
+              float ring = exp(-(ringDiff * ringDiff));
+
+              float coreSigma = mix(0.25, 0.088, conv);
+              float coreNorm = bd / coreSigma;
+              float core = exp(-(coreNorm * coreNorm)) * (0.52 + 0.78 * conv);
+
+              float innerGlow = (1.0 - smoothstep(rRing * 0.65, rRing + 0.14, bd)) * 0.24;
+              float envelope = 1.0 - smoothstep(0.96, 1.32, bd);
+
+              float intensity = (ring * 0.72 + core * 0.88 + innerGlow) * envelope;
+              causticAccum += spectralCausticColor(w) * intensity;
+            }
+          }
+        }
+
+        vec3 wallColor = baseWall * shadowMul + causticAccum * 0.29;
+        // Soft highlight roll-off so white caustic cores stay luminous without hard clipping
+        vec3 over = max(vec3(0.0), wallColor - vec3(0.88));
+        wallColor = min(wallColor, vec3(0.88)) + over / (vec3(1.0) + over * 1.45);
+        return clamp(wallColor, 0.0, 1.0);
+      }
+    `;
+
+    // 1. Stationary Rear Wall (z = -4.2)
+    const wallVertexShader = /* glsl */ `
+      varying vec3 vWorldPos;
+      void main() {
+        vec4 wp = modelMatrix * vec4(position, 1.0);
+        vWorldPos = wp.xyz;
+        gl_Position = projectionMatrix * viewMatrix * wp;
+      }
+    `;
+
+    const wallFragmentShader = /* glsl */ `
+      precision highp float;
+      varying vec3 vWorldPos;
+      ${WALL_EVAL_GLSL}
+      void main() {
+        gl_FragColor = vec4(evaluateWall(vWorldPos), 1.0);
+      }
+    `;
+
+    const wallMat = new THREE.ShaderMaterial({
+      uniforms: {
+        uLensPos: { value: lensPosUniform },
+        uLensInvMat: { value: lensInvMatUniform },
+        uLensRadius: { value: lensRadiusUniform },
+        uLightDir: { value: LIGHT_DIR },
+        uWallHalfSize: { value: wallHalfSize }
+      },
+      vertexShader: wallVertexShader,
+      fragmentShader: wallFragmentShader,
+      depthWrite: true
+    });
+
+    const wallMesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), wallMat);
+    wallMesh.position.set(0, 0, WALL_Z);
+    scene.add(wallMesh);
+
+    // 2. Crystal Lens Shader (Analytical Ray-Ellipsoid Double Refraction + 6 IGN-Jittered Cauchy Wavelengths)
+    const lensVertexShader = /* glsl */ `
+      varying vec3 vWorldPos;
+      void main() {
+        vec4 wp = modelMatrix * vec4(position, 1.0);
+        vWorldPos = wp.xyz;
+        gl_Position = projectionMatrix * viewMatrix * wp;
+      }
+    `;
+
+    const lensFragmentShader = /* glsl */ `
+      precision highp float;
+      varying vec3 vWorldPos;
+
+      uniform mat4 uModelMat;
+      uniform mat4 uInvModelMat;
+      uniform float uWallZ;
+
+      ${WALL_EVAL_GLSL}
+
+      float ign(vec2 p) {
+        return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715))));
+      }
+
+      vec3 spectralWeight(float u) {
+        float r = exp(-14.0 * (u - 0.78) * (u - 0.78)) + 0.26 * exp(-28.0 * (u - 0.08) * (u - 0.08));
+        float g = exp(-12.0 * (u - 0.46) * (u - 0.46));
+        float b = exp(-14.0 * (u - 0.18) * (u - 0.18));
+        return vec3(r, g, b);
+      }
+
+      vec3 sampleStudioEnv(vec3 dir) {
+        float up = clamp(dir.y * 0.5 + 0.5, 0.0, 1.0);
+        vec3 env = mix(vec3(0.84, 0.84, 0.90), vec3(0.95, 0.95, 0.99), up);
+
+        // Key softbox aligned roughly opposite to uLightDir (upper-left-front)
+        vec3 keyDir = normalize(-uLightDir + vec3(0.0, 0.15, 0.35));
+        float keyBox = smoothstep(0.86, 0.96, dot(dir, keyDir));
+        env += vec3(0.65, 0.66, 0.70) * keyBox;
+
+        // Cool rim fill panel on opposite side
+        vec3 fillDir = normalize(vec3(0.75, -0.20, 0.50));
+        float fillBox = smoothstep(0.80, 0.95, dot(dir, fillDir));
+        env += vec3(0.18, 0.21, 0.28) * fillBox;
+        return env;
+      }
+
+      vec3 traceBackdrop(vec3 origin, vec3 dir) {
+        if (dir.z < -0.02) {
+          float tWall = (uWallZ - origin.z) / dir.z;
+          if (tWall > 0.0 && tWall < 35.0) {
+            vec3 wallHit = origin + tWall * dir;
+            // Softly blend toward studio env at extreme grazing wall angles
+            float farFade = smoothstep(2.2, 4.8, length(wallHit.xy / max(uWallHalfSize, vec2(0.001))));
+            return mix(evaluateWall(wallHit), sampleStudioEnv(dir), farFade * 0.65);
+          }
+        }
+        return sampleStudioEnv(dir);
+      }
+
+      void main() {
+        vec3 V = normalize(vWorldPos - cameraPosition);
+
+        // Analytical ray-unit-sphere intersection in lens object space for smooth entry P1 & N1
+        vec3 rayO = (uInvModelMat * vec4(cameraPosition, 1.0)).xyz;
+        vec3 rayD = normalize((uInvModelMat * vec4(V, 0.0)).xyz);
+        float b = dot(rayO, rayD);
+        float c = dot(rayO, rayO) - 1.0;
+        float disc = max(0.0, b * b - c);
+        float tEntry = -b - sqrt(disc);
+
+        vec3 P1_obj = rayO + tEntry * rayD;
+        vec3 N1_obj = normalize(P1_obj);
+        vec3 P1_world = (uModelMat * vec4(P1_obj, 1.0)).xyz;
+        vec3 N1_world = normalize(mulMat3Transpose(uInvModelMat, N1_obj));
+
+        // 6 IGN-jittered Cauchy dispersion wavelengths
+        float jitter = ign(gl_FragCoord.xy);
+        vec3 accumColor = vec3(0.0);
+        vec3 accumWeight = vec3(0.0);
+
+        for (int k = 0; k < 6; k++) {
+          float u = (float(k) + jitter) / 6.0; // 0 = violet/blue, 1 = red
+          float lambdaUm = mix(0.43, 0.67, u);
+          float ior = 1.455 + 0.031 / (lambdaUm * lambdaUm);
+
+          // Entry refraction (world space)
+          vec3 R1_world = refract(V, N1_world, 1.0 / ior);
+          vec3 R1_obj = normalize((uInvModelMat * vec4(R1_world, 0.0)).xyz);
+
+          // Exact exit point P2 on unit sphere in object space
+          float tExitObj = max(0.001, -2.0 * dot(P1_obj, R1_obj));
+          vec3 P2_obj = P1_obj + tExitObj * R1_obj;
+          vec3 N2_obj = normalize(P2_obj);
+
+          vec3 P2_world = (uModelMat * vec4(P2_obj, 1.0)).xyz;
+          vec3 N2_world = normalize(mulMat3Transpose(uInvModelMat, N2_obj));
+
+          // Exit refraction (glass -> air) with 1-bounce TIR fallback
+          vec3 R2_world = refract(R1_world, -N2_world, ior);
+          vec3 sampleCol;
+          if (dot(R2_world, R2_world) < 0.0001) {
+            vec3 tirDir = reflect(R1_world, -N2_world);
+            vec3 tirObj = normalize((uInvModelMat * vec4(tirDir, 0.0)).xyz);
+            float t3 = max(0.001, -2.0 * dot(P2_obj, tirObj));
+            vec3 P3_obj = P2_obj + t3 * tirObj;
+            vec3 P3_world = (uModelMat * vec4(P3_obj, 1.0)).xyz;
+            vec3 N3_world = normalize(mulMat3Transpose(uInvModelMat, normalize(P3_obj)));
+            vec3 R3_world = refract(tirDir, -N3_world, ior);
+            if (dot(R3_world, R3_world) < 0.0001) {
+              sampleCol = sampleStudioEnv(tirDir) * 0.92;
+            } else {
+              sampleCol = traceBackdrop(P3_world, normalize(R3_world));
+            }
+          } else {
+            sampleCol = traceBackdrop(P2_world, normalize(R2_world));
+          }
+
+          // Subtle optical glass thickness attenuation
+          float pathLen = length(P2_world - P1_world);
+          vec3 absorb = exp(-vec3(0.028, 0.020, 0.012) * pathLen);
+          vec3 w = spectralWeight(u);
+          accumColor += sampleCol * absorb * w;
+          accumWeight += w;
+        }
+
+        vec3 refracted = accumColor / max(accumWeight, vec3(0.0001));
+
+        // Schlick Fresnel + studio softbox & key specular reflections
+        float cosTheta = clamp(dot(-V, N1_world), 0.0, 1.0);
+        float fresnel = 0.045 + 0.955 * pow(1.0 - cosTheta, 4.4);
+        vec3 reflDir = reflect(V, N1_world);
+        vec3 reflEnv = sampleStudioEnv(reflDir);
+
+        vec3 H = normalize(-uLightDir + vec3(0.0, 0.12, 0.38) - V);
+        float specTight = pow(max(0.0, dot(N1_world, H)), 140.0);
+        float specBroad = pow(max(0.0, dot(N1_world, H)), 24.0);
+
+        vec3 color = mix(refracted, reflEnv, clamp(fresnel * 0.85, 0.0, 0.92));
+        color += vec3(0.95, 0.96, 1.00) * (specTight * 0.95 + specBroad * 0.14);
+
+        // Subtle crisp glass edge sheen
+        float rim = pow(1.0 - cosTheta, 3.2);
+        color = mix(color, vec3(0.96, 0.97, 1.0), rim * 0.16);
+
+        gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
+      }
+    `;
+
+    // Smooth unit sphere geometry shared by all 6 crystal lenses
+    const sphereGeo = new THREE.SphereGeometry(1, 64, 48);
+
+    // 6 varied biconvex lenses & capsules, positioned so lenses + projected caustics frame cleanly at 420x340 & fullscreen
+    const lensConfigs = [
+      {
+        name: 'Biconvex Disc',
+        pos: [-1.32, 0.22, -0.55],
+        scale: [0.98, 0.98, 0.33],
+        rot: [0.35, -0.42, 0.18],
+        spin: [0.16, 0.22, 0.08],
+        bobAmp: [0.05, 0.07, 0.04],
+        bobFreq: [0.42, 0.55, 0.35],
+        phase: 0.0
+      },
+      {
+        name: 'Vertical Capsule',
+        pos: [-0.08, -0.05, -0.35],
+        scale: [0.38, 1.08, 0.38],
+        rot: [-0.25, 0.30, -0.22],
+        spin: [0.19, -0.15, 0.12],
+        bobAmp: [0.04, 0.08, 0.05],
+        bobFreq: [0.48, 0.39, 0.44],
+        phase: 1.3
+      },
+      {
+        name: 'Oblate Pebble',
+        pos: [0.95, 0.32, -0.95],
+        scale: [0.80, 0.60, 0.28],
+        rot: [0.52, 0.28, -0.35],
+        spin: [-0.14, 0.24, 0.15],
+        bobAmp: [0.06, 0.05, 0.04],
+        bobFreq: [0.36, 0.52, 0.41],
+        phase: 2.4
+      },
+      {
+        name: 'Horizontal Rod',
+        pos: [-1.05, -0.92, -0.82],
+        scale: [1.05, 0.35, 0.35],
+        rot: [0.18, 0.45, 0.28],
+        spin: [0.21, 0.13, -0.17],
+        bobAmp: [0.06, 0.05, 0.03],
+        bobFreq: [0.51, 0.43, 0.38],
+        phase: 3.7
+      },
+      {
+        name: 'Thick Magnifier',
+        pos: [0.14, -0.98, -0.50],
+        scale: [0.62, 0.62, 0.44],
+        rot: [-0.42, -0.25, 0.30],
+        spin: [-0.18, -0.21, 0.11],
+        bobAmp: [0.04, 0.06, 0.05],
+        bobFreq: [0.45, 0.49, 0.33],
+        phase: 4.9
+      },
+      {
+        name: 'Slender Capsule',
+        pos: [1.08, -0.72, -1.10],
+        scale: [0.31, 0.76, 0.30],
+        rot: [0.30, -0.55, 0.62],
+        spin: [0.15, -0.25, -0.14],
+        bobAmp: [0.05, 0.06, 0.04],
+        bobFreq: [0.39, 0.47, 0.52],
+        phase: 5.8
+      }
+    ];
+
+    const lenses = lensConfigs.map((cfg) => {
+      const mat = new THREE.ShaderMaterial({
+        uniforms: {
+          uModelMat: { value: new THREE.Matrix4() },
+          uInvModelMat: { value: new THREE.Matrix4() },
+          uWallZ: { value: WALL_Z },
+          uLensPos: { value: lensPosUniform },
+          uLensInvMat: { value: lensInvMatUniform },
+          uLensRadius: { value: lensRadiusUniform },
+          uLightDir: { value: LIGHT_DIR },
+          uWallHalfSize: { value: wallHalfSize }
+        },
+        vertexShader: lensVertexShader,
+        fragmentShader: lensFragmentShader
+      });
+
+      const mesh = new THREE.Mesh(sphereGeo, mat);
+      mesh.position.set(...cfg.pos);
+      mesh.scale.set(...cfg.scale);
+      mesh.rotation.set(...cfg.rot);
+      scene.add(mesh);
+
+      const meanRadius = (cfg.scale[0] + cfg.scale[1] + cfg.scale[2]) / 3.0;
+      return { cfg, mesh, mat, meanRadius };
+    });
+
+    function syncLensUniforms(elapsed) {
+      for (let i = 0; i < LENS_COUNT; i++) {
+        const { cfg, mesh, mat, meanRadius } = lenses[i];
+        const t = elapsed + cfg.phase;
+        mesh.position.set(
+          cfg.pos[0] + Math.sin(t * cfg.bobFreq[0]) * cfg.bobAmp[0],
+          cfg.pos[1] + Math.cos(t * cfg.bobFreq[1]) * cfg.bobAmp[1],
+          cfg.pos[2] + Math.sin(t * cfg.bobFreq[2] + 0.7) * cfg.bobAmp[2]
+        );
+        mesh.rotation.set(
+          cfg.rot[0] + elapsed * cfg.spin[0],
+          cfg.rot[1] + elapsed * cfg.spin[1],
+          cfg.rot[2] + elapsed * cfg.spin[2]
+        );
+        mesh.updateMatrixWorld(true);
+
+        lensPosUniform[i].copy(mesh.position);
+        lensInvMatUniform[i].copy(mesh.matrixWorld).invert();
+        lensRadiusUniform[i] = meanRadius;
+
+        mat.uniforms.uModelMat.value.copy(mesh.matrixWorld);
+        mat.uniforms.uInvModelMat.value.copy(lensInvMatUniform[i]);
+      }
+    }
+
+    function handleResize() {
+      const w = Math.max(1, window.innerWidth);
+      const h = Math.max(1, window.innerHeight);
+      const aspect = w / h;
+
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.setSize(w, h);
+
+      camera.aspect = aspect;
+      // Gently pull back on narrow portrait viewports so all 6 lenses remain framed
+      camera.position.z = aspect < 1.1 ? 5.8 * Math.min(1.85, 1.1 / Math.max(aspect, 0.55)) : 5.8;
+      camera.updateProjectionMatrix();
+
+      // Size stationary wall plane to cover full camera frustum at z = -4.2
+      const distToWall = camera.position.z - WALL_Z;
+      const vFovRad = THREE.MathUtils.degToRad(camera.fov);
+      const halfH = Math.tan(vFovRad * 0.5) * distToWall;
+      const halfW = halfH * aspect;
+      wallHalfSize.set(halfW, halfH);
+      wallMesh.scale.set(halfW * 2.08, halfH * 2.08, 1);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // Animation loop with visibility pause & FPS badge
+    let rafId = 0;
+    let lastTime = performance.now();
+    let elapsedSim = 0;
+    let fpsFrames = 0;
+    let fpsTimer = 0;
+
+    function tick(now) {
+      rafId = requestAnimationFrame(tick);
+
+      const rawDt = (now - lastTime) * 0.001;
+      lastTime = now;
+      const dt = Math.min(Math.max(rawDt, 0), 0.05);
+      elapsedSim += dt;
+
+      fpsFrames++;
+      fpsTimer += rawDt;
+      if (fpsTimer >= 0.4) {
+        const fps = fpsFrames / fpsTimer;
+        fpsEl.textContent = `${fps.toFixed(1)} fps`;
+        fpsFrames = 0;
+        fpsTimer = 0;
+      }
+
+      syncLensUniforms(elapsedSim);
+      renderer.render(scene, camera);
+    }
+
+    function startLoop() {
+      if (!rafId && !document.hidden) {
+        lastTime = performance.now();
+        fpsFrames = 0;
+        fpsTimer = 0;
+        rafId = requestAnimationFrame(tick);
+      }
+    }
+
+    function stopLoop() {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopLoop();
+      } else {
+        startLoop();
+      }
+    });
+
+    // Clean disposal on unload
+    window.addEventListener('beforeunload', () => {
+      stopLoop();
+      window.removeEventListener('resize', handleResize);
+      sphereGeo.dispose();
+      wallMesh.geometry.dispose();
+      wallMat.dispose();
+      lenses.forEach((l) => l.mat.dispose());
+      renderer.dispose();
+    });
+
+    syncLensUniforms(0);
+    startLoop();
+  </script>
+</body>
+</html>
