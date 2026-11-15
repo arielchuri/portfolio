@@ -5958,15 +5958,106 @@
           }
         } catch (_) {}
 
+        function seedDemoTabletop() {
+          const demoState = {
+            systemTemplate: {
+              sections: [
+                {
+                  id: 'sec-identity',
+                  title: 'Identity',
+                  fields: [
+                    { id: 'fld-name', title: 'Name', isTitleVisible: true },
+                    { id: 'fld-class', title: 'Class & Level', isTitleVisible: true }
+                  ]
+                },
+                {
+                  id: 'sec-stats',
+                  title: 'Vitals',
+                  fields: [
+                    { id: 'fld-hp', title: 'HP', isTitleVisible: true },
+                    { id: 'fld-ac', title: 'AC', isTitleVisible: true }
+                  ]
+                }
+              ]
+            },
+            userProfile: {
+              handle: 'Ariel',
+              role: 'player',
+              notes: 'Exploring the Sunken Vault.',
+              sheetVisible: true,
+              left: 1202,
+              top: 1550,
+              zIndex: 12
+            },
+            characters: [
+              {
+                id: 'char-1',
+                elementId: 'char-sheet',
+                assignedTo: 'user-main',
+                isArchived: false,
+                hiddenSections: {},
+                hiddenFields: {},
+                values: { 'fld-name': 'Sir Aldric the Pale', 'fld-class': 'Knight 3', 'fld-hp': '14 / 14', 'fld-ac': '16' },
+                left: 1080,
+                top: 2050,
+                zIndex: 11
+              },
+              {
+                id: 'char-2',
+                elementId: 'char-2-sheet',
+                assignedTo: 'demo-sera',
+                isArchived: false,
+                hiddenSections: {},
+                hiddenFields: {},
+                values: { 'fld-name': 'Lyra Embervein', 'fld-class': 'Elf 2', 'fld-hp': '9 / 9', 'fld-ac': '13' },
+                left: 1520,
+                top: 2060,
+                zIndex: 10
+              }
+            ],
+            notes: [
+              {
+                id: 'note-demo-1',
+                title: 'Session Notes',
+                body: 'Entered the Sunken Vault via the flooded stair. Torchlight flickers against carved basalt pillars.',
+                left: 1140,
+                top: 1760,
+                zIndex: 13
+              },
+              {
+                id: 'note-demo-2',
+                title: 'Loot & Rumors',
+                body: '40 gp, Silver Vault Key, Tarnished Astrolabe. Rumor: the Ferryman knows the secret sluice.',
+                left: 1540,
+                top: 1780,
+                zIndex: 14
+              }
+            ],
+            maps: [
+              {
+                id: 'map-default-dungeon',
+                title: 'Dungeon Level 1',
+                left: 1260,
+                top: 1420,
+                zIndex: 9
+              }
+            ]
+          };
+          applyCampaignState(demoState, null);
+        }
+
         openCampaignDB().then(db => {
           const tx = db.transaction(IDB_STORE, 'readonly');
           const req = tx.objectStore(IDB_STORE).get('active');
           req.onsuccess = () => {
             if (req.result) {
               applyCampaignState(req.result, null);
+            } else {
+              seedDemoTabletop();
             }
           };
-        }).catch(() => {});
+          req.onerror = () => seedDemoTabletop();
+        }).catch(() => seedDemoTabletop());
       })();
 
       // 5. WebRTC P2P DataChannel + BroadcastChannel Transport & 10-Seat Rotated Perimeter
@@ -5997,7 +6088,12 @@
         if (roomInput) roomInput.value = activeRoom;
 
         // Map of peerId -> { id, handle, role, seatId, color, lastSeen, pc, dc }
-        const peers = new Map();
+        const peers = new Map([
+          ['demo-gm', { id: 'demo-gm', handle: 'Kael (GM)', role: 'gm', seatId: 'gm-0', color: '#38145c', lastSeen: Date.now() + 86400000 }],
+          ['demo-sera', { id: 'demo-sera', handle: 'Sera', role: 'player', seatId: 'south-1', color: '#0f5e59', lastSeen: Date.now() + 86400000 }],
+          ['demo-bram', { id: 'demo-bram', handle: 'Bram', role: 'player', seatId: 'east-1', color: '#254b8c', lastSeen: Date.now() + 86400000 }],
+          ['demo-vex', { id: 'demo-vex', handle: 'Vex', role: 'player', seatId: 'west-1', color: '#9d174d', lastSeen: Date.now() + 86400000 }]
+        ]);
         let bcSignal = null;
         let phpPollTimer = null;
         let lastPhpSignalTs = 0;
