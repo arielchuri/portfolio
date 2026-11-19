@@ -35,7 +35,6 @@ function getCurrentSection() {
     "unilever",
     "ibm-holobot",
     "moma-killscreen",
-    "taz",
     "more-work",
     "experiments",
   ];
@@ -59,6 +58,11 @@ function saveCurrentSection() {
 function updateReturnButton() {
   const returnButton = document.getElementById("returnbutton");
   if (returnButton) {
+    const fileName = (window.location.pathname.split("/").pop() || "").toLowerCase();
+    if (fileName === "caz.html" || fileName === "caz") {
+      returnButton.innerHTML = `<a href="experiments.html#caz" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">&#8617; Return</span></a>`;
+      return;
+    }
     // Get saved section from sessionStorage
     const savedSection = sessionStorage.getItem("indexSection") || "";
     const anchor = savedSection ? `#${savedSection}` : "";
@@ -92,79 +96,106 @@ function toggleContactBar(forceHide = false) {
 
 // Animation initialization function
 function initializePageAnimations() {
-  // Create nav buttons
-  const returnButton = document.getElementById("returnbutton");
-  const resumeButton = document.getElementById("resumebutton");
-  const contactButton = document.getElementById("contactbutton");
-  const projectsButton = document.getElementById("projectsbutton");
-  const physicalButton = document.getElementById("physicalbutton");
-  const mobileButton = document.getElementById("mobilebutton");
+  const rawPath = window.location.pathname;
+  const fileName = (rawPath.split("/").pop() || "").toLowerCase();
+  const isIndexPage =
+    fileName === "" || fileName === "index.html" || fileName === "index";
+  const isProjectSubpage = /^p_/.test(fileName);
+  const isPhysicalPage =
+    fileName === "g_physical.html" ||
+    fileName === "g_physical" ||
+    fileName === "g_installations.html" ||
+    fileName === "g_installations";
+  const isMobilePage =
+    fileName === "g_mobile.html" || fileName === "g_mobile";
+  const isExperimentsPage =
+    fileName === "experiments.html" ||
+    fileName === "experiments" ||
+    fileName === "caz.html" ||
+    fileName === "caz";
+  const isResumePage =
+    fileName === "resume.html" || fileName === "resume";
 
-  if (returnButton) {
-    updateReturnButton();
+  // Render consistent nav: starts with projects (preceded by Return on subpages)
+  const nav = document.querySelector("nav");
+  if (nav) {
+    const buildNavSpan = ({ id, href, label, isActive, onClick }) => {
+      const hrefAttr = href ? ` href="${href}"` : "";
+      const onClickAttr = onClick ? ` onclick="${onClick}"` : "";
+      const activeClass = isActive ? " nav-active" : "";
+      const ariaCurrent = isActive ? ' aria-current="page"' : "";
+      return `<span id="${id}"><a${hrefAttr}${onClickAttr} class="btn-outline btn-extrasmall inline-block${activeClass}"${ariaCurrent} style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">${label}</span></a></span>`;
+    };
 
-    // Update return button as user scrolls (only on index page)
-    if (
-      window.location.pathname === "/" ||
-      window.location.pathname.endsWith("index.html")
-    ) {
-      window.addEventListener("scroll", function () {
-        saveCurrentSection(); // Save current section as user scrolls
-        updateReturnButton();
-      });
+    const navParts = [];
+    if (!isIndexPage) {
+      navParts.push('<span id="returnbutton"></span>');
+    }
+
+    navParts.push(
+      buildNavSpan({
+        id: "projectsbutton",
+        href: isIndexPage ? "#geosightai" : "index.html#geosightai",
+        label: "projects",
+        isActive: isIndexPage || isProjectSubpage,
+      }),
+      buildNavSpan({
+        id: "physicalbutton",
+        href: "g_physical.html",
+        label: "physical",
+        isActive: isPhysicalPage,
+      }),
+      buildNavSpan({
+        id: "mobilebutton",
+        href: "g_mobile.html",
+        label: "mobile",
+        isActive: isMobilePage,
+      }),
+      buildNavSpan({
+        id: "experimentsbutton",
+        href: "experiments.html",
+        label: "experiments",
+        isActive: isExperimentsPage,
+      }),
+      buildNavSpan({
+        id: "resumebutton",
+        href: "resume.html",
+        label: "r&eacute;sum&eacute;",
+        isActive: isResumePage,
+      }),
+      buildNavSpan({
+        id: "contactbutton",
+        label: "contact",
+        onClick: "toggleContactBar()",
+        isActive: false,
+      }),
+    );
+
+    nav.innerHTML = navParts.join(" ");
+
+    if (!isIndexPage) {
+      updateReturnButton();
     }
   }
 
-  if (resumeButton) {
-    resumeButton.innerHTML =
-      '<a href="resume.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">r&eacute;sum&eacute;</span></a>';
-  }
-
-  if (projectsButton) {
-    const isCurrentlyOnIndex =
-      window.location.pathname === "/" ||
-      window.location.pathname.endsWith("index.html");
-    const href = isCurrentlyOnIndex
-      ? "#geosightai"
-      : "index.html#geosightai";
-    projectsButton.innerHTML = `<a href="${href}" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">projects</span></a>`;
-  }
-
-  if (mobileButton) {
-    mobileButton.innerHTML =
-      '<a href="g_mobile.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">mobile</span></a>';
-  }
-
-  if (physicalButton) {
-    physicalButton.innerHTML =
-      '<a href="g_physical.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">physical</span></a>';
-  }
-
-  let experimentsButton = document.getElementById("experimentsbutton");
-  const isExperimentsPage = window.location.pathname.endsWith("experiments.html");
-  if (!experimentsButton && !isExperimentsPage) {
-    const navEl = document.querySelector("nav");
-    if (navEl) {
-      experimentsButton = document.createElement("span");
-      experimentsButton.id = "experimentsbutton";
-      navEl.appendChild(experimentsButton);
-    }
-  }
-  if (experimentsButton && !isExperimentsPage) {
-    experimentsButton.innerHTML =
-      '<a href="experiments.html" class="btn-outline btn-extrasmall inline-block" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">experiments</span></a>';
+  // Save current index section as user scrolls so Return links restore position
+  if (isIndexPage) {
+    window.addEventListener("scroll", saveCurrentSection);
   }
 
   user = "&#97;&#99;";
   site =
     "&#115;&#112;&#97;&#114;&#107;&#108;&#101;&#108;&#97;&#98;&#115;&#46;&#99;&#111;&#109;";
 
-  if (contactButton) {
-    contactButton.innerHTML =
-      '<a class="btn-outline btn-extrasmall inline-block" onclick="toggleContactBar()" style="position: relative; overflow: hidden;"><span class="wipe-bg"></span><span class="btn-text">contact</span></a>';
+  let contactDiv = document.getElementById("contactDiv");
+  if (!contactDiv && nav) {
+    contactDiv = document.createElement("div");
+    contactDiv.id = "contactDiv";
+    contactDiv.className = "hide";
+    contactDiv.style.display = "none";
+    contactDiv.style.width = "100%";
+    document.body.insertBefore(contactDiv, document.body.firstChild);
   }
-
-  const contactDiv = document.getElementById("contactDiv");
   if (contactDiv) {
     // Move contactDiv to document body if it's nested inside other containers
     if (contactDiv.parentElement && !contactDiv.parentElement.matches("body")) {
@@ -195,10 +226,11 @@ function initializePageAnimations() {
   );
 
   buttons.forEach((btn) => {
-    // Wipe animation
+    // Wipe animation (skip on current-page active button so it stays magenta)
     const bg = btn.querySelector(".wipe-bg");
-    if (bg) {
+    if (bg && !btn.classList.contains("nav-active")) {
       btn.addEventListener("mouseenter", () => {
+        anime.remove(bg);
         anime({
           targets: bg,
           width: ["0%", "100%"],
@@ -207,6 +239,7 @@ function initializePageAnimations() {
         });
       });
       btn.addEventListener("mouseleave", () => {
+        anime.remove(bg);
         anime({
           targets: bg,
           width: ["100%", "0%"],
@@ -246,14 +279,7 @@ function initializePageAnimations() {
     });
   });
 
-  // Page slide-in animation for index page
-  const isIndexPage =
-    window.location.pathname === "/" ||
-    window.location.pathname.endsWith("index.html");
-  const isResumePage = window.location.pathname.endsWith("resume.html");
-
   // Nav animation for all pages
-  const nav = document.querySelector("nav");
   if (nav) {
     // Reset initial state for nav (important for browser back/forward)
     nav.style.opacity = "0";
@@ -709,15 +735,12 @@ function initializePageAnimations() {
   // Add click-anywhere scroll functionality for the first viewport (index page only)
   if (isIndexPage) {
     const overlay = document.getElementById("viewport-click-overlay");
-    const projectsBtn = document.getElementById("projectsbutton");
 
     function updateOverlay() {
       if (window.scrollY === 0) {
         overlay.style.pointerEvents = "auto";
-        if (projectsBtn) projectsBtn.style.transform = "translateY(0)";
       } else {
         overlay.style.pointerEvents = "none";
-        if (projectsBtn) projectsBtn.style.transform = "translateY(-100px)";
       }
     }
 

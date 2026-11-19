@@ -1,0 +1,146 @@
+<svg width="916" height="412" viewBox="0 0 916 412" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .pop-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 700; fill: #222D2C; }
+      .pop-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 400; fill: #5B6360; }
+      .tbl-col { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 700; fill: #707673; text-transform: uppercase; }
+      .tbl-txt { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500; fill: #222D2C; }
+      .delta-val { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; fill: #D35B50; }
+      .provenance-link { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 600; fill: #1A66A6; text-decoration: underline; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="916" height="412" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-09" transform="translate(16, 16)">
+
+  
+
+  <!-- Drop Shadow Canvas -->
+  <rect x="10" y="10" width="500" height="360" rx="6" fill="#222D2C" fill-opacity="0.12"/>
+  <rect x="8" y="8" width="500" height="360" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+  <!-- Popover Header -->
+  <g id="Popover-Header">
+    <rect x="8" y="8" width="500" height="50" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <!-- Scales of Provenance Icon -->
+    <path d="M28 25 H44 M36 22 V42 M24 35 L30 35 L27 41 Z M42 35 L48 35 L45 41 Z" stroke="#222D2C" stroke-width="1.3" fill="none"/>
+    <text x="56" y="31" class="pop-title">Cross-Source Provenance Comparison</text>
+    <text x="56" y="47" class="pop-sub">Inspecting Reported Values for Garissa County (ADM1) · Malnutrition</text>
+    <!-- Close X -->
+    <rect x="472" y="18" width="24" height="24" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    <path d="M479 25 L489 35 M489 25 L479 35" stroke="#222D2C" stroke-width="1.3"/>
+  </g>
+
+  <!-- Side-by-Side Comparison Table -->
+  <g id="Comparison-Table">
+    <rect x="20" y="70" width="476" height="180" rx="3" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    
+    <!-- Header Row -->
+    <rect x="20" y="70" width="476" height="28" fill="#DFDDD7" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="32" y="88" class="tbl-col">Dimension</text>
+    <text x="140" y="88" class="tbl-col">Global UN Feed (Primary)</text>
+    <text x="310" y="88" class="tbl-col">National Agency (NDMA)</text>
+
+    <!-- Row 1: Source & Custodian -->
+    <rect x="20" y="98" width="476" height="28" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="32" y="116" class="tbl-txt" font-weight="600">Custodian</text>
+    <text x="140" y="116" class="tbl-txt">UNICEF Data Warehouse (SDMX)</text>
+    <text x="310" y="116" class="tbl-txt">Kenya NDMA Field Sentinel</text>
+
+    <!-- Row 2: Reported Prevalence -->
+    <rect x="20" y="126" width="476" height="28" fill="#F5D6CE" fill-opacity="0.5" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="32" y="144" class="tbl-txt" font-weight="600">Reported Rate</text>
+    <text x="140" y="144" class="tbl-txt" font-weight="700">41.2% (SAM Burden)</text>
+    <text x="310" y="144" class="tbl-txt" font-weight="700">36.8% (MUAC Acute)</text>
+
+    <!-- Row 3: Temporal Window -->
+    <rect x="20" y="154" width="476" height="28" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="32" y="172" class="tbl-txt" font-weight="600">Time Window</text>
+    <text x="140" y="172" class="tbl-txt">2024 Harmonized Projection</text>
+    <text x="310" y="172" class="tbl-txt">October 2024 Sentinel Wave</text>
+
+    <!-- Row 4: Provenance DOI / URL -->
+    <rect x="20" y="182" width="476" height="34" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="32" y="202" class="tbl-txt" font-weight="600">Audit Provenance</text>
+    <text x="140" y="202" class="provenance-link">data.unicef.org/sdmx/sam-ke-24</text>
+    <text x="310" y="202" class="provenance-link">ndma.go.ke/bulletins/2024-10-gar</text>
+
+    <!-- Row 5: Verified Credit Badge -->
+    <rect x="20" y="216" width="476" height="34" fill="#EFECE6" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="32" y="237" class="tbl-txt" font-weight="600">Attribution Token</text>
+    <text x="140" y="237" class="tbl-txt" font-size="10">UNICEF SDMX Global (Verified)</text>
+    <text x="310" y="237" class="tbl-txt" font-size="10">Kenya Gov NDMA Open Data (CC-BY 4.0)</text>
+  </g>
+
+  <!-- Delta & Methodology Discrepancy Callout -->
+  <g id="Delta-Banner">
+    <rect x="20" y="260" width="476" height="52" rx="3" fill="#F4D35A" stroke="#222D2C" stroke-width="1.2"/>
+    <text x="32" y="278" class="tbl-txt" font-weight="700">Calculated Variance Delta: <tspan class="delta-val">Δ +4.4%</tspan> (REVIEW Required)</text>
+    <text x="32" y="294" class="pop-sub">Methodology difference: UNICEF models clinic-admission curves; NDMA samples community pastoralist water points.</text>
+    <text x="32" y="306" class="pop-sub" font-weight="600">Decision policy: Global feeding cluster uses UNICEF; emergency relief distribution triggers on NDMA.</text>
+  </g>
+
+  <!-- Primary Feed Switch Control Row -->
+  <g id="Primary-Toggle-Row">
+    <rect x="20" y="322" width="476" height="36" rx="2" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <text x="32" y="344" class="tbl-txt" font-weight="600">Toggle Primary Map Rendering Feed:</text>
+
+    <!-- Segmented Control Button (Global UN active) -->
+    <rect x="250" y="327" width="114" height="26" rx="2" fill="#1A66A6" stroke="#222D2C" stroke-width="1"/>
+    <text x="264" y="344" class="tbl-txt" fill="#FFFFFF" font-weight="600">● Global UN</text>
+
+    <!-- Segmented Control Button (National Local inactive) -->
+    <rect x="368" y="327" width="116" height="26" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    <text x="382" y="344" class="tbl-txt" fill="#222D2C" font-weight="500">○ Local Agency</text>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-09">
+    <rect x="560" y="16" width="340" height="380" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="560" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="574" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="580" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="672" y="40" class="spec-title">Provenance Comparison</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="76" r="3" fill="#1A66A6"/>
+        <text x="588" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="588" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Resolves discrepancy between conflicting custodial</text>
+        <text x="588" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">datasets (UNICEF SDMX vs KNBS Census).</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="114" r="3" fill="#1A66A6"/>
+        <text x="588" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="588" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">[Designate Primary] updates canonical feed; [Blend</text>
+        <text x="588" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Average] applies weighted spatial average.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="152" r="3" fill="#1A66A6"/>
+        <text x="588" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="588" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Details sample sizes (N=1,420), temporal vintage,</text>
+        <text x="588" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">and survey methodology differences.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="190" r="3" fill="#1A66A6"/>
+        <text x="588" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">GOVERNANCE:</text>
+        <text x="588" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Maintains audit trail of all manual reconciliation</text>
+        <text x="588" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">decisions for reporting fidelity.</text>
+      </g>
+  </g>
+</svg>

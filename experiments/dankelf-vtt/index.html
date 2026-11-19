@@ -54,7 +54,7 @@
       height: 100%;
       background-color: var(--goldenrod);
       color: var(--mimeo-violet);
-      font-family: var(--font-body);
+      font-family: var(--font-mono);
       overflow: hidden;
       display: flex;
     }
@@ -162,8 +162,8 @@
       box-shadow: 0.5px 0.5px 0 var(--mimeo-violet);
     }
 
-    /* Native HTML Popover: 3D Dice Tray */
-    #dice-popover {
+    /* Native HTML Popover: 3D Dice Tray & GM Reference Cards */
+    #dice-popover, #ref-popover {
       margin: 0;
       padding: 0.5rem;
       background: var(--goldenrod-light);
@@ -175,6 +175,21 @@
       inset: auto;
       top: 78px;
       left: 14px;
+    }
+    .map-fog-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 20;
+      opacity: 1;
+    }
+    body[data-user-role="gm"] .map-fog-overlay {
+      opacity: 0.45;
+    }
+    body[data-user-role="player"] .map-fog-controls {
+      display: none;
     }
 
     .dice-popover-header {
@@ -349,7 +364,7 @@
       background-image: none;
       overflow: hidden;
       user-select: none;
-      perspective: 1400px;
+      perspective: 3200px;
       perspective-origin: 50% 50%;
     }
 
@@ -707,6 +722,14 @@
       display: none;
     }
 
+    .tabloid-map-sheet:not(.is-lifted) .map-canvas-container {
+      cursor: pointer;
+    }
+
+    .tabloid-map-sheet:not(.is-lifted) .map-avatar-token {
+      pointer-events: none;
+    }
+
     .map-toolbar-group {
       display: flex;
       align-items: center;
@@ -999,6 +1022,39 @@
       cursor: pointer;
       font-family: inherit;
       font-size: 0.72rem;
+    }
+
+    #folder-drawer-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+      gap: 0.45rem;
+    }
+    .folder-grid-item {
+      border: 1.5px solid var(--mimeo-violet);
+      background: var(--cream-paper, #f6efdc);
+      padding: 0.35rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      text-align: center;
+    }
+    .folder-grid-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+      color: var(--mimeo-violet);
+    }
+    .folder-grid-title {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--mimeo-violet);
+      word-break: break-word;
+      max-width: 100%;
+    }
+    .folder-grid-actions {
+      display: flex;
+      gap: 0.25rem;
+      margin-top: auto;
     }
 
     .character-sheet .paper-body { display: block; column-count: 2; column-gap: 14px; }
@@ -1344,16 +1400,25 @@
       gap: 0.25rem;
     }
 
+    .section-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
     .sec-tool-btn {
       background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       color: var(--cream-paper);
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      padding: 0.1rem 0.35rem;
+      padding: 0.12rem 0.28rem;
       cursor: pointer;
-      line-height: 1;
+      line-height: 1.1;
+      border-radius: 2px;
     }
 
     .sec-tool-btn:hover {
@@ -1421,6 +1486,152 @@
       flex: 1;
       font-family: var(--font-mono);
       font-size: 0.8rem;
+    }
+
+    /* Inventory, Wealth & Goals */
+    .wallet-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.25rem;
+      padding: 0.35rem 0.45rem;
+      border-bottom: 1px solid var(--mimeo-violet-faint);
+      background: rgba(56, 20, 92, 0.04);
+    }
+    .wallet-coin-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--mimeo-violet-dim);
+    }
+    .wallet-coin-input {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--mimeo-violet);
+      background: transparent;
+      border: 1px solid var(--mimeo-violet-faint);
+      padding: 0.1rem 0.15rem;
+    }
+    .inv-add-row, .goal-add-row {
+      display: flex;
+      gap: 0.25rem;
+      padding: 0.3rem 0.45rem;
+      border-bottom: 1px dashed var(--mimeo-violet-faint);
+      align-items: center;
+    }
+    .inv-add-input, .goal-add-input, .inv-cat-select, .inv-qty-input {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--mimeo-violet);
+      background: rgba(56, 20, 92, 0.04);
+      border: 1px solid var(--mimeo-violet-faint);
+      padding: 0.15rem 0.25rem;
+    }
+    .inv-add-input, .goal-add-input { flex: 1; min-width: 0; }
+    .inv-qty-input { width: 34px; text-align: center; }
+    .inv-item-row, .goal-row {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.22rem 0.45rem;
+      border-bottom: 1px solid var(--mimeo-violet-faint);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--mimeo-violet);
+    }
+    .inv-item-row:last-child, .goal-row:last-child { border-bottom: none; }
+    .inv-cat-badge {
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      padding: 0.05rem 0.22rem;
+      border: 1px solid var(--mimeo-violet-faint);
+      background: rgba(56, 20, 92, 0.05);
+      color: var(--mimeo-violet-dim);
+      flex-shrink: 0;
+    }
+    .inv-mini-btn {
+      background: rgba(56, 20, 92, 0.06);
+      border: 1px solid var(--mimeo-violet-faint);
+      color: var(--mimeo-violet);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.05rem 0.26rem;
+      cursor: pointer;
+    }
+    .goal-row.is-done .goal-text {
+      text-decoration: line-through;
+      opacity: 0.55;
+    }
+    #team-goals-body, #turn-order-body, #clocks-body {
+      background: var(--cream-paper);
+      border-bottom: 1px solid var(--mimeo-violet-faint);
+      max-height: 185px;
+      overflow-y: auto;
+    }
+    #settings-body {
+      background: var(--cream-paper);
+      border-bottom: 1px solid var(--mimeo-violet-faint);
+      padding: 0.55rem 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+    .settings-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .settings-label {
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--mimeo-violet-dim);
+    }
+    .turn-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.25rem;
+      padding: 0.25rem 0.45rem;
+      border-bottom: 1px solid var(--mimeo-violet-faint);
+      background: rgba(56, 20, 92, 0.05);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--mimeo-violet);
+    }
+    .turn-row.is-active-turn {
+      background: rgba(56, 20, 92, 0.12);
+      font-weight: 700;
+    }
+    .clock-pips {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .clock-pip {
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--mimeo-violet);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+    }
+    .clock-pip.is-filled {
+      background: var(--mimeo-violet);
+    }
       font-weight: 700;
       color: var(--mimeo-violet);
       background: transparent;
@@ -1517,7 +1728,7 @@
     }
 
     .sheet-footer-actions {
-      display: none;
+      display: flex;
       align-items: center;
       gap: 0.35rem;
       margin-top: auto;
@@ -1571,7 +1782,7 @@
 
     /* Bottom Folder Tabs Bar (Convex Top, Concave Bottom Paper Folds) */
     .folder-tabs-bar {
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 14px;
       right: 204px;
@@ -1580,10 +1791,15 @@
       align-items: flex-end;
       gap: 0;
       padding: 0 12px;
-      z-index: 95;
+      z-index: 97;
       pointer-events: none;
       overflow-x: auto;
       overflow-y: visible;
+      transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    body:has(#folder-drawer.is-open) .folder-tabs-bar {
+      bottom: calc(var(--folder-drawer-height, 50vh) - 2px);
     }
 
     .folder-tabs-bar::before {
@@ -1655,9 +1871,16 @@
       z-index: 4;
     }
 
+    .folder-tab:not(.is-active) {
+      border-bottom: 2px solid var(--mimeo-violet);
+    }
+
     .folder-tab.is-active {
       background: var(--cream-paper);
-      height: 33px;
+      height: 35px;
+      margin-bottom: -2px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--cream-paper);
       z-index: 6;
     }
 
@@ -1715,36 +1938,36 @@
     }
 
     .folder-drawer {
-      position: absolute;
-      bottom: 40px;
-      left: 24px;
-      width: 300px;
-      max-height: 280px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: var(--folder-drawer-height, 50vh);
+      min-height: 140px;
+      max-height: 85vh;
       background: var(--cream-paper);
-      border: 2px solid var(--mimeo-violet);
-      box-shadow: 6px 6px 0 var(--mimeo-violet);
+      border-top: 2px solid var(--mimeo-violet);
+      box-shadow: 0 -6px 18px rgba(48, 22, 92, 0.22);
       z-index: 96;
-      display: none;
+      display: flex;
       flex-direction: column;
       font-family: var(--font-mono);
       color: var(--mimeo-violet);
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
     }
 
     .folder-drawer.is-open {
-      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .folder-drawer-header {
-      padding: 0.35rem 0.55rem;
-      background: #ede3cc;
-      border-bottom: 2px solid var(--mimeo-violet);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.4rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      display: none;
     }
 
     .folder-drawer-title-input {
@@ -1809,12 +2032,54 @@
   </style>
 </head>
 <body>
-  <div style="position:fixed;top:0;left:0;z-index:9999;background:rgba(255,255,255,0.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:0;padding:0.35rem 0.65rem;">
-    <a href="../../experiments.html" style="display:inline-block;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:deeppink;text-decoration:underline;text-decoration-style:dotted;">&larr; Experiments</a>
+  <!-- Session Lobby Modal -->
+  <div id="session-lobby-modal" style="position:fixed;inset:0;z-index:99999;background:rgba(20,14,32,0.72);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);">
+    <div style="background:var(--cream-paper, #f6efdc);color:var(--mimeo-violet, #4c1d95);border:2px solid var(--mimeo-violet, #4c1d95);width:min(440px,92vw);padding:1.25rem;box-shadow:5px 5px 0 var(--mimeo-violet, #4c1d95);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;padding-bottom:0.45rem;border-bottom:1.5px solid var(--mimeo-violet, #4c1d95);">
+        <h2 style="margin:0;font-size:1.05rem;font-weight:700;letter-spacing:0.02em;">Dark Elf VTT — Session Lobby</h2>
+        <span id="lobby-conn-badge" style="font-size:0.72rem;padding:0.15rem 0.45rem;border:1px solid var(--mimeo-violet, #4c1d95);background:var(--cream-paper, #f6efdc);color:var(--mimeo-violet, #4c1d95);">Ready</span>
+      </div>
+
+      <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.25rem;">Display Name</label>
+      <input id="lobby-name-input" type="text" placeholder="Your name" style="width:100%;box-sizing:border-box;padding:0.4rem 0.5rem;margin-bottom:0.75rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--cream-paper, #f6efdc);color:var(--mimeo-violet, #4c1d95);font-family:inherit;" />
+
+      <div id="lobby-role-tabs" style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+        <button id="lobby-tab-host" type="button" style="flex:1;padding:0.4rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--mimeo-violet, #4c1d95);color:var(--cream-paper, #f6efdc);font-family:inherit;font-weight:600;cursor:pointer;">Host as GM</button>
+        <button id="lobby-tab-join" type="button" style="flex:1;padding:0.4rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:transparent;color:var(--mimeo-violet, #4c1d95);font-family:inherit;font-weight:600;cursor:pointer;">Join as Player</button>
+      </div>
+
+      <div id="lobby-invite-banner" style="display:none;padding:0.45rem 0.6rem;margin-bottom:0.75rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--cream-paper, #f6efdc);font-size:0.8rem;">
+        Joining Room as Player: <strong id="lobby-invite-room-label"></strong>
+      </div>
+
+      <div id="lobby-host-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">
+          <label style="font-size:0.78rem;font-weight:600;">Game World (Local IndexedDB)</label>
+          <div style="display:flex;gap:0.35rem;">
+            <button id="lobby-new-world" type="button" style="font-size:0.7rem;padding:0.15rem 0.4rem;border:1px solid var(--mimeo-violet, #4c1d95);background:transparent;color:var(--mimeo-violet, #4c1d95);font-family:inherit;cursor:pointer;">+ New World</button>
+            <button id="lobby-import-world" type="button" style="font-size:0.7rem;padding:0.15rem 0.4rem;border:1px solid var(--mimeo-violet, #4c1d95);background:transparent;color:var(--mimeo-violet, #4c1d95);font-family:inherit;cursor:pointer;">Import .json</button>
+          </div>
+        </div>
+        <select id="lobby-world-select" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--cream-paper, #f6efdc);color:var(--mimeo-violet, #4c1d95);font-family:inherit;font-size:0.8rem;"></select>
+      </div>
+
+      <div id="lobby-room-group">
+        <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.25rem;">Room Code</label>
+        <div style="display:flex;gap:0.4rem;margin-bottom:0.9rem;">
+          <input id="lobby-room-input" type="text" value="taverna-1" style="flex:1;padding:0.4rem 0.5rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--cream-paper, #f6efdc);color:var(--mimeo-violet, #4c1d95);font-family:inherit;" />
+          <button id="lobby-copy-invite" type="button" style="padding:0.4rem 0.65rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--cream-paper, #f6efdc);color:var(--mimeo-violet, #4c1d95);font-family:inherit;font-weight:600;cursor:pointer;">Copy Invite</button>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:0.5rem;">
+        <button id="lobby-enter-btn" type="button" style="padding:0.5rem 1rem;border:1.5px solid var(--mimeo-violet, #4c1d95);background:var(--mimeo-violet, #4c1d95);color:var(--cream-paper, #f6efdc);font-family:inherit;font-weight:700;cursor:pointer;">Enter Table</button>
+      </div>
+    </div>
   </div>
   <!-- Left Sidebar: Title ONLY above Chat + Toolbar + Action Feed + Omni-Bar -->
   <aside class="chat-panel" aria-label="Dark Elf Sidebar">
     <header class="chat-header">
+      <a href="../../experiments.html" style="display:inline-block;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:deeppink;text-decoration:underline;text-decoration-style:dotted;">&larr; Experiments</a>
       <h1>Dark Elf</h1>
     </header>
 
@@ -1845,6 +2110,21 @@
           <line x1="8" y1="8" x2="8" y2="15"/>
         </svg>
       </button>
+      <button type="button" class="tool-btn" id="btn-open-ref" popovertarget="ref-popover" title="GM Reference Cards (NPC / Location)" aria-label="Open GM reference cards">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M2 2h12v12H2V2zm1 1v10h10V3H3zm2 2h6v1H5V5zm0 3h6v1H5V8zm0 3h4v1H5v-1z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="ref-popover" popover>
+      <div class="dice-popover-header">
+        <span>GM Reference Cards</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.35rem;">
+        <button type="button" class="footer-action-btn" id="btn-ref-npc">+ NPC / Monster Card</button>
+        <button type="button" class="footer-action-btn" id="btn-ref-loc">+ Location Card</button>
+      </div>
     </div>
 
     <div id="dice-popover" popover>
@@ -1875,28 +2155,50 @@
       </div>
     </div>
 
-    <div class="panel-subheader">Settings</div>
-    <div style="padding: 0.4rem 0.6rem; border-bottom: 1.5px solid var(--mimeo-violet); display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--mimeo-violet);">
-      <label for="system-select" style="font-weight: 600; flex-shrink: 0;">System:</label>
-      <select id="system-select" style="flex: 1; background: var(--cream-paper, #f6efdc); color: var(--mimeo-violet); border: 1.5px solid var(--mimeo-violet); padding: 0.2rem 0.3rem; font-family: inherit; font-size: 0.78rem;">
-        <option value="dcc" selected>DCC</option>
-        <option value="dnd5e">Dungeons &amp; Dragons 5e</option>
-        <option value="bx">B/X</option>
-        <option value="daggerheart">Daggerheart</option>
-        <option value="pathfinder">Pathfinder</option>
-        <option value="shadowdark">Shadowdark</option>
-        <option value="mothership">Mothership</option>
-        <option value="morkborg">Mörk Borg</option>
-        <option value="mcc">Mutant Crawl Classics</option>
-        <option value="xcc">X-Crawl Classics</option>
-        <option value="weirdfrontiers">Weird Frontiers</option>
-        <option value="create-system">Create System</option>
-      </select>
+    <div class="panel-subheader" id="settings-toggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <span>Settings</span>
+      <span id="settings-chevron">▸</span>
+    </div>
+    <div id="settings-body" style="display: none;">
+      <label class="settings-label" for="settings-room-input">Room &amp; Invite Link</label>
+      <div class="settings-row">
+        <input type="text" id="settings-room-input" class="inv-add-input" value="taverna-1" title="Room Code" autocomplete="off" />
+        <button type="button" class="inv-mini-btn" id="btn-settings-join" title="Switch / Sync Room">Sync</button>
+        <button type="button" class="inv-mini-btn" id="btn-settings-copy-invite" title="Copy room invite link">Copy Invite</button>
+      </div>
+      <input type="text" id="settings-invite-url" class="inv-add-input" readonly title="Shareable invite URL" onclick="this.select();" />
     </div>
 
-    <div class="panel-subheader">Action Feed</div>
+    <div class="panel-subheader" id="team-goals-toggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <span>Team Goals</span>
+      <span id="team-goals-chevron">▸</span>
+    </div>
+    <div id="team-goals-body" style="display: none;">
+      <div id="team-goals-container"></div>
+    </div>
+
+    <div class="panel-subheader" id="turn-order-toggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <span>Turn Order</span>
+      <span id="turn-order-chevron">▸</span>
+    </div>
+    <div id="turn-order-body" style="display: none;">
+      <div id="turn-order-container"></div>
+    </div>
+
+    <div class="panel-subheader" id="clocks-toggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <span>Clocks &amp; Timers</span>
+      <span id="clocks-chevron">▸</span>
+    </div>
+    <div id="clocks-body" style="display: none;">
+      <div id="clocks-container"></div>
+    </div>
+
+    <div class="panel-subheader" style="display:flex; justify-content:space-between; align-items:center;">
+      <span>Action Feed</span>
+      <button type="button" id="btn-clear-feed" style="background:transparent; border:none; color:var(--mimeo-violet-dim); font-family:inherit; font-size:0.65rem; font-weight:600; cursor:pointer; padding:0;" title="Clear feed history">Clear</button>
+    </div>
     <div id="feed" class="feed-container" role="log" aria-live="polite">
-      <div class="feed-entry">
+      <div class="feed-entry" data-ephemeral="true">
         <span class="timestamp">[SYS]</span>
         <span class="content">Table loaded. Hold Space to enter pan mode.</span>
       </div>
@@ -2111,7 +2413,6 @@
   </main>
 
   <script>
-    localStorage.clear();
 
     // Lightweight pagination for .paper-body (no scrollbars on elements)
     window.refreshSheetPagination = function(sheet) {
@@ -2247,6 +2548,9 @@
 
       if (window.broadcastP2PFeedMessage) {
         window.broadcastP2PFeedMessage(userName, val, timeStr);
+      }
+      if (window.saveLocalFeedSnapshot) {
+        window.saveLocalFeedSnapshot();
       }
 
       input.value = '';
@@ -2629,7 +2933,7 @@
         isMiddleOrbiting = false;
       });
 
-      // Center (Middle) Click-Drag: Rotate around center of table in 3D
+      // Center (Middle) Click-Drag OR Option/Alt + Drag: Rotate around center of table in 3D
       let isMiddleOrbiting = false;
       let middleStartX = 0;
       let middleStartY = 0;
@@ -2637,14 +2941,18 @@
       let middleStartBearing = 0;
 
       tabletop.addEventListener('pointerdown', (e) => {
-        if (e.button !== 1 || activeLiftedItem) return;
+        if (activeLiftedItem) return;
+        const isMiddle = e.button === 1;
+        const isAltDrag = e.button === 0 && e.altKey && !e.target.closest('input, textarea, select, button, .paper-title-bar');
+        if (!isMiddle && !isAltDrag) return;
         e.preventDefault();
+        if (isAltDrag) e.stopPropagation();
         isMiddleOrbiting = true;
         middleStartX = e.clientX;
         middleStartY = e.clientY;
         middleStartTilt = tableTilt;
         middleStartBearing = tableBearing;
-      });
+      }, { capture: true });
 
       window.addEventListener('pointermove', (e) => {
         if (!isMiddleOrbiting) return;
@@ -2659,15 +2967,65 @@
       const ctxMenu = document.getElementById('tabletop-context-menu');
       const ctxToggleUi = document.getElementById('ctx-toggle-ui');
       if (ctxMenu) {
-        tabletop.addEventListener('contextmenu', (e) => {
+        let ctxTargetSheet = null;
+        let ctxTargetFolderId = null;
+
+        document.addEventListener('contextmenu', (e) => {
+          const sheet = e.target.closest('.letter-paper-sheet');
+          const folderTab = e.target.closest('.folder-tab');
+          const onTabletop = tabletop.contains(e.target);
+          if (!sheet && !folderTab && !onTabletop) return;
+
           e.preventDefault();
-          if (ctxToggleUi) {
-            ctxToggleUi.innerText = document.body.classList.contains('ui-hidden') ? 'Show UI' : 'Hide UI';
+          ctxTargetSheet = sheet || null;
+          ctxTargetFolderId = folderTab ? folderTab.dataset.folderId : null;
+
+          // Clear dynamic context items
+          ctxMenu.querySelectorAll('[data-ctx-dynamic="true"]').forEach(el => el.remove());
+          const defaultBtns = ctxMenu.querySelectorAll('button:not([data-ctx-dynamic="true"])');
+
+          if (sheet && sheet.id !== 'person-sheet') {
+            defaultBtns.forEach(b => { b.style.display = 'none'; });
+            const addDyn = (label, action) => {
+              const b = document.createElement('button');
+              b.type = 'button';
+              b.dataset.ctxAction = action;
+              b.dataset.ctxDynamic = 'true';
+              b.textContent = label;
+              ctxMenu.appendChild(b);
+            };
+            addDyn('Maximize', 'sheet-max');
+            addDyn(sheet.classList.contains('is-pinned') ? 'Unpin' : 'Pin', 'sheet-pin');
+            addDyn('Close (to All)', 'sheet-close');
+            addDyn('Move to Bin', 'sheet-bin');
+          } else if (folderTab) {
+            defaultBtns.forEach(b => { b.style.display = 'none'; });
+            const addDyn = (label, action) => {
+              const b = document.createElement('button');
+              b.type = 'button';
+              b.dataset.ctxAction = action;
+              b.dataset.ctxDynamic = 'true';
+              b.textContent = label;
+              ctxMenu.appendChild(b);
+            };
+            addDyn('Open Folder', 'folder-open');
+            addDyn('Rename Folder', 'folder-rename');
+            addDyn('Close Drawer', 'folder-close');
+          } else {
+            defaultBtns.forEach(b => { b.style.display = ''; });
+            if (ctxToggleUi) {
+              ctxToggleUi.innerText = document.body.classList.contains('ui-hidden') ? 'Show UI' : 'Hide UI';
+            }
           }
+
           const rect = tabletop.getBoundingClientRect();
-          ctxMenu.style.left = `${e.clientX - rect.left}px`;
-          ctxMenu.style.top = `${e.clientY - rect.top}px`;
           ctxMenu.style.display = 'block';
+          const mw = ctxMenu.offsetWidth || 160;
+          const mh = ctxMenu.offsetHeight || 120;
+          const left = Math.max(4, Math.min(e.clientX - rect.left, rect.width - mw - 4));
+          const top = Math.max(4, Math.min(e.clientY - rect.top, rect.height - mh - 4));
+          ctxMenu.style.left = `${left}px`;
+          ctxMenu.style.top = `${top}px`;
         });
 
         ctxMenu.addEventListener('click', (e) => {
@@ -2683,6 +3041,29 @@
             updateTransform();
           } else if (action === 'toggle-ui') {
             document.body.classList.toggle('ui-hidden');
+          } else if (action === 'sheet-max' && ctxTargetSheet) {
+            if (window.liftItemToInspection) window.liftItemToInspection(ctxTargetSheet);
+          } else if (action === 'sheet-pin' && ctxTargetSheet) {
+            const pinBtn = ctxTargetSheet.querySelector('.btn-pin');
+            if (pinBtn) pinBtn.click();
+          } else if (action === 'sheet-close' && ctxTargetSheet) {
+            ctxTargetSheet.dataset.onTable = 'false';
+            if (!ctxTargetSheet.dataset.folderId) ctxTargetSheet.dataset.folderId = 'folder-all';
+            if (typeof syncSheetVisibility === 'function') syncSheetVisibility(ctxTargetSheet);
+            if (typeof renderFolderTabs === 'function') renderFolderTabs();
+          } else if (action === 'sheet-bin' && ctxTargetSheet) {
+            if (window.trashOrDeleteSheet) {
+              window.trashOrDeleteSheet(ctxTargetSheet);
+            } else if (typeof moveSheetToFolder === 'function') {
+              moveSheetToFolder(ctxTargetSheet, 'folder-bin');
+            }
+          } else if (action === 'folder-open' && ctxTargetFolderId) {
+            if (typeof openFolderDrawer === 'function') openFolderDrawer(ctxTargetFolderId);
+          } else if (action === 'folder-rename' && ctxTargetFolderId) {
+            const tab = document.querySelector(`.folder-tab[data-folder-id="${ctxTargetFolderId}"]`);
+            if (tab) tab.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }));
+          } else if (action === 'folder-close') {
+            if (typeof closeFolderDrawer === 'function') closeFolderDrawer();
           }
         });
 
@@ -2838,22 +3219,36 @@
 
       // Window Maximization / Lifting into Hands
       window.liftItemToInspection = function(itemEl) {
-        if (activeLiftedItem === itemEl) return;
+        if (!itemEl || activeLiftedItem === itemEl) return;
+        if (activeLiftedItem && activeLiftedItem !== itemEl) {
+          const prevMax = activeLiftedItem.querySelector('.btn-max');
+          if (prevMax && activeLiftedItem.classList.contains('is-lifted')) {
+            prevMax.click();
+          } else {
+            window.restoreItemToTable(activeLiftedItem);
+          }
+        }
 
         activeLiftedItem = itemEl;
+        itemEl.style.display = 'flex';
         tableWorld.classList.add('under-inspection');
         inspectionWorld.classList.add('active');
 
         inspectionWorld.appendChild(itemEl);
         itemEl.classList.add('is-lifted');
+        const btnMax = itemEl.querySelector('.btn-max');
+        if (btnMax) {
+          btnMax.title = 'Restore to Table';
+          btnMax.innerText = '❐';
+        }
 
         itemEl.style.left = '0px';
         itemEl.style.top = '0px';
 
         const viewW = tabletop.clientWidth;
         const viewH = tabletop.clientHeight;
-        const itemW = itemEl.offsetWidth;
-        const itemH = itemEl.offsetHeight;
+        const itemW = itemEl.offsetWidth || 595;
+        const itemH = itemEl.offsetHeight || 770;
 
         inspectScale = Math.min((viewW - 80) / itemW, (viewH - 80) / itemH, 1.25);
         inspectPanX = (viewW - itemW * inspectScale) / 2;
@@ -2872,6 +3267,11 @@
 
         itemEl.classList.remove('is-lifted');
         itemEl.style.transform = '';
+        const btnMax = itemEl.querySelector('.btn-max');
+        if (btnMax) {
+          btnMax.title = 'Maximize';
+          btnMax.innerText = '□';
+        }
         tableWorld.appendChild(itemEl);
 
         if (savedPos) {
@@ -2879,6 +3279,7 @@
           itemEl.style.top = `${savedPos.top}px`;
         }
 
+        if (window.syncSheetVisibility) window.syncSheetVisibility(itemEl);
         if (window.updateBroadcastButton) window.updateBroadcastButton(itemEl);
         updateTransform();
       };
@@ -2915,7 +3316,11 @@
       }
 
       // User Folder Tabs State (Bottom of Tabletop Viewport)
-      let userFolders = [{ id: 'folder-1', name: 'Folder 1' }];
+      let userFolders = [
+        { id: 'folder-characters', name: 'Characters', lockedName: true, isCharacters: true },
+        { id: 'folder-all', name: 'All', lockedName: true, isAll: true },
+        { id: 'folder-bin', name: 'Bin', lockedName: true, isBin: true }
+      ];
       let openFolderId = null;
 
       function getSheetDisplayTitle(sheet) {
@@ -2924,26 +3329,56 @@
         return plate ? plate.innerText.trim() : 'Item';
       }
 
+      function getLocalDisplayName() {
+        const inp = document.getElementById('person-handle-input');
+        const val = inp && inp.value ? inp.value.trim() : '';
+        return val || localStorage.getItem('dankelf_display_name') || (currentUserRole === 'gm' ? 'GM' : 'Player');
+      }
+
+      function isAssigneeMatchLocal(assignedTo, assignedName, ownerId) {
+        if (!assignedTo) return false;
+        if (assignedTo === 'gm') return currentUserRole === 'gm';
+        if (assignedTo === localOwnerId) return true;
+        if (assignedTo === 'user-main') return !ownerId || ownerId === localOwnerId;
+        if (currentUserRole !== 'gm' && assignedName) {
+          return assignedName.trim().toLowerCase() === getLocalDisplayName().trim().toLowerCase();
+        }
+        return false;
+      }
+
+      function isSheetAssignedToLocal(sheet) {
+        if (!sheet) return false;
+        return isAssigneeMatchLocal(sheet.dataset.assignedTo || '', sheet.dataset.assignedName || '', sheet.dataset.ownerId || '');
+      }
+
       function isSheetVisibleToLocal(sheet) {
         if (!sheet) return false;
         if (sheet.id === 'person-sheet') return true;
         if (sheet.dataset.folderId) return false;
         const ownerId = sheet.dataset.ownerId || localOwnerId;
         if (ownerId === localOwnerId) return true;
+        if (isSheetAssignedToLocal(sheet)) return true;
         return sheet.dataset.sharedWithAll === 'true';
       }
 
       function syncSheetVisibility(sheet) {
         if (!sheet || sheet.id === 'person-sheet') return;
-        const inFolder = !!sheet.dataset.folderId;
-        const ownerId = sheet.dataset.ownerId || localOwnerId;
         const isShared = sheet.dataset.sharedWithAll === 'true';
-        const visibleOnTable = !inFolder && (ownerId === localOwnerId || isShared);
-
-        sheet.classList.toggle('in-folder', inFolder);
         sheet.classList.toggle('is-shared-item', isShared);
+        if (sheet.classList.contains('is-lifted')) {
+          sheet.classList.remove('in-folder');
+          sheet.style.display = 'flex';
+          return;
+        }
+        const hiddenFromTable = sheet.dataset.onTable === 'false' || (!!sheet.dataset.folderId && sheet.dataset.onTable !== 'true');
+        const ownerId = sheet.dataset.ownerId || localOwnerId;
+        const isAssignedLocal = isSheetAssignedToLocal(sheet);
+        const visibleOnTable = !hiddenFromTable && (ownerId === localOwnerId || isShared || isAssignedLocal);
+
+        sheet.classList.toggle('in-folder', hiddenFromTable);
         sheet.style.display = visibleOnTable ? 'flex' : 'none';
       }
+      window.syncSheetVisibility = syncSheetVisibility;
 
       function renderFolderTabs() {
         const bar = document.getElementById('folder-tabs-bar');
@@ -2953,12 +3388,18 @@
         bar.querySelectorAll('.folder-tab').forEach(el => el.remove());
 
         userFolders.forEach(folder => {
-          const storedCount = Array.from(document.querySelectorAll('.letter-paper-sheet')).filter(s => s.dataset.folderId === folder.id).length;
+          const storedCount = folder.isCharacters
+            ? Array.from(document.querySelectorAll('.letter-paper-sheet.character-sheet')).filter(s => s.dataset.folderId !== 'folder-bin').length
+            : folder.isAll
+              ? Array.from(document.querySelectorAll('.letter-paper-sheet:not(#person-sheet)')).filter(s => s.dataset.folderId !== 'folder-bin').length
+              : Array.from(document.querySelectorAll('.letter-paper-sheet')).filter(s => s.dataset.folderId === folder.id).length;
           const tab = document.createElement('button');
           tab.type = 'button';
           tab.className = `folder-tab ${openFolderId === folder.id ? 'is-active' : ''}`;
           tab.dataset.folderId = folder.id;
-          tab.title = `${folder.name} (${storedCount} stored) — Click to open, double-click to rename, or drag sheet here`;
+          tab.title = folder.lockedName
+            ? `${folder.name} (${storedCount}) — Click to open`
+            : `${folder.name} (${storedCount} stored) — Click to open, double-click to rename, or drag sheet here`;
           tab.innerHTML = `<span class="folder-tab-label">${escapeHtml(folder.name)}</span><span class="folder-tab-count">${storedCount}</span>`;
 
           tab.addEventListener('click', (e) => {
@@ -2972,13 +3413,31 @@
 
           tab.addEventListener('dblclick', (e) => {
             e.stopPropagation();
-            const nextName = prompt('Rename folder tab:', folder.name);
-            if (nextName && nextName.trim()) {
-              folder.name = nextName.trim().slice(0, 24);
+            if (folder.lockedName) return;
+            const labelEl = tab.querySelector('.folder-tab-label');
+            if (!labelEl) return;
+            labelEl.contentEditable = 'true';
+            labelEl.focus();
+            const range = document.createRange();
+            range.selectNodeContents(labelEl);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            const commit = () => {
+              labelEl.contentEditable = 'false';
+              const nextName = labelEl.textContent.trim().slice(0, 24);
+              if (nextName) {
+                folder.name = nextName;
+                folder.customRenamed = true;
+                scheduleAutoSave();
+              }
               renderFolderTabs();
-              if (openFolderId === folder.id) openFolderDrawer(folder.id);
-              scheduleAutoSave();
-            }
+            };
+            labelEl.addEventListener('blur', commit, { once: true });
+            labelEl.addEventListener('keydown', (ke) => {
+              if (ke.key === 'Enter') { ke.preventDefault(); labelEl.blur(); }
+              if (ke.key === 'Escape') { labelEl.textContent = folder.name; labelEl.blur(); }
+            });
           });
 
           bar.insertBefore(tab, addBtn);
@@ -3002,28 +3461,105 @@
         if (!drawer || !titleInput || !listEl) return;
 
         titleInput.value = folder.name;
+        titleInput.readOnly = !!folder.lockedName;
         listEl.innerHTML = '';
 
-        const items = Array.from(document.querySelectorAll('.letter-paper-sheet')).filter(s => s.dataset.folderId === folderId);
+        const items = folder.isCharacters
+          ? Array.from(document.querySelectorAll('.letter-paper-sheet.character-sheet')).filter(s => s.dataset.folderId !== 'folder-bin')
+          : folder.isAll
+            ? Array.from(document.querySelectorAll('.letter-paper-sheet:not(#person-sheet)')).filter(s => s.dataset.folderId !== 'folder-bin')
+            : Array.from(document.querySelectorAll('.letter-paper-sheet')).filter(s => s.dataset.folderId === folderId);
         if (items.length === 0) {
-          listEl.innerHTML = '<span style="font-size:0.68rem; color:var(--mimeo-violet-dim); font-style:italic;">Drag any sheet from the table onto this tab to store it here.</span>';
+          listEl.innerHTML = '<span style="font-size:0.68rem; color:var(--mimeo-violet-dim); font-style:italic; grid-column: 1 / -1;">Empty folder.</span>';
         } else {
           items.forEach(s => {
-            const row = document.createElement('div');
-            row.className = 'folder-drawer-item';
+            const card = document.createElement('div');
+            card.className = 'folder-grid-item';
             const title = getSheetDisplayTitle(s);
-            row.innerHTML = `<span class="folder-drawer-item-title">${escapeHtml(title)}</span>`;
+            const typeIcon = s.classList.contains('character-sheet') ? '👤' : s.classList.contains('tabloid-map-sheet') ? '🗺' : '📄';
+            card.innerHTML = `<div class="folder-grid-icon">${typeIcon}</div><div class="folder-grid-title">${escapeHtml(title)}</div>`;
 
-            const restoreBtn = document.createElement('button');
-            restoreBtn.type = 'button';
-            restoreBtn.className = 'sec-tool-btn';
-            restoreBtn.innerText = 'To Table';
-            restoreBtn.addEventListener('click', (e) => {
+            const actions = document.createElement('div');
+            actions.className = 'folder-grid-actions';
+
+            const maxBtn = document.createElement('button');
+            maxBtn.type = 'button';
+            maxBtn.className = 'sec-tool-btn';
+            maxBtn.title = 'Maximize (returns to folder on close)';
+            maxBtn.innerText = '⤢';
+            maxBtn.addEventListener('click', (e) => {
               e.stopPropagation();
-              restoreSheetFromFolder(s);
+              if (window.liftItemToInspection) window.liftItemToInspection(s);
             });
-            row.appendChild(restoreBtn);
-            listEl.appendChild(row);
+            actions.appendChild(maxBtn);
+
+            if (s.dataset.folderId) {
+              const restoreBtn = document.createElement('button');
+              restoreBtn.type = 'button';
+              restoreBtn.className = 'sec-tool-btn';
+              restoreBtn.title = 'Move to Table';
+              restoreBtn.innerText = '↗';
+              restoreBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                restoreSheetFromFolder(s);
+              });
+              actions.appendChild(restoreBtn);
+            }
+
+            const lockBtn = document.createElement('button');
+            lockBtn.type = 'button';
+            lockBtn.className = 'sec-tool-btn';
+            const isLocked = s.dataset.lockedToFolder === 'true';
+            lockBtn.title = isLocked ? 'Unlock from folder' : 'Lock to folder';
+            lockBtn.innerHTML = isLocked
+              ? '<svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 7V5a4 4 0 1 1 8 0v2h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1zm2 0h4V5a2 2 0 1 0-4 0v2z"/></svg>'
+              : '<svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11 7V5a3 3 0 0 0-5.83-1H3.1A5 5 0 0 1 13 5v2h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h9z"/></svg>';
+            lockBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              s.dataset.lockedToFolder = isLocked ? 'false' : 'true';
+              openFolderDrawer(folderId);
+              scheduleAutoSave();
+            });
+            actions.appendChild(lockBtn);
+
+            const delBtn = document.createElement('button');
+            delBtn.type = 'button';
+            delBtn.className = 'sec-tool-btn';
+            delBtn.title = folderId === 'folder-bin' ? 'Delete Permanently' : 'Move to Bin';
+            delBtn.innerText = '🗑';
+            delBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const wasInBin = s.dataset.folderId === 'folder-bin';
+              const ok = trashOrDeleteSheet(s);
+              if (!ok) return;
+              const toast = document.createElement('div');
+              toast.textContent = wasInBin ? 'Deleted permanently' : 'Moved to Bin';
+              toast.style.cssText = 'position:fixed;bottom:42px;right:20px;z-index:9999;background:var(--mimeo-violet);color:var(--cream-paper);padding:6px 12px;font-family:var(--font-mono);font-size:0.75rem;border:1px solid var(--cream-paper);box-shadow:3px 3px 0 rgba(0,0,0,0.25);';
+              document.body.appendChild(toast);
+              setTimeout(() => toast.remove(), 1800);
+            });
+            actions.appendChild(delBtn);
+
+            card.appendChild(actions);
+            card.addEventListener('click', () => {
+              s.dataset.onTable = 'true';
+              syncSheetVisibility(s);
+              topZIndex++;
+              s.style.zIndex = topZIndex;
+              document.querySelectorAll('.letter-paper-sheet').forEach(el => el.classList.remove('is-selected'));
+              s.classList.add('is-selected');
+              const sx = parseFloat(s.style.left || 0) + (s.offsetWidth || 595) / 2;
+              const sy = parseFloat(s.style.top || 0) + (s.offsetHeight || 400) / 2;
+              if (typeof tablePanX !== 'undefined' && typeof tablePanY !== 'undefined' && typeof updateTransform === 'function') {
+                const scale = (typeof tableScale !== 'undefined') ? tableScale : 1;
+                tablePanX = window.innerWidth / 2 - sx * scale;
+                tablePanY = (window.innerHeight * 0.3) - sy * scale;
+                updateTransform();
+              }
+              if (window.refreshMinimap) window.refreshMinimap();
+              scheduleAutoSave();
+            });
+            listEl.appendChild(card);
           });
         }
 
@@ -3031,21 +3567,64 @@
         renderFolderTabs();
       }
 
+      function permanentlyDeleteSheet(sheet) {
+        if (!sheet || sheet.id === 'person-sheet') return;
+        if (sheet.classList.contains('is-lifted') && window.restoreItemToTable) {
+          window.restoreItemToTable(sheet);
+        }
+        if (sheet.dataset.charId) {
+          characters = characters.filter(c => c.id !== sheet.dataset.charId);
+        }
+        sheet.remove();
+        updatePersonSheetControlled();
+        renderFolderTabs();
+        if (openFolderId) openFolderDrawer(openFolderId);
+        if (window.refreshMinimap) window.refreshMinimap();
+        scheduleAutoSave();
+      }
+
+      function trashOrDeleteSheet(sheet) {
+        if (!sheet || sheet.id === 'person-sheet') return false;
+        if (sheet.dataset.folderId === 'folder-bin') {
+          permanentlyDeleteSheet(sheet);
+          return true;
+        }
+        if (sheet.dataset.lockedToFolder === 'true') {
+          alert('Unlock this item from its folder before moving it to the Bin.');
+          return false;
+        }
+        moveSheetToFolder(sheet, 'folder-bin');
+        return true;
+      }
+      window.trashOrDeleteSheet = trashOrDeleteSheet;
+
       function moveSheetToFolder(sheet, folderId) {
         if (!sheet || sheet.id === 'person-sheet') return;
+        const targetFolder = userFolders.find(f => f.id === folderId);
+        if (targetFolder && (targetFolder.isCharacters || targetFolder.isAll)) return;
+        if (sheet.dataset.lockedToFolder === 'true' && sheet.dataset.folderId && sheet.dataset.folderId !== folderId) {
+          return;
+        }
+        if (folderId === 'folder-bin' && sheet.classList.contains('is-lifted') && window.restoreItemToTable) {
+          window.restoreItemToTable(sheet);
+        }
         sheet.dataset.folderId = folderId;
+        sheet.dataset.onTable = 'false';
         sheet.dataset.sharedWithAll = 'false';
+        sheet.dataset.shownToAll = 'false';
         sheet.classList.remove('is-selected', 'is-stuck');
         updateBroadcastButton(sheet);
         syncSheetVisibility(sheet);
+        updatePersonSheetControlled();
         renderFolderTabs();
-        if (openFolderId === folderId) openFolderDrawer(folderId);
+        if (openFolderId) openFolderDrawer(openFolderId);
         if (window.refreshMinimap) window.refreshMinimap();
         scheduleAutoSave();
       }
 
       function restoreSheetFromFolder(sheet) {
         if (!sheet) return;
+        if (sheet.dataset.lockedToFolder === 'true') return;
         const prevFolder = sheet.dataset.folderId;
         delete sheet.dataset.folderId;
         topZIndex++;
@@ -3256,14 +3835,17 @@
       }
       window.updateBroadcastButton = updateBroadcastButton;
 
+      const isInviteMode = !!(new URLSearchParams(window.location.search).get('room') || '').trim();
+
       function setRole(role, silent = false) {
-        currentUserRole = role === 'gm' ? 'gm' : 'player';
+        currentUserRole = (!isInviteMode && role === 'gm') ? 'gm' : 'player';
         document.body.dataset.userRole = currentUserRole;
         const playerBtn = document.getElementById('person-role-player');
         const gmBtn = document.getElementById('person-role-gm');
         if (playerBtn && gmBtn) {
           playerBtn.classList.toggle('is-active', currentUserRole === 'player');
           gmBtn.classList.toggle('is-active', currentUserRole === 'gm');
+          if (isInviteMode) gmBtn.style.display = 'none';
         }
 
         const targetSeatId = currentUserRole === 'gm' ? 'gm-0' : (currentPlayerSeatId || 'south-0');
@@ -3276,6 +3858,8 @@
         if (currentUserRole === 'gm' && window.syncGMPlayerFolders && window.getPlayerPeers) {
           window.syncGMPlayerFolders(window.getPlayerPeers());
         }
+        if (window.refreshCharacterAssignments) window.refreshCharacterAssignments();
+        if (window.syncLocalAvatarColor) window.syncLocalAvatarColor();
         if (window.refreshMinimap) window.refreshMinimap();
 
         if (!silent) {
@@ -3287,6 +3871,7 @@
             entry.innerHTML = `<span class="timestamp">[SYS]</span> <span class="content">Role changed to ${currentUserRole === 'gm' ? 'Game Master' : 'Player'} — Table rotated to ${escapeHtml(seatObj.label)}.</span>`;
             feed.appendChild(entry);
             feed.scrollTop = feed.scrollHeight;
+            if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
           }
           scheduleAutoSave();
           if (window.broadcastP2PPresence) window.broadcastP2PPresence();
@@ -3358,6 +3943,7 @@
             entry.innerHTML = `<span class="timestamp">[SYS]</span> <span class="content">Seated at ${escapeHtml(validSeat.label)} — Table rotated so your icon is at the bottom.</span>`;
             feed.appendChild(entry);
             feed.scrollTop = feed.scrollHeight;
+            if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
           }
           scheduleAutoSave();
           if (window.broadcastP2PPresence) window.broadcastP2PPresence();
@@ -3439,7 +4025,19 @@
             const isShared = sheet.dataset.sharedWithAll === 'true';
             const nextShared = !isShared;
             sheet.dataset.sharedWithAll = nextShared ? 'true' : 'false';
+            sheet.dataset.shownToAll = nextShared ? 'true' : 'false';
             if (!sheet.dataset.ownerId) sheet.dataset.ownerId = localOwnerId;
+
+            if (nextShared) {
+              if (!sheet.classList.contains('is-lifted') && btnMax) {
+                btnMax.click();
+              }
+            } else {
+              if (sheet.classList.contains('is-lifted') && btnMax) {
+                btnMax.click();
+              }
+            }
+
             syncSheetVisibility(sheet);
             updateBroadcastButton(sheet);
 
@@ -3450,7 +4048,10 @@
               feed.appendChild(entry);
               feed.scrollTop = feed.scrollHeight;
             }
-            scheduleAutoSave();
+            saveCampaignNow(false);
+            if (window.broadcastP2PShowToAll) {
+              window.broadcastP2PShowToAll(getSheetLookupKey(sheet), nextShared, sheetTitle, userName);
+            }
           });
         }
 
@@ -3804,24 +4405,85 @@
         // Close Button
         btnClose.addEventListener('click', (e) => {
           e.stopPropagation();
-          unmaximizeIfNeeded();
           if (sheet.id === 'person-sheet') {
+            unmaximizeIfNeeded();
             sheet.style.display = 'none';
-          } else {
-            if (sheet.classList.contains('character-sheet') && sheet.dataset.charId) {
-              characters = characters.filter(c => c.id !== sheet.dataset.charId);
-              updatePersonSheetControlled();
-            }
-            sheet.remove();
+            if (window.refreshMinimap) window.refreshMinimap();
+            scheduleAutoSave();
+            return;
           }
-          if (window.refreshMinimap) window.refreshMinimap();
-          scheduleAutoSave();
 
-          const feed = document.getElementById('feed');
-          const entry = document.createElement('div');
-          entry.className = 'feed-entry';
-          entry.innerHTML = `<span class="timestamp">[SYS]</span> <span class="content">Paper removed from table.</span>`;
-          feed.appendChild(entry);
+          document.querySelectorAll('.sheet-close-menu').forEach(m => m.remove());
+          const rect = btnClose.getBoundingClientRect();
+          const menu = document.createElement('div');
+          menu.className = 'sheet-close-menu';
+          menu.style.cssText = `position:fixed;left:${rect.left}px;top:${rect.bottom + 4}px;z-index:9999;background:var(--cream-paper);border:2px solid var(--mimeo-violet);box-shadow:4px 4px 0 var(--mimeo-violet);font-family:var(--font-mono);font-size:0.75rem;min-width:130px;color:var(--mimeo-violet);`;
+
+          const makeItem = (label, onClick) => {
+            const item = document.createElement('div');
+            item.textContent = label;
+            item.style.cssText = 'padding:5px 10px;cursor:pointer;position:relative;white-space:nowrap;';
+            item.addEventListener('mouseenter', () => { item.style.background = '#ede3cc'; });
+            item.addEventListener('mouseleave', () => { item.style.background = ''; });
+            item.addEventListener('click', (ev) => {
+              ev.stopPropagation();
+              menu.remove();
+              onClick();
+            });
+            return item;
+          };
+
+          // 1. Close (remove from table, keep in folder or All)
+          menu.appendChild(makeItem('Close', () => {
+            unmaximizeIfNeeded();
+            sheet.dataset.onTable = 'false';
+            if (!sheet.dataset.folderId) sheet.dataset.folderId = 'folder-all';
+            syncSheetVisibility(sheet);
+            renderFolderTabs();
+            if (window.refreshMinimap) window.refreshMinimap();
+            scheduleAutoSave();
+          }));
+
+          // 2. Folder (submenu of custom folders + New)
+          const folderItem = document.createElement('div');
+          folderItem.textContent = 'Folder ▸';
+          folderItem.style.cssText = 'padding:5px 10px;cursor:pointer;position:relative;white-space:nowrap;';
+          const sub = document.createElement('div');
+          sub.style.cssText = 'display:none;position:absolute;left:100%;top:-2px;background:var(--cream-paper);border:2px solid var(--mimeo-violet);box-shadow:4px 4px 0 var(--mimeo-violet);min-width:120px;';
+          userFolders.filter(f => !f.isCharacters && !f.isAll && !f.isBin).forEach(f => {
+            sub.appendChild(makeItem(f.name, () => {
+              unmaximizeIfNeeded();
+              moveSheetToFolder(sheet, f.id);
+            }));
+          });
+          sub.appendChild(makeItem('+ New', () => {
+            const name = prompt('New folder name:', `Folder ${userFolders.filter(f => !f.isCharacters && !f.isAll && !f.isBin).length + 1}`);
+            if (!name || !name.trim()) return;
+            const newFolder = { id: `folder-${Date.now()}`, name: name.trim().slice(0, 24) };
+            const binIdx = userFolders.findIndex(f => f.isBin);
+            if (binIdx >= 0) userFolders.splice(binIdx, 0, newFolder);
+            else userFolders.push(newFolder);
+            unmaximizeIfNeeded();
+            moveSheetToFolder(sheet, newFolder.id);
+          }));
+          folderItem.appendChild(sub);
+          folderItem.addEventListener('mouseenter', () => { folderItem.style.background = '#ede3cc'; sub.style.display = 'block'; });
+          folderItem.addEventListener('mouseleave', () => { folderItem.style.background = ''; sub.style.display = 'none'; });
+          menu.appendChild(folderItem);
+
+          // 3. Bin / Delete Permanently
+          menu.appendChild(makeItem(sheet.dataset.folderId === 'folder-bin' ? 'Delete Permanently' : 'Bin', () => {
+            trashOrDeleteSheet(sheet);
+          }));
+
+          document.body.appendChild(menu);
+          const dismiss = (ev) => {
+            if (!menu.contains(ev.target)) {
+              menu.remove();
+              document.removeEventListener('pointerdown', dismiss);
+            }
+          };
+          setTimeout(() => document.addEventListener('pointerdown', dismiss), 0);
         });
       }
 
@@ -3936,17 +4598,388 @@
 
       let systemTemplate = JSON.parse(JSON.stringify(SYSTEM_TEMPLATES.dcc));
 
-      const systemSelectEl = document.getElementById('system-select');
-      if (systemSelectEl) {
-        systemSelectEl.addEventListener('change', (e) => {
-          const tpl = SYSTEM_TEMPLATES[e.target.value] || SYSTEM_TEMPLATES.dcc;
-          systemTemplate = JSON.parse(JSON.stringify(tpl));
+      const ITEM_CATEGORIES = ['equipment', 'weapon', 'armor', 'ammo', 'potion', 'scroll', 'magic_item', 'treasure', 'misc', 'container'];
+      const WALLET_COINS = ['cp', 'sp', 'ep', 'gp', 'pp'];
+      let teamGoals = [];
+
+      function renderGoalsChecklist(container, goalsArr, placeholderText, onMutate) {
+        if (!container) return;
+        container.innerHTML = '';
+
+        const addRow = document.createElement('div');
+        addRow.className = 'goal-add-row';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'goal-add-input';
+        input.placeholder = placeholderText;
+        input.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const addBtn = document.createElement('button');
+        addBtn.type = 'button';
+        addBtn.className = 'inv-mini-btn';
+        addBtn.innerText = '+ Add';
+
+        const submitGoal = () => {
+          const text = input.value.trim();
+          if (!text) return;
+          goalsArr.push({ id: 'goal-' + Date.now() + '-' + Math.random().toString(36).slice(2, 5), text, done: false });
+          input.value = '';
+          onMutate();
+        };
+        addBtn.addEventListener('click', (e) => { e.stopPropagation(); submitGoal(); });
+        input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submitGoal(); } });
+
+        addRow.appendChild(input);
+        addRow.appendChild(addBtn);
+        container.appendChild(addRow);
+
+        goalsArr.forEach((g, idx) => {
+          const row = document.createElement('div');
+          row.className = `goal-row ${g.done ? 'is-done' : ''}`;
+
+          const chk = document.createElement('input');
+          chk.type = 'checkbox';
+          chk.checked = !!g.done;
+          chk.addEventListener('pointerdown', (e) => e.stopPropagation());
+          chk.addEventListener('change', () => {
+            g.done = chk.checked;
+            onMutate();
+          });
+
+          const span = document.createElement('span');
+          span.className = 'goal-text';
+          span.style.flex = '1';
+          span.innerText = g.text;
+
+          const delBtn = document.createElement('button');
+          delBtn.type = 'button';
+          delBtn.className = 'inv-mini-btn';
+          delBtn.innerText = '✕';
+          delBtn.title = 'Remove goal';
+          delBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goalsArr.splice(idx, 1);
+            onMutate();
+          });
+
+          row.appendChild(chk);
+          row.appendChild(span);
+          row.appendChild(delBtn);
+          container.appendChild(row);
         });
       }
 
-      // Characters list
-      let characters = [
-        {
+      function wireSidebarDrawer(toggleId, bodyId, chevronId, displayMode = 'block') {
+        const toggleEl = document.getElementById(toggleId);
+        const bodyEl = document.getElementById(bodyId);
+        const chevronEl = document.getElementById(chevronId);
+        if (toggleEl && bodyEl) {
+          toggleEl.addEventListener('click', () => {
+            const isHidden = bodyEl.style.display === 'none';
+            bodyEl.style.display = isHidden ? displayMode : 'none';
+            if (chevronEl) chevronEl.innerText = isHidden ? '▾' : '▸';
+          });
+        }
+        return bodyEl;
+      }
+
+      wireSidebarDrawer('settings-toggle', 'settings-body', 'settings-chevron', 'flex');
+      const teamGoalsBodyEl = wireSidebarDrawer('team-goals-toggle', 'team-goals-body', 'team-goals-chevron');
+      const turnOrderBodyEl = wireSidebarDrawer('turn-order-toggle', 'turn-order-body', 'turn-order-chevron');
+      const clocksBodyEl = wireSidebarDrawer('clocks-toggle', 'clocks-body', 'clocks-chevron');
+      const teamGoalsContainerEl = document.getElementById('team-goals-container');
+      const turnOrderContainerEl = document.getElementById('turn-order-container');
+      const clocksContainerEl = document.getElementById('clocks-container');
+
+      function renderTeamGoals() {
+        renderGoalsChecklist(teamGoalsContainerEl, teamGoals, 'Add team goal...', () => {
+          renderTeamGoals();
+          scheduleAutoSave();
+        });
+      }
+      renderTeamGoals();
+
+      let turnOrder = { round: 1, activeId: null, entries: [] };
+      let clocks = [];
+
+      function renderTurnOrder() {
+        if (!turnOrderContainerEl) return;
+        turnOrderContainerEl.innerHTML = '';
+
+        const bar = document.createElement('div');
+        bar.className = 'turn-controls-bar';
+        const roundLbl = document.createElement('span');
+        roundLbl.innerText = `Round ${turnOrder.round || 1}`;
+        const btnGroup = document.createElement('div');
+        btnGroup.style.display = 'flex';
+        btnGroup.style.gap = '0.2rem';
+
+        const nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'inv-mini-btn';
+        nextBtn.innerText = '▶ Next';
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!turnOrder.entries.length) return;
+          const idx = turnOrder.entries.findIndex(en => en.id === turnOrder.activeId);
+          if (idx === -1) {
+            turnOrder.activeId = turnOrder.entries[0].id;
+          } else if (idx + 1 >= turnOrder.entries.length) {
+            turnOrder.activeId = turnOrder.entries[0].id;
+            turnOrder.round = (turnOrder.round || 1) + 1;
+          } else {
+            turnOrder.activeId = turnOrder.entries[idx + 1].id;
+          }
+          renderTurnOrder();
+          scheduleAutoSave();
+        });
+
+        const sortBtn = document.createElement('button');
+        sortBtn.type = 'button';
+        sortBtn.className = 'inv-mini-btn';
+        sortBtn.innerText = 'Sort';
+        sortBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          turnOrder.entries.sort((a, b) => (Number(b.init) || 0) - (Number(a.init) || 0));
+          if (!turnOrder.activeId && turnOrder.entries.length) turnOrder.activeId = turnOrder.entries[0].id;
+          renderTurnOrder();
+          scheduleAutoSave();
+        });
+
+        const clearBtn = document.createElement('button');
+        clearBtn.type = 'button';
+        clearBtn.className = 'inv-mini-btn';
+        clearBtn.innerText = 'Clear';
+        clearBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          turnOrder = { round: 1, activeId: null, entries: [] };
+          renderTurnOrder();
+          scheduleAutoSave();
+        });
+
+        btnGroup.appendChild(nextBtn);
+        btnGroup.appendChild(sortBtn);
+        btnGroup.appendChild(clearBtn);
+        bar.appendChild(roundLbl);
+        bar.appendChild(btnGroup);
+        turnOrderContainerEl.appendChild(bar);
+
+        const addRow = document.createElement('div');
+        addRow.className = 'inv-add-row';
+        const nameInp = document.createElement('input');
+        nameInp.type = 'text';
+        nameInp.className = 'inv-add-input';
+        nameInp.placeholder = 'Combatant...';
+        nameInp.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const initInp = document.createElement('input');
+        initInp.type = 'number';
+        initInp.className = 'inv-qty-input';
+        initInp.value = '10';
+        initInp.title = 'Initiative';
+        initInp.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const addBtn = document.createElement('button');
+        addBtn.type = 'button';
+        addBtn.className = 'inv-mini-btn';
+        addBtn.innerText = '+ Add';
+
+        const addCombatant = () => {
+          const name = nameInp.value.trim();
+          if (!name) return;
+          const entry = {
+            id: 'turn-' + Date.now() + '-' + Math.random().toString(36).slice(2, 5),
+            name,
+            init: parseInt(initInp.value, 10) || 0,
+            hidden: false
+          };
+          turnOrder.entries.push(entry);
+          if (!turnOrder.activeId) turnOrder.activeId = entry.id;
+          nameInp.value = '';
+          renderTurnOrder();
+          scheduleAutoSave();
+        };
+        addBtn.addEventListener('click', (e) => { e.stopPropagation(); addCombatant(); });
+        nameInp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); addCombatant(); } });
+
+        addRow.appendChild(nameInp);
+        addRow.appendChild(initInp);
+        addRow.appendChild(addBtn);
+        turnOrderContainerEl.appendChild(addRow);
+
+        turnOrder.entries.forEach((en, idx) => {
+          const isActive = en.id === turnOrder.activeId;
+          const row = document.createElement('div');
+          row.className = `inv-item-row turn-row ${isActive ? 'is-active-turn' : ''}`;
+          if (en.hidden) row.style.opacity = '0.55';
+
+          const marker = document.createElement('span');
+          marker.innerText = isActive ? '►' : '·';
+          marker.style.cursor = 'pointer';
+          marker.title = 'Set active turn';
+          marker.addEventListener('click', (e) => {
+            e.stopPropagation();
+            turnOrder.activeId = en.id;
+            renderTurnOrder();
+            scheduleAutoSave();
+          });
+
+          const nameEl = document.createElement('span');
+          nameEl.style.flex = '1';
+          nameEl.innerText = en.name;
+
+          const initBadge = document.createElement('span');
+          initBadge.className = 'inv-cat-badge';
+          initBadge.innerText = String(en.init);
+
+          const hideBtn = document.createElement('button');
+          hideBtn.type = 'button';
+          hideBtn.className = 'inv-mini-btn';
+          hideBtn.innerText = en.hidden ? '⊘' : '👁';
+          hideBtn.title = en.hidden ? 'Hidden from players' : 'Visible to players';
+          hideBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            en.hidden = !en.hidden;
+            renderTurnOrder();
+            scheduleAutoSave();
+          });
+
+          const delBtn = document.createElement('button');
+          delBtn.type = 'button';
+          delBtn.className = 'inv-mini-btn';
+          delBtn.innerText = '✕';
+          delBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            turnOrder.entries.splice(idx, 1);
+            if (turnOrder.activeId === en.id) {
+              turnOrder.activeId = turnOrder.entries[0] ? turnOrder.entries[0].id : null;
+            }
+            renderTurnOrder();
+            scheduleAutoSave();
+          });
+
+          row.appendChild(marker);
+          row.appendChild(nameEl);
+          row.appendChild(initBadge);
+          row.appendChild(hideBtn);
+          row.appendChild(delBtn);
+          turnOrderContainerEl.appendChild(row);
+        });
+      }
+      renderTurnOrder();
+
+      function renderClocks() {
+        if (!clocksContainerEl) return;
+        clocksContainerEl.innerHTML = '';
+
+        const addRow = document.createElement('div');
+        addRow.className = 'inv-add-row';
+        const titleInp = document.createElement('input');
+        titleInp.type = 'text';
+        titleInp.className = 'inv-add-input';
+        titleInp.placeholder = 'Clock (Torch, Ritual...)';
+        titleInp.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const segInp = document.createElement('input');
+        segInp.type = 'number';
+        segInp.min = '2';
+        segInp.max = '12';
+        segInp.value = '6';
+        segInp.className = 'inv-qty-input';
+        segInp.title = 'Segments';
+        segInp.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const addBtn = document.createElement('button');
+        addBtn.type = 'button';
+        addBtn.className = 'inv-mini-btn';
+        addBtn.innerText = '+ Add';
+
+        const addClock = () => {
+          const title = titleInp.value.trim();
+          if (!title) return;
+          const max = Math.max(2, Math.min(12, parseInt(segInp.value, 10) || 6));
+          clocks.push({
+            id: 'clk-' + Date.now() + '-' + Math.random().toString(36).slice(2, 5),
+            title,
+            current: 0,
+            max,
+            hidden: false
+          });
+          titleInp.value = '';
+          renderClocks();
+          scheduleAutoSave();
+        };
+        addBtn.addEventListener('click', (e) => { e.stopPropagation(); addClock(); });
+        titleInp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); addClock(); } });
+
+        addRow.appendChild(titleInp);
+        addRow.appendChild(segInp);
+        addRow.appendChild(addBtn);
+        clocksContainerEl.appendChild(addRow);
+
+        clocks.forEach((clk, idx) => {
+          const row = document.createElement('div');
+          row.className = 'inv-item-row';
+          row.style.flexWrap = 'wrap';
+          if (clk.hidden) row.style.opacity = '0.55';
+
+          const titleEl = document.createElement('span');
+          titleEl.style.flex = '1';
+          titleEl.style.minWidth = '80px';
+          titleEl.innerText = `${clk.title} (${clk.current}/${clk.max})`;
+
+          const pips = document.createElement('div');
+          pips.className = 'clock-pips';
+          for (let i = 1; i <= clk.max; i++) {
+            const pip = document.createElement('button');
+            pip.type = 'button';
+            pip.className = `clock-pip ${i <= clk.current ? 'is-filled' : ''}`;
+            pip.title = `${i}/${clk.max}`;
+            pip.addEventListener('click', (e) => {
+              e.stopPropagation();
+              clk.current = (clk.current === i) ? i - 1 : i;
+              renderClocks();
+              scheduleAutoSave();
+            });
+            pips.appendChild(pip);
+          }
+
+          const hideBtn = document.createElement('button');
+          hideBtn.type = 'button';
+          hideBtn.className = 'inv-mini-btn';
+          hideBtn.innerText = clk.hidden ? '⊘' : '👁';
+          hideBtn.title = clk.hidden ? 'Hidden from players' : 'Visible to players';
+          hideBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clk.hidden = !clk.hidden;
+            renderClocks();
+            scheduleAutoSave();
+          });
+
+          const delBtn = document.createElement('button');
+          delBtn.type = 'button';
+          delBtn.className = 'inv-mini-btn';
+          delBtn.innerText = '✕';
+          delBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clocks.splice(idx, 1);
+            renderClocks();
+            scheduleAutoSave();
+          });
+
+          row.appendChild(titleEl);
+          row.appendChild(pips);
+          row.appendChild(hideBtn);
+          row.appendChild(delBtn);
+          clocksContainerEl.appendChild(row);
+        });
+      }
+      renderClocks();
+
+      // Characters list (start empty; add via toolbar or Person Sheet)
+      let characters = [];
+      /* default char-1 removed */
+      const _unusedDefaultChar = [{
           id: 'char-1',
           elementId: 'char-sheet',
           assignedTo: 'user-main',
@@ -3983,15 +5016,125 @@
       let selectedFieldId = null;
       let selectedSecId = null;
 
+      function getCharacterOwnerLabel(char) {
+        if (!char || !char.assignedTo) return '';
+        if (char.assignedTo === 'gm') return char.assignedName || 'GM';
+        if (char.assignedTo === 'user-main') return char.assignedName || getLocalDisplayName();
+        return char.assignedName || char.assignedTo;
+      }
+
+      function isCharacterAssignedToLocal(char) {
+        if (!char) return false;
+        const sheet = char.elementId ? document.getElementById(char.elementId) : null;
+        const ownerId = sheet ? (sheet.dataset.ownerId || '') : '';
+        return isAssigneeMatchLocal(char.assignedTo || '', char.assignedName || '', ownerId);
+      }
+
+      function getAssignableActors() {
+        const list = [];
+        const seen = new Set();
+        const gmName = currentUserRole === 'gm' ? getLocalDisplayName() : 'GM';
+        list.push({ id: 'gm', name: gmName, label: `GM (${gmName})` });
+        seen.add('gm');
+
+        if (currentUserRole !== 'gm') {
+          const selfName = getLocalDisplayName();
+          list.push({ id: localOwnerId, name: selfName, label: `${selfName} (You)` });
+          seen.add(localOwnerId);
+        }
+
+        const remotePeers = window.getPlayerPeers ? window.getPlayerPeers() : [];
+        remotePeers.forEach(p => {
+          if (!p || !p.id || p.role === 'gm' || seen.has(p.id)) return;
+          const pName = (p.handle && p.handle.trim()) ? p.handle.trim() : 'Player';
+          list.push({ id: p.id, name: pName, label: `Player: ${pName}` });
+          seen.add(p.id);
+        });
+
+        userFolders.forEach(f => {
+          if (!f || !f.playerPeerId || seen.has(f.playerPeerId)) return;
+          const fName = (f.name && f.name.trim()) ? f.name.trim() : 'Player';
+          list.push({ id: f.playerPeerId, name: fName, label: `Player: ${fName}` });
+          seen.add(f.playerPeerId);
+        });
+        return list;
+      }
+
+      function buildCharOwnerSelect(selectEl, char) {
+        if (!selectEl || !char) return;
+        const actors = getAssignableActors();
+        let currentVal = char.assignedTo || '';
+        if (currentVal === 'user-main') {
+          currentVal = currentUserRole === 'gm' ? 'gm' : localOwnerId;
+        }
+        selectEl.innerHTML = '';
+
+        const noneOpt = document.createElement('option');
+        noneOpt.value = '';
+        noneOpt.textContent = 'Owner: Unassigned';
+        noneOpt.dataset.ownerName = '';
+        selectEl.appendChild(noneOpt);
+
+        let matched = !currentVal;
+        actors.forEach(a => {
+          const opt = document.createElement('option');
+          opt.value = a.id;
+          opt.textContent = `Owner: ${a.label}`;
+          opt.dataset.ownerName = a.name;
+          if (currentVal === a.id || (currentUserRole !== 'gm' && a.id === localOwnerId && char.assignedName && char.assignedName.trim().toLowerCase() === a.name.trim().toLowerCase())) {
+            opt.selected = true;
+            matched = true;
+          }
+          selectEl.appendChild(opt);
+        });
+
+        if (!matched && currentVal) {
+          const fallbackName = char.assignedName || currentVal;
+          const opt = document.createElement('option');
+          opt.value = currentVal;
+          opt.textContent = `Owner: ${fallbackName}`;
+          opt.dataset.ownerName = fallbackName;
+          opt.selected = true;
+          selectEl.appendChild(opt);
+        }
+
+        selectEl.classList.toggle('is-active', !!currentVal);
+        selectEl.disabled = (currentUserRole !== 'gm' && !!char.assignedTo && !isCharacterAssignedToLocal(char));
+      }
+
+      function refreshCharacterAssignments() {
+        characters.forEach(c => {
+          const sheet = document.getElementById(c.elementId);
+          if (!sheet) return;
+          sheet.dataset.assignedTo = c.assignedTo || '';
+          sheet.dataset.assignedName = c.assignedName || '';
+          const titlePlate = sheet.querySelector('.bar-title-plate');
+          if (titlePlate) {
+            const charName = (c.values && c.values['fld-name']) ? c.values['fld-name'] : 'Unnamed';
+            const ownerLabel = getCharacterOwnerLabel(c);
+            titlePlate.innerText = `${charName} — Character Sheet${ownerLabel ? ` (${ownerLabel})` : ''}${c.isArchived ? ' [ARCHIVED]' : ''}`;
+          }
+          const sel = sheet.querySelector('.char-owner-select');
+          if (sel) buildCharOwnerSelect(sel, c);
+          syncSheetVisibility(sheet);
+        });
+        updatePersonSheetControlled();
+      }
+      window.refreshCharacterAssignments = refreshCharacterAssignments;
+      window.isCharacterAssignedToLocal = isCharacterAssignedToLocal;
+
       // Update Controlled Characters list on Person Sheet
       function updatePersonSheetControlled() {
         const listEl = document.getElementById('person-controlled-list');
         if (!listEl) return;
         listEl.innerHTML = '';
 
-        const controlled = characters.filter(c => c.assignedTo === 'user-main' && !c.isArchived);
+        const controlled = characters.filter(c => {
+          const el = document.getElementById(c.elementId);
+          return !c.isArchived && (!el || el.dataset.folderId !== 'folder-bin') && isCharacterAssignedToLocal(c);
+        });
         if (controlled.length === 0) {
-          listEl.innerHTML = '<span style="font-size: 0.7rem; color: var(--mimeo-violet-dim); font-style: italic;">No characters currently controlled. Click "Assign to Player" on a character sheet.</span>';
+          listEl.innerHTML = '<span style="font-size: 0.7rem; color: var(--mimeo-violet-dim); font-style: italic;">No characters assigned to you yet. Choose yourself in a character sheet\'s Owner menu.</span>';
           return;
         }
 
@@ -4036,15 +5179,42 @@
         const sheet = document.getElementById(char.elementId);
         if (!sheet) return;
 
+        sheet.dataset.assignedTo = char.assignedTo || '';
+        sheet.dataset.assignedName = char.assignedName || '';
+
         const titlePlate = sheet.querySelector('.bar-title-plate');
         if (titlePlate) {
           const charName = char.values['fld-name'] || 'Unnamed';
-          titlePlate.innerText = `${charName} — Character Sheet${char.isArchived ? ' [ARCHIVED]' : ''}`;
+          const ownerLabel = getCharacterOwnerLabel(char);
+          titlePlate.innerText = `${charName} — Character Sheet${ownerLabel ? ` (${ownerLabel})` : ''}${char.isArchived ? ' [ARCHIVED]' : ''}`;
         }
 
         const body = sheet.querySelector('.paper-body');
         if (!body) return;
         body.innerHTML = '';
+
+        // Top Owner Bar (immediately visible without scrolling)
+        const ownerBar = document.createElement('div');
+        ownerBar.className = 'char-owner-bar';
+        ownerBar.style.cssText = 'display:flex;align-items:center;gap:0.4rem;margin-bottom:0.45rem;padding-bottom:0.35rem;border-bottom:1px dashed var(--mimeo-violet-faint);';
+
+        const ownerSelect = document.createElement('select');
+        ownerSelect.className = 'footer-action-btn char-owner-select';
+        ownerSelect.title = 'Assign character to GM, a player, or leave unassigned';
+        ownerSelect.style.cssText = 'flex:1;max-width:none;text-align:left;padding:0 0.35rem;';
+        buildCharOwnerSelect(ownerSelect, char);
+        ownerSelect.addEventListener('pointerdown', (e) => e.stopPropagation());
+        ownerSelect.addEventListener('change', (e) => {
+          e.stopPropagation();
+          const val = ownerSelect.value || null;
+          const selectedOpt = ownerSelect.options[ownerSelect.selectedIndex];
+          char.assignedTo = val;
+          char.assignedName = val ? (selectedOpt?.dataset?.ownerName || '') : '';
+          refreshCharacterAssignments();
+          saveAndSyncTemplate();
+        });
+        ownerBar.appendChild(ownerSelect);
+        body.appendChild(ownerBar);
 
         systemTemplate.sections.forEach(sec => {
           if (char.hiddenSections[sec.id] && activeEditingSecId !== sec.id) return;
@@ -4083,9 +5253,16 @@
           editBtn.innerText = isEditing ? '✓ Done' : '✎ Edit';
           editBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            activeEditingSecId = isEditing ? null : sec.id;
+            const enteringEdit = !isEditing;
+            activeEditingSecId = enteringEdit ? sec.id : null;
             selectedFieldId = null;
             selectedSecId = null;
+            if (enteringEdit && !sheetEl.classList.contains('is-lifted') && window.liftItemToInspection) {
+              window.liftItemToInspection(sheetEl);
+            } else if (!enteringEdit && sheetEl.classList.contains('is-lifted')) {
+              const maxBtn = sheetEl.querySelector('.btn-max');
+              if (maxBtn) maxBtn.click();
+            }
             saveAndSyncTemplate();
           });
           tools.appendChild(editBtn);
@@ -4174,7 +5351,8 @@
                 char.values[field.id] = e.target.value;
                 if (field.id === 'fld-name') {
                   const name = e.target.value.trim() || 'Unnamed';
-                  titlePlate.innerText = `${name} — Character Sheet${char.isArchived ? ' [ARCHIVED]' : ''}`;
+                  const ownerLabel = getCharacterOwnerLabel(char);
+                  titlePlate.innerText = `${name} — Character Sheet${ownerLabel ? ` (${ownerLabel})` : ''}${char.isArchived ? ' [ARCHIVED]' : ''}`;
                   updatePersonSheetControlled();
                 }
                 scheduleAutoSave();
@@ -4344,20 +5522,185 @@
         });
         body.appendChild(addSecBtn);
 
-        // Footer Actions: Assign to Player, Archive, Delete
+        // Inventory & Wealth Section (per-character)
+        if (!char.wallet || typeof char.wallet !== 'object') {
+          char.wallet = { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0 };
+        }
+        if (!Array.isArray(char.inventory)) char.inventory = [];
+        if (!Array.isArray(char.goals)) char.goals = [];
+
+        const invSec = document.createElement('div');
+        invSec.className = 'sheet-section';
+        invSec.style.columnSpan = 'all';
+        invSec.innerHTML = `<div class="section-header"><span class="section-header-title">Inventory &amp; Wealth</span></div>`;
+
+        const walletStrip = document.createElement('div');
+        walletStrip.className = 'wallet-strip';
+        WALLET_COINS.forEach(coin => {
+          const box = document.createElement('label');
+          box.className = 'wallet-coin-box';
+          box.innerText = coin.toUpperCase();
+          const inp = document.createElement('input');
+          inp.type = 'number';
+          inp.min = '0';
+          inp.className = 'wallet-coin-input';
+          inp.value = Number(char.wallet[coin]) || 0;
+          inp.addEventListener('pointerdown', (e) => e.stopPropagation());
+          inp.addEventListener('input', (e) => {
+            char.wallet[coin] = Math.max(0, parseInt(e.target.value, 10) || 0);
+            scheduleAutoSave();
+          });
+          box.appendChild(inp);
+          walletStrip.appendChild(box);
+        });
+        invSec.appendChild(walletStrip);
+
+        const invAddRow = document.createElement('div');
+        invAddRow.className = 'inv-add-row';
+        const invNameInp = document.createElement('input');
+        invNameInp.type = 'text';
+        invNameInp.className = 'inv-add-input';
+        invNameInp.placeholder = 'Add item (rope, torch, sword...)';
+        invNameInp.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const invCatSel = document.createElement('select');
+        invCatSel.className = 'inv-cat-select';
+        ITEM_CATEGORIES.forEach(cat => {
+          const opt = document.createElement('option');
+          opt.value = cat;
+          opt.textContent = cat.replace('_', ' ');
+          invCatSel.appendChild(opt);
+        });
+        invCatSel.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const invQtyInp = document.createElement('input');
+        invQtyInp.type = 'number';
+        invQtyInp.min = '1';
+        invQtyInp.value = '1';
+        invQtyInp.className = 'inv-qty-input';
+        invQtyInp.addEventListener('pointerdown', (e) => e.stopPropagation());
+
+        const invAddBtn = document.createElement('button');
+        invAddBtn.type = 'button';
+        invAddBtn.className = 'inv-mini-btn';
+        invAddBtn.innerText = '+ Add';
+
+        const addInventoryItem = () => {
+          const name = invNameInp.value.trim();
+          if (!name) return;
+          char.inventory.push({
+            id: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 5),
+            name,
+            category: invCatSel.value || 'equipment',
+            qty: Math.max(1, parseInt(invQtyInp.value, 10) || 1),
+            equipped: false
+          });
+          renderCharacterSheet(char);
+          scheduleAutoSave();
+        };
+        invAddBtn.addEventListener('click', (e) => { e.stopPropagation(); addInventoryItem(); });
+        invNameInp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); addInventoryItem(); } });
+
+        invAddRow.appendChild(invNameInp);
+        invAddRow.appendChild(invCatSel);
+        invAddRow.appendChild(invQtyInp);
+        invAddRow.appendChild(invAddBtn);
+        invSec.appendChild(invAddRow);
+
+        char.inventory.forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'inv-item-row';
+
+          const eqChk = document.createElement('input');
+          eqChk.type = 'checkbox';
+          eqChk.title = 'Equipped';
+          eqChk.checked = !!item.equipped;
+          eqChk.addEventListener('pointerdown', (e) => e.stopPropagation());
+          eqChk.addEventListener('change', () => {
+            item.equipped = eqChk.checked;
+            scheduleAutoSave();
+          });
+
+          const nameSpan = document.createElement('span');
+          nameSpan.style.flex = '1';
+          nameSpan.innerText = item.name;
+          if (item.equipped) nameSpan.style.fontWeight = '700';
+
+          const catBadge = document.createElement('span');
+          catBadge.className = 'inv-cat-badge';
+          catBadge.innerText = (item.category || 'misc').replace('_', ' ');
+
+          const decBtn = document.createElement('button');
+          decBtn.type = 'button';
+          decBtn.className = 'inv-mini-btn';
+          decBtn.innerText = '-';
+          decBtn.title = 'Consume / Decrease qty';
+          decBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if ((item.qty || 1) > 1) {
+              item.qty -= 1;
+            } else {
+              char.inventory.splice(idx, 1);
+            }
+            renderCharacterSheet(char);
+            scheduleAutoSave();
+          });
+
+          const qtyLabel = document.createElement('span');
+          qtyLabel.style.minWidth = '18px';
+          qtyLabel.style.textAlign = 'center';
+          qtyLabel.innerText = String(item.qty || 1);
+
+          const incBtn = document.createElement('button');
+          incBtn.type = 'button';
+          incBtn.className = 'inv-mini-btn';
+          incBtn.innerText = '+';
+          incBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            item.qty = (item.qty || 1) + 1;
+            renderCharacterSheet(char);
+            scheduleAutoSave();
+          });
+
+          const dropBtn = document.createElement('button');
+          dropBtn.type = 'button';
+          dropBtn.className = 'inv-mini-btn';
+          dropBtn.innerText = '✕';
+          dropBtn.title = 'Drop item';
+          dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            char.inventory.splice(idx, 1);
+            renderCharacterSheet(char);
+            scheduleAutoSave();
+          });
+
+          row.appendChild(eqChk);
+          row.appendChild(nameSpan);
+          row.appendChild(catBadge);
+          row.appendChild(decBtn);
+          row.appendChild(qtyLabel);
+          row.appendChild(incBtn);
+          row.appendChild(dropBtn);
+          invSec.appendChild(row);
+        });
+        body.appendChild(invSec);
+
+        // Character Goals Section
+        const goalsSec = document.createElement('div');
+        goalsSec.className = 'sheet-section';
+        goalsSec.style.columnSpan = 'all';
+        goalsSec.innerHTML = `<div class="section-header"><span class="section-header-title">Character Goals</span></div>`;
+        const goalsListWrap = document.createElement('div');
+        renderGoalsChecklist(goalsListWrap, char.goals, 'Add personal goal...', () => {
+          renderCharacterSheet(char);
+          scheduleAutoSave();
+        });
+        goalsSec.appendChild(goalsListWrap);
+        body.appendChild(goalsSec);
+
+        // Footer Actions: Archive, Delete
         const footer = document.createElement('div');
         footer.className = 'sheet-footer-actions';
-
-        const assignBtn = document.createElement('button');
-        assignBtn.type = 'button';
-        assignBtn.className = `footer-action-btn ${char.assignedTo === 'user-main' ? 'is-active' : ''}`;
-        assignBtn.innerText = char.assignedTo === 'user-main' ? '✓ Assigned: You' : 'Assign to Player';
-        assignBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          char.assignedTo = char.assignedTo === 'user-main' ? null : 'user-main';
-          saveAndSyncTemplate();
-        });
-        footer.appendChild(assignBtn);
 
         const archiveBtn = document.createElement('button');
         archiveBtn.type = 'button';
@@ -4387,6 +5730,7 @@
         footer.appendChild(delBtn);
 
         body.appendChild(footer);
+        syncSheetVisibility(sheet);
       }
 
       // Create or Hydrate Character Function
@@ -4400,13 +5744,17 @@
         const newChar = {
           id: charId,
           elementId: elementId,
-          assignedTo: charData ? (charData.assignedTo || null) : (assignedToUser ? 'user-main' : null),
+          assignedTo: charData ? (charData.assignedTo || null) : (assignedToUser ? (currentUserRole === 'gm' ? 'gm' : localOwnerId) : null),
+          assignedName: charData ? (charData.assignedName || '') : (assignedToUser ? getLocalDisplayName() : ''),
           isArchived: charData ? !!charData.isArchived : false,
           hiddenSections: charData && charData.hiddenSections ? { ...charData.hiddenSections } : {},
           hiddenFields: charData && charData.hiddenFields ? { ...charData.hiddenFields } : {},
           values: charData && charData.values ? { ...charData.values } : {
             'fld-name': randomName
-          }
+          },
+          wallet: charData && charData.wallet ? { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0, ...charData.wallet } : { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0 },
+          inventory: charData && Array.isArray(charData.inventory) ? JSON.parse(JSON.stringify(charData.inventory)) : [],
+          goals: charData && Array.isArray(charData.goals) ? JSON.parse(JSON.stringify(charData.goals)) : []
         };
 
         let sheet = document.getElementById(elementId);
@@ -4460,6 +5808,9 @@
           wireSheet(sheet);
         }
 
+        sheet.dataset.assignedTo = newChar.assignedTo || '';
+        sheet.dataset.assignedName = newChar.assignedName || '';
+
         if (charData && sheet._applyWindowMeta) {
           sheet._applyWindowMeta(charData);
         }
@@ -4477,6 +5828,7 @@
             entry.innerHTML = `<span class="timestamp">[SYS]</span> <span class="content">New character created: "${escapeHtml(randomName)}".</span>`;
             feed.appendChild(entry);
             feed.scrollTop = feed.scrollHeight;
+            if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
           }
           scheduleAutoSave();
         }
@@ -4532,11 +5884,61 @@
         }
       });
 
+      // Drag top edge of folder drawer to resize height
+      (function initFolderDrawerResize() {
+        const drawer = document.getElementById('folder-drawer');
+        const tabsBar = document.getElementById('folder-tabs-bar');
+        if (!drawer) return;
+        let resizing = false;
+        drawer.addEventListener('pointermove', (e) => {
+          if (resizing) return;
+          const rect = drawer.getBoundingClientRect();
+          drawer.style.cursor = (e.clientY - rect.top <= 8) ? 'ns-resize' : '';
+        });
+        drawer.addEventListener('pointerdown', (e) => {
+          const rect = drawer.getBoundingClientRect();
+          if (e.clientY - rect.top > 8) return;
+          resizing = true;
+          drawer.style.transition = 'none';
+          if (tabsBar) tabsBar.style.transition = 'none';
+          drawer.setPointerCapture(e.pointerId);
+          e.stopPropagation();
+        });
+        drawer.addEventListener('pointermove', (e) => {
+          if (!resizing) return;
+          const newHeight = Math.max(140, Math.min(window.innerHeight * 0.85, window.innerHeight - e.clientY));
+          document.documentElement.style.setProperty('--folder-drawer-height', `${newHeight}px`);
+        });
+        const stopResize = () => {
+          if (!resizing) return;
+          resizing = false;
+          drawer.style.transition = '';
+          if (tabsBar) tabsBar.style.transition = '';
+        };
+        drawer.addEventListener('pointerup', stopResize);
+        drawer.addEventListener('pointercancel', stopResize);
+      })();
+
+      // Map Edit button
+      document.addEventListener('click', (e) => {
+        const editBtn = e.target.closest('.btn-map-edit');
+        if (!editBtn) return;
+        const sheet = editBtn.closest('.tabloid-map-sheet');
+        if (sheet && window.liftItemToInspection) {
+          e.stopPropagation();
+          window.liftItemToInspection(sheet);
+        }
+      });
+
       // Initialize default sheet
       const defaultSheet = document.getElementById('char-sheet');
       if (defaultSheet) {
-        wireSheet(defaultSheet);
-        renderCharacterSheet(characters[0]);
+        if (characters.length > 0) {
+          wireSheet(defaultSheet);
+          renderCharacterSheet(characters[0]);
+        } else {
+          defaultSheet.remove();
+        }
       }
 
       // Initialize Person Sheet & User Avatar Circle
@@ -4628,6 +6030,7 @@
         personHandleInput.addEventListener('input', (e) => {
           const val = e.target.value.trim() || 'Player';
           personTitlePlate.innerText = `${val} — Person Sheet`;
+          if (window.refreshCharacterAssignments) window.refreshCharacterAssignments();
           scheduleAutoSave();
         });
       }
@@ -4711,6 +6114,7 @@
             <div class="bar-title-plate">${escapeHtml(noteTitle)}</div>
 
             <div class="bar-btn-group">
+              <button type="button" class="bar-btn btn-map-edit" title="Edit Map" aria-label="Edit map">✎</button>
               <button type="button" class="bar-btn btn-shade" title="Shade / Unshade" aria-label="Shade sheet">▲</button>
               <button type="button" class="bar-btn btn-min" title="Minimize" aria-label="Minimize sheet">—</button>
               <button type="button" class="bar-btn btn-max" title="Maximize" aria-label="Maximize sheet">□</button>
@@ -4746,11 +6150,11 @@
 
         if (window.refreshMinimap) window.refreshMinimap();
 
-        if (!noteData) {
+        if (!noteData || noteData._isNewRef) {
           const feed = document.getElementById('feed');
           const entry = document.createElement('div');
           entry.className = 'feed-entry';
-          entry.innerHTML = `<span class="timestamp">[SYS]</span> <span class="content">New blank paper sheet placed on table.</span>`;
+          entry.innerHTML = `<span class="timestamp">[SYS]</span> <span class="content">${noteData && noteData._isNewRef ? `New reference card "${escapeHtml(noteTitle)}" placed on table.` : 'New blank paper sheet placed on table.'}</span>`;
           feed.appendChild(entry);
           scheduleAutoSave();
         }
@@ -4761,6 +6165,32 @@
       btnCreatePaper.addEventListener('click', () => {
         spawnNoteSheet(null);
       });
+
+      const refPopoverEl = document.getElementById('ref-popover');
+      const btnRefNpc = document.getElementById('btn-ref-npc');
+      const btnRefLoc = document.getElementById('btn-ref-loc');
+      const spawnRefCard = (title, content) => {
+        spawnNoteSheet({ _isNewRef: true, title, content });
+        if (refPopoverEl && refPopoverEl.hidePopover) {
+          try { refPopoverEl.hidePopover(); } catch (_) {}
+        }
+      };
+      if (btnRefNpc) {
+        btnRefNpc.addEventListener('click', () => {
+          spawnRefCard(
+            `NPC — ${getRandomOldTimeyName()}`,
+            'Role / Faction:\nAC: 12   HP: 8   Move: 30\'\nAttack: +1 (1d6)\nSpecial / Instinct:\nTreasure / Clue:\nNotes:'
+          );
+        });
+      }
+      if (btnRefLoc) {
+        btnRefLoc.addEventListener('click', () => {
+          spawnRefCard(
+            `Location #${paperCount + 1}`,
+            'Atmosphere (Sights / Sounds / Smell):\nExits:\nHazards / Traps:\nInhabitants:\nSecrets / Treasure:'
+          );
+        });
+      }
 
       // Map Component Controller: Vector Tools, Grids, Transforms & Tokens
       function wireMapSheet(sheet, initialMapData = null) {
@@ -4782,6 +6212,9 @@
         const shapesGroup = sheet.querySelector('.map-shapes-group');
         const tempGroup = sheet.querySelector('.map-temp-group');
         const marqueeRect = sheet.querySelector('.map-marquee');
+        const fogMaskGroup = sheet.querySelector(`#fog-mask-${mapId}`);
+        const fogAllBtn = sheet.querySelector('[data-action="fog-all"]');
+        const fogClearBtn = sheet.querySelector('[data-action="fog-clear"]');
         const sqPattern = sheet.querySelector(`#grid-sq-${mapId}`);
 
         let currentTool = 'select';
@@ -4822,6 +6255,7 @@
           let pointerStart = { x: 0, y: 0 };
 
           token.addEventListener('pointerdown', (e) => {
+            if (!sheet.classList.contains('is-lifted')) return;
             e.stopPropagation();
             isDraggingToken = true;
             token.setPointerCapture(e.pointerId);
@@ -4857,19 +6291,31 @@
           return token;
         }
 
-        // Hydrate initial map data if provided
-        if (initialMapData) {
-          isPortrait = !!initialMapData.isPortrait;
+        function applyMapStateData(mapData, preserveActiveDrag = false) {
+          if (!mapData || typeof mapData !== 'object') return;
+          isPortrait = !!mapData.isPortrait;
           sheet.classList.toggle('is-portrait', isPortrait);
           orientBtn.innerText = isPortrait ? 'Portrait' : 'Landscape';
 
-          if (typeof initialMapData.gridModeIdx === 'number') {
-            gridModeIdx = initialMapData.gridModeIdx % gridModes.length;
-            applyGridModeUI();
+          if (typeof mapData.title === 'string') {
+            const titlePlate = sheet.querySelector('.bar-title-plate');
+            if (titlePlate) titlePlate.innerText = mapData.title;
+            sheet.setAttribute('aria-label', mapData.title);
           }
 
-          if (typeof initialMapData.gridScale === 'number') {
-            gridScale = initialMapData.gridScale;
+          if (typeof mapData.gridModeIdx === 'number') {
+            gridModeIdx = mapData.gridModeIdx % gridModes.length;
+            applyGridModeUI();
+          } else if (typeof mapData.gridMode === 'string') {
+            const gmMap = { square: 0, grid: 0, hex: 1, blank: 2 };
+            if (mapData.gridMode in gmMap) {
+              gridModeIdx = gmMap[mapData.gridMode];
+              applyGridModeUI();
+            }
+          }
+
+          if (typeof mapData.gridScale === 'number') {
+            gridScale = mapData.gridScale;
             gridScaleRange.value = String(gridScale);
             scaleVal.innerText = `${gridScale}px`;
             sqPattern.setAttribute('width', gridScale);
@@ -4877,23 +6323,67 @@
             sqPattern.querySelector('path').setAttribute('d', `M ${gridScale} 0 L 0 0 0 ${gridScale}`);
           }
 
-          if (typeof initialMapData.isSnapOn === 'boolean') {
-            isSnapOn = initialMapData.isSnapOn;
+          if (typeof mapData.isSnapOn === 'boolean') {
+            isSnapOn = mapData.isSnapOn;
             snapBtn.classList.toggle('is-active', isSnapOn);
             snapBtn.innerText = isSnapOn ? 'Snap: ON' : 'Snap: OFF';
           }
 
-          if (typeof initialMapData.shapesHtml === 'string') {
-            shapesGroup.innerHTML = initialMapData.shapesHtml;
+          if (typeof mapData.shapesHtml === 'string') {
+            shapesGroup.innerHTML = mapData.shapesHtml;
             shapesGroup.querySelectorAll('.is-selected-shape').forEach(el => el.classList.remove('is-selected-shape'));
-          }
-
-          if (Array.isArray(initialMapData.tokens)) {
-            initialMapData.tokens.forEach(t => {
-              createMapAvatarToken(typeof t.left === 'number' ? t.left : 60, typeof t.top === 'number' ? t.top : 60);
+          } else if (Array.isArray(mapData.shapes)) {
+            shapesGroup.innerHTML = '';
+            mapData.shapes.forEach(s => {
+              if (!s || !s.type) return;
+              if (s.type === 'rect') {
+                const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                r.setAttribute('class', 'map-shape');
+                r.setAttribute('x', s.x || 0);
+                r.setAttribute('y', s.y || 0);
+                r.setAttribute('width', s.w || 0);
+                r.setAttribute('height', s.h || 0);
+                r.setAttribute('stroke', 'var(--map-grid-blue)');
+                r.setAttribute('stroke-width', '2');
+                r.setAttribute('fill', s.fill || 'none');
+                shapesGroup.appendChild(r);
+              } else if (s.type === 'circle') {
+                const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                c.setAttribute('class', 'map-shape');
+                c.setAttribute('cx', s.cx || 0);
+                c.setAttribute('cy', s.cy || 0);
+                c.setAttribute('r', s.r || 10);
+                c.setAttribute('stroke', 'var(--map-grid-blue)');
+                c.setAttribute('stroke-width', '2');
+                c.setAttribute('fill', s.fill || 'none');
+                shapesGroup.appendChild(c);
+              }
             });
           }
+
+          if (fogMaskGroup && typeof mapData.fogHtml === 'string') {
+            fogMaskGroup.innerHTML = mapData.fogHtml;
+          }
+
+          if (Array.isArray(mapData.tokens)) {
+            const draggingToken = preserveActiveDrag && container.querySelector('.map-avatar-token.is-selected');
+            if (!draggingToken) {
+              container.querySelectorAll('.map-avatar-token').forEach(el => el.remove());
+              mapData.tokens.forEach(t => {
+                createMapAvatarToken(typeof t.left === 'number' ? t.left : 60, typeof t.top === 'number' ? t.top : 60);
+              });
+            }
+          }
         }
+
+        // Hydrate initial map data if provided
+        if (initialMapData) {
+          applyMapStateData(initialMapData, false);
+        }
+
+        sheet._applyMapState = function(mapData) {
+          applyMapStateData(mapData, true);
+        };
 
         sheet._getMapState = function() {
           const titlePlate = sheet.querySelector('.bar-title-plate');
@@ -4909,6 +6399,7 @@
             gridScale: gridScale,
             isSnapOn: isSnapOn,
             shapesHtml: shapesGroup.innerHTML,
+            fogHtml: fogMaskGroup ? fogMaskGroup.innerHTML : '',
             tokens: tokens,
             ...(sheet._getWindowMeta ? sheet._getWindowMeta() : {})
           };
@@ -4982,6 +6473,19 @@
           snapBtn.innerText = isSnapOn ? 'Snap: ON' : 'Snap: OFF';
           scheduleAutoSave();
         });
+
+        if (fogAllBtn && fogMaskGroup) {
+          fogAllBtn.addEventListener('click', () => {
+            fogMaskGroup.innerHTML = '<rect x="0" y="0" width="100%" height="100%" fill="white"/>';
+            scheduleAutoSave();
+          });
+        }
+        if (fogClearBtn && fogMaskGroup) {
+          fogClearBtn.addEventListener('click', () => {
+            fogMaskGroup.innerHTML = '';
+            scheduleAutoSave();
+          });
+        }
 
         // Tool Selection
         toolBtns.forEach(btn => {
@@ -5088,7 +6592,7 @@
         let isMovingSelected = false;
 
         svg.addEventListener('pointerdown', (e) => {
-          if (e.button !== 0) return;
+          if (e.button !== 0 || !sheet.classList.contains('is-lifted')) return;
           const pt = getPoint(e);
 
           if (currentTool === 'erase-shape') {
@@ -5099,7 +6603,7 @@
             return;
           }
 
-          if (currentTool === 'erase-area') {
+          if (currentTool === 'erase-area' || currentTool === 'fog-cover' || currentTool === 'fog-reveal') {
             isDrawing = true;
             startPt = pt;
             marqueeRect.setAttribute('x', pt.x);
@@ -5209,7 +6713,7 @@
             return;
           }
 
-          if (currentTool === 'erase-area' && isDrawing) {
+          if ((currentTool === 'erase-area' || currentTool === 'fog-cover' || currentTool === 'fog-reveal') && isDrawing) {
             const mx = Math.min(startPt.x, pt.x);
             const my = Math.min(startPt.y, pt.y);
             const mw = Math.abs(pt.x - startPt.x);
@@ -5263,7 +6767,7 @@
             return;
           }
 
-          if (currentTool === 'erase-area' && isDrawing) {
+          if ((currentTool === 'erase-area' || currentTool === 'fog-cover' || currentTool === 'fog-reveal') && isDrawing) {
             isDrawing = false;
             marqueeRect.style.display = 'none';
             try { svg.releasePointerCapture(e.pointerId); } catch (_) {}
@@ -5274,14 +6778,24 @@
             const mh = parseFloat(marqueeRect.getAttribute('height'));
 
             if (mw > 2 && mh > 2) {
-              Array.from(shapesGroup.children).forEach(shape => {
-                try {
-                  const b = shape.getBBox();
-                  if (b.x < mx + mw && b.x + b.width > mx && b.y < my + mh && b.y + b.height > my) {
-                    shape.remove();
-                  }
-                } catch (_) {}
-              });
+              if (currentTool === 'erase-area') {
+                Array.from(shapesGroup.children).forEach(shape => {
+                  try {
+                    const b = shape.getBBox();
+                    if (b.x < mx + mw && b.x + b.width > mx && b.y < my + mh && b.y + b.height > my) {
+                      shape.remove();
+                    }
+                  } catch (_) {}
+                });
+              } else if (fogMaskGroup) {
+                const fRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                fRect.setAttribute('x', mx);
+                fRect.setAttribute('y', my);
+                fRect.setAttribute('width', mw);
+                fRect.setAttribute('height', mh);
+                fRect.setAttribute('fill', currentTool === 'fog-cover' ? 'white' : 'black');
+                fogMaskGroup.appendChild(fRect);
+              }
               scheduleAutoSave();
             }
             return;
@@ -5300,6 +6814,7 @@
 
         // Double Click to Commit Polygon
         svg.addEventListener('dblclick', (e) => {
+          if (!sheet.classList.contains('is-lifted')) return;
           if (currentTool === 'polygon' && activeEl && polyVertices.length >= 3) {
             const ptsStr = polyVertices.map(v => `${v.x},${v.y}`).join(' ');
             activeEl.setAttribute('points', ptsStr);
@@ -5307,6 +6822,19 @@
             polyVertices = [];
             activeEl = null;
             scheduleAutoSave();
+          }
+        });
+
+        // Click un-lifted map body on tabletop to maximize it for editing
+        const mapBodyEl = sheet.querySelector('.paper-body') || container;
+        mapBodyEl.addEventListener('click', (e) => {
+          if (sheet.classList.contains('is-lifted')) return;
+          if (e.altKey || document.body.classList.contains('is-pan-mode') || window._isDraggingSheet) return;
+          if (e.target.closest('button, input, select, textarea')) return;
+          const btnMax = sheet.querySelector('.btn-max');
+          if (btnMax) {
+            e.stopPropagation();
+            btnMax.click();
           }
         });
       }
@@ -5346,6 +6874,7 @@
             <div class="bar-title-plate">${escapeHtml(mapTitle)}</div>
 
             <div class="bar-btn-group">
+              <button type="button" class="bar-btn btn-map-edit" title="Edit Map" aria-label="Edit map">✎</button>
               <button type="button" class="bar-btn btn-shade" title="Shade / Unshade" aria-label="Shade sheet">▲</button>
               <button type="button" class="bar-btn btn-min" title="Minimize" aria-label="Minimize sheet">—</button>
               <button type="button" class="bar-btn btn-max" title="${launchMaximized ? 'Restore to Table' : 'Maximize'}" aria-label="Maximize sheet">${launchMaximized ? '❐' : '□'}</button>
@@ -5383,6 +6912,13 @@
                 <button type="button" class="map-tool-btn" data-fill="solid" title="Solid Fill">Solid</button>
                 <button type="button" class="map-tool-btn" data-fill="pattern" title="Pattern Fill">Hatch</button>
               </div>
+              <div class="map-toolbar-group map-fog-controls">
+                <span class="map-tool-label">Fog</span>
+                <button type="button" class="map-tool-btn" data-tool="fog-cover" title="Drag box to cover with Fog of War">Cover</button>
+                <button type="button" class="map-tool-btn" data-tool="fog-reveal" title="Drag box to reveal Fog of War">Reveal</button>
+                <button type="button" class="map-tool-btn" data-action="fog-all" title="Cover entire map with Fog">Fog All</button>
+                <button type="button" class="map-tool-btn" data-action="fog-clear" title="Clear all Fog of War">Clear Fog</button>
+              </div>
               <div class="map-toolbar-group">
                 <button type="button" class="map-tool-btn" data-action="add-avatar" title="Add Blank Avatar Token">+ Avatar</button>
                 <button type="button" class="map-tool-btn" data-action="shape-del" title="Delete Selected Shape" style="display:none;">Delete</button>
@@ -5408,6 +6944,12 @@
                 <g class="map-shapes-group"></g>
                 <g class="map-temp-group"></g>
                 <rect class="map-marquee" style="display:none;" fill="rgba(158, 42, 21, 0.15)" stroke="var(--user-color)" stroke-dasharray="3 3"/>
+              </svg>
+              <svg class="map-fog-overlay" width="100%" height="100%">
+                <defs>
+                  <mask id="fog-mask-${mapId}"></mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#2b1742" mask="url(#fog-mask-${mapId})"/>
               </svg>
             </div>
           </div>
@@ -5447,9 +6989,22 @@
       });
 
       // 4. Local-First Persistence (localStorage + IndexedDB) & JSON Export/Import Engine
-      const STORAGE_KEY = 'dankelf_campaign_v1';
       const IDB_NAME = 'dankelf_db';
       const IDB_STORE = 'campaigns';
+
+      function getActiveWorldId() {
+        return localStorage.getItem('dankelf_active_world') || 'default';
+      }
+
+      function getStorageKey() {
+        const w = getActiveWorldId();
+        return w === 'default' ? 'dankelf_campaign_v1' : `dankelf_campaign_${w}`;
+      }
+
+      function getIDBKey() {
+        const w = getActiveWorldId();
+        return w === 'default' ? 'active' : `world_${w}`;
+      }
 
       function openCampaignDB() {
         return new Promise((resolve, reject) => {
@@ -5469,7 +7024,7 @@
       function saveToIndexedDB(state) {
         openCampaignDB().then(db => {
           const tx = db.transaction(IDB_STORE, 'readwrite');
-          tx.objectStore(IDB_STORE).put(state, 'active');
+          tx.objectStore(IDB_STORE).put(state, getIDBKey());
         }).catch(() => {});
       }
 
@@ -5481,10 +7036,14 @@
             id: c.id,
             elementId: c.elementId,
             assignedTo: c.assignedTo,
+            assignedName: c.assignedName || '',
             isArchived: !!c.isArchived,
             hiddenSections: c.hiddenSections || {},
             hiddenFields: c.hiddenFields || {},
             values: c.values || {},
+            wallet: c.wallet || { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0 },
+            inventory: Array.isArray(c.inventory) ? c.inventory : [],
+            goals: Array.isArray(c.goals) ? c.goals : [],
             ...meta
           };
         });
@@ -5513,6 +7072,7 @@
           type: 'dankelf-campaign',
           version: 1,
           updatedAt: new Date().toISOString(),
+          localOwnerId: localOwnerId,
           userProfile: {
             handle: personHandleInput ? personHandleInput.value : 'Ariel',
             role: currentUserRole,
@@ -5536,8 +7096,76 @@
           })),
           characters: serializedChars,
           notes: serializedNotes,
-          maps: serializedMaps
+          maps: serializedMaps,
+          teamGoals: JSON.parse(JSON.stringify(teamGoals)),
+          turnOrder: JSON.parse(JSON.stringify(turnOrder)),
+          clocks: JSON.parse(JSON.stringify(clocks)),
+          feedLog: serializeFeedLog()
         };
+      }
+
+      function serializeFeedLog() {
+        const feed = document.getElementById('feed');
+        if (!feed) return [];
+        const entries = Array.from(feed.querySelectorAll('.feed-entry:not([data-ephemeral="true"])'));
+        return entries.slice(-200).map(el => ({
+          isRoll: el.classList.contains('roll-entry'),
+          html: el.innerHTML
+        }));
+      }
+
+      function sanitizeFeedHtml(rawHtml) {
+        const tpl = document.createElement('template');
+        tpl.innerHTML = String(rawHtml || '');
+        const blocked = tpl.content.querySelectorAll('script, iframe, object, embed, style, link, meta');
+        blocked.forEach(n => n.remove());
+        tpl.content.querySelectorAll('*').forEach(el => {
+          Array.from(el.attributes).forEach(attr => {
+            if (attr.name.toLowerCase().startsWith('on')) el.removeAttribute(attr.name);
+          });
+        });
+        return tpl.innerHTML;
+      }
+
+      function restoreFeedLog(entries, onlyIfEmpty = false) {
+        const feed = document.getElementById('feed');
+        if (!feed || !Array.isArray(entries)) return;
+        const existingCount = feed.querySelectorAll('.feed-entry:not([data-ephemeral="true"])').length;
+        if (onlyIfEmpty && existingCount > 0) return;
+        feed.querySelectorAll('.feed-entry:not([data-ephemeral="true"])').forEach(el => el.remove());
+        entries.slice(-200).forEach(item => {
+          if (!item || typeof item.html !== 'string') return;
+          const entry = document.createElement('div');
+          entry.className = item.isRoll ? 'feed-entry roll-entry' : 'feed-entry';
+          entry.innerHTML = sanitizeFeedHtml(item.html);
+          feed.appendChild(entry);
+        });
+        feed.scrollTop = feed.scrollHeight;
+      }
+
+      let feedSaveTimer = null;
+      function saveLocalFeedSnapshot() {
+        if (isHydratingState) return;
+        clearTimeout(feedSaveTimer);
+        feedSaveTimer = setTimeout(() => {
+          try {
+            const state = serializeCampaignState();
+            localStorage.setItem(getStorageKey(), JSON.stringify(state));
+            saveToIndexedDB(state);
+          } catch (_) {}
+        }, 250);
+      }
+      window.saveLocalFeedSnapshot = saveLocalFeedSnapshot;
+
+      const btnClearFeed = document.getElementById('btn-clear-feed');
+      if (btnClearFeed) {
+        btnClearFeed.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const feed = document.getElementById('feed');
+          if (!feed) return;
+          feed.querySelectorAll('.feed-entry:not([data-ephemeral="true"])').forEach(el => el.remove());
+          saveLocalFeedSnapshot();
+        });
       }
 
       let isApplyingRemoteState = false;
@@ -5546,7 +7174,7 @@
         if (isHydratingState) return;
         try {
           const state = serializeCampaignState();
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          localStorage.setItem(getStorageKey(), JSON.stringify(state));
           saveToIndexedDB(state);
 
           const statusEl = document.getElementById('autosave-status');
@@ -5576,20 +7204,32 @@
       }
       window.saveCampaignNow = saveCampaignNow;
 
-      function applyCampaignState(state, logMessage = null, skipUserProfile = false) {
+      function applyCampaignState(state, logMessage = null, skipUserProfile = false, senderRole = null, senderId = null) {
         if (!state || typeof state !== 'object') return;
         isHydratingState = true;
         try {
           const tf = window.getTabletopTransform ? window.getTabletopTransform() : {};
           const prevLiftedKey = tf.activeLiftedItem ? getSheetLookupKey(tf.activeLiftedItem) : null;
-          if (tf.activeLiftedItem && window.restoreItemToTable) {
-            window.restoreItemToTable(tf.activeLiftedItem, { left: 1202, top: 2150 });
-          }
 
           if (isApplyingRemoteState) {
-            // Merge remote shared items without wiping local user's private table or folders
+            const isFromGm = !senderRole || senderRole === 'gm';
+            // Merge remote shared or assigned items in place without wiping local user's private table
             const remoteChars = Array.isArray(state.characters)
-              ? state.characters.filter(c => c.ownerId && c.ownerId !== localOwnerId && c.sharedWithAll === true)
+              ? state.characters.filter(c => {
+                  if (!c) return false;
+                  const assignedToLocal = isCharacterAssignedToLocal(c);
+                  if (currentUserRole === 'gm' && !isFromGm) {
+                    const senderPeer = window.getPlayerPeers ? window.getPlayerPeers().find(p => p.id === senderId) : null;
+                    const senderName = senderPeer && senderPeer.handle ? senderPeer.handle.trim().toLowerCase() : '';
+                    const senderMatchesAssignee = !!senderId && (
+                      (c.assignedTo && c.assignedTo === senderId) ||
+                      (senderName && c.assignedName && c.assignedName.trim().toLowerCase() === senderName)
+                    );
+                    return (c.ownerId && c.ownerId !== localOwnerId && c.sharedWithAll === true) || senderMatchesAssignee;
+                  }
+                  if (c.ownerId && c.ownerId === localOwnerId) return false;
+                  return c.sharedWithAll === true || assignedToLocal;
+                })
               : [];
             const remoteNotes = Array.isArray(state.notes)
               ? state.notes.filter(n => n.ownerId && n.ownerId !== localOwnerId && n.sharedWithAll === true)
@@ -5598,33 +7238,143 @@
               ? state.maps.filter(m => m.ownerId && m.ownerId !== localOwnerId && m.sharedWithAll === true)
               : [];
 
-            // Remove existing remote sheets from DOM and characters list
-            document.querySelectorAll('.letter-paper-sheet').forEach(el => {
-              if (el.id !== 'person-sheet' && el.dataset.ownerId && el.dataset.ownerId !== localOwnerId) {
-                if (el.dataset.charId) {
-                  characters = characters.filter(c => c.id !== el.dataset.charId);
-                }
-                el.remove();
-              }
-            });
+            const incomingCharIds = new Set(remoteChars.map(c => c.id));
+            const incomingNoteIds = new Set(remoteNotes.map(n => n.id));
+            const incomingMapIds = new Set(remoteMaps.map(m => m.id));
 
-            if (state.systemTemplate && Array.isArray(state.systemTemplate.sections)) {
+            // Remove remote sheets that were unshared or deleted (authoritative GM sync only)
+            if (isFromGm) {
+              document.querySelectorAll('.letter-paper-sheet').forEach(el => {
+                if (el.id === 'person-sheet' || !el.dataset.ownerId || el.dataset.ownerId === localOwnerId) return;
+                const keep = (el.dataset.charId && incomingCharIds.has(el.dataset.charId))
+                  || (el.dataset.noteId && incomingNoteIds.has(el.dataset.noteId))
+                  || (el.dataset.mapId && incomingMapIds.has(el.dataset.mapId));
+                if (!keep) {
+                  if (el.classList.contains('is-lifted') && window.restoreItemToTable) {
+                    window.restoreItemToTable(el, { left: 1202, top: 2150 });
+                  }
+                  if (el.dataset.charId) {
+                    characters = characters.filter(c => c.id !== el.dataset.charId);
+                  }
+                  el.remove();
+                }
+              });
+            }
+
+            function reconcileRemoteShown(el, itemData, prevShown) {
+              if (!el || !itemData || !isFromGm) return;
+              if (itemData.sharedWithAll === true && itemData.shownToAll === true && !prevShown) {
+                if (!el.classList.contains('is-lifted')) {
+                  const btnM = el.querySelector('.btn-max');
+                  if (btnM) btnM.click();
+                  else if (window.liftItemToInspection) window.liftItemToInspection(el);
+                }
+              } else if (prevShown && !itemData.shownToAll && el.classList.contains('is-lifted')) {
+                const btnM = el.querySelector('.btn-max');
+                if (btnM) btnM.click();
+                else if (window.restoreItemToTable) window.restoreItemToTable(el, { left: 1202, top: 2150 });
+              }
+            }
+
+            if (isFromGm && state.systemTemplate && Array.isArray(state.systemTemplate.sections)) {
               systemTemplate = JSON.parse(JSON.stringify(state.systemTemplate));
+            }
+            if (isFromGm && Array.isArray(state.teamGoals)) {
+              teamGoals = JSON.parse(JSON.stringify(state.teamGoals));
+              if (!teamGoalsBodyEl || !teamGoalsBodyEl.contains(document.activeElement)) {
+                renderTeamGoals();
+              }
+            }
+            if (isFromGm && state.turnOrder && Array.isArray(state.turnOrder.entries)) {
+              turnOrder = JSON.parse(JSON.stringify(state.turnOrder));
+              if (!turnOrderBodyEl || !turnOrderBodyEl.contains(document.activeElement)) {
+                renderTurnOrder();
+              }
+            }
+            if (isFromGm && Array.isArray(state.clocks)) {
+              clocks = JSON.parse(JSON.stringify(state.clocks));
+              if (!clocksBodyEl || !clocksBodyEl.contains(document.activeElement)) {
+                renderClocks();
+              }
             }
 
             remoteChars.forEach(cData => {
-              createNewCharacter(false, { ...cData, folderId: null });
+              const existingEl = document.querySelector(`.letter-paper-sheet[data-char-id="${cData.id}"]`);
+              const existingChar = characters.find(c => c.id === cData.id);
+              if (existingEl && existingChar) {
+                const prevShown = existingEl.dataset.shownToAll === 'true';
+                if (isFromGm) {
+                  existingChar.assignedTo = cData.assignedTo || null;
+                  existingChar.assignedName = cData.assignedName || '';
+                }
+                existingChar.isArchived = !!cData.isArchived;
+                existingChar.hiddenSections = cData.hiddenSections ? { ...cData.hiddenSections } : {};
+                existingChar.hiddenFields = cData.hiddenFields ? { ...cData.hiddenFields } : {};
+                existingChar.values = cData.values ? { ...cData.values } : {};
+                existingChar.wallet = cData.wallet ? { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0, ...cData.wallet } : { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0 };
+                existingChar.inventory = Array.isArray(cData.inventory) ? JSON.parse(JSON.stringify(cData.inventory)) : [];
+                existingChar.goals = Array.isArray(cData.goals) ? JSON.parse(JSON.stringify(cData.goals)) : [];
+                if (existingEl._applyWindowMeta) {
+                  const keepLocalFolder = currentUserRole === 'gm' ? (existingEl.dataset.folderId || null) : null;
+                  existingEl._applyWindowMeta({ ...cData, folderId: keepLocalFolder });
+                }
+                existingEl.dataset.assignedTo = existingChar.assignedTo || '';
+                existingEl.dataset.assignedName = existingChar.assignedName || '';
+                const hasFocus = existingEl.contains(document.activeElement);
+                if (!hasFocus) renderCharacterSheet(existingChar);
+                syncSheetVisibility(existingEl);
+                reconcileRemoteShown(existingEl, cData, prevShown);
+              } else {
+                const spawnedChar = createNewCharacter(false, { ...cData, folderId: null });
+                const spawnedEl = spawnedChar ? document.getElementById(spawnedChar.elementId) : document.querySelector(`.letter-paper-sheet[data-char-id="${cData.id}"]`);
+                reconcileRemoteShown(spawnedEl, cData, false);
+              }
             });
+            updatePersonSheetControlled();
+
             remoteNotes.forEach(nData => {
-              spawnNoteSheet({ ...nData, folderId: null });
+              const existingEl = document.querySelector(`.letter-paper-sheet[data-note-id="${nData.id}"]`);
+              if (existingEl) {
+                const prevShown = existingEl.dataset.shownToAll === 'true';
+                const titlePlate = existingEl.querySelector('.bar-title-plate');
+                if (titlePlate && typeof nData.title === 'string') titlePlate.innerText = nData.title;
+                const textarea = existingEl.querySelector('.blank-paper-area');
+                if (textarea && typeof nData.content === 'string' && document.activeElement !== textarea) {
+                  textarea.value = nData.content;
+                }
+                if (existingEl._applyWindowMeta) existingEl._applyWindowMeta({ ...nData, folderId: null });
+                reconcileRemoteShown(existingEl, nData, prevShown);
+              } else {
+                const spawnedNote = spawnNoteSheet({ ...nData, folderId: null });
+                reconcileRemoteShown(spawnedNote, nData, false);
+              }
             });
+
             remoteMaps.forEach(mData => {
-              spawnMapSheet({ ...mData, folderId: null }, false);
+              const existingEl = document.querySelector(`.letter-paper-sheet[data-map-id="${mData.id}"]`);
+              if (existingEl) {
+                const prevShown = existingEl.dataset.shownToAll === 'true';
+                if (existingEl._applyMapState) existingEl._applyMapState(mData);
+                if (existingEl._applyWindowMeta) existingEl._applyWindowMeta({ ...mData, folderId: null });
+                reconcileRemoteShown(existingEl, mData, prevShown);
+              } else {
+                const shouldMax = !!(isFromGm && mData.sharedWithAll === true && mData.shownToAll === true);
+                const spawnedMap = spawnMapSheet({ ...mData, folderId: null }, false);
+                if (shouldMax) reconcileRemoteShown(spawnedMap, mData, false);
+              }
             });
+
+            if (Array.isArray(state.feedLog)) {
+              restoreFeedLog(state.feedLog, true);
+            }
 
             updatePersonSheetControlled();
             if (window.refreshMinimap) window.refreshMinimap();
             return;
+          }
+
+          if (tf.activeLiftedItem && window.restoreItemToTable) {
+            window.restoreItemToTable(tf.activeLiftedItem, { left: 1202, top: 2150 });
           }
 
           // Remove all character, note, and map sheets from DOM (keep #person-sheet)
@@ -5634,16 +7384,22 @@
             }
           });
 
-          if (Array.isArray(state.folders) && state.folders.length > 0) {
-            userFolders = state.folders.map(f => ({
-              id: f.id,
-              name: f.name || 'Folder',
-              playerPeerId: f.playerPeerId || null,
-              customRenamed: !!f.customRenamed
-            }));
-          } else {
-            userFolders = [{ id: 'folder-1', name: 'Folder 1' }];
-          }
+          const customFolders = Array.isArray(state.folders)
+            ? state.folders
+                .filter(f => f.id !== 'folder-characters' && f.id !== 'folder-all' && f.id !== 'folder-bin')
+                .map(f => ({
+                  id: f.id,
+                  name: f.name || 'Folder',
+                  playerPeerId: f.playerPeerId || null,
+                  customRenamed: !!f.customRenamed
+                }))
+            : [];
+          userFolders = [
+            { id: 'folder-characters', name: 'Characters', lockedName: true, isCharacters: true },
+            { id: 'folder-all', name: 'All', lockedName: true, isAll: true },
+            ...customFolders,
+            { id: 'folder-bin', name: 'Bin', lockedName: true, isBin: true }
+          ];
           closeFolderDrawer();
 
           if (state.systemTemplate && Array.isArray(state.systemTemplate.sections)) {
@@ -5673,25 +7429,33 @@
             }
           }
 
+          const reclaimOwner = (item) => {
+            if (!item || typeof item !== 'object') return item;
+            if (!item.ownerId || (state.localOwnerId && item.ownerId === state.localOwnerId)) {
+              return { ...item, ownerId: localOwnerId };
+            }
+            return item;
+          };
+
           characters = [];
           paperCount = 0;
           mapCount = 0;
 
           if (Array.isArray(state.characters)) {
             state.characters.forEach(cData => {
-              createNewCharacter(false, cData);
+              createNewCharacter(false, reclaimOwner(cData));
             });
           }
 
           if (Array.isArray(state.notes)) {
             state.notes.forEach(nData => {
-              spawnNoteSheet(nData);
+              spawnNoteSheet(reclaimOwner(nData));
             });
           }
 
           if (Array.isArray(state.maps)) {
             state.maps.forEach(mData => {
-              spawnMapSheet(mData, false);
+              spawnMapSheet(reclaimOwner(mData), false);
             });
           }
           if (document.querySelectorAll('.tabloid-map-sheet').length === 0) {
@@ -5733,6 +7497,31 @@
           updatePersonSheetControlled();
           renderFolderTabs();
           if (window.refreshMinimap) window.refreshMinimap();
+
+          if (Array.isArray(state.teamGoals)) {
+            teamGoals = JSON.parse(JSON.stringify(state.teamGoals));
+          } else {
+            teamGoals = [];
+          }
+          renderTeamGoals();
+
+          if (state.turnOrder && Array.isArray(state.turnOrder.entries)) {
+            turnOrder = JSON.parse(JSON.stringify(state.turnOrder));
+          } else {
+            turnOrder = { round: 1, activeId: null, entries: [] };
+          }
+          renderTurnOrder();
+
+          if (Array.isArray(state.clocks)) {
+            clocks = JSON.parse(JSON.stringify(state.clocks));
+          } else {
+            clocks = [];
+          }
+          renderClocks();
+
+          if (Array.isArray(state.feedLog)) {
+            restoreFeedLog(state.feedLog, false);
+          }
 
           if (logMessage) {
             const feed = document.getElementById('feed');
@@ -5895,10 +7684,10 @@
         btnResetCampaign.addEventListener('click', (e) => {
           e.stopPropagation();
           if (confirm('Reset tabletop to a fresh default state and clear local auto-save?')) {
-            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(getStorageKey());
             openCampaignDB().then(db => {
               const tx = db.transaction(IDB_STORE, 'readwrite');
-              tx.objectStore(IDB_STORE).delete('active');
+              tx.objectStore(IDB_STORE).delete(getIDBKey());
             }).catch(() => {});
 
             const defaultState = {
@@ -5945,120 +7734,46 @@
         });
       }
 
-      // Load saved campaign state on startup (localStorage first, IndexedDB fallback)
-      (function loadCampaignFromStorage() {
+      // Load saved campaign state on startup or world switch (localStorage first, IndexedDB fallback)
+      function loadCampaignFromStorage(fallbackSystemKey = null) {
         try {
-          const raw = localStorage.getItem(STORAGE_KEY);
+          const raw = localStorage.getItem(getStorageKey());
           if (raw) {
             const parsed = JSON.parse(raw);
             if (parsed && (Array.isArray(parsed.characters) || parsed.systemTemplate)) {
               applyCampaignState(parsed, null);
-              return;
+              return Promise.resolve(true);
             }
           }
         } catch (_) {}
 
-        function seedDemoTabletop() {
-          const demoState = {
-            systemTemplate: {
-              sections: [
-                {
-                  id: 'sec-identity',
-                  title: 'Identity',
-                  fields: [
-                    { id: 'fld-name', title: 'Name', isTitleVisible: true },
-                    { id: 'fld-class', title: 'Class & Level', isTitleVisible: true }
-                  ]
-                },
-                {
-                  id: 'sec-stats',
-                  title: 'Vitals',
-                  fields: [
-                    { id: 'fld-hp', title: 'HP', isTitleVisible: true },
-                    { id: 'fld-ac', title: 'AC', isTitleVisible: true }
-                  ]
-                }
-              ]
-            },
-            userProfile: {
-              handle: 'Ariel',
-              role: 'player',
-              notes: 'Exploring the Sunken Vault.',
-              sheetVisible: true,
-              left: 1202,
-              top: 1550,
-              zIndex: 12
-            },
-            characters: [
-              {
-                id: 'char-1',
-                elementId: 'char-sheet',
-                assignedTo: 'user-main',
-                isArchived: false,
-                hiddenSections: {},
-                hiddenFields: {},
-                values: { 'fld-name': 'Sir Aldric the Pale', 'fld-class': 'Knight 3', 'fld-hp': '14 / 14', 'fld-ac': '16' },
-                left: 1080,
-                top: 2050,
-                zIndex: 11
-              },
-              {
-                id: 'char-2',
-                elementId: 'char-2-sheet',
-                assignedTo: 'demo-sera',
-                isArchived: false,
-                hiddenSections: {},
-                hiddenFields: {},
-                values: { 'fld-name': 'Lyra Embervein', 'fld-class': 'Elf 2', 'fld-hp': '9 / 9', 'fld-ac': '13' },
-                left: 1520,
-                top: 2060,
-                zIndex: 10
-              }
-            ],
-            notes: [
-              {
-                id: 'note-demo-1',
-                title: 'Session Notes',
-                body: 'Entered the Sunken Vault via the flooded stair. Torchlight flickers against carved basalt pillars.',
-                left: 1140,
-                top: 1760,
-                zIndex: 13
-              },
-              {
-                id: 'note-demo-2',
-                title: 'Loot & Rumors',
-                body: '40 gp, Silver Vault Key, Tarnished Astrolabe. Rumor: the Ferryman knows the secret sluice.',
-                left: 1540,
-                top: 1780,
-                zIndex: 14
-              }
-            ],
-            maps: [
-              {
-                id: 'map-default-dungeon',
-                title: 'Dungeon Level 1',
-                left: 1260,
-                top: 1420,
-                zIndex: 9
-              }
-            ]
-          };
-          applyCampaignState(demoState, null);
-        }
-
-        openCampaignDB().then(db => {
+        return openCampaignDB().then(db => new Promise(resolve => {
           const tx = db.transaction(IDB_STORE, 'readonly');
-          const req = tx.objectStore(IDB_STORE).get('active');
+          const req = tx.objectStore(IDB_STORE).get(getIDBKey());
           req.onsuccess = () => {
             if (req.result) {
               applyCampaignState(req.result, null);
+              resolve(true);
             } else {
-              seedDemoTabletop();
+              resolve(false);
             }
           };
-          req.onerror = () => seedDemoTabletop();
-        }).catch(() => seedDemoTabletop());
-      })();
+          req.onerror = () => resolve(false);
+        })).catch(() => false).then(loaded => {
+          if (!loaded && fallbackSystemKey) {
+            const tpl = SYSTEM_TEMPLATES[fallbackSystemKey] || SYSTEM_TEMPLATES.dcc;
+            applyCampaignState({
+              systemTemplate: JSON.parse(JSON.stringify(tpl)),
+              characters: [],
+              notes: [],
+              maps: []
+            }, null, true);
+          }
+          return loaded;
+        });
+      }
+      window.loadActiveWorldCampaign = loadCampaignFromStorage;
+      loadCampaignFromStorage();
 
       // 5. WebRTC P2P DataChannel + BroadcastChannel Transport & 10-Seat Rotated Perimeter
       (function initMultiplayerP2P() {
@@ -6076,24 +7791,67 @@
           return PEER_COLORS[h % PEER_COLORS.length];
         }
 
+        function getCanonicalActorColor(role, peerId, fallbackColor = null) {
+          if (role === 'gm') return '#9e2a15';
+          if (fallbackColor && fallbackColor !== '#9e2a15') return fallbackColor;
+          return hashPeerColor(peerId || 'player');
+        }
+
+        function syncLocalAvatarColor() {
+          const color = getCanonicalActorColor(currentUserRole, localPeerId);
+          const uCircle = document.getElementById('user-avatar-circle');
+          const mCircle = document.getElementById('minimap-person-circle');
+          if (uCircle) uCircle.style.background = color;
+          if (mCircle) mCircle.style.background = color;
+          return color;
+        }
+        window.syncLocalAvatarColor = syncLocalAvatarColor;
+        syncLocalAvatarColor();
+
         const urlParams = new URLSearchParams(window.location.search);
-        let activeRoom = (urlParams.get('room') || localStorage.getItem('dankelf_room_code') || 'taverna-1').trim();
+        const invitedRoomParam = (urlParams.get('room') || '').trim();
+        const isInvitedPlayer = !!invitedRoomParam;
+        let activeRoom = (invitedRoomParam || localStorage.getItem('dankelf_room_code') || 'taverna-1').trim();
         const roomInput = document.getElementById('p2p-room-input');
+        const settingsRoomInput = document.getElementById('settings-room-input');
+        const settingsInviteUrl = document.getElementById('settings-invite-url');
+        const btnSettingsJoin = document.getElementById('btn-settings-join');
+        const btnSettingsCopyInvite = document.getElementById('btn-settings-copy-invite');
         const statusBadge = document.getElementById('p2p-status');
         const peersListEl = document.getElementById('p2p-peers-list');
         const btnJoinRoom = document.getElementById('btn-p2p-join');
         const btnCopyInvite = document.getElementById('btn-p2p-copy');
         const minimapContainer = document.getElementById('minimap-container');
 
-        if (roomInput) roomInput.value = activeRoom;
+        if (isInvitedPlayer) {
+          if (settingsRoomInput) {
+            settingsRoomInput.readOnly = true;
+            settingsRoomInput.title = 'Joined via invite link';
+          }
+          if (btnSettingsJoin) btnSettingsJoin.style.display = 'none';
+          if (btnSettingsCopyInvite) btnSettingsCopyInvite.style.display = 'none';
+          if (settingsInviteUrl) settingsInviteUrl.style.display = 'none';
+          if (roomInput) {
+            roomInput.readOnly = true;
+            roomInput.title = 'Joined via invite link';
+          }
+          if (btnJoinRoom) btnJoinRoom.style.display = 'none';
+          if (btnCopyInvite) btnCopyInvite.style.display = 'none';
+        }
+
+        function getInviteUrlForRoom(code) {
+          return `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(code || activeRoom)}`;
+        }
+
+        function syncRoomUI(code) {
+          if (roomInput) roomInput.value = code;
+          if (settingsRoomInput) settingsRoomInput.value = code;
+          if (settingsInviteUrl) settingsInviteUrl.value = getInviteUrlForRoom(code);
+        }
+        syncRoomUI(activeRoom);
 
         // Map of peerId -> { id, handle, role, seatId, color, lastSeen, pc, dc }
-        const peers = new Map([
-          ['demo-gm', { id: 'demo-gm', handle: 'Kael (GM)', role: 'gm', seatId: 'gm-0', color: '#38145c', lastSeen: Date.now() + 86400000 }],
-          ['demo-sera', { id: 'demo-sera', handle: 'Sera', role: 'player', seatId: 'south-1', color: '#0f5e59', lastSeen: Date.now() + 86400000 }],
-          ['demo-bram', { id: 'demo-bram', handle: 'Bram', role: 'player', seatId: 'east-1', color: '#254b8c', lastSeen: Date.now() + 86400000 }],
-          ['demo-vex', { id: 'demo-vex', handle: 'Vex', role: 'player', seatId: 'west-1', color: '#9d174d', lastSeen: Date.now() + 86400000 }]
-        ]);
+        const peers = new Map();
         let bcSignal = null;
         let phpPollTimer = null;
         let lastPhpSignalTs = 0;
@@ -6106,7 +7864,7 @@
             handle: handleVal,
             role: currentUserRole,
             seatId: currentSeatId,
-            color: hashPeerColor(localPeerId)
+            color: getCanonicalActorColor(currentUserRole, localPeerId)
           };
         }
 
@@ -6156,6 +7914,7 @@
 
         function updatePeersUI() {
           resolvePeerSeats();
+          const localColor = syncLocalAvatarColor();
 
           const count = peers.size;
           if (statusBadge) {
@@ -6169,13 +7928,14 @@
           selfRow.className = 'p2p-peer-row';
           const selfName = personHandleInput ? (personHandleInput.value.trim() || 'Player') : 'Player';
           selfRow.innerHTML = `
-            <span><span class="p2p-peer-dot" style="background: var(--user-color);"></span><strong>${escapeHtml(selfName)}</strong> (You — ${escapeHtml(localSeatObj.label)})</span>
+            <span><span class="p2p-peer-dot" style="background: ${localColor};"></span><strong>${escapeHtml(selfName)}</strong> (You — ${escapeHtml(localSeatObj.label)})</span>
             <span style="font-weight:700; text-transform:uppercase;">${currentUserRole === 'gm' ? 'GM' : 'Player'}</span>
           `;
           peersListEl.appendChild(selfRow);
 
           peers.forEach(peer => {
             const seat = peer.resolvedSeat || PLAYER_SEATS[0];
+            peer.color = getCanonicalActorColor(peer.role, peer.id, peer.color);
             const row = document.createElement('div');
             row.className = 'p2p-peer-row';
             const rtcState = (peer.dc && peer.dc.readyState === 'open') ? 'WebRTC P2P' : 'Local Sync';
@@ -6189,6 +7949,9 @@
           renderPerimeterPeerCircles();
           if (window.syncGMPlayerFolders) {
             window.syncGMPlayerFolders(Array.from(peers.values()).filter(p => p.role !== 'gm'));
+          }
+          if (window.refreshCharacterAssignments) {
+            window.refreshCharacterAssignments();
           }
         }
         window.refreshPeersUI = updatePeersUI;
@@ -6267,7 +8030,8 @@
         }
 
         function broadcastP2PPayload(dataObj) {
-          const raw = JSON.stringify({ ...dataObj, senderId: localPeerId });
+          const enriched = { ...dataObj, senderId: localPeerId };
+          const raw = JSON.stringify(enriched);
           peers.forEach(peer => {
             if (peer.dc && peer.dc.readyState === 'open') {
               try { peer.dc.send(raw); } catch (_) {}
@@ -6275,7 +8039,7 @@
           });
           if (bcSignal) {
             try {
-              bcSignal.postMessage({ type: 'P2P_DATA', sender: localPeerId, payload: dataObj });
+              bcSignal.postMessage({ type: 'P2P_DATA', sender: localPeerId, payload: enriched });
             } catch (_) {}
           }
         }
@@ -6298,15 +8062,15 @@
               p.handle = data.handle || p.handle;
               p.role = data.role || p.role;
               if (data.seatId) p.seatId = data.seatId;
-              p.color = data.color || p.color;
+              p.color = getCanonicalActorColor(p.role, p.id, data.color || p.color);
               p.lastSeen = Date.now();
               updatePeersUI();
             }
           } else if (data.type === 'STATE_SYNC' && data.state) {
             isApplyingRemoteState = true;
             try {
-              applyCampaignState(data.state, null, true);
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(serializeCampaignState()));
+              applyCampaignState(data.state, null, true, data.senderRole || null, data.senderId || null);
+              localStorage.setItem(getStorageKey(), JSON.stringify(serializeCampaignState()));
             } finally {
               isApplyingRemoteState = false;
             }
@@ -6332,6 +8096,7 @@
                 entry.innerHTML = `<span class="timestamp">[P2P]</span> <span class="content">${escapeHtml(data.userName || 'Peer')} ${data.isShown ? 'shared' : 'closed shared'} "${escapeHtml(data.sheetTitle || 'Window')}".</span>`;
                 feed.appendChild(entry);
                 feed.scrollTop = feed.scrollHeight;
+                if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
               }
             }
           } else if (data.type === 'FEED_MSG') {
@@ -6342,6 +8107,7 @@
               entry.innerHTML = `<span class="timestamp">[${escapeHtml(data.timeStr || 'P2P')}]</span> <span class="content"><strong>${escapeHtml(data.userName || 'Peer')}:</strong> ${escapeHtml(data.text || '')}</span>`;
               feed.appendChild(entry);
               feed.scrollTop = feed.scrollHeight;
+              if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
             }
           } else if (data.type === 'DICE_ROLL' && data.roll) {
             if (window.receiveRemoteDiceRoll) window.receiveRemoteDiceRoll(data.roll);
@@ -6354,7 +8120,8 @@
           peer.dc = dc;
           dc.onopen = () => {
             updatePeersUI();
-            if (currentUserRole === 'gm' || peers.size === 1) {
+            broadcastP2PPresence();
+            if (currentUserRole === 'gm') {
               broadcastP2PState(serializeCampaignState());
             }
           };
@@ -6373,12 +8140,13 @@
           let peer = peers.get(remoteId);
           const isNew = !peer;
           if (!peer) {
+            const initRole = info.role || 'player';
             peer = {
               id: remoteId,
               handle: info.handle || 'Player',
-              role: info.role || 'player',
+              role: initRole,
               seatId: info.seatId || null,
-              color: info.color || hashPeerColor(remoteId),
+              color: getCanonicalActorColor(initRole, remoteId, info.color),
               lastSeen: Date.now(),
               pc: null,
               dc: null
@@ -6388,7 +8156,7 @@
             if (info.handle) peer.handle = info.handle;
             if (info.role) peer.role = info.role;
             if (info.seatId) peer.seatId = info.seatId;
-            if (info.color) peer.color = info.color;
+            peer.color = getCanonicalActorColor(peer.role, remoteId, info.color || peer.color);
             peer.lastSeen = Date.now();
           }
           if (isNew) {
@@ -6405,10 +8173,25 @@
           return peer;
         }
 
+        function shouldInitiateConnection(peer) {
+          if (!peer || !peer.pc) return true;
+          const st = peer.pc.connectionState || peer.pc.iceConnectionState;
+          return st === 'failed' || st === 'closed';
+        }
+
+        function flushPendingIce(peer) {
+          if (!peer || !peer.pc || !peer.pc.remoteDescription || !Array.isArray(peer.pendingIce)) return;
+          const queue = peer.pendingIce.splice(0);
+          queue.forEach(cand => {
+            peer.pc.addIceCandidate(new RTCIceCandidate(cand)).catch(() => {});
+          });
+        }
+
         function createPeerConnection(peer, isInitiator) {
           if (peer.pc) {
             try { peer.pc.close(); } catch (_) {}
           }
+          peer.pendingIce = [];
           const pc = new RTCPeerConnection({
             iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
           });
@@ -6460,22 +8243,25 @@
               target: msg.sender,
               presence: getLocalPresence()
             });
-            if (localPeerId < msg.sender && (!peer.dc || peer.dc.readyState !== 'open')) {
+            if (localPeerId < msg.sender && shouldInitiateConnection(peer)) {
               createPeerConnection(peer, true);
             }
-            if (currentUserRole === 'gm' || peers.size === 1) {
+            if (currentUserRole === 'gm') {
               setTimeout(() => broadcastP2PState(serializeCampaignState()), 120);
             }
           } else if (msg.type === 'WELCOME') {
             const peer = ensurePeerEntry(msg.sender, msg.presence || {});
-            if (localPeerId < msg.sender && (!peer.dc || peer.dc.readyState !== 'open')) {
+            if (localPeerId < msg.sender && shouldInitiateConnection(peer)) {
               createPeerConnection(peer, true);
             }
           } else if (msg.type === 'OFFER' && msg.sdp) {
             const peer = ensurePeerEntry(msg.sender, msg.presence || {});
             const pc = createPeerConnection(peer, false);
             pc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
-              .then(() => pc.createAnswer())
+              .then(() => {
+                flushPendingIce(peer);
+                return pc.createAnswer();
+              })
               .then(ans => pc.setLocalDescription(ans))
               .then(() => {
                 sendSignal({
@@ -6488,12 +8274,19 @@
           } else if (msg.type === 'ANSWER' && msg.sdp) {
             const peer = ensurePeerEntry(msg.sender, msg.presence || {});
             if (peer.pc && peer.pc.signalingState === 'have-local-offer') {
-              peer.pc.setRemoteDescription(new RTCSessionDescription(msg.sdp)).catch(() => {});
+              peer.pc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
+                .then(() => flushPendingIce(peer))
+                .catch(() => {});
             }
           } else if (msg.type === 'ICE' && msg.candidate) {
             const peer = peers.get(msg.sender);
-            if (peer && peer.pc) {
-              peer.pc.addIceCandidate(new RTCIceCandidate(msg.candidate)).catch(() => {});
+            if (peer) {
+              if (peer.pc && peer.pc.remoteDescription) {
+                peer.pc.addIceCandidate(new RTCIceCandidate(msg.candidate)).catch(() => {});
+              } else {
+                if (!Array.isArray(peer.pendingIce)) peer.pendingIce = [];
+                peer.pendingIce.push(msg.candidate);
+              }
             }
           } else if (msg.type === 'BYE') {
             const peer = peers.get(msg.sender);
@@ -6506,9 +8299,10 @@
         }
 
         function connectRoom(roomCode) {
-          activeRoom = (roomCode || 'taverna-1').trim().replace(/[^a-zA-Z0-9_-]/g, '') || 'taverna-1';
-          localStorage.setItem('dankelf_room_code', activeRoom);
-          if (roomInput) roomInput.value = activeRoom;
+          const targetCode = isInvitedPlayer ? invitedRoomParam : roomCode;
+          activeRoom = (targetCode || 'taverna-1').trim().replace(/[^a-zA-Z0-9_-]/g, '') || 'taverna-1';
+          if (!isInvitedPlayer) localStorage.setItem('dankelf_room_code', activeRoom);
+          syncRoomUI(activeRoom);
 
           peers.forEach(p => {
             if (p.pc) { try { p.pc.close(); } catch (_) {} }
@@ -6524,6 +8318,7 @@
           }
 
           clearInterval(phpPollTimer);
+          lastPhpSignalTs = 0;
           phpAvailable = true;
           phpPollTimer = setInterval(() => {
             if (!phpAvailable) return;
@@ -6545,7 +8340,7 @@
               .catch(() => {
                 phpAvailable = false;
               });
-          }, 2500);
+          }, 1000);
 
           updatePeersUI();
           sendSignal({
@@ -6558,12 +8353,42 @@
           sendSignal({ type: 'BYE' });
         });
 
+        function sanitizeStateForBroadcast(stateObj) {
+          if (!stateObj || typeof stateObj !== 'object') return stateObj;
+          const isShared = (item) => item && item.sharedWithAll === true;
+          const shouldSyncChar = (c) => {
+            if (!c) return false;
+            if (isShared(c)) return true;
+            if (c.assignedTo && c.assignedTo !== 'gm' && c.assignedTo !== 'user-main') return true;
+            if (currentUserRole !== 'gm' && window.isCharacterAssignedToLocal && window.isCharacterAssignedToLocal(c)) return true;
+            return false;
+          };
+          return {
+            type: stateObj.type,
+            version: stateObj.version,
+            updatedAt: stateObj.updatedAt,
+            systemTemplate: currentUserRole === 'gm' ? stateObj.systemTemplate : undefined,
+            characters: Array.isArray(stateObj.characters) ? stateObj.characters.filter(shouldSyncChar) : [],
+            notes: Array.isArray(stateObj.notes) ? stateObj.notes.filter(isShared) : [],
+            maps: Array.isArray(stateObj.maps) ? stateObj.maps.filter(isShared) : [],
+            teamGoals: currentUserRole === 'gm' && Array.isArray(stateObj.teamGoals) ? stateObj.teamGoals : undefined,
+            turnOrder: currentUserRole === 'gm' && stateObj.turnOrder ? {
+              round: stateObj.turnOrder.round || 1,
+              activeId: stateObj.turnOrder.activeId || null,
+              entries: Array.isArray(stateObj.turnOrder.entries) ? stateObj.turnOrder.entries.filter(e => !e.hidden) : []
+            } : undefined,
+            clocks: currentUserRole === 'gm' && Array.isArray(stateObj.clocks) ? stateObj.clocks.filter(c => !c.hidden) : undefined,
+            feedLog: currentUserRole === 'gm' && Array.isArray(stateObj.feedLog) ? stateObj.feedLog : undefined
+          };
+        }
+
         function broadcastP2PState(stateObj) {
           if (peers.size === 0 && !bcSignal) return;
           broadcastP2PPayload({
             type: 'STATE_SYNC',
             msgId: 'st-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
-            state: stateObj
+            senderRole: currentUserRole,
+            state: sanitizeStateForBroadcast(stateObj)
           });
         }
         window.broadcastP2PState = broadcastP2PState;
@@ -6629,6 +8454,7 @@
             entry.innerHTML = `<span class="timestamp">[P2P]</span> <span class="content">Connected to room "${escapeHtml(activeRoom)}".</span>`;
             feed.appendChild(entry);
             feed.scrollTop = feed.scrollHeight;
+            if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
           }
         };
 
@@ -6649,32 +8475,56 @@
           });
         }
 
+        function copyRoomInvite(feedbackBtn) {
+          const inviteUrl = getInviteUrlForRoom(activeRoom);
+          if (settingsInviteUrl) settingsInviteUrl.value = inviteUrl;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(inviteUrl).catch(() => {});
+          }
+          if (feedbackBtn) {
+            const orig = feedbackBtn.innerText;
+            feedbackBtn.innerText = 'Copied!';
+            setTimeout(() => { feedbackBtn.innerText = orig; }, 1600);
+          }
+          const feed = document.getElementById('feed');
+          if (feed) {
+            const entry = document.createElement('div');
+            entry.className = 'feed-entry';
+            entry.innerHTML = `<span class="timestamp">[P2P]</span> <span class="content">Invite URL copied: ${escapeHtml(inviteUrl)}</span>`;
+            feed.appendChild(entry);
+            feed.scrollTop = feed.scrollHeight;
+          }
+        }
+
         if (btnJoinRoom && roomInput) {
           btnJoinRoom.addEventListener('click', (e) => {
             e.stopPropagation();
             window.joinP2PRoom(roomInput.value);
           });
         }
-
+        if (btnSettingsJoin && settingsRoomInput) {
+          btnSettingsJoin.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.joinP2PRoom(settingsRoomInput.value);
+          });
+        }
         if (btnCopyInvite) {
           btnCopyInvite.addEventListener('click', (e) => {
             e.stopPropagation();
-            const inviteUrl = `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(activeRoom)}`;
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(inviteUrl).catch(() => {});
-            }
-            const feed = document.getElementById('feed');
-            if (feed) {
-              const entry = document.createElement('div');
-              entry.className = 'feed-entry';
-              entry.innerHTML = `<span class="timestamp">[P2P]</span> <span class="content">Invite URL copied: ${escapeHtml(inviteUrl)}</span>`;
-              feed.appendChild(entry);
-              feed.scrollTop = feed.scrollHeight;
-            }
+            copyRoomInvite(btnCopyInvite);
+          });
+        }
+        if (btnSettingsCopyInvite) {
+          btnSettingsCopyInvite.addEventListener('click', (e) => {
+            e.stopPropagation();
+            copyRoomInvite(btnSettingsCopyInvite);
           });
         }
 
-        connectRoom(activeRoom);
+        const lobbyModalEl = document.getElementById('session-lobby-modal');
+        if (!lobbyModalEl || lobbyModalEl.style.display === 'none') {
+          connectRoom(activeRoom);
+        }
       })();
 
       // 6. 3D Polyhedral Dice Engine (DCC + Standard + Coin, Zero Dependencies)
@@ -7225,7 +9075,14 @@
           const bearRad = (tBearing * Math.PI) / 180;
           const cosB = Math.cos(bearRad), sinB = Math.sin(bearRad);
           const cosT = Math.cos(tiltRad), sinT = Math.sin(tiltRad);
-          const persp = 1400;
+          const persp = 3200;
+
+          const nowMs = performance.now();
+          activeDice = activeDice.filter(d => {
+            if (!d.spawnedAt) d.spawnedAt = nowMs;
+            return (nowMs - d.spawnedAt) < 10000;
+          });
+          if (activeDice.length === 0) return;
 
           // Sort by height so higher dice render on top
           const sorted = activeDice.slice().sort((a, b) => a.z - b.z);
@@ -7405,6 +9262,34 @@
 
         const SUPPORTED_DICE = new Set([2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 30, 50, 100]);
 
+        let diceAudioCtx = null;
+        async function playDieRollSound(delayMs = 0) {
+          try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            if (!diceAudioCtx) diceAudioCtx = new AudioCtx();
+            if (diceAudioCtx.state === 'suspended') await diceAudioCtx.resume();
+            const start = diceAudioCtx.currentTime + (delayMs / 1000);
+            // 4 quick wooden/plastic clacks decaying in volume
+            const hits = [0, 0.055 + Math.random() * 0.02, 0.13 + Math.random() * 0.03, 0.22 + Math.random() * 0.04];
+            hits.forEach((offset, idx) => {
+              const t = start + offset;
+              const osc = diceAudioCtx.createOscillator();
+              const gain = diceAudioCtx.createGain();
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(280 + Math.random() * 200, t);
+              osc.frequency.exponentialRampToValueAtTime(85 + Math.random() * 40, t + 0.045);
+              const vol = 0.38 * Math.pow(0.68, idx);
+              gain.gain.setValueAtTime(vol, t);
+              gain.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
+              osc.connect(gain);
+              gain.connect(diceAudioCtx.destination);
+              osc.start(t);
+              osc.stop(t + 0.055);
+            });
+          } catch (_) {}
+        }
+
         function launchRollOnTable(rollData, isLocal = true) {
           // Keep max 24 dice on table so old rolls don't clutter
           if (activeDice.length > 16) activeDice = activeDice.slice(-8);
@@ -7418,10 +9303,13 @@
           const aim = rotatePointCW(1500, 2240, 1500, 1500, (360 - seatObj.theta) % 360);
 
           rollData.diceSpecs.forEach((spec, i) => {
-            activeDice.push(spawnPhysicalDie(spec, originWx, originWy, aim.x, aim.y, rollData.color, i));
+            const staggerMs = i === 0 ? 0 : (i * 60 + Math.floor(Math.random() * 45));
+            setTimeout(() => {
+              activeDice.push(spawnPhysicalDie(spec, originWx, originWy, aim.x, aim.y, rollData.color, i));
+              playDieRollSound(0);
+              startDiceLoop();
+            }, staggerMs);
           });
-
-          startDiceLoop();
 
           // Log to Action Feed
           const feed = document.getElementById('feed');
@@ -7433,6 +9321,7 @@
             entry.innerHTML = `<span class="timestamp">[${timeStr}]</span> <span class="content"><strong>${escapeHtml(rollData.userName)}:</strong> rolled <strong>${escapeHtml(rollData.expr)}</strong> → <strong>${rollData.total}</strong> <span style="color:var(--mimeo-violet-dim);">(${escapeHtml(rollData.detail)})</span>${rollData.reason ? ` <em>for ${escapeHtml(rollData.reason)}</em>` : ''}</span>`;
             feed.appendChild(entry);
             feed.scrollTop = feed.scrollHeight;
+            if (window.saveLocalFeedSnapshot) window.saveLocalFeedSnapshot();
           }
 
           if (isLocal && window.broadcastP2PDiceRoll) {
@@ -7486,6 +9375,7 @@
           const exprLabel = `${count}d${isPercent ? '%' : sides}${keepMode ? keepMode + keepCount : ''}${mod > 0 ? '+' + mod : (mod < 0 ? String(mod) : '')}`;
           const detail = rawValues.join(' + ') + (mod !== 0 ? (mod > 0 ? ` + ${mod}` : ` - ${Math.abs(mod)}`) : '');
 
+          const dieTint = `hsl(${Math.floor(Math.random() * 360)}, 55%, 42%)`;
           launchRollOnTable({
             expr: exprLabel,
             total: sum,
@@ -7493,7 +9383,7 @@
             reason: reason,
             userName: userName,
             seatId: currentSeatId,
-            color: USER_COLOR,
+            color: dieTint,
             diceSpecs: diceSpecs
           }, true);
 
@@ -7538,6 +9428,139 @@
           });
         }
       })();
+    })();
+  </script>
+  <script>
+    (function initSessionLobby() {
+      const modal = document.getElementById('session-lobby-modal');
+      if (!modal) return;
+      const nameInput = document.getElementById('lobby-name-input');
+      const roleTabs = document.getElementById('lobby-role-tabs');
+      const inviteBanner = document.getElementById('lobby-invite-banner');
+      const inviteRoomLabel = document.getElementById('lobby-invite-room-label');
+      const roomGroup = document.getElementById('lobby-room-group');
+      const tabHost = document.getElementById('lobby-tab-host');
+      const tabJoin = document.getElementById('lobby-tab-join');
+      const hostPanel = document.getElementById('lobby-host-panel');
+      const worldSelect = document.getElementById('lobby-world-select');
+      const newWorldBtn = document.getElementById('lobby-new-world');
+      const importWorldBtn = document.getElementById('lobby-import-world');
+      const roomInput = document.getElementById('lobby-room-input');
+      const copyInviteBtn = document.getElementById('lobby-copy-invite');
+      const enterBtn = document.getElementById('lobby-enter-btn');
+      const badge = document.getElementById('lobby-conn-badge');
+
+      const WORLDS_KEY = 'dankelf_worlds_v1';
+      let selectedRole = 'gm';
+      const urlRoom = (new URLSearchParams(window.location.search).get('room') || '').trim();
+      const isInviteJoin = !!urlRoom;
+
+      // Load saved display name
+      const savedName = localStorage.getItem('dankelf_display_name') || '';
+      if (savedName) nameInput.value = savedName;
+
+      // Load or seed worlds list
+      function getWorlds() {
+        try {
+          const raw = JSON.parse(localStorage.getItem(WORLDS_KEY) || '[]');
+          if (Array.isArray(raw) && raw.length) return raw;
+        } catch (_) {}
+        const def = [{ id: 'default', name: 'Default Campaign', updatedAt: new Date().toISOString() }];
+        localStorage.setItem(WORLDS_KEY, JSON.stringify(def));
+        return def;
+      }
+
+      function renderWorlds(selectId) {
+        const worlds = getWorlds();
+        const activeId = selectId || localStorage.getItem('dankelf_active_world') || worlds[0].id;
+        worldSelect.innerHTML = '';
+        worlds.forEach(w => {
+          const opt = document.createElement('option');
+          opt.value = w.id;
+          opt.textContent = w.name;
+          if (w.id === activeId) opt.selected = true;
+          worldSelect.appendChild(opt);
+        });
+      }
+      renderWorlds();
+
+      function setRole(role) {
+        selectedRole = (!isInviteJoin && role === 'gm') ? 'gm' : 'player';
+        const isGm = selectedRole === 'gm';
+        hostPanel.style.display = isGm ? 'block' : 'none';
+        tabHost.style.background = isGm ? 'var(--mimeo-violet, #4c1d95)' : 'transparent';
+        tabHost.style.color = isGm ? 'var(--cream-paper, #f6efdc)' : 'var(--mimeo-violet, #4c1d95)';
+        tabJoin.style.background = !isGm ? 'var(--mimeo-violet, #4c1d95)' : 'transparent';
+        tabJoin.style.color = !isGm ? 'var(--cream-paper, #f6efdc)' : 'var(--mimeo-violet, #4c1d95)';
+      }
+
+      if (isInviteJoin) {
+        roomInput.value = urlRoom;
+        if (roleTabs) roleTabs.style.display = 'none';
+        if (roomGroup) roomGroup.style.display = 'none';
+        if (inviteBanner) inviteBanner.style.display = 'block';
+        if (inviteRoomLabel) inviteRoomLabel.textContent = urlRoom;
+        setRole('player');
+      } else {
+        const savedRoom = localStorage.getItem('dankelf_room_code');
+        if (savedRoom) roomInput.value = savedRoom;
+        setRole('gm');
+      }
+
+      tabHost.addEventListener('click', () => { if (!isInviteJoin) setRole('gm'); });
+      tabJoin.addEventListener('click', () => setRole('player'));
+
+      newWorldBtn.addEventListener('click', () => {
+        const name = prompt('New World Name:', 'New Campaign');
+        if (!name || !name.trim()) return;
+        const worlds = getWorlds();
+        const id = 'world-' + Date.now().toString(36);
+        worlds.push({ id, name: name.trim(), updatedAt: new Date().toISOString() });
+        localStorage.setItem(WORLDS_KEY, JSON.stringify(worlds));
+        localStorage.setItem('dankelf_active_world', id);
+        renderWorlds(id);
+      });
+
+      importWorldBtn.addEventListener('click', () => {
+        const fileIn = document.getElementById('file-input-campaign');
+        if (fileIn) fileIn.click();
+      });
+
+      copyInviteBtn.addEventListener('click', () => {
+        const code = (roomInput.value || 'taverna-1').trim();
+        const url = new URL(window.location.href);
+        url.searchParams.set('room', code);
+        navigator.clipboard?.writeText(url.toString()).then(() => {
+          badge.textContent = 'Invite copied';
+          setTimeout(() => { badge.textContent = 'Ready'; }, 1800);
+        });
+      });
+
+      enterBtn.addEventListener('click', async () => {
+        const displayName = (nameInput.value || '').trim() || (selectedRole === 'gm' ? 'GM' : 'Player');
+        localStorage.setItem('dankelf_display_name', displayName);
+
+        if (selectedRole === 'gm' && worldSelect.value) {
+          const prevWorld = localStorage.getItem('dankelf_active_world') || 'default';
+          localStorage.setItem('dankelf_active_world', worldSelect.value);
+          if (worldSelect.value !== prevWorld && window.loadActiveWorldCampaign) {
+            await window.loadActiveWorldCampaign('dcc');
+          }
+        }
+
+        const handleEl = document.getElementById('person-handle-input');
+        if (handleEl) {
+          handleEl.value = displayName;
+          handleEl.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+
+        const roleBtn = document.getElementById(selectedRole === 'gm' ? 'person-role-gm' : 'person-role-player');
+        if (roleBtn) roleBtn.click();
+
+        const code = (roomInput.value || 'taverna-1').trim();
+        if (window.joinP2PRoom) window.joinP2PRoom(code);
+        modal.style.display = 'none';
+      });
     })();
   </script>
 </body>

@@ -1,0 +1,109 @@
+<svg width="856" height="282" viewBox="0 0 856 282" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .toggle-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; fill: #222D2C; }
+      .toggle-desc { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; fill: #5B6360; }
+      .opt-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 600; }
+      .opt-meta { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 400; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="856" height="282" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-10" transform="translate(16, 16)">
+
+  
+
+  <!-- Base Canvas -->
+  <rect width="460" height="200" rx="6" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Segmented Control Box -->
+  <g id="Primary-Source-Toggle-Segmented">
+    <rect x="16" y="16" width="428" height="168" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+    <!-- Header Section -->
+    <rect x="16" y="16" width="428" height="40" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <text x="28" y="36" class="toggle-title">Primary Custodian Feed Selector</text>
+    <text x="28" y="49" class="toggle-desc">Determines which custodial dataset drives the viewport choropleth &amp; KPI calculations</text>
+
+    <!-- Two-Option Segmented Radio Container -->
+    <g id="Segmented-Options">
+      <rect x="28" y="68" width="404" height="60" rx="3" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+
+      <!-- Option A: Global Harmonized (Selected) -->
+      <g id="Option-Global">
+        <rect x="32" y="72" width="196" height="52" rx="2" fill="#1A66A6" stroke="#222D2C" stroke-width="1"/>
+        <!-- Radio Bullseye Check -->
+        <circle cx="48" cy="98" r="6" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <circle cx="48" cy="98" r="3" fill="#1A66A6"/>
+        <text x="62" y="93" class="opt-title" fill="#FFFFFF">Global UN Feed (Primary)</text>
+        <text x="62" y="108" class="opt-meta" fill="#DCE8F0">UNICEF SDMX · 47/47 Counties · Harmonized</text>
+      </g>
+
+      <!-- Option B: National / Local Agency (Unselected) -->
+      <g id="Option-Local">
+        <rect x="232" y="72" width="196" height="52" rx="2" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="1"/>
+        <!-- Radio Empty Circle -->
+        <circle cx="248" cy="98" r="6" fill="#FFFFFF" stroke="#707673" stroke-width="1"/>
+        <text x="262" y="93" class="opt-title" fill="#222D2C">National Agency (NDMA)</text>
+        <text x="262" y="108" class="opt-meta" fill="#707673">Sentinel Monthly · 23 ASAL Counties</text>
+      </g>
+    </g>
+
+    <!-- Context Guidance Strip -->
+    <g id="Context-Strip">
+      <rect x="28" y="136" width="404" height="36" rx="2" fill="#AED4F8" fill-opacity="0.3" stroke="#1A66A6" stroke-width="0.8"/>
+      <text x="38" y="152" class="toggle-desc" font-weight="600" fill="#1A66A6">Instant Re-projection:</text>
+      <text x="38" y="164" class="toggle-desc">Switching sources triggers immediate polygon repaint and appends attribution audit token.</text>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-10">
+    <rect x="500" y="16" width="340" height="250" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="500" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="514" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="520" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="612" y="40" class="spec-title">Primary Source Toggle</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="76" r="3" fill="#1A66A6"/>
+        <text x="528" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="528" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Allows instant toggling between global UN standards</text>
+        <text x="528" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">and national ministry datasets.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="114" r="3" fill="#1A66A6"/>
+        <text x="528" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="528" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Segmented radio control updates active map layer</text>
+        <text x="528" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">without full page or workspace reload.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="152" r="3" fill="#1A66A6"/>
+        <text x="528" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="528" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Clearly marks global harmonization vs subnational</text>
+        <text x="528" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">granularity advantages.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="190" r="3" fill="#1A66A6"/>
+        <text x="528" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">ACCESSIBILITY:</text>
+        <text x="528" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">High-contrast selection state with distinct radio</text>
+        <text x="528" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">glyph primitives (WCAG AAA).</text>
+      </g>
+  </g>
+</svg>

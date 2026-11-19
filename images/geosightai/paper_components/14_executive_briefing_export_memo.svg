@@ -1,0 +1,235 @@
+<svg width="996" height="772" viewBox="0 0 996 772" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .memo-header { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; font-weight: 700; fill: #222D2C; }
+      .memo-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; fill: #5B6360; }
+      .memo-h2 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; fill: #222D2C; }
+      .kpi-num { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 18px; font-weight: 700; fill: #222D2C; }
+      .kpi-lbl { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 600; text-transform: uppercase; fill: #707673; }
+      .body-txt { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; line-height: 15px; fill: #222D2C; }
+      .tbl-txt { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 500; fill: #222D2C; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="996" height="772" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-14" transform="translate(16, 16)">
+
+  
+
+  <!-- Physical Archival Paper Sheet (1-2 Page Memo Replica) -->
+  <rect x="8" y="8" width="584" height="724" rx="4" fill="#222D2C" fill-opacity="0.12"/>
+  <rect x="6" y="6" width="584" height="724" rx="2" fill="#EFECE6" stroke="#222D2C" stroke-width="1.5"/>
+
+  <!-- Top Institutional Letterhead -->
+  <g id="Memo-Letterhead">
+    <rect x="6" y="6" width="584" height="58" rx="0" fill="#1A66A6" stroke="#222D2C" stroke-width="1"/>
+    <!-- UN Emblem Badge -->
+    <circle cx="36" cy="35" r="16" fill="#F1ECE5"/>
+    <path d="M28 35 H44 M36 24 A11 11 0 0 1 36 46 A11 11 0 0 1 36 24" stroke="#1A66A6" stroke-width="1.2" fill="none"/>
+    <text x="64" y="30" class="memo-header" fill="#F1ECE5">UNITED NATIONS GEOSIGHTAI · EXECUTIVE POLICY MEMO</text>
+    <text x="64" y="46" class="memo-sub" fill="#DCE8F0">DECISION-READY CRISIS BRIEFING: KENYA ASAL NUTRITION EMERGENCY</text>
+    
+    <rect x="472" y="22" width="102" height="26" rx="2" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+    <text x="480" y="38" class="tbl-txt" font-weight="700">AUDIT FREEZE</text>
+  </g>
+
+  <!-- Memo Metadata Bar -->
+  <g id="Memo-Meta">
+    <rect x="20" y="74" width="556" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="32" y="94" class="memo-sub"><tspan font-weight="700" fill="#222D2C">TO:</tspan> Humanitarian Country Team (HCT)</text>
+    <text x="210" y="94" class="memo-sub"><tspan font-weight="700" fill="#222D2C">DATE:</tspan> 5 Nov 2024</text>
+    <text x="310" y="94" class="memo-sub"><tspan font-weight="700" fill="#222D2C">CLASSIFICATION:</tspan> UN OFFICIAL USE</text>
+    <text x="470" y="94" class="memo-sub"><tspan font-weight="700" fill="#222D2C">PAGE:</tspan> 1 of 2</text>
+  </g>
+
+  <!-- Executive Summary KPI Tiles -->
+  <g id="KPI-Strip">
+    <!-- KPI 1 -->
+    <rect x="20" y="116" width="130" height="66" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="30" y="134" class="kpi-lbl">Total Population at Risk</text>
+    <text x="30" y="158" class="kpi-num">2.41M</text>
+    <text x="30" y="172" class="memo-sub" fill="#D35B50" font-weight="600">+18% vs 2023</text>
+
+    <!-- KPI 2 -->
+    <rect x="162" y="116" width="130" height="66" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="172" y="134" class="kpi-lbl">Counties in Severe Crisis</text>
+    <text x="172" y="158" class="kpi-num" fill="#D35B50">8 of 47</text>
+    <text x="172" y="172" class="memo-sub">VCI Anomaly &lt; 20</text>
+
+    <!-- KPI 3 -->
+    <rect x="304" y="116" width="130" height="66" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="314" y="134" class="kpi-lbl">Primary Wasting Epicenter</text>
+    <text x="314" y="158" class="kpi-num">41.2%</text>
+    <text x="314" y="172" class="memo-sub">Garissa County</text>
+
+    <!-- KPI 4 -->
+    <rect x="446" y="116" width="130" height="66" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="456" y="134" class="kpi-lbl">Recommended Funding</text>
+    <text x="456" y="158" class="kpi-num" fill="#1A66A6">$34.5M</text>
+    <text x="456" y="172" class="memo-sub">CERF Emergency Pool</text>
+  </g>
+
+  <!-- Static Map Hotspot & Key Finding Layout -->
+  <g id="Hotspot-Map-Section">
+    <rect x="20" y="192" width="280" height="190" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    <!-- Mini Choropleth Map Wireframe Representation -->
+    <rect x="30" y="202" width="260" height="150" fill="#E7E4DF" stroke="#222D2C" stroke-width="0.8"/>
+    
+    <!-- Vector Polygons simulating Kenyan Northern Counties -->
+    <polygon points="120,215 190,210 220,250 170,270 115,250" fill="#D35B50" stroke="#222D2C" stroke-width="1"/>
+    <polygon points="170,270 220,250 260,280 230,320 180,310" fill="#B6443B" stroke="#222D2C" stroke-width="1"/>
+    <polygon points="70,230 120,215 115,250 90,290 60,260" fill="#EBAFA3" stroke="#222D2C" stroke-width="1"/>
+    
+    <!-- Garissa Hotspot Pin -->
+    <circle cx="210" cy="285" r="4" fill="#F4D35A" stroke="#222D2C" stroke-width="1"/>
+    <text x="218" y="288" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#222D2C">Garissa (41.2%)</text>
+    <text x="32" y="372" class="memo-sub">Figure 1: Static Subnational Risk Hotspot (Frozen state SHA-256)</text>
+
+    <!-- Narrative Key Recommendations -->
+    <g id="Key-Findings-Text">
+      <rect x="312" y="192" width="264" height="190" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+      <rect x="312" y="192" width="264" height="28" fill="#E7E4DF" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="324" y="210" class="memo-h2">Executive Situation Narrative</text>
+
+      <text x="324" y="235" class="body-txt">• <tspan font-weight="700">Pastoralist Collapse:</tspan> 3 consecutive rain failures have</text>
+      <text x="324" y="249" class="body-txt">  driven acute forage deficit across Garissa &amp; Wajir.</text>
+      <text x="324" y="267" class="body-txt">• <tspan font-weight="700">WASH Deterioration:</tspan> School-level safe water access</text>
+      <text x="324" y="281" class="body-txt">  dropped below 32%, triggering enteric complications.</text>
+      <text x="324" y="299" class="body-txt">• <tspan font-weight="700">Recommended Intervention:</tspan> Pre-position RUTF feeding</text>
+      <text x="324" y="313" class="body-txt">  supplies and emergency water trucking in 4 high-burden</text>
+      <text x="324" y="327" class="body-txt">  hubs prior to Dec 2024 pastoralist migration waves.</text>
+      
+      <rect x="324" y="342" width="240" height="26" rx="2" fill="#AED4F8" fill-opacity="0.3" stroke="#1A66A6" stroke-width="0.8"/>
+      <text x="334" y="358" class="tbl-txt" font-size="9" fill="#1A66A6" font-weight="700">Action: Expedite CERF Allocation 2024-H2</text>
+    </g>
+  </g>
+
+  <!-- Top 5 Highest-Risk Areas Table -->
+  <g id="Top-5-Table">
+    <rect x="20" y="394" width="556" height="22" fill="#E7E4DF" stroke="#222D2C" stroke-width="0.8"/>
+    <text x="30" y="409" class="memo-h2">Priority Ranking Table: Top 5 Highest-Risk Subnational Counties</text>
+
+    <rect x="20" y="416" width="556" height="152" rx="0" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    
+    <!-- Table Header -->
+    <rect x="20" y="416" width="556" height="24" fill="#DFDDD7" stroke="#222D2C" stroke-width="0.5"/>
+    <text x="30" y="432" class="kpi-lbl">Rank &amp; County</text>
+    <text x="140" y="432" class="kpi-lbl">SAM Wasting Rate</text>
+    <text x="250" y="432" class="kpi-lbl">Drought Deficit (VCI)</text>
+    <text x="370" y="432" class="kpi-lbl">Child Burden Population</text>
+    <text x="490" y="432" class="kpi-lbl">Composite Index</text>
+
+    <!-- Row 1 -->
+    <rect x="20" y="440" width="556" height="24" fill="#F5D6CE" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="30" y="456" class="tbl-txt" font-weight="700">#1 Garissa</text>
+    <text x="140" y="456" class="tbl-txt" font-weight="700" fill="#D35B50">41.2% (Very High)</text>
+    <text x="250" y="456" class="tbl-txt">VCI 14.2 (Severe)</text>
+    <text x="370" y="456" class="tbl-txt">148,200 children</text>
+    <text x="490" y="456" class="tbl-txt" font-weight="700" fill="#D35B50">89.4 / 100</text>
+
+    <!-- Row 2 -->
+    <rect x="20" y="464" width="556" height="24" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="30" y="480" class="tbl-txt" font-weight="700">#2 Wajir</text>
+    <text x="140" y="480" class="tbl-txt">38.6% (Very High)</text>
+    <text x="250" y="480" class="tbl-txt">VCI 16.8 (Severe)</text>
+    <text x="370" y="480" class="tbl-txt">122,400 children</text>
+    <text x="490" y="480" class="tbl-txt" font-weight="700">85.7 / 100</text>
+
+    <!-- Row 3 -->
+    <rect x="20" y="488" width="556" height="24" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="30" y="504" class="tbl-txt" font-weight="700">#3 Mandera</text>
+    <text x="140" y="504" class="tbl-txt">36.1% (High)</text>
+    <text x="250" y="504" class="tbl-txt">VCI 18.0 (Severe)</text>
+    <text x="370" y="504" class="tbl-txt">110,900 children</text>
+    <text x="490" y="504" class="tbl-txt" font-weight="700">81.2 / 100</text>
+
+    <!-- Row 4 -->
+    <rect x="20" y="512" width="556" height="24" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="30" y="528" class="tbl-txt" font-weight="700">#4 Turkana</text>
+    <text x="140" y="528" class="tbl-txt">33.5% (High)</text>
+    <text x="250" y="528" class="tbl-txt">VCI 21.4 (Moderate)</text>
+    <text x="370" y="528" class="tbl-txt">165,100 children</text>
+    <text x="490" y="528" class="tbl-txt" font-weight="700">76.8 / 100</text>
+
+    <!-- Row 5 -->
+    <rect x="20" y="536" width="556" height="32" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+    <text x="30" y="556" class="tbl-txt" font-weight="700">#5 Marsabit</text>
+    <text x="140" y="556" class="tbl-txt">29.8% (Moderate)</text>
+    <text x="250" y="556" class="tbl-txt">VCI 23.1 (Moderate)</text>
+    <text x="370" y="556" class="tbl-txt">62,800 children</text>
+    <text x="490" y="556" class="tbl-txt" font-weight="700">71.4 / 100</text>
+  </g>
+
+  <!-- Institutional Methodology Footer & Cryptographic Signature -->
+  <g id="Memo-Footer">
+    <rect x="20" y="580" width="556" height="130" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    
+    <rect x="20" y="580" width="556" height="24" fill="#DFDDD7" stroke="#222D2C" stroke-width="0.5"/>
+    <text x="30" y="596" class="memo-h2">Source Methodology &amp; Audit Governance Footer</text>
+
+    <text x="30" y="618" class="body-txt"><tspan font-weight="700">Methodology Standards:</tspan> Composite calculations conform to UNICEF CCRI 2.0 and WHO Child Malnutrition Harmonization</text>
+    <text x="30" y="632" class="body-txt">guidelines. Statistical significance verified via Pearson correlation (r = 0.78, p &lt; 0.001 across all 47 Kenyan Counties (100% Reporting)).</text>
+    
+    <text x="30" y="650" class="body-txt"><tspan font-weight="700">Custodial Credit:</tspan> UNICEF SDMX Data Warehouse · Kenya National Drought Management Authority (NDMA) · UN Data Commons.</text>
+    
+    <!-- Tamper Proof Stamp -->
+    <g id="Audit-Stamp">
+      <rect x="30" y="664" width="536" height="36" rx="2" fill="#EFECE6" stroke="#222D2C" stroke-width="0.8"/>
+      <rect x="38" y="670" width="80" height="24" rx="2" fill="#1A66A6"/>
+      <text x="46" y="686" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#FFFFFF">VERIFIED COPY</text>
+      
+      <text x="128" y="680" class="memo-sub">Cryptographic Hash: <tspan font-family="monospace" font-weight="700">sha256:9f8a7c2e4b1a0d8f3e2b9c7a1d4f6e8a2b3c4d5e</tspan></text>
+      <text x="128" y="694" class="memo-sub">Archival URL: https://geosight.unicef.org/briefings/2024-ke-asal-sam.pdf · Certified Tamper-Proof</text>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-14">
+    <rect x="640" y="16" width="340" height="740" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="640" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="654" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="660" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="752" y="40" class="spec-title">Executive Briefing Memo</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="76" r="3" fill="#1A66A6"/>
+        <text x="668" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="668" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Compiles geospatial findings into an institutional-grade</text>
+        <text x="668" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">policy briefing document.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="114" r="3" fill="#1A66A6"/>
+        <text x="668" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="668" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Instant 1-click export as vector PDF or Markdown</text>
+        <text x="668" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">summary for senior decision-makers.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="152" r="3" fill="#1A66A6"/>
+        <text x="668" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="668" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Includes formal Pearson correlation statistics,</text>
+        <text x="668" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">subnational tables, and SHA-256 audit hash.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="190" r="3" fill="#1A66A6"/>
+        <text x="668" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DESIGN SYSTEM:</text>
+        <text x="668" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Paper Theme typography with high-contrast rules</text>
+        <text x="668" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">engineered for print and digital review.</text>
+      </g>
+  </g>
+</svg>

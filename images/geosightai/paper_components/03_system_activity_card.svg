@@ -1,0 +1,183 @@
+<svg width="816" height="322" viewBox="0 0 816 322" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+
+    <style>
+      .milestone-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; fill: #222D2C; }
+      .milestone-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 400; fill: #5B6360; line-height: 16px; }
+      .trace-step { font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: 600; fill: #222D2C; }
+      .trace-param { font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: 400; fill: #707673; }
+      .status-pill { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="816" height="322" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-03" transform="translate(16, 16)">
+
+  
+
+  <!-- Archival Canvas Base -->
+  <rect width="816" height="322" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-03" transform="translate(16, 16)">
+
+  
+
+  <!-- Background Base -->
+  <rect width="420" height="290" rx="6" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Main Narrative Activity Card (Calm Waiting & Multi-Stage Tool Execution) -->
+  <g id="System-Activity-Card">
+    <rect x="16" y="16" width="388" height="258" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+    <!-- Narrative Header -->
+    <g id="Narrative-Header">
+      <rect x="16" y="16" width="388" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+      <!-- UN Globe Sparkle Icon -->
+      <circle cx="34" cy="37" r="10" fill="#1A66A6"/>
+      <path d="M30 37 H38 M34 30 A7 7 0 0 1 34 44 A7 7 0 0 1 34 30" stroke="#FFFFFF" stroke-width="0.8" fill="none"/>
+      <text x="52" y="34" class="milestone-title">Synthesizing Horn of Africa Drought Impact</text>
+      <text x="52" y="47" class="milestone-sub" font-size="10">Executing query plan across 3 custodial endpoints</text>
+      
+      <!-- Live Calm Progress Pill -->
+      <rect x="306" y="27" width="86" height="20" rx="3" fill="#AED4F8" stroke="#1A66A6" stroke-width="1"/>
+      <circle cx="316" cy="37" r="3" fill="#1A66A6"/>
+      <text x="324" y="41" class="status-pill" fill="#1A66A6">COMPLETED</text>
+    </g>
+
+    <!-- Narrative Milestone 1 (Resolved Entity) -->
+    <g id="Milestone-1">
+      <circle cx="34" cy="76" r="6" fill="#54C93F" stroke="#222D2C" stroke-width="1"/>
+      <path d="M32 76 L33.5 77.5 L36.5 74.5" stroke="#222D2C" stroke-width="1.2" stroke-linecap="round"/>
+      <text x="48" y="79" class="milestone-title" font-size="11">Resolved 47 Subnational Boundaries (ADM1 Kenya)</text>
+      <text x="48" y="93" class="milestone-sub">Boundary polygon verified via UN GeoSight Registry (ISO 3166-2:KE)</text>
+    </g>
+
+    <!-- Milestone 2 (Data Retrieval) -->
+    <g id="Milestone-2">
+      <line x1="34" y1="84" x2="34" y2="108" stroke="#BCBCB8" stroke-width="1.5" stroke-dasharray="2 2"/>
+      <circle cx="34" cy="116" r="6" fill="#54C93F" stroke="#222D2C" stroke-width="1"/>
+      <path d="M32 116 L33.5 117.5 L36.5 114.5" stroke="#222D2C" stroke-width="1.2" stroke-linecap="round"/>
+      <text x="48" y="119" class="milestone-title" font-size="11">Loaded UNICEF SDMX Indicator Feed (2024–2025)</text>
+      <text x="48" y="133" class="milestone-sub">Cross-checked against WHO Global Malnutrition Database</text>
+    </g>
+
+    <!-- Collapsible Step-Trace Accordion -->
+    <g id="Step-Trace-Accordion">
+      <rect x="28" y="146" width="364" height="114" rx="3" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+      
+      <!-- Accordion Header -->
+      <rect x="28" y="146" width="364" height="24" rx="0" fill="#DFDDD7" stroke="#222D2C" stroke-width="0.8"/>
+      <path d="M40 156 L44 160 L48 156" stroke="#222D2C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <text x="56" y="162" class="trace-step" font-size="10">TRACE LOG (Tool Reasoning &amp; Parameters)</text>
+      <text x="320" y="162" class="trace-param" font-size="9">3 steps · 184ms</text>
+
+      <!-- Terminal Trace Step 1 -->
+      <text x="40" y="184" class="trace-step">1. call_tool: geosight_admin_lookup</text>
+      <text x="56" y="196" class="trace-param">args: { iso: "KE", level: "ADM1", count: 47 }</text>
+
+      <!-- Terminal Trace Step 2 -->
+      <text x="40" y="212" class="trace-step">2. call_tool: sdmx_fetch_series</text>
+      <text x="56" y="224" class="trace-param">args: { indicator: "NUT_SAM_BURDEN", year: "2024" }</text>
+
+      <!-- Terminal Trace Step 3 -->
+      <text x="40" y="240" class="trace-step">3. call_tool: choropleth_render_split</text>
+      <text x="56" y="252" class="trace-param">args: { ramp: "paper_terracotta", classes: 7 }</text>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-03">
+    <rect x="460" y="16" width="340" height="290" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="460" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="474" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="480" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="572" y="40" class="spec-title">System Activity Card</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="76" r="3" fill="#1A66A6"/>
+        <text x="488" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="488" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Communicates autonomous multi-step tool execution</text>
+        <text x="488" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">and spatial reasoning stages.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="114" r="3" fill="#1A66A6"/>
+        <text x="488" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="488" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Expandable trace accordion reveals tool parameters,</text>
+        <text x="488" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">sub-queries, and latency metrics.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="152" r="3" fill="#1A66A6"/>
+        <text x="488" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="488" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Validates polygon registry (ISO 3166-2:KE) and</text>
+        <text x="488" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">verifies cross-source custodial endpoints.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="190" r="3" fill="#1A66A6"/>
+        <text x="488" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">WAITING PSYCHOLOGY:</text>
+        <text x="488" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Replaces opaque spinners with calm, verifiable</text>
+        <text x="488" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">milestone progress steps.</text>
+      </g>
+  </g>
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-03">
+    <rect x="460" y="16" width="340" height="290" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="460" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="474" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="480" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="572" y="40" class="spec-title">System Activity Card</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="76" r="3" fill="#1A66A6"/>
+        <text x="488" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="488" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Communicates autonomous multi-step tool execution</text>
+        <text x="488" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">and spatial reasoning stages.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="114" r="3" fill="#1A66A6"/>
+        <text x="488" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="488" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Expandable trace accordion reveals tool parameters,</text>
+        <text x="488" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">sub-queries, and latency metrics.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="152" r="3" fill="#1A66A6"/>
+        <text x="488" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="488" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Validates polygon registry (ISO 3166-2:KE) and</text>
+        <text x="488" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">verifies cross-source custodial endpoints.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="478" cy="190" r="3" fill="#1A66A6"/>
+        <text x="488" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">WAITING PSYCHOLOGY:</text>
+        <text x="488" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Replaces opaque spinners with calm, verifiable</text>
+        <text x="488" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">milestone progress steps.</text>
+      </g>
+  </g>
+</svg>

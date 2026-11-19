@@ -1,0 +1,111 @@
+<svg width="876" height="282" viewBox="0 0 876 282" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .badge-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; }
+      .badge-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; fill: #5B6360; line-height: 14px; }
+      .spec-head { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; fill: #222D2C; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="876" height="282" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-08" transform="translate(16, 16)">
+
+  
+
+  <!-- Base Canvas -->
+  <rect width="480" height="200" rx="6" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Trust Badges Spec Container -->
+  <g id="Agreement-Badges-Set">
+    <rect x="16" y="16" width="448" height="168" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+    <rect x="16" y="16" width="448" height="34" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <text x="28" y="38" class="spec-head">Data Trust &amp; Cross-Source Agreement Status Tokens</text>
+
+    <!-- 1. PASS Status Badge Card -->
+    <g id="Badge-PASS">
+      <rect x="28" y="60" width="132" height="110" rx="3" fill="#EFECE6" stroke="#54C93F" stroke-width="1.5"/>
+      <!-- Pill Token -->
+      <rect x="38" y="70" width="60" height="20" rx="3" fill="#54C93F" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="49" y="84" class="badge-title" fill="#222D2C">✓ PASS</text>
+      <text x="38" y="105" class="badge-title" fill="#222D2C">Full Alignment</text>
+      <text x="38" y="120" class="badge-sub">Discrepancy &lt; 3%</text>
+      <text x="38" y="134" class="badge-sub">between global UN</text>
+      <text x="38" y="148" class="badge-sub">and ministry feeds.</text>
+    </g>
+
+    <!-- 2. REVIEW Status Badge Card -->
+    <g id="Badge-REVIEW">
+      <rect x="174" y="60" width="132" height="110" rx="3" fill="#EFECE6" stroke="#F39D22" stroke-width="1.5"/>
+      <!-- Pill Token -->
+      <rect x="184" y="70" width="70" height="20" rx="3" fill="#F39D22" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="194" y="84" class="badge-title" fill="#222D2C">⚠ REVIEW</text>
+      <text x="184" y="105" class="badge-title" fill="#222D2C">Source Delta</text>
+      <text x="184" y="120" class="badge-sub">Delta 3%–15%.</text>
+      <text x="184" y="134" class="badge-sub">Different survey</text>
+      <text x="184" y="148" class="badge-sub">years or weights.</text>
+    </g>
+
+    <!-- 3. UNVERIFIED Status Badge Card -->
+    <g id="Badge-UNVERIFIED">
+      <rect x="320" y="60" width="132" height="110" rx="3" fill="#EFECE6" stroke="#909390" stroke-width="1.5"/>
+      <!-- Pill Token -->
+      <rect x="330" y="70" width="94" height="20" rx="3" fill="#DFDDD7" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="338" y="84" class="badge-title" fill="#5B6360">? UNVERIFIED</text>
+      <text x="330" y="105" class="badge-title" fill="#222D2C">Single Feed</text>
+      <text x="330" y="120" class="badge-sub">No secondary</text>
+      <text x="330" y="134" class="badge-sub">custodian cross-check</text>
+      <text x="330" y="148" class="badge-sub">available in region.</text>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-08">
+    <rect x="520" y="16" width="340" height="250" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="520" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="534" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="540" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="632" y="40" class="spec-title">Data Trust Tokens</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="538" cy="76" r="3" fill="#1A66A6"/>
+        <text x="548" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="548" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Provides rapid visual trust cues for cross-source</text>
+        <text x="548" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">indicator agreement and data quality.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="538" cy="114" r="3" fill="#1A66A6"/>
+        <text x="548" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="548" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Clicking badge opens detailed side-by-side</text>
+        <text x="548" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">provenance inspection popover.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="538" cy="152" r="3" fill="#1A66A6"/>
+        <text x="548" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">THRESHOLDS:</text>
+        <text x="548" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Green: &lt;3% delta · Amber: 3–15% delta (review) ·</text>
+        <text x="548" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Gray: Single source unverified.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="538" cy="190" r="3" fill="#1A66A6"/>
+        <text x="548" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">3-SEC SCAN TEST:</text>
+        <text x="548" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Designed for immediate operator comprehension under</text>
+        <text x="548" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">field crisis conditions.</text>
+      </g>
+  </g>
+</svg>

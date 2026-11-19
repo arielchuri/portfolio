@@ -394,12 +394,10 @@
             <option value="sphere">Glass Sphere</option>
             <option value="torus">Torus</option>
             <option value="torusknot">Torus Knot</option>
-            <option value="cylinder">Cylinder</option>
             <option value="hourglass">Hour Glass</option>
             <option value="starfruit">Star Fruit</option>
             <option value="dragonfruit">Dragon Fruit</option>
             <option value="prism">Triangular Prism</option>
-            <option value="crystal">Quartz Crystal</option>
             <option value="diamond">Faceted Diamond</option>
             <option value="icosa">Icosahedron</option>
             <option value="octa">Octahedron</option>
@@ -955,13 +953,6 @@
       return geom;
     }
 
-    function createCrystalGeometry() {
-      // Hexagonal quartz crystal wand with pointed pyramidal tip
-      const geom = new THREE.CylinderGeometry(0.08, 0.95, 2.6, 6);
-      geom.computeVertexNormals();
-      return geom.toNonIndexed(); // Crisp flat crystal facets
-    }
-
     function createDiamondGeometry() {
       // Faceted brilliant diamond cut
       const geom = new THREE.ConeGeometry(1.4, 1.6, 8, 2);
@@ -978,26 +969,6 @@
 
     function createTorusKnotGeometry() {
       const geom = new THREE.TorusKnotGeometry(1.0, 0.34, 220, 48, 2, 3);
-      geom.computeVertexNormals();
-      return geom;
-    }
-
-    function createCylinderGeometry() {
-      const pts = [];
-      const radius = 0.92;
-      const halfH = 1.45;
-      const bevel = 0.14;
-      pts.push(new THREE.Vector2(0, -halfH));
-      for (let i = 0; i <= 10; i++) {
-        const a = -Math.PI / 2 + (i / 10) * (Math.PI / 2);
-        pts.push(new THREE.Vector2((radius - bevel) + Math.cos(a) * bevel, -(halfH - bevel) + Math.sin(a) * bevel));
-      }
-      for (let i = 0; i <= 10; i++) {
-        const a = (i / 10) * (Math.PI / 2);
-        pts.push(new THREE.Vector2((radius - bevel) + Math.cos(a) * bevel, (halfH - bevel) + Math.sin(a) * bevel));
-      }
-      pts.push(new THREE.Vector2(0, halfH));
-      const geom = new THREE.LatheGeometry(pts, 96);
       geom.computeVertexNormals();
       return geom;
     }
@@ -1157,12 +1128,10 @@
       sphere: createSphereGeometry(),
       torus: createTorusGeometry(),
       torusknot: createTorusKnotGeometry(),
-      cylinder: createCylinderGeometry(),
       hourglass: createHourglassGeometry(),
       starfruit: createStarFruitGeometry(),
       dragonfruit: createDragonFruitGeometry(),
       prism: createPrismGeometry(),
-      crystal: createCrystalGeometry(),
       diamond: createDiamondGeometry(),
       icosa: createIcosaGeometry(),
       octa: createOctaGeometry(),

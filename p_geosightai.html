@@ -1,410 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Basic Page Needs
+
+<head>
+  <!-- Basic Page Needs
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8" />
-    <title>United Nations GeosightAI - Ariel Churi</title>
-    <meta
-      name="description"
-      content="United Nations GeosightAI: Conversational AI &amp; Geospatial Intelligence for UNICEF GeoSight."
-    />
-    <meta name="author" content="Ariel Churi" />
+  <meta charset="utf-8" />
+  <title>United Nations GeosightAI - Ariel Churi</title>
+  <meta name="description"
+    content="United Nations GeosightAI: Conversational AI &amp; Geospatial Intelligence for UNICEF GeoSight." />
+  <meta name="author" content="Ariel Churi" />
 
-    <!-- Mobile Specific Metas
+  <!-- Mobile Specific Metas
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- FONT
+  <!-- FONT
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link
-      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
-      rel="stylesheet"
-      type="text/css"
-    />
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />
 
-    <!-- CSS
+  <!-- CSS
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/skeleton.css" />
-    <link rel="stylesheet" href="fonts/inter.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/skeleton.css" />
+  <link rel="stylesheet" href="fonts/inter.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 
-    <!-- Favicon
+  <!-- Favicon
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-  </head>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
 
-  <body>
-    <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav>
-      <span id="returnbutton"></span> <span id="resumebutton"></span>
-      <span id="contactbutton"></span>
-      <span class="" id="projectsbutton"></span>
-      <span class="" id="physicalbutton"></span>
-      <span class="" id="mobilebutton"></span>
-    </nav>
-    <!-- Down arrow navigation (populated by JavaScript) -->
-    <div id="down-arrow-placeholder"></div>
+<body>
+  <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––– -->
+  <nav>
+    <span id="returnbutton"></span> <span id="resumebutton"></span>
+    <span id="contactbutton"></span>
+    <span class="" id="projectsbutton"></span>
+    <span class="" id="physicalbutton"></span>
+    <span class="" id="mobilebutton"></span>
+  </nav>
+  <!-- Down arrow navigation (populated by JavaScript) -->
+  <div id="down-arrow-placeholder"></div>
 
-    <div
-      class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 main-content"
-    >
-      <div id="contactDiv" style="display: none; width: 100%"></div>
-      <div class="row">
-        <!-- Hero section -->
-      </div>
-      <div
-        class="h-screen flex items-center twelve columns bottomspace"
-        id="geosight-hero-section"
-      >
-        <img
-          class="pb-48 px-2 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 rounded-xs"
-          src="images/geosightai/globe_prompt_view.png"
-          alt="United Nations GeosightAI Interface"
-        />
+  <div class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 main-content">
+    <div id="contactDiv" style="display: none; width: 100%"></div>
+    <div class="row">
+      <!-- Hero section -->
+    </div>
+    <div class="h-screen flex items-center twelve columns bottomspace" id="geosight-hero-section">
+      <img class="pb-48 px-2 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 rounded-xs"
+        src="images/geosightai/globe-sat_prompt_view.svg" alt="United Nations GeosightAI Interface" />
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+    <hr class="dots my-36" />
+
+    <div class="row">
+      <div class="twelve columns title">
+        <h1 class="mb-2">United Nations GeosightAI</h1>
+        <p class="text-xl font-thin uppercase tracking-wide text-gray-500">
+          Generative AI for Geospatial Humanitarian &amp; Policy Intelligence
+        </p>
       </div>
     </div>
 
-    <div
-      class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
-    >
-      <hr class="dots my-36" />
-
-      <div class="row">
-        <div class="twelve columns title">
-          <h1 class="mb-2">United Nations GeosightAI</h1>
-          <p class="text-xl font-thin uppercase tracking-wide text-gray-500">
-            Generative AI for Geospatial Humanitarian &amp; Policy Intelligence
-          </p>
-        </div>
+    <!-- Intro / Context / Overview -->
+    <div class="row">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          Grounded AI for Humanitarian Decisions
+        </h3>
+        <p>
+          The transformation of <em>Unicef's</em> <strong>Geosight</strong> is a keystone of the <em>United Nations 2026
+            TechOver</em> initiative. This project brings conversational AI to
+          UNICEF&rsquo;s GeoSight geospatial intellegence platform. I presented this work
+          directly to the <strong><a href="https://unite.un.org/" target="_blank"> Nations Office of Information and
+              Communications
+              Technology (OICT)</a></strong> and to <strong>Google's <a href="https://datacommons.org"
+              target="_blank">Data
+              Commons</a></strong> team.
+        </p>
+        <p>
+          Policy analysts and field teams rely on data from UNICEF, the World
+          Bank, and UN Data Commons to decide where aid and funding need to go
+          first. Pulling subnational indicators together—like crossing
+          out-of-school rates with safe water access and drought risk across
+          47 counties—usually takes hours of hunting through fragmented
+          catalogs.
+        </p>
+        <p>
+          Our team of four built an AI copilot that lets decision-makers ask broad questions
+          in plain language and get a live, multi-layered map and priority
+          index in seconds. When mapping child vulnerability, AI hallucinations
+          aren&rsquo;t just annoying—they&rsquo;re dangerous. My focus as the
+          Product/UX/UI designer was making the AI
+          <strong>grounded, inspectable, and easy to steer</strong>.
+        </p>
       </div>
-
-      <!-- Intro / Context / Overview -->
-      <div class="row">
-        <div class="four columns">
-          <h3 class="text-2xl font-semibold mb-2">
-            Grounded AI for Humanitarian Decisions
-          </h3>
-          <p>
-            I worked on <strong>United Nations GeosightAI</strong> (built as part
-            of the UNTechOver 2026 initiative) to bring conversational AI to
-            UNICEF&rsquo;s GeoSight geospatial platform. I presented this work
-            directly to the
-            <strong>United Nations Office of Information and Communications
-            Technology (OICT)</strong> and to <strong>Google</strong>.
-          </p>
-          <p>
-            Policy analysts and field teams rely on data from UNICEF, the World
-            Bank, and UN Data Commons to decide where aid and funding need to go
-            first. Pulling subnational indicators together—like crossing
-            out-of-school rates with safe water access and drought risk across
-            47 counties—usually takes hours of hunting through fragmented
-            catalogs.
-          </p>
-          <p>
-            We built an AI copilot that lets decision-makers ask broad questions
-            in plain language and get a live, multi-layered map and priority
-            index in seconds. When mapping child vulnerability, AI hallucinations
-            aren&rsquo;t just annoying—they&rsquo;re dangerous. My focus as the
-            UX/UI designer was making the AI
-            <strong>grounded, inspectable, and easy to steer</strong>.
-          </p>
-        </div>
-        <div class="eight columns">
-          <img
-            class="box-shadow rounded-xs bottomspace"
-            src="images/geosightai/google_talk.webp"
-            alt="Presenting GeosightAI at Google Builders Day"
-          />
-        </div>
+      <div class="eight columns">
+        <img class="box-shadow rounded-xs bottomspace" src="images/geosightai/google_talk.webp"
+          alt="Presenting GeosightAI at Google Builders Day" />
       </div>
-
-      <hr class="dots my-36" />
-
-      <!-- Section 1: AI Copilot, Intent Disambiguation & Indicator Swap -->
-      <div class="row mb-12">
-        <div class="four columns">
-          <h3 class="text-2xl font-semibold mb-2">
-            AI Copilot, Disambiguation &amp; Indicator Swap
-          </h3>
-          <p>
-            Broad queries like
-            <em>&ldquo;Show me child vulnerability in the Horn of Africa&rdquo;</em>
-            are ambiguous across dozens of potential metrics. Instead of
-            guessing and running a heavy pipeline on the wrong data, the copilot
-            clarifies intent and surfaces candidate datasets first.
-          </p>
-          <p>
-            I separated the conversational chat from noisy developer logs—replacing
-            raw tool dumps with clean narrative milestones and a collapsible step
-            inspector—and designed an interactive
-            <strong>Indicator Swap Drawer</strong> so analysts can compare and
-            swap layers on the fly without starting over.
-          </p>
-          <p><strong>Design features:</strong></p>
-          <p>
-            <span class="mb-8"
-              >+ <strong>Predictive Data Grounding:</strong> Type-ahead entity
-              chips for Indicators, Hazard Overlays, and Admin Regions</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Indicator Swap Drawer:</strong> Flyout comparing
-              custodian agencies, subnational coverage (e.g., 47/47 counties),
-              and live choropleth previews</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Disentangled System Activity:</strong> Narrative
-              milestone cards, collapsible step-trace reasoning, and calm
-              waiting states</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Bidirectional Deep-Linking:</strong> Clicking AI layer
-              cards opens the corresponding native GeoSight panel</span
-            ><br />
-          </p>
-        </div>
-        <div class="eight columns">
-          <img
-            class="rounded-xs box-shadow bottomspace"
-            src="images/geosightai/compound_risk_map.png"
-            alt="AI Copilot and Compound Flood Risk Analysis"
-          />
-        </div>
-      </div>
-
-      <!-- Conversational Turn Progression (Full row, no text) -->
-      <div class="row mb-12">
-        <div class="three columns">
-          <img
-            class="box-shadow rounded-xs bottomspace"
-            src="images/geosightai/chat_flow_1_goal.png"
-            alt="AI Copilot Step 1: Goal Clarification"
-          />
-        </div>
-        <div class="three columns">
-          <img
-            class="box-shadow rounded-xs bottomspace"
-            src="images/geosightai/chat_flow_2_select.png"
-            alt="AI Copilot Step 2: Geographic Scope Selection"
-          />
-        </div>
-        <div class="three columns">
-          <img
-            class="box-shadow rounded-xs bottomspace"
-            src="images/geosightai/chat_flow_3_pillars.png"
-            alt="AI Copilot Step 3: Analytical Pillar Formulation"
-          />
-        </div>
-        <div class="three columns">
-          <img
-            class="box-shadow rounded-xs bottomspace"
-            src="images/geosightai/chat_flow_4_resolve.png"
-            alt="AI Copilot Step 4: Tool Execution & Verification Cards"
-          />
-        </div>
-      </div>
-
-      <hr class="dots my-36" />
-
-      <!-- Section 2: Guided Analytical Recipes & Proactive Signals -->
-      <div class="row mb-12">
-        <div class="four columns">
-          <h3 class="text-2xl font-semibold mb-2">
-            Analytical Recipes &amp; Related Signals
-          </h3>
-          <p>
-            Analysts mapping a single indicator (like
-            <em>Primary Out-of-School Rate</em>) often miss complementary
-            signals from other agencies, such as WASH or climate vulnerability.
-            At the same time, non-technical decision-makers want established
-            frameworks (like UNICEF&rsquo;s CCRI methodology) rather than writing
-            composite formulas from scratch.
-          </p>
-          <p>
-            I combined semantic catalog recommendations, background statistical
-            correlations, and one-click composite templates into a guided
-            workflow:
-          </p>
-          <p><strong>Guided intelligence:</strong></p>
-          <p>
-            <span class="mb-8"
-              >+ <strong>Related Signals Panel:</strong> Semantic vector
-              matching suggests complementary layers (e.g., Safe Water in
-              Schools, Poverty Rate, Drought Risk) for one-click overlay</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Auto-Insight Correlations:</strong> Background Pearson
-              correlation (<em>r</em>) banners highlight hidden relationships
-              across subnational regions with split-viewer comparison</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Analytical Recipes:</strong> Curated composite index
-              templates (<em>Standard Burden</em>, <em>Equity-Weighted</em>,
-              <em>Climate-Resilient</em>) that load layers and rank counties
-              automatically</span
-            ><br />
-          </p>
-        </div>
-        <div class="eight columns">
-          <img
-            class="rounded-xs box-shadow bottomspace"
-            src="images/geosightai/out_of_school_map.png"
-            alt="Out of School Rate Primary Indicators Map"
-          />
-        </div>
-      </div>
-
-      <hr class="dots my-36" />
-
-      <!-- Section: 3D Topographic & Terrain Elevation Analysis -->
-      <div class="row mb-12">
-        <div class="four columns">
-          <h3 class="text-2xl font-semibold mb-2">
-            3D Terrain &amp; Physical Topography
-          </h3>
-          <p>
-            Statistical indicators only tell part of the humanitarian story.
-            Evaluating flood inundation, river catchment basins, and isolation
-            risk requires analyzing physical elevation in high fidelity.
-          </p>
-          <p>
-            I integrated 3D digital elevation models (DEM) and oblique satellite
-            camera angles directly into the map viewport, enabling emergency
-            response coordinators to visualize river valleys, watershed runoffs,
-            and terrain barriers alongside demographic vulnerability layers.
-          </p>
-          <p><strong>Topographic features:</strong></p>
-          <p>
-            <span class="mb-8"
-              >+ <strong>3D Elevation Mesh:</strong> Realistic hillshade and
-              topographic contours for river valley flood mapping</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Oblique Camera Pitch:</strong> Interactive tilt and
-              rotation controls to inspect transport corridors and flood barriers</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Dynamic Layer Draping:</strong> Continuous projection of
-              subnational vulnerability polygons over complex terrain</span
-            ><br />
-          </p>
-        </div>
-        <div class="eight columns">
-          <img
-            class="rounded-xs box-shadow bottomspace"
-            src="images/geosightai/terrain_3d_view.png"
-            alt="3D Terrain and Satellite Elevation Analysis"
-          />
-        </div>
-      </div>
-
-      <hr class="dots my-36" />
-
-      <!-- Section 3: Data Trust & Cross-Source Agreement -->
-      <div class="row mb-12">
-        <div class="four columns">
-          <h3 class="text-2xl font-semibold mb-2">
-            Data Trust &amp; Cross-Source Agreement
-          </h3>
-          <p>
-            Humanitarian allocations require verifiable numbers. When global
-            aggregates (like Google / UN Data Commons) differ from local
-            GeoSight or national census feeds, analysts need to see the delta
-            immediately rather than trusting a black box.
-          </p>
-          <p><strong>Trust architecture:</strong></p>
-          <p>
-            <span class="mb-8"
-              >+ <strong>Agreement Badges:</strong> Visual
-              <code>PASS</code>, <code>REVIEW</code>, and
-              <code>UNVERIFIED</code> status tokens on active layers</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Cross-Source Comparison Popover:</strong> Side-by-side
-              breakdown of reported values, time periods, deltas, and provenance
-              URLs</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Primary Source Toggle:</strong> Direct control to
-              switch between global and local agency feeds</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Verified Attribution:</strong> Explicit credit across
-              UNICEF SDMX, UN Data Commons, and GeoSight layers</span
-            ><br />
-          </p>
-        </div>
-        <div class="eight columns">
-          <img
-            class="rounded-xs box-shadow bottomspace"
-            src="images/geosightai/safeguards.svg"
-            alt="Data Trust and Cross-Source Agreement Badges"
-          />
-        </div>
-      </div>
-
-      <hr class="dots my-36" />
-
-      <!-- Section 4: Immutable Audit Snapshots & Executive Briefings -->
-      <div class="row mb-12">
-        <div class="four columns">
-          <h3 class="text-2xl font-semibold mb-2">
-            Audit Snapshots &amp; Executive Briefings
-          </h3>
-          <p>
-            Insights on a screen need to travel into policy meetings and funding
-            proposals without losing their audit trail or mutating as underlying
-            datasets update.
-          </p>
-          <p>
-            I designed sharing and export workflows built for institutional
-            accountability—allowing teams to freeze exact data states or
-            generate decision-ready policy memos in one click.
-          </p>
-          <p><strong>Reporting &amp; governance:</strong></p>
-          <p>
-            <span class="mb-8"
-              >+ <strong>Immutable Snapshots (SHA-256):</strong> Share dialog
-              distinguishing <em>Live Editable Links</em> from
-              <em>Frozen Audit Snapshots</em></span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Frozen View &amp; Forking:</strong> Audit banner
-              confirming snapshot timestamp with a one-click &ldquo;Fork &amp;
-              Edit&rdquo; action</span
-            ><br />
-            <span class="mb-8"
-              >+ <strong>Executive Briefing Export:</strong> 1&ndash;2 page
-              PDF/Memo layout with core KPI cards, static hotspot map, top 5
-              highest-risk areas table, and source methodology footer</span
-            ><br />
-          </p>
-        </div>
-        <div class="eight columns">
-          <img
-            class="rounded-xs box-shadow bottomspace"
-            src="images/geosightai/placeholder_feature4.svg"
-            alt="Immutable Audit Snapshots and Executive Briefing Export"
-          />
-        </div>
-      </div>
-
-      <!-- Floating right arrow for navigation -->
-      <a href="p_sparklelabs.html">
-        <div class="right-arrow-nav">
-          <img
-            src="rightarrow.svg"
-            alt="Next"
-            class="animate-bounce w-8 h-8 text-accent hover:text-active transition-colors duration-200"
-          />
-        </div>
-      </a>
     </div>
 
-    <div id="footer"></div>
-    <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="myscript.js"></script>
-  </body>
+    <hr class="dots my-36" />
+
+    <!-- Section 1: AI Copilot, Intent Disambiguation & Indicator Swap -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          AI Copilot, Disambiguation &amp; Indicator Swap
+        </h3>
+        <p>
+          Broad queries like
+          <em>&ldquo;Show me child vulnerability in the Horn of Africa&rdquo;</em>
+          are ambiguous across dozens of potential metrics. Instead of
+          guessing and running a heavy pipeline on the wrong data, the copilot
+          clarifies intent and surfaces candidate datasets first.
+        </p>
+        <p>
+          I separated the conversational chat from noisy developer logs. Replacing
+          raw tool dumps with clean narrative milestones and a collapsible step
+          inspector and designed an interactive
+          <strong>Indicator Swap Drawer</strong> so analysts can compare and
+          swap layers on the fly without starting over.
+        </p>
+        <p><strong>Design features:</strong></p>
+        <p>
+          <span class="mb-8">+ <strong>Predictive Data Grounding:</strong> Type-ahead entity
+            chips for Indicators, Hazard Overlays, and Admin Regions</span><br />
+          <span class="mb-8">+ <strong>Indicator Swap Drawer:</strong> Flyout comparing
+            custodian agencies, subnational coverage (e.g., 47/47 counties),
+            and live choropleth previews</span><br />
+          <span class="mb-8">+ <strong>Disentangled System Activity:</strong> Narrative
+            milestone cards, collapsible step-trace reasoning, and calm
+            waiting states</span><br />
+          <span class="mb-8">+ <strong>Bidirectional Deep-Linking:</strong> Clicking AI layer
+            cards opens the corresponding native GeoSight panel. This, seemingly simple change, turns the conversational
+            AI into the driver of a complex application rather than a simple information presenter.</span><br />
+        </p>
+      </div>
+      <div class="eight columns">
+        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/globe_prompt_view.svg"
+          alt="AI Copilot and Compound Flood Risk Analysis" />
+      </div>
+    </div>
+
+    <!-- Conversational Turn Progression (4-Step Guided Intent & Pre-Flight Flow) -->
+    <div class="row mb-12">
+      <div class="six columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 1: Goal Clarification</p>
+        <img class="rounded-xs bottomspace"
+          src="images/geosightai/paper_components/18_guided_operational_goal_chips.svg"
+          alt="AI Copilot Step 1: Operational Goal Clarification" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Establishes the user's operational intent before selecting indicator layers and visualization methods.
+          </li>
+          <li>
+            <strong>ARCHETYPES:</strong>
+            Groups operations into 3 broad paths: Resource Grants,
+            Field Logistics Aid, or Scientific Policy Research.
+          </li>
+          <li>
+            <strong>DATA DETERMINATION:</strong>
+            The chosen goal directly determines which candidate
+            indicator layers and custodians are recommended next.
+          </li>
+          <li>
+            <strong>KEYBOARD FLOW:</strong>
+            Operator taps [1], [2], or [3] for sub-second
+            intent selection during rapid emergency response.
+          </li>
+        </ul>
+      </div>
+      <div class="six columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 2: CCRI Pillars Formulation</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/21_analytical_pillars_formulation_card.svg"
+          alt="AI Copilot Step 2: Analytical Pillars Formulation" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Establishes the macro risk dimensions before
+            querying individual technical indicator feeds.
+          </li>
+          <li>
+            <strong>CCRI FRAMEWORK:</strong>
+            Implements UNICEF's Children's Climate Risk Index (CCRI)
+            two-pillar composite standard: Hazard Exposure vs Child
+            Vulnerability.
+          </li>
+          <li>
+            <strong>MODULAR EXPANSION:</strong>
+            [+ Add Secondary Pillar] allows operators to inject
+            compound dimensions such as Water, Sanitation, and Hygiene (WASH)
+            or Nutrition.
+          </li>
+          <li>
+            <strong>DOWNSTREAM FLOW:</strong>
+            Confirmed pillars directly determine candidate
+            custodial feeds presented in Card 2 (Component 20).
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mb-12">
+      <div class="six columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 3: Indicator Pair Alignment</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/20_goal_aligned_indicator_resolver.svg"
+          alt="AI Copilot Step 3: Goal-Aligned Indicator Pair Selection" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Recommends verified indicator layers pre-calibrated
+            to the user's declared operational goal.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [⇄ Swap Feed] opens custodial drawer for alternatives;
+            [Lock Pair & Render] commits layers directly to map.
+          </li>
+          <li>
+            <strong>GEOMETRY MATCH:</strong>
+            Ensures data geometry matches operational intent
+            (e.g. logistics needs point GPS, not county totals).
+          </li>
+          <li>
+            <strong>DATA INTEGRITY:</strong>
+            Cites exact custodian publishers (UNOSAT, MoE)
+            and certifies 100% national polygon completeness
+          </li>
+        </ul>
+      </div>
+      <div class="six columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 4: Custodian Swap Drawer</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/02_indicator_swap_drawer.svg"
+          alt="AI Copilot Step 4: Interactive Indicator Swap Drawer" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Swaps active choropleth indicators and reconciles
+            divergent custodial agency sources.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [⇄ Switch Layer] executes dynamic choropleth
+            re-coloring without reloading the workspace.
+          </li>
+          <li>
+            <strong>DATA INTEGRITY:</strong>
+            Cites custodians (UNICEF, WHO, NDMA) and flags
+            partial coverage ('23 Crisis Counties').
+          </li>
+          <li>
+            <strong>PALETTE PREVIEW:</strong>
+            Displays 7-class choropleth color ramp inline
+            to confirm visual threshold distribution.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Active Map Viewport: Kenya 47-County Subnational Risk Render -->
+    <div class="row mb-16">
+      <div class="twelve columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Rendered Downstream Viewport: Kenya
+          CCRI-DRM (Disaster Risk Model) Subnational Composite Map</p>
+        <img class="rounded-xs box-shadow bottomspace w-full"
+          src="images/geosightai/paper_components/22_kenya_compound_risk_map_render.svg"
+          alt="Kenya Compound Risk Map: 50-Yr Flood × Out-of-School Burden" />
+      </div>
+    </div>
+
+
+    <hr class="dots my-36" />
+
+    <!-- Section 2: Guided Analytical Recipes & Proactive Signals -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          Analytical Recipes &amp; Related Signals
+        </h3>
+        <p>
+          Analysts mapping a single indicator (like
+          <em>Primary Out-of-School Rate</em>) often miss complementary
+          signals from other agencies, such as WASH or climate vulnerability.
+          At the same time, non-technical decision-makers want established
+          frameworks (like UNICEF&rsquo;s CCRI methodology) rather than writing
+          composite formulas from scratch.
+        </p>
+        <p>
+          I combined semantic catalog recommendations, background statistical
+          correlations, and one-click composite templates into a guided
+          workflow:
+        </p>
+        <p><strong>Guided intelligence:</strong></p>
+        <p>
+          <span class="mb-8">+ <strong>Related Signals Panel:</strong> Semantic vector
+            matching suggests complementary layers (e.g., Safe Water in
+            Schools, Poverty Rate, Drought Risk) for one-click overlay</span><br />
+          <span class="mb-8">+ <strong>Auto-Insight Correlations:</strong> Background Pearson
+            correlation (<em>r</em>) banners highlight hidden relationships
+            across subnational regions with split-viewer comparison</span><br />
+          <span class="mb-8">+ <strong>Analytical Recipes:</strong> Curated composite index
+            templates (<em>Standard Burden</em>, <em>Equity-Weighted</em>,
+            <em>Climate-Resilient</em>) that load layers and rank counties
+            automatically</span><br />
+        </p>
+      </div>
+      <div class="eight columns">
+        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/out_of_school_map.png"
+          alt="Out of School Rate Primary Indicators Map" />
+      </div>
+    </div>
+
+    <!-- Section 2 Component Showcase: Related Signals, Correlation & Analytical Recipes -->
+    <div class="row mb-12">
+      <div class="five columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Related Signals Panel</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/05_related_signals_panel.svg"
+          alt="Related Signals Semantic Vector Matches" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Surfaces correlated indicator layers via vector
+            similarity to reveal compound crises.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [+ Add Layer] immediately composites secondary
+            indicator onto active map viewport.
+          </li>
+          <li>
+            <strong>DATA INTEGRITY:</strong>
+            Displays semantic match scores (94% Match) and
+            verifies custodian agency authority.
+          </li>
+          <li>
+            <strong>SPATIAL REASONING:</strong>
+            Highlights causal dependencies (e.g. water
+            deficits preceding malnutrition spikes).
+          </li>
+        </ul>
+      </div>
+      <div class="seven columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Auto-Insight Correlation Alert Banner
+        </p>
+        <img class="rounded-xs box-shadow bottomspace mb-4"
+          src="images/geosightai/paper_components/06_auto_insight_correlation_banner.svg"
+          alt="Auto-Insight Statistical Correlation Banner" />
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Composite Risk Model Engine (Analytical
+          Recipes)</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/07_analytical_recipes_table.svg" alt="Composite Risk Models Table" />
+      </div>
+    </div>
+
+    <hr class="dots my-36" />
+
+    <!-- Section: 3D Topographic & Terrain Elevation Analysis -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          3D Terrain &amp; Physical Topography
+        </h3>
+        <p>
+          Statistical indicators only tell part of the humanitarian story.
+          Evaluating flood inundation, river catchment basins, and isolation
+          risk requires analyzing physical elevation in high fidelity.
+        </p>
+        <p>
+          I integrated 3D digital elevation models (DEM) and oblique satellite
+          camera angles directly into the map viewport, enabling emergency
+          response coordinators to visualize river valleys, watershed runoffs,
+          and terrain barriers alongside demographic vulnerability layers.
+        </p>
+        <p><strong>Topographic features:</strong></p>
+        <p>
+          <span class="mb-8">+ <strong>3D Elevation Mesh:</strong> Realistic hillshade and
+            topographic contours for river valley flood mapping</span><br />
+          <span class="mb-8">+ <strong>Oblique Camera Pitch:</strong> Interactive tilt and
+            rotation controls to inspect transport corridors and flood barriers</span><br />
+          <span class="mb-8">+ <strong>Dynamic Layer Draping:</strong> Continuous projection of
+            subnational vulnerability polygons over complex terrain</span><br />
+        </p>
+      </div>
+      <div class="eight columns">
+        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/terrain_3d_view.png"
+          alt="3D Terrain and Satellite Elevation Analysis" />
+      </div>
+    </div>
+
+    <hr class="dots my-36" />
+
+    <!-- Section 3: Data Trust & Cross-Source Agreement -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          Data Trust &amp; Cross-Source Agreement
+        </h3>
+        <p>
+          Humanitarian allocations require verifiable numbers. When global
+          aggregates (like Google / UN Data Commons) differ from local
+          GeoSight or national census feeds, analysts need to see the delta
+          immediately rather than trusting a black box.
+        </p>
+        <p><strong>Trust architecture:</strong></p>
+        <p>
+          <span class="mb-8">+ <strong>Agreement Badges:</strong> Visual
+            <code>PASS</code>, <code>REVIEW</code>, and
+            <code>UNVERIFIED</code> status tokens on active layers</span><br />
+          <span class="mb-8">+ <strong>Cross-Source Comparison Popover:</strong> Side-by-side
+            breakdown of reported values, time periods, deltas, and provenance
+            URLs</span><br />
+          <span class="mb-8">+ <strong>Primary Source Toggle:</strong> Direct control to
+            switch between global and local agency feeds</span><br />
+          <span class="mb-8">+ <strong>Verified Attribution:</strong> Explicit credit across
+            UNICEF SDMX, UN Data Commons, and GeoSight layers</span><br />
+        </p>
+      </div>
+      <div class="eight columns">
+        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/safeguards.svg"
+          alt="Data Trust and Cross-Source Agreement Badges" />
+      </div>
+    </div>
+
+    <!-- Trust Architecture Component Showcase -->
+    <div class="row mb-12">
+      <div class="six columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Cross-Source Comparison Popover</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/09_cross_source_comparison_popover.svg"
+          alt="Cross-Source Provenance Comparison Popover" />
+      </div>
+      <div class="six columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Agreement Badges &amp; Status Tokens
+        </p>
+        <img class="rounded-xs box-shadow bottomspace mb-4"
+          src="images/geosightai/paper_components/08_agreement_badges_tokens.svg"
+          alt="Data Trust Agreement Status Badges" />
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Primary Source Custodian Toggle</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/10_primary_source_toggle.svg" alt="Primary Source Toggle Control" />
+      </div>
+    </div>
+
+    <hr class="dots my-36" />
+
+    <!-- Section 4: Immutable Audit Snapshots & Executive Briefings -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          Audit Snapshots &amp; Executive Briefings
+        </h3>
+        <p>
+          Insights on a screen need to travel into policy meetings and funding
+          proposals without losing their audit trail or mutating as underlying
+          datasets update.
+        </p>
+        <p>
+          I designed sharing and export workflows built for institutional
+          accountability—allowing teams to freeze exact data states or
+          generate decision-ready policy memos in one click.
+        </p>
+        <p><strong>Reporting &amp; governance:</strong></p>
+        <p>
+          <span class="mb-8">+ <strong>Immutable Snapshots (SHA-256):</strong> Share dialog
+            distinguishing <em>Live Editable Links</em> from
+            <em>Frozen Audit Snapshots</em></span><br />
+          <span class="mb-8">+ <strong>Frozen View &amp; Forking:</strong> Audit banner
+            confirming snapshot timestamp with a one-click &ldquo;Fork &amp;
+            Edit&rdquo; action</span><br />
+          <span class="mb-8">+ <strong>Executive Briefing Export:</strong> 1&ndash;2 page
+            PDF/Memo layout with core KPI cards, static hotspot map, top 5
+            highest-risk areas table, and source methodology footer</span><br />
+        </p>
+      </div>
+      <div class="eight columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Read-Only Frozen View Audit Banner</p>
+        <img class="rounded-xs box-shadow bottomspace mb-4"
+          src="images/geosightai/paper_components/13_frozen_view_forking_banner.svg"
+          alt="Frozen View Audit Banner with Fork &amp; Edit Action" />
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Immutable Snapshot Creation Dialog</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/12_immutable_snapshots_dialog.svg"
+          alt="Immutable Snapshots Share Dialog" />
+      </div>
+    </div>
+
+    <!-- Executive Briefing Memo Showcase -->
+    <div class="row mb-12">
+      <div class="twelve columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Executive Policy Briefing Memo (1-Click
+          PDF/Markdown Export)</p>
+        <img class="rounded-xs box-shadow bottomspace w-full"
+          src="images/geosightai/paper_components/14_executive_briefing_export_memo.svg"
+          alt="Executive Policy Briefing Memo Layout" />
+      </div>
+    </div>
+
+    <hr class="dots my-36" />
+
+    <!-- Section 5: Modular AI Design System -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <h3 class="text-2xl font-semibold mb-2">
+          Modular AI Design System
+        </h3>
+        <p>
+          Bringing conversational intelligence into geospatial decision-making
+          required establishing a unified design language that bridges natural
+          language, complex GIS layers, and algorithmic uncertainty.
+        </p>
+        <p>
+          I architected a modular component kit in Figma and code, providing
+          consistent visual primitives across copilot dialogs, map inspector
+          cards, and verification states for partner UN agencies.
+        </p>
+        <p><strong>System architecture &amp; components:</strong></p>
+        <p>
+          <span class="mb-8">+ <strong>Semantic AI &amp; Trust Tokens:</strong> Color tokens
+            and status indicators communicating tool execution, provenance
+            confidence, and high-hazard thresholds</span><br />
+          <span class="mb-8">+ <strong>Interactive Grounding Chips:</strong> Entity chips for
+            administrative regions, hazard overlays, and indicator pillars that
+            connect chat text directly to map state</span><br />
+          <span class="mb-8">+ <strong>Reusable Analytical Tiles:</strong> Composable metric
+            cards, delta sparklines, and subnational coverage counters tuned
+            for dark map viewports</span><br />
+          <span class="mb-8">+ <strong>High-Stress Accessibility:</strong> High-contrast
+            cartographic surfaces and WCAG AAA readability for field ops and
+            emergency coordination centers</span><br />
+        </p>
+      </div>
+      <div class="eight columns">
+        <img class="rounded-xs box-shadow bottomspace mb-6" src="images/geosightai/design_system.svg"
+          alt="Modular AI Design System and Component Primitives" />
+      </div>
+    </div>
+
+    <!-- Design System Primitives Showcase -->
+    <div class="row mb-12">
+      <div class="four columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Interactive Spatial Entity Chips</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/15_interactive_grounding_chips_set.svg"
+          alt="Interactive Spatial Entity Chips Token Set" />
+      </div>
+      <div class="four columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Reusable Analytical Metric Tiles</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/16_reusable_analytical_tiles.svg"
+          alt="Reusable Analytical Metric KPI Tiles" />
+      </div>
+      <div class="four columns">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Map Viewport Control Primitives</p>
+        <img class="rounded-xs box-shadow bottomspace"
+          src="images/geosightai/paper_components/17_map_control_buttons_primitives.svg"
+          alt="32x32 Map Viewport Control Primitives" />
+      </div>
+    </div>
+
+    <!-- Floating right arrow for navigation -->
+    <a href="p_sparklelabs.html">
+      <div class="right-arrow-nav">
+        <img src="rightarrow.svg" alt="Next"
+          class="animate-bounce w-8 h-8 text-accent hover:text-active transition-colors duration-200" />
+      </div>
+    </a>
+  </div>
+
+  <div id="footer"></div>
+  <!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="myscript.js"></script>
+</body>
+
 </html>

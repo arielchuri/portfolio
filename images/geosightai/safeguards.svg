@@ -1,72 +1,178 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
   <defs>
-    <filter id="shadow-audit" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-opacity="0.08"/>
+    <filter id="card-shadow" x="-4%" y="-3%" width="108%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="badge-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#f59e0b" flood-opacity="0.2"/>
     </filter>
   </defs>
-  <rect width="1200" height="680" fill="#f8fafc" rx="8"/>
-  
-  <!-- Left Side: Data Card with Confidence & Verification -->
-  <g transform="translate(60, 50)" filter="url(#shadow-audit)">
-    <rect width="520" height="580" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-    <rect x="0" y="0" width="520" height="55" rx="10" fill="#f1f5f9"/>
-    <text x="25" y="35" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#0f172a">Verified Metric Summary</text>
-    <rect x="390" y="14" width="105" height="26" rx="13" fill="#ecfdf5" stroke="#a7f3d0"/>
-    <text x="405" y="32" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#047857">&#10003; VERIFIED</text>
+
+  <!-- Background canvas -->
+  <rect width="1200" height="680" fill="#0f172a" rx="10"/>
+  <!-- Subtle map grid lines in dark background -->
+  <path d="M 0 120 H 1200 M 0 240 H 1200 M 0 360 H 1200 M 0 480 H 1200 M 0 600 H 1200" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 6"/>
+  <path d="M 200 0 V 680 M 400 0 V 680 M 600 0 V 680 M 800 0 V 680 M 1000 0 V 680" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 6"/>
+
+  <!-- Left: Active Layer Card with Agreement Status -->
+  <g transform="translate(50, 45)" filter="url(#card-shadow)">
+    <!-- Container -->
+    <rect width="420" height="590" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
     
-    <text x="25" y="100" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#64748b" text-transform="uppercase">Metric Name</text>
-    <text x="25" y="130" font-family="'Inter', sans-serif" font-size="24" font-weight="700" fill="#1e293b">Asset Throughput Efficiency</text>
-    
-    <!-- Trust Score Breakdown -->
-    <rect x="25" y="165" width="470" height="110" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
-    <text x="45" y="195" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1e293b">Model Reliability &amp; Data Lineage</text>
-    <rect x="45" y="215" width="430" height="10" rx="5" fill="#e2e8f0"/>
-    <rect x="45" y="215" width="410" height="10" rx="5" fill="#10b981"/>
-    <text x="45" y="250" font-family="'Inter', sans-serif" font-size="12" fill="#059669" font-weight="600">96.4% Lineage Confidence Score</text>
-    
-    <!-- Provenance List -->
-    <g transform="translate(25, 305)">
-      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#334155">Primary Feeds</text>
-      <circle cx="12" cy="55" r="4" fill="#3b82f6"/>
-      <text x="26" y="60" font-family="'Inter', sans-serif" font-size="13" fill="#1e293b">GPS Telemetry Cluster (1,420 nodes)</text>
-      <circle cx="12" cy="95" r="4" fill="#3b82f6"/>
-      <text x="26" y="100" font-family="'Inter', sans-serif" font-size="13" fill="#1e293b">Port Authority Vessel AIS Records</text>
-      <circle cx="12" cy="135" r="4" fill="#3b82f6"/>
-      <text x="26" y="140" font-family="'Inter', sans-serif" font-size="13" fill="#1e293b">National Weather Service Storm Alerts</text>
+    <!-- Header -->
+    <rect x="0" y="0" width="420" height="56" rx="12" fill="#0f172a"/>
+    <text x="24" y="35" font-family="'Inter', system-ui, sans-serif" font-size="14" font-weight="700" fill="#94a3b8" letter-spacing="0.5">GEOSIGHT ACTIVE LAYER</text>
+    <circle cx="390" cy="28" r="4" fill="#10b981"/>
+
+    <!-- Layer Details -->
+    <g transform="translate(24, 78)">
+      <text x="0" y="20" font-family="'Inter', system-ui, sans-serif" font-size="12" font-weight="600" fill="#06b6d4" letter-spacing="0.5">UNICEF EDUCATION &amp; VULNERABILITY</text>
+      <text x="0" y="50" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">Out-of-School Children Rate</text>
+      <text x="0" y="74" font-family="'Inter', system-ui, sans-serif" font-size="13" fill="#94a3b8">Region: Turkana County, Kenya (Adm 1)</text>
+
+      <!-- Agreement Status Badge Banner -->
+      <g transform="translate(0, 96)">
+        <rect width="372" height="74" rx="8" fill="#451a03" stroke="#b45309" stroke-width="1.2"/>
+        <!-- Badge Token -->
+        <rect x="16" y="14" width="96" height="26" rx="13" fill="#f59e0b"/>
+        <text x="26" y="32" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="800" fill="#78350f">&#9888; REVIEW</text>
+        <text x="122" y="32" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#fef3c7">&#916; +4.8% Discrepancy</text>
+        <text x="16" y="58" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#fcd34d">Global model differs from subnational census data</text>
+      </g>
+
+      <!-- Token Set Showcase -->
+      <g transform="translate(0, 194)">
+        <text x="0" y="16" font-family="'Inter', system-ui, sans-serif" font-size="12" font-weight="700" fill="#64748b" letter-spacing="0.5">STANDARD TRUST TOKENS</text>
+        
+        <!-- PASS token -->
+        <g transform="translate(0, 28)">
+          <rect width="72" height="24" rx="12" fill="#064e3b" stroke="#059669"/>
+          <text x="12" y="16" font-family="'Inter', system-ui, sans-serif" font-size="10" font-weight="800" fill="#34d399">&#10003; PASS</text>
+          <text x="82" y="17" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#94a3b8">&lt; 1% variance across feeds</text>
+        </g>
+
+        <!-- REVIEW token -->
+        <g transform="translate(0, 62)">
+          <rect width="84" height="24" rx="12" fill="#78350f" stroke="#d97706"/>
+          <text x="12" y="16" font-family="'Inter', system-ui, sans-serif" font-size="10" font-weight="800" fill="#fbbf24">&#9888; REVIEW</text>
+          <text x="94" y="17" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#94a3b8">&gt; 3% divergence or lag &gt; 1 yr</text>
+        </g>
+
+        <!-- UNVERIFIED token -->
+        <g transform="translate(0, 96)">
+          <rect width="102" height="24" rx="12" fill="#334155" stroke="#64748b"/>
+          <text x="12" y="16" font-family="'Inter', system-ui, sans-serif" font-size="10" font-weight="800" fill="#cbd5e1">&#8226; UNVERIFIED</text>
+          <text x="112" y="17" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#94a3b8">Single source, no peer feed</text>
+        </g>
+      </g>
+
+      <!-- Trigger Action -->
+      <g transform="translate(0, 360)">
+        <rect width="372" height="46" rx="8" fill="#2563eb"/>
+        <text x="85" y="28" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Open Provenance Popover &#8599;</text>
+      </g>
+
+      <!-- Custodian footnote -->
+      <text x="0" y="445" font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#64748b">Verified against UNICEF SDMX schema v2.1</text>
     </g>
-    
-    <rect x="25" y="495" width="470" height="50" rx="6" fill="#111827"/>
-    <text x="180" y="526" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#ffffff">Open Provenance Drawer</text>
   </g>
 
-  <!-- Right Side: Inspectable Query Drawer -->
-  <g transform="translate(620, 50)" filter="url(#shadow-audit)">
-    <rect width="520" height="580" rx="10" fill="#1e293b"/>
-    <rect x="0" y="0" width="520" height="55" rx="10" fill="#0f172a"/>
-    <text x="25" y="35" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#f8fafc">SQL Query Transparency</text>
-    <rect x="420" y="14" width="75" height="26" rx="4" fill="#334155"/>
-    <text x="435" y="32" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Copy</text>
+  <!-- Right: Cross-Source Comparison Popover / Drawer -->
+  <g transform="translate(500, 45)" filter="url(#card-shadow)">
+    <!-- Container -->
+    <rect width="650" height="590" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
     
-    <!-- Code Box -->
-    <g transform="translate(25, 80)">
-      <text x="0" y="25" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">SELECT</text>
-      <text x="65" y="25" font-family="'Consolas', monospace" font-size="13" fill="#93c5fd">node_id, geom, avg(dwell_hours)</text>
-      <text x="0" y="55" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">FROM</text>
-      <text x="50" y="55" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">mercury_operational_telemetry</text>
-      <text x="0" y="85" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">WHERE</text>
-      <text x="60" y="85" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">recorded_at &gt;= NOW() - INTERVAL '48 hours'</text>
-      <text x="0" y="115" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">AND</text>
-      <text x="40" y="115" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">ST_Intersects(geom, ST_MakeEnvelope(...))</text>
-      <text x="0" y="145" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">GROUP BY</text>
-      <text x="85" y="145" font-family="'Consolas', monospace" font-size="13" fill="#93c5fd">node_id, geom</text>
-      <text x="0" y="175" font-family="'Consolas', monospace" font-size="13" fill="#f43f5e">HAVING</text>
-      <text x="70" y="175" font-family="'Consolas', monospace" font-size="13" fill="#cbd5e1">count(*) &gt; 15</text>
+    <!-- Popover Header -->
+    <rect x="0" y="0" width="650" height="66" rx="12" fill="#f8fafc"/>
+    <line x1="0" y1="66" x2="650" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+    
+    <g transform="translate(28, 26)">
+      <text x="0" y="14" font-family="'Inter', system-ui, sans-serif" font-size="16" font-weight="700" fill="#0f172a">Cross-Source Comparison &amp; Data Lineage</text>
+      <text x="0" y="30" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#64748b">Evaluating conflicting metrics for Turkana County (2024 Allocation)</text>
     </g>
 
-    <rect x="25" y="320" width="470" height="220" rx="8" fill="#0f172a" stroke="#334155"/>
-    <text x="45" y="355" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">&#9881; Parameter Overrides</text>
-    <text x="45" y="385" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Confidence Threshold: 90% (Strict)</text>
-    <text x="45" y="415" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Outlier Rejection: Enabled (IQR 1.5)</text>
-    <text x="45" y="445" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Data Latency Warning: Active (&lt; 60s)</text>
+    <!-- Content Area -->
+    <g transform="translate(28, 88)">
+      
+      <!-- Source A: Global Model (UN Data Commons) -->
+      <g transform="translate(0, 0)">
+        <rect width="285" height="186" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+        <!-- Header Tag -->
+        <rect x="14" y="12" width="138" height="22" rx="4" fill="#e0e7ff"/>
+        <text x="22" y="27" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="700" fill="#4338ca">GLOBAL AGGREGATE</text>
+        
+        <text x="14" y="58" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">UN Data Commons / Google</text>
+        <text x="14" y="76" font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#64748b">Custodian: UNESCO / UNICEF SDMX</text>
+        
+        <line x1="14" y1="90" x2="271" y2="90" stroke="#e2e8f0"/>
+        
+        <text x="14" y="112" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b">Reported Out-of-School:</text>
+        <text x="14" y="146" font-family="'Inter', system-ui, sans-serif" font-size="32" font-weight="800" fill="#0f172a">41.2%</text>
+        <text x="110" y="144" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#64748b">Epoch: 2022 est.</text>
+
+        <text x="14" y="172" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#2563eb">datacommons.org/unicef-edu &#8599;</text>
+      </g>
+
+      <!-- Source B: Subnational Survey (Kenya KNBS / GeoSight) -->
+      <g transform="translate(308, 0)">
+        <rect width="285" height="186" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+        <!-- Header Tag -->
+        <rect x="14" y="12" width="144" height="22" rx="4" fill="#dbeafe"/>
+        <text x="22" y="27" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="700" fill="#1e40af">LOCAL OFFICIAL CENSUS</text>
+        
+        <text x="14" y="58" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">Kenya KNBS / GeoSight Ingest</text>
+        <text x="14" y="76" font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#64748b">Custodian: Kenya Bureau of Statistics</text>
+        
+        <line x1="14" y1="90" x2="271" y2="90" stroke="#bfdbfe"/>
+        
+        <text x="14" y="112" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b">Reported Out-of-School:</text>
+        <text x="14" y="146" font-family="'Inter', system-ui, sans-serif" font-size="32" font-weight="800" fill="#1e3a8a">46.0%</text>
+        <text x="115" y="144" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#1e40af">Epoch: 2024 survey</text>
+
+        <text x="14" y="172" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#2563eb">knbs.or.ke/education-turkana &#8599;</text>
+      </g>
+
+      <!-- Delta Analysis Callout -->
+      <g transform="translate(0, 204)">
+        <rect width="593" height="74" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+        <text x="18" y="26" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#92400e">&#9888; Delta Analysis: +4.8% Subnational Variance</text>
+        <text x="18" y="46" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#78350f">
+          The KNBS 2024 census enumerates nomadic pastoralist learning centers excluded from the 2022 UN global model.
+        </text>
+        <text x="18" y="62" font-family="'Inter', system-ui, sans-serif" font-size="12" font-weight="600" fill="#b45309">
+          Recommended action: Adopt local census for county-level budget distribution.
+        </text>
+      </g>
+
+      <!-- Primary Source Decision Toggle -->
+      <g transform="translate(0, 298)">
+        <text x="0" y="16" font-family="'Inter', system-ui, sans-serif" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.5">ACTIVE SOURCE SELECTION</text>
+        
+        <g transform="translate(0, 28)">
+          <!-- Segmented Control Background -->
+          <rect width="593" height="52" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+          
+          <!-- Option 1: UN Data Commons (unselected) -->
+          <rect x="6" y="6" width="285" height="40" rx="6" fill="transparent"/>
+          <circle cx="28" cy="26" r="7" fill="none" stroke="#94a3b8" stroke-width="2"/>
+          <text x="46" y="30" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="600" fill="#64748b">Use Global Aggregate (41.2%)</text>
+
+          <!-- Option 2: Kenya KNBS / GeoSight (selected) -->
+          <rect x="298" y="6" width="289" height="40" rx="6" fill="#ffffff" filter="url(#card-shadow)"/>
+          <circle cx="320" cy="26" r="7" fill="#2563eb"/>
+          <circle cx="320" cy="26" r="3" fill="#ffffff"/>
+          <text x="338" y="30" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Use Local Census (46.0%) &#10003;</text>
+        </g>
+      </g>
+
+      <!-- Confirm Button & Audit trail notation -->
+      <g transform="translate(0, 396)">
+        <rect width="320" height="46" rx="8" fill="#0f172a"/>
+        <text x="55" y="28" font-family="'Inter', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Confirm Primary Source Override</text>
+        
+        <text x="340" y="28" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#64748b">Selection will be recorded in SHA-256 session audit log</text>
+      </g>
+
+    </g>
   </g>
 </svg>

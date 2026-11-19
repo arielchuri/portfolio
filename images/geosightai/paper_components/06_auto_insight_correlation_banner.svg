@@ -1,0 +1,107 @@
+<svg width="996" height="282" viewBox="0 0 996 282" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .banner-head { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 700; fill: #222D2C; }
+      .banner-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 400; fill: #3E4846; }
+      .pill-coeff { font-family: 'Courier New', Courier, monospace; font-size: 14px; font-weight: 700; fill: #D35B50; }
+      .pill-lbl { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 600; fill: #D35B50; }
+      .action-btn-text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 600; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="996" height="282" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-06" transform="translate(16, 16)">
+
+  
+
+  <!-- Base Card Canvas -->
+  <rect width="600" height="150" rx="6" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Correlation Banner (Highlighted Risograph Archival Paper Surface) -->
+  <g id="Correlation-Banner">
+    <rect x="16" y="16" width="568" height="118" rx="4" fill="#F4D35A" stroke="#222D2C" stroke-width="1.5"/>
+
+    <!-- Left Statistical Indicator Box -->
+    <g id="Stat-Box">
+      <rect x="28" y="28" width="88" height="94" rx="3" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.2"/>
+      <text x="36" y="48" class="banner-sub" font-size="9" font-weight="700" fill="#707673">PEARSON</text>
+      <text x="36" y="74" class="pill-coeff">r = 0.78</text>
+      <rect x="36" y="84" width="72" height="18" rx="2" fill="#F5D6CE" stroke="#D35B50" stroke-width="0.8"/>
+      <text x="42" y="97" class="pill-lbl">p &lt; 0.001</text>
+      <text x="36" y="114" class="banner-sub" font-size="8">N = 47 Counties</text>
+    </g>
+
+    <!-- Narrative Correlation Insight -->
+    <g id="Insight-Body">
+      <!-- Alert Icon: Delta Trend -->
+      <polygon points="128,40 134,28 140,40" fill="#D35B50" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="148" y="38" class="banner-head">High Statistical Correlation Detected Across ASAL Counties</text>
+      
+      <text x="128" y="58" class="banner-sub">Children under 5 in regions experiencing Severe Pasture Deficits (VCI &lt; 20)</text>
+      <text x="128" y="72" class="banner-sub">exhibit a <tspan font-weight="700" fill="#222D2C">+3.4× elevation</tspan> in hospital-admitted wasting prevalence.</text>
+      <text x="128" y="86" class="banner-sub" font-style="italic" fill="#5B6360">Significant cluster: Garissa (r = 0.84), Wajir (r = 0.81), and Mandera (r = 0.79).</text>
+      
+      <!-- Interactive Action Buttons -->
+      <g id="Banner-Actions">
+        <rect x="128" y="98" width="168" height="26" rx="2" fill="#1A66A6" stroke="#222D2C" stroke-width="1"/>
+        <text x="142" y="115" class="action-btn-text" fill="#FFFFFF">⧉ Compare Maps</text>
+
+        <rect x="306" y="98" width="154" height="26" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <text x="320" y="115" class="action-btn-text" fill="#222D2C">📈 View Scatter Plot</text>
+
+        <rect x="470" y="98" width="102" height="26" rx="2" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+        <text x="486" y="115" class="action-btn-text" fill="#222D2C">✕ Dismiss</text>
+      </g>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-06">
+    <rect x="640" y="16" width="340" height="250" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="640" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="654" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="660" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="752" y="40" class="spec-title">Correlation Insight Banner</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="76" r="3" fill="#1A66A6"/>
+        <text x="668" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="668" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Alerts analysts to statistically significant</text>
+        <text x="668" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">relationships across multi-hazard data.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="114" r="3" fill="#1A66A6"/>
+        <text x="668" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="668" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">[⧉ Compare Maps] splits viewport into dual maps;</text>
+        <text x="668" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">[📈 Scatter Plot] opens regression matrix.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="152" r="3" fill="#1A66A6"/>
+        <text x="668" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="668" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Fully qualifies statistics: r = 0.78, p &lt; 0.001,</text>
+        <text x="668" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">sample size N = 47 ADM1 counties.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="190" r="3" fill="#1A66A6"/>
+        <text x="668" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">FIELD IMPACT:</text>
+        <text x="668" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Translates statistical correlation into concrete</text>
+        <text x="668" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">outcomes (+3.4× wasting elevation).</text>
+      </g>
+  </g>
+</svg>

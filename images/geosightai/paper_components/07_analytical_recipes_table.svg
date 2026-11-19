@@ -1,0 +1,167 @@
+<svg width="1076" height="412" viewBox="0 0 1076 412" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .recipe-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 700; fill: #222D2C; }
+      .recipe-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 400; fill: #5B6360; }
+      .tab-label { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 600; }
+      .tbl-head { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 700; fill: #707673; text-transform: uppercase; }
+      .tbl-cell { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500; fill: #222D2C; }
+      .rank-num { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #D35B50; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="1076" height="412" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-07" transform="translate(16, 16)">
+
+  
+
+  <!-- Base Canvas -->
+  <rect width="680" height="380" rx="6" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Recipes Outer Container -->
+  <g id="Analytical-Models-Template">
+    <rect x="16" y="16" width="648" height="348" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+    <!-- Header Bar -->
+    <g id="Model-Header">
+      <rect x="16" y="16" width="648" height="50" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+      <!-- Recipe Flask / Cooking Icon -->
+      <path d="M34 26 L34 32 L28 44 C27 46 28.5 48 31 48 H45 C47.5 48 49 46 48 44 L42 32 L42 26 Z" stroke="#222D2C" stroke-width="1.3" fill="#AED4F8"/>
+      <line x1="33" y1="26" x2="43" y2="26" stroke="#222D2C" stroke-width="1.5"/>
+      <text x="58" y="36" class="recipe-title">Curated Composite Risk Models (Multi-Hazard Analysis)</text>
+      <text x="58" y="52" class="recipe-sub">Pre-configured indicator weighting equations that automatically rank counties and render multi-hazard maps</text>
+    </g>
+
+    <!-- Template Selector Tabs -->
+    <g id="Recipe-Tabs">
+      <!-- Tab 1: Standard Burden (Active) -->
+      <rect x="28" y="78" width="180" height="34" rx="3" fill="#D35B50" stroke="#222D2C" stroke-width="1.2"/>
+      <text x="44" y="99" class="tab-label" fill="#FFFFFF">1. Standard Burden Index</text>
+      <circle cx="190" cy="95" r="4" fill="#FFFFFF"/>
+
+      <!-- Tab 2: Equity-Weighted -->
+      <rect x="216" y="78" width="180" height="34" rx="3" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+      <text x="236" y="99" class="tab-label" fill="#222D2C">2. Equity-Weighted Index</text>
+
+      <!-- Tab 3: Climate-Resilient (UNICEF CCRI) -->
+      <rect x="404" y="78" width="200" height="34" rx="3" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+      <text x="424" y="99" class="tab-label" fill="#222D2C">3. Climate-Resilient (CCRI)</text>
+    </g>
+
+    <!-- Formula Weights Explanation Box -->
+    <g id="Formula-Spec">
+      <rect x="28" y="122" width="624" height="42" rx="3" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+      <text x="40" y="139" class="tbl-head">Active Formula:</text>
+      <text x="135" y="139" font-family="'Courier New', monospace" font-size="11" font-weight="700" fill="#222D2C">Risk = (0.45 × SAM_Wasting) + (0.35 × VCI_Drought) + (0.20 × Unsafe_Water)</text>
+      <text x="40" y="154" class="recipe-sub">3 input layers synchronized · Normalization: Min-Max (0–100 scale) · Re-ranks 47 counties dynamically</text>
+    </g>
+
+    <!-- Dynamic County Priority Ranking Table -->
+    <g id="Ranking-Table">
+      <rect x="28" y="174" width="624" height="136" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+      
+      <!-- Table Header Row -->
+      <rect x="28" y="174" width="624" height="26" fill="#DFDDD7" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="38" y="191" class="tbl-head">Rank</text>
+      <text x="80" y="191" class="tbl-head">County (ADM1)</text>
+      <text x="180" y="191" class="tbl-head">SAM Burden (45%)</text>
+      <text x="300" y="191" class="tbl-head">VCI Anomaly (35%)</text>
+      <text x="420" y="191" class="tbl-head">Unsafe Water (20%)</text>
+      <text x="540" y="191" class="tbl-head">Composite Score</text>
+
+      <!-- Row 1 (Highest Priority) -->
+      <rect x="28" y="200" width="624" height="26" fill="#F5D6CE" stroke="#DFDDD7" stroke-width="0.5"/>
+      <text x="42" y="217" class="rank-num">#1</text>
+      <text x="80" y="217" class="tbl-cell" font-weight="700">Garissa</text>
+      <text x="180" y="217" class="tbl-cell">41.2% (Very High)</text>
+      <text x="300" y="217" class="tbl-cell">VCI 14.2 (Severe)</text>
+      <text x="420" y="217" class="tbl-cell">68.4% without access</text>
+      <text x="540" y="217" class="tbl-cell" font-weight="700" fill="#D35B50">89.4 / 100</text>
+
+      <!-- Row 2 -->
+      <rect x="28" y="226" width="624" height="26" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+      <text x="42" y="243" class="rank-num">#2</text>
+      <text x="80" y="243" class="tbl-cell" font-weight="700">Wajir</text>
+      <text x="180" y="243" class="tbl-cell">38.6% (Very High)</text>
+      <text x="300" y="243" class="tbl-cell">VCI 16.8 (Severe)</text>
+      <text x="420" y="243" class="tbl-cell">71.2% without access</text>
+      <text x="540" y="243" class="tbl-cell" font-weight="700" fill="#D35B50">85.7 / 100</text>
+
+      <!-- Row 3 -->
+      <rect x="28" y="252" width="624" height="26" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+      <text x="42" y="269" class="rank-num">#3</text>
+      <text x="80" y="269" class="tbl-cell" font-weight="700">Mandera</text>
+      <text x="180" y="269" class="tbl-cell">36.1% (High)</text>
+      <text x="300" y="269" class="tbl-cell">VCI 18.0 (Severe)</text>
+      <text x="420" y="269" class="tbl-cell">64.9% without access</text>
+      <text x="540" y="269" class="tbl-cell" font-weight="700" fill="#D35B50">81.2 / 100</text>
+
+      <!-- Row 4 -->
+      <rect x="28" y="278" width="624" height="26" fill="#FFFFFF" stroke="#DFDDD7" stroke-width="0.5"/>
+      <text x="42" y="295" class="rank-num">#4</text>
+      <text x="80" y="295" class="tbl-cell" font-weight="700">Turkana</text>
+      <text x="180" y="295" class="tbl-cell">33.5% (High)</text>
+      <text x="300" y="295" class="tbl-cell">VCI 21.4 (Moderate)</text>
+      <text x="420" y="295" class="tbl-cell">62.1% without access</text>
+      <text x="540" y="295" class="tbl-cell" font-weight="700" fill="#D35B50">76.8 / 100</text>
+    </g>
+
+    <!-- Footer Actions -->
+    <g id="Model-Actions">
+      <rect x="16" y="320" width="648" height="44" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+      <text x="28" y="346" class="recipe-sub">Instant 1-click execution: Automatically applies weights and highlights top 5 counties on canvas.</text>
+      <rect x="520" y="328" width="132" height="28" rx="2" fill="#54C93F" stroke="#222D2C" stroke-width="1.2"/>
+      <text x="532" y="346" class="tab-label" fill="#222D2C">▶ Run Composite Model on Map</text>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-07">
+    <rect x="720" y="16" width="340" height="380" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="720" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="734" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="740" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="832" y="40" class="spec-title">Composite Risk Models</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="738" cy="76" r="3" fill="#1A66A6"/>
+        <text x="748" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="748" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Ranks subnational administrative areas using multi-layer</text>
+        <text x="748" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">weighted indicator equations.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="738" cy="114" r="3" fill="#1A66A6"/>
+        <text x="748" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="748" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">[▶ Run Composite Model] executes formula and</text>
+        <text x="748" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">highlights top 5 vulnerable counties on canvas.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="738" cy="152" r="3" fill="#1A66A6"/>
+        <text x="748" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">DATA INTEGRITY:</text>
+        <text x="748" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Transparent min-max normalization formula displayed</text>
+        <text x="748" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">directly above data table.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="738" cy="190" r="3" fill="#1A66A6"/>
+        <text x="748" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">ZERO JARGON:</text>
+        <text x="748" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Uses standard 'Composite Risk Models' instead of</text>
+        <text x="748" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">internal back-end engineering terms.</text>
+      </g>
+  </g>
+</svg>

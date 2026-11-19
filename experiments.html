@@ -47,7 +47,8 @@
         <a class="mr-4 link-slide" href="#refraction-gallery"
           >Sculptural Glass &amp; Optical Dispersion</a
         >
-        <a class="mr-4 link-slide" href="#dankelf-vtt">Dank Elf VTT</a>
+        <a class="mr-4 link-slide" href="#dankelf-vtt">Dark Elf VTT</a>
+        <a class="mr-4 link-slide" href="#caz">Community Autonomous Zone</a>
       </div>
       <p class="mb-12 md:w-1/2">
         Interactive sketches exploring real-time optics, procedural geometry,
@@ -68,9 +69,9 @@
             >
               WebGL / GLSL Shader
             </div>
-            <h2 class="mb-2 text-4xl font-thin uppercase">
+            <h3 class="mb-2 text-4xl font-thin uppercase">
               Sculptural Glass &amp; Optical Dispersion
-            </h2>
+            </h3>
             <p>
               Real-time double-refraction crystal studio built with Three.js and
               custom GLSL shaders. Front-to-back internal light transport renders
@@ -79,9 +80,8 @@
             </p>
             <ul>
               <li>
-                <strong>15 Glass Forms:</strong> Curved Ribbon, Star Fruit,
-                Dragon Fruit, Torus, Hour Glass, Cylinder, Helices, and faceted
-                crystals.
+                <strong>13 Glass Forms:</strong> Curved Ribbon, Star Fruit,
+                Dragon Fruit, Torus, Hour Glass, Helices, and faceted diamonds.
               </li>
               <li>
                 <strong>Optical Lens Controls:</strong> Camera focal length,
@@ -104,11 +104,15 @@
           </div>
           <div class="eight columns">
             <a href="experiments/refraction-gallery.html">
-              <img
-                src="experiments/refraction-preview.svg"
-                class="rounded-xs box-shadow"
-                alt="Sculptural Glass and Optical Dispersion WebGL Experiment"
-              />
+              <video
+                src="experiments/refraction-preview.mp4"
+                class="rounded-xs box-shadow w-full"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-label="Sculptural Glass and Optical Dispersion WebGL Experiment"
+              ></video>
             </a>
           </div>
         </div>
@@ -128,7 +132,7 @@
             >
               Canvas / Local-First Web App
             </div>
-            <h2 class="mb-2 text-4xl font-thin uppercase">Dank Elf VTT</h2>
+            <h3 class="mb-2 text-4xl font-thin uppercase">Dark Elf VTT</h3>
             <p>
               A zero-build RPG virtual tabletop built with vanilla HTML, CSS,
               and Canvas—designed around physical paper sheets, mimeo-violet
@@ -160,11 +164,77 @@
           </div>
           <div class="eight columns">
             <a href="experiments/dankelf-vtt/index.html">
-              <img
-                src="experiments/dankelf-vtt-preview.png"
-                class="rounded-xs box-shadow"
-                alt="Dank Elf VTT Tabletop Experiment"
-              />
+              <video
+                src="experiments/dankelf-vtt-preview.mp4"
+                class="rounded-xs box-shadow w-full"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-label="Dark Elf VTT Tabletop Experiment"
+              ></video>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <hr
+        id="caz"
+        class="dots my-24"
+        style="border-color: var(--gray2)"
+      />
+
+      <section>
+        <div class="row reveal">
+          <div class="four columns">
+            <div
+              class="inline-block bg-[#2d5a3c] text-white font-mono text-xs uppercase px-2.5 py-0.5 mb-3 font-bold tracking-wider rounded-xs"
+            >
+              React / P2P Web App
+            </div>
+            <h3 class="mb-2 text-4xl font-thin uppercase">
+              Community Autonomous Zone
+            </h3>
+            <p>
+              An offline-first, peer-to-peer socio-technical operating system
+              for neighborhood resilience, mutual aid coordination, and direct
+              horizontal self-governance without centralized servers.
+            </p>
+            <ul>
+              <li>
+                <strong>Offline-First &amp; P2P:</strong> Operates locally and
+                syncs peer-to-peer without relying on central infrastructure.
+              </li>
+              <li>
+                <strong>Mutual Aid &amp; Governance:</strong> Tools for matching
+                community needs with local resources and consensus-based
+                decision making.
+              </li>
+              <li>
+                <strong>Interactive Mapping:</strong> Geospatial neighborhood
+                visualization powered by MapLibre GL JS, React 19, and
+                TypeScript.
+              </li>
+            </ul>
+            <a
+              href="caz.html"
+              class="btn-outline m-6 ml-0 px-12 inline-block"
+            >
+              <span class="wipe-bg"></span>
+              <span class="btn-text">View Project</span>
+            </a>
+          </div>
+          <div class="eight columns">
+            <a href="caz.html">
+              <video
+                src="experiments/caz-preview.mp4"
+                class="rounded-xs box-shadow w-full"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-label="Community Autonomous Zone (CAZ OS) Interface"
+              ></video>
             </a>
           </div>
         </div>

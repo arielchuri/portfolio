@@ -1,0 +1,154 @@
+<svg width="856" height="282" viewBox="0 0 856 282" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .btn-lbl { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 600; fill: #222D2C; }
+      .group-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; fill: #222D2C; }
+      .group-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; fill: #707673; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="856" height="282" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-17" transform="translate(16, 16)">
+
+  
+
+  <!-- Base Canvas -->
+  <rect width="460" height="200" rx="6" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <g id="Paper-Map-Tools-Collection">
+    <rect x="16" y="16" width="428" height="168" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+    <rect x="16" y="16" width="428" height="34" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <text x="28" y="38" class="group-title">Native GeoSight Map Viewport Control Buttons (32×32 Primitives)</text>
+
+    <!-- Row of 32x32 Map Tool Buttons -->
+    <g id="Button-Row">
+      <!-- 1. Search Button -->
+      <g id="Btn-Search">
+        <rect x="28" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <circle cx="42" cy="80" r="5" stroke="#222D2C" stroke-width="1.2" fill="none"/>
+        <line x1="46" y1="84" x2="50" y2="88" stroke="#222D2C" stroke-width="1.2" stroke-linecap="round"/>
+        <text x="28" y="112" class="btn-lbl">Search</text>
+      </g>
+
+      <!-- 2. Snapshot / Camera Button -->
+      <g id="Btn-Snapshot">
+        <rect x="76" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <rect x="83" y="75" width="18" height="13" rx="1" stroke="#222D2C" stroke-width="1.2" fill="none"/>
+        <circle cx="92" cy="81.5" r="3" stroke="#222D2C" stroke-width="1" fill="none"/>
+        <text x="73" y="112" class="btn-lbl">Camera</text>
+      </g>
+
+      <!-- 3. Sliders / Filter Button -->
+      <g id="Btn-Sliders">
+        <rect x="124" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <line x1="132" y1="73" x2="132" y2="91" stroke="#222D2C" stroke-width="1.2"/>
+        <line x1="140" y1="73" x2="140" y2="91" stroke="#222D2C" stroke-width="1.2"/>
+        <line x1="148" y1="73" x2="148" y2="91" stroke="#222D2C" stroke-width="1.2"/>
+        <circle cx="132" cy="78" r="2" fill="#222D2C"/>
+        <circle cx="140" cy="85" r="2" fill="#222D2C"/>
+        <circle cx="148" cy="76" r="2" fill="#222D2C"/>
+        <text x="123" y="112" class="btn-lbl">Sliders</text>
+      </g>
+
+      <!-- 4. 2D / Globe Button -->
+      <g id="Btn-Globe">
+        <rect x="172" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <circle cx="188" cy="82" r="8" stroke="#222D2C" stroke-width="1.2" fill="none"/>
+        <ellipse cx="188" cy="82" rx="3.5" ry="8" stroke="#222D2C" stroke-width="0.8" fill="none"/>
+        <line x1="180" y1="82" x2="196" y2="82" stroke="#222D2C" stroke-width="0.8"/>
+        <text x="174" y="112" class="btn-lbl">Globe</text>
+      </g>
+
+      <!-- 5. Zoom In Button -->
+      <g id="Btn-Zoom-In">
+        <rect x="220" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <line x1="230" y1="82" x2="242" y2="82" stroke="#222D2C" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="236" y1="76" x2="236" y2="88" stroke="#222D2C" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="222" y="112" class="btn-lbl">Zoom +</text>
+      </g>
+
+      <!-- 6. Zoom Out Button -->
+      <g id="Btn-Zoom-Out">
+        <rect x="268" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <line x1="278" y1="82" x2="290" y2="82" stroke="#222D2C" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="270" y="112" class="btn-lbl">Zoom -</text>
+      </g>
+
+      <!-- 7. Compass North Needle Button -->
+      <g id="Btn-Compass">
+        <rect x="316" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <!-- Red North Pointer -->
+        <polygon points="332,73 336,82 328,82" fill="#D35B50" stroke="#222D2C" stroke-width="0.8"/>
+        <!-- Dark South Pointer -->
+        <polygon points="332,91 336,82 328,82" fill="#222D2C" stroke="#222D2C" stroke-width="0.8"/>
+        <text x="314" y="112" class="btn-lbl">Compass</text>
+      </g>
+
+      <!-- 8. Ruler Measure Button -->
+      <g id="Btn-Ruler">
+        <rect x="364" y="66" width="32" height="32" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+        <rect x="370" y="78" width="20" height="8" rx="1" stroke="#222D2C" stroke-width="1" fill="none"/>
+        <line x1="374" y1="78" x2="374" y2="81" stroke="#222D2C" stroke-width="0.8"/>
+        <line x1="378" y1="78" x2="378" y2="82" stroke="#222D2C" stroke-width="0.8"/>
+        <line x1="382" y1="78" x2="382" y2="81" stroke="#222D2C" stroke-width="0.8"/>
+        <line x1="386" y1="78" x2="386" y2="82" stroke="#222D2C" stroke-width="0.8"/>
+        <text x="368" y="112" class="btn-lbl">Measure</text>
+      </g>
+    </g>
+
+    <!-- Footer Description -->
+    <rect x="16" y="132" width="428" height="36" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+    <text x="28" y="154" class="group-sub">Each button is composed of an outer single &lt;rect&gt; with stroke="#222D2C" and centered vector glyph.</text>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-17">
+    <rect x="500" y="16" width="340" height="250" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="500" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="514" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="520" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="612" y="40" class="spec-title">Map Viewport Controls</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="76" r="3" fill="#1A66A6"/>
+        <text x="528" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="528" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Tactile 32×32px primitive controls for map navigation,</text>
+        <text x="528" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">layer inspection, and measurement.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="114" r="3" fill="#1A66A6"/>
+        <text x="528" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="528" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Single-click camera reset, layer toggling, distance</text>
+        <text x="528" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">measuring, and 3D globe tilt.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="152" r="3" fill="#1A66A6"/>
+        <text x="528" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">TOUCH TARGET:</text>
+        <text x="528" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">44px accessible bounding box meets field tablet</text>
+        <text x="528" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">and mobile usability criteria.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="518" cy="190" r="3" fill="#1A66A6"/>
+        <text x="528" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PAPER SYSTEM:</text>
+        <text x="528" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Consistent 1.2px ink borders (#222D2C) and</text>
+        <text x="528" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">subtle hover state feedback.</text>
+      </g>
+  </g>
+</svg>

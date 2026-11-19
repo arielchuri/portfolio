@@ -1,0 +1,100 @@
+<svg width="996" height="282" viewBox="0 0 996 282" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .frozen-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; fill: #222D2C; }
+      .frozen-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; fill: #3E4846; }
+      .hash-txt { font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700; fill: #1A66A6; }
+      .btn-fork-text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="996" height="282" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-13" transform="translate(16, 16)">
+
+  
+
+  <!-- Banner Base -->
+  <rect width="600" height="90" rx="4" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Frozen View Audit Banner (Top Viewport Strip) -->
+  <g id="Frozen-Audit-Banner">
+    <rect x="12" y="12" width="576" height="66" rx="3" fill="#F4D35A" stroke="#222D2C" stroke-width="1.5"/>
+
+    <!-- Lock & Stamp Icon -->
+    <g id="Banner-Icon">
+      <circle cx="36" cy="45" r="14" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+      <rect x="31" y="42" width="10" height="9" rx="1.5" fill="#222D2C"/>
+      <path d="M33 42 V38 C33 36.5 34.5 35 36 35 C37.5 35 39 36.5 39 38 V42" stroke="#222D2C" stroke-width="1.2" fill="none"/>
+    </g>
+
+    <!-- Narrative Info -->
+    <g id="Banner-Text">
+      <text x="60" y="34" class="frozen-title">FROZEN AUDIT SNAPSHOT · READ ONLY VIEW</text>
+      <text x="60" y="48" class="frozen-sub">Immutable data state captured on: <tspan font-weight="700">2024-11-05 14:32:08 UTC</tspan> by Regional Nutrition Cluster.</text>
+      <text x="60" y="62" class="frozen-sub">Verified SHA-256: <tspan class="hash-txt">sha256:9f8a7c2e4b1a0d8f...3c4d5e</tspan> · Provenance: UNICEF + NDMA</text>
+    </g>
+
+    <!-- One-Click "Fork & Edit" Action Button -->
+    <g id="Fork-Action-Button">
+      <rect x="444" y="24" width="132" height="42" rx="3" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.3"/>
+      <!-- Fork Icon -->
+      <path d="M458 50 V44 M458 44 C458 40 464 38 464 34 M458 44 C458 40 452 38 452 34" stroke="#222D2C" stroke-width="1.3" fill="none"/>
+      <circle cx="452" cy="34" r="2" fill="#D35B50"/>
+      <circle cx="464" cy="34" r="2" fill="#54C93F"/>
+      <circle cx="458" cy="50" r="2" fill="#222D2C"/>
+
+      <text x="472" y="44" class="btn-fork-text">Fork &amp; Edit Live</text>
+      <text x="472" y="56" class="frozen-sub" font-size="8">Creates editable clone</text>
+    </g>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-13">
+    <rect x="640" y="16" width="340" height="250" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="640" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="654" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="660" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="752" y="40" class="spec-title">Frozen View Forking Banner</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="76" r="3" fill="#1A66A6"/>
+        <text x="668" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="668" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Warns users when viewing a read-only historical</text>
+        <text x="668" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">analytical snapshot.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="114" r="3" fill="#1A66A6"/>
+        <text x="668" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="668" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">[⑂ Fork into Active Workspace] clones parameters into</text>
+        <text x="668" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">an editable interactive session.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="152" r="3" fill="#1A66A6"/>
+        <text x="668" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">SAFETY LOCK:</text>
+        <text x="668" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Prevents accidental edits to historical records cited</text>
+        <text x="668" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">in published UN briefings.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="658" cy="190" r="3" fill="#1A66A6"/>
+        <text x="668" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">COLOR PSYCHOLOGY:</text>
+        <text x="668" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Risograph paper yellow immediately signals non-live</text>
+        <text x="668" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">archived state.</text>
+      </g>
+  </g>
+</svg>

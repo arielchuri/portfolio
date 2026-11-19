@@ -1,0 +1,135 @@
+<svg width="916" height="392" viewBox="0 0 916 392" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <style>
+      .dialog-head { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 700; fill: #222D2C; }
+      .dialog-sub { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 400; fill: #5B6360; }
+      .opt-head { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 700; }
+      .opt-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 400; line-height: 15px; }
+      .hash-code { font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700; fill: #222D2C; }
+      .btn-lbl { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 600; }
+    </style>
+  
+    <style>
+      .spec-tag { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+      .spec-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; fill: #222D2C; }
+    </style>
+  </defs>
+
+  <!-- Archival Canvas Base -->
+  <rect width="916" height="392" rx="8" fill="#EFECE6" stroke="#CECDC8" stroke-width="1"/>
+
+  <!-- Left: Component Box -->
+  <g id="Component-12" transform="translate(16, 16)">
+
+  
+
+  <!-- Drop Shadow Canvas -->
+  <rect x="10" y="10" width="500" height="340" rx="6" fill="#222D2C" fill-opacity="0.12"/>
+  <rect x="8" y="8" width="500" height="340" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+
+  <!-- Modal Header -->
+  <g id="Share-Modal-Header">
+    <rect x="8" y="8" width="500" height="46" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <!-- Lock / Share Icon -->
+    <rect x="28" y="24" width="16" height="14" rx="2" fill="#1A66A6"/>
+    <path d="M31 24 V20 C31 17.5 33 16 36 16 C39 16 41 17.5 41 20 V24" stroke="#222D2C" stroke-width="1.3" fill="none"/>
+    <text x="54" y="32" class="dialog-head">Share Workspace or Generate Audit Snapshot</text>
+    <text x="54" y="45" class="dialog-sub">Choose institutional accountability level for briefing documents and policy proposals</text>
+    <!-- Close Button -->
+    <rect x="472" y="18" width="22" height="22" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    <path d="M478 24 L488 34 M488 24 L478 34" stroke="#222D2C" stroke-width="1.2"/>
+  </g>
+
+  <!-- Choice A: Live Editable Workspace Link -->
+  <g id="Choice-Live-Link">
+    <rect x="22" y="66" width="472" height="84" rx="3" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+    <circle cx="44" cy="92" r="8" fill="#54C93F"/>
+    <path d="M42 92 L44 94 L47 90" stroke="#222D2C" stroke-width="1.2" stroke-linecap="round"/>
+    
+    <text x="62" y="86" class="opt-head" fill="#222D2C">A. Live Dynamic Workspace (Editable Collaborator Link)</text>
+    <text x="62" y="102" class="opt-body" fill="#5B6360">Recipients can zoom, query copilot, pan, and filter layers.</text>
+    <text x="62" y="116" class="opt-body" fill="#D35B50">Warning: Underlying datasets may mutate as monthly feeds refresh.</text>
+
+    <!-- Copy Link Action -->
+    <rect x="382" y="78" width="102" height="26" rx="2" fill="#EFECE6" stroke="#222D2C" stroke-width="1"/>
+    <text x="394" y="95" class="btn-lbl" fill="#222D2C">Copy Live URL</text>
+  </g>
+
+  <!-- Choice B: Immutable Audit Snapshot (SHA-256) Selected -->
+  <g id="Choice-Immutable-Snapshot">
+    <rect x="22" y="160" width="472" height="126" rx="3" fill="#EFECE6" stroke="#1A66A6" stroke-width="1.8"/>
+    <!-- Selection Strip -->
+    <rect x="22" y="160" width="6" height="126" fill="#1A66A6"/>
+
+    <circle cx="44" cy="186" r="8" fill="#1A66A6"/>
+    <!-- Stamp Lock -->
+    <rect x="41" y="183" width="6" height="5" fill="#FFFFFF"/>
+    
+    <text x="62" y="180" class="opt-head" fill="#1A66A6">B. Immutable Audit Snapshot (SHA-256 Crytographic Freeze)</text>
+    <text x="62" y="196" class="opt-body" fill="#3E4846">Freezes exact data points, choropleth breaks, prompt traces, and filter states.</text>
+    <text x="62" y="210" class="opt-body" fill="#3E4846">Guaranteed tamper-proof citation for donor funding requests &amp; committee reviews.</text>
+
+    <!-- Cryptographic Hash Token Box -->
+    <g id="Hash-Token">
+      <rect x="62" y="222" width="418" height="28" rx="2" fill="#FFFFFF" stroke="#222D2C" stroke-width="1"/>
+      <text x="72" y="238" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#707673">SHA-256:</text>
+      <text x="122" y="239" class="hash-code">9f8a7c2e4b1a0d8f3e2b9c7a1d4f6e8a2b3c4d5e</text>
+      <rect x="418" y="226" width="54" height="20" rx="2" fill="#E7E4DF" stroke="#222D2C" stroke-width="0.8"/>
+      <text x="424" y="240" class="btn-lbl" font-size="9" fill="#222D2C">Verify</text>
+    </g>
+
+    <!-- Frozen Timestamp Meta -->
+    <text x="62" y="268" class="opt-body" font-size="9" fill="#707673">Snapshot recorded: 2024-11-05 14:32:08 UTC · Host: unicef-geosight.org/audit/ke-24</text>
+  </g>
+
+  <!-- Modal Footer Actions -->
+  <g id="Modal-Actions">
+    <rect x="8" y="298" width="500" height="50" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <text x="24" y="327" class="dialog-sub">Audit snapshots are permanently immutable and indexed in UN Archives.</text>
+    
+    <rect x="330" y="310" width="164" height="28" rx="2" fill="#1A66A6" stroke="#222D2C" stroke-width="1"/>
+    <text x="344" y="328" class="btn-lbl" fill="#FFFFFF">Generate Frozen Snapshot</text>
+  </g>
+
+
+  </g>
+
+  <!-- Right: UX Spec Sidecar -->
+  <g id="UX-Spec-12">
+    <rect x="560" y="16" width="340" height="360" rx="4" fill="#FFFFFF" stroke="#222D2C" stroke-width="1.5"/>
+    <rect x="560" y="16" width="340" height="42" rx="0" fill="#E7E4DF" stroke="#222D2C" stroke-width="1"/>
+    <rect x="574" y="27" width="90" height="18" rx="2" fill="#1A66A6"/>
+    <text x="580" y="39" class="spec-tag" fill="#FFFFFF">UX SPEC &amp; RULES</text>
+    <text x="672" y="40" class="spec-title">Immutable Snapshot Dialog</text>
+
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="76" r="3" fill="#1A66A6"/>
+        <text x="588" y="80" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">PURPOSE:</text>
+        <text x="588" y="93" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Freezes data vintage, map extent, and formula weights</text>
+        <text x="588" y="105" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">into an unalterable audit snapshot.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="114" r="3" fill="#1A66A6"/>
+        <text x="588" y="118" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">AFFORDANCE:</text>
+        <text x="588" y="131" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">[🔒 Create Snapshot] generates cryptographic SHA-256</text>
+        <text x="588" y="143" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">hash and permanent briefing share link.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="152" r="3" fill="#1A66A6"/>
+        <text x="588" y="156" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">ACCOUNTABILITY:</text>
+        <text x="588" y="169" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Guarantees historical briefing memos reference exact</text>
+        <text x="588" y="181" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">dataset values during crisis audits.</text>
+      </g>
+      <!-- Spec Bullet -->
+      <g>
+        <circle cx="578" cy="190" r="3" fill="#1A66A6"/>
+        <text x="588" y="194" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#222D2C">SECURITY:</text>
+        <text x="588" y="207" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">Tamper-evident record stored in immutable archival</text>
+        <text x="588" y="219" font-family="'Inter', sans-serif" font-size="9" font-weight="400" fill="#5B6360">audit repository.</text>
+      </g>
+  </g>
+</svg>

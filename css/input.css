@@ -1275,6 +1275,24 @@ nav .btn-outline {
   isolation: isolate;
 }
 
+/* Keep active/current-page nav button magenta */
+nav .btn-outline.nav-active,
+nav a.btn-outline.nav-active {
+  background-color: var(--accent, deeppink);
+  color: var(--white, whitesmoke);
+}
+
+nav .btn-outline.nav-active:hover,
+nav a.btn-outline.nav-active:hover,
+nav .btn-outline.nav-active:active,
+nav a.btn-outline.nav-active:active {
+  color: var(--white, whitesmoke);
+}
+
+nav .btn-outline.nav-active .wipe-bg {
+  width: 100%;
+}
+
 #contactDiv {
   position: fixed;
   top: 0;
