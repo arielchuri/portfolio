@@ -72,10 +72,12 @@
           Grounded AI for Humanitarian Decisions
         </h3>
         <p>
-          The transformation of <em>UNICEF&rsquo;s</em> <strong>GeoSight</strong> is a keystone of the <em>United Nations 2026
+          The transformation of <em>UNICEF&rsquo;s</em> <strong>GeoSight</strong> is a keystone of the <em>United
+            Nations 2026
             TechOver</em> initiative. This project brings conversational AI to
           UNICEF&rsquo;s GeoSight geospatial intelligence platform. I presented this work
-          directly to the <strong><a href="https://unite.un.org/" target="_blank">United Nations Office of Information and
+          directly to the <strong><a href="https://unite.un.org/" target="_blank">United Nations Office of Information
+              and
               Communications
               Technology (OICT)</a></strong> and to <strong>Google's <a href="https://datacommons.org"
               target="_blank">Data
@@ -355,7 +357,7 @@
         <img class="rounded-xs box-shadow bottomspace mb-4"
           src="images/geosightai/paper_components/06_auto_insight_correlation_banner.svg"
           alt="Auto-Insight Statistical Correlation Banner" />
-        <ul class="text-xs text-gray-500 ">
+        <ul class="text-xs text-gray-500 !mb-16">
           <li>
             <strong>PURPOSE:</strong>
             Alerts analysts to statistically significant
@@ -375,11 +377,33 @@
             outcomes (+3.4× wasting elevation)
           </li>
         </ul>
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 mt-8 text-gray-500">Composite Risk Model Engine
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 !mt-8 text-gray-500">Composite Risk Model Engine
           (Analytical
           Recipes)</p>
         <img class="rounded-xs box-shadow bottomspace"
           src="images/geosightai/paper_components/07_analytical_recipes_table.svg" alt="Composite Risk Models Table" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Ranks subnational administrative areas using multi-layer
+            weighted indicator equations.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [▶ Run Composite Model] executes formula and
+            highlights top 5 vulnerable counties on canvas.
+          </li>
+          <li>
+            <strong>DATA INTEGRITY:</strong>
+            Transparent min-max normalization formula displayed
+            directly above data table.
+          </li>
+          <li>
+            <strong>ZERO JARGON:</strong>
+            Uses standard &lsquo;Composite Risk Models&rsquo; instead of
+            internal back-end engineering terms.
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -459,6 +483,28 @@
         <img class="rounded-xs box-shadow bottomspace"
           src="images/geosightai/paper_components/09_cross_source_comparison_popover.svg"
           alt="Cross-Source Provenance Comparison Popover" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Resolves discrepancy between conflicting custodial
+            datasets (UNICEF SDMX vs KNBS Census).
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [Designate Primary] updates canonical feed; [Blend
+            Average] applies weighted spatial average.
+          </li>
+          <li>
+            <strong>DATA INTEGRITY:</strong>
+            Details sample sizes (N=1,420), temporal vintage,
+            and survey methodology differences.
+          </li>
+          <li>
+            <strong>GOVERNANCE:</strong>
+            Maintains audit trail of all manual reconciliation
+            decisions for reporting fidelity.
+          </li>
+        </ul>
       </div>
       <div class="six columns">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Agreement Badges &amp; Status Tokens
@@ -466,9 +512,54 @@
         <img class="rounded-xs box-shadow bottomspace mb-4"
           src="images/geosightai/paper_components/08_agreement_badges_tokens.svg"
           alt="Data Trust Agreement Status Badges" />
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Primary Source Custodian Toggle</p>
+        <ul class="text-xs text-gray-500 !mb-16">
+          <li>
+            <strong>PURPOSE:</strong>
+            Provides rapid visual trust cues for cross-source
+            indicator agreement and data quality.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            Clicking badge opens detailed side-by-side
+            provenance inspection popover.
+          </li>
+          <li>
+            <strong>THRESHOLDS:</strong>
+            Green: &lt;3% delta · Amber: 3–15% delta (review) ·
+            Gray: Single source unverified.
+          </li>
+          <li>
+            <strong>3-SEC SCAN TEST:</strong>
+            Designed for immediate operator comprehension under
+            field crisis conditions.
+          </li>
+        </ul>
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 !mt-8 text-gray-500">Primary Source Custodian Toggle
+        </p>
         <img class="rounded-xs box-shadow bottomspace"
           src="images/geosightai/paper_components/10_primary_source_toggle.svg" alt="Primary Source Toggle Control" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Allows instant toggling between global UN standards
+            and national ministry datasets.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            Segmented radio control updates active map layer
+            without full page or workspace reload.
+          </li>
+          <li>
+            <strong>DATA INTEGRITY:</strong>
+            Clearly marks global harmonization vs subnational
+            granularity advantages.
+          </li>
+          <li>
+            <strong>ACCESSIBILITY:</strong>
+            High-contrast selection state with distinct radio
+            glyph primitives (WCAG AAA).
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -508,14 +599,59 @@
         <img class="rounded-xs box-shadow bottomspace mb-4"
           src="images/geosightai/paper_components/13_frozen_view_forking_banner.svg"
           alt="Frozen View Audit Banner with Fork &amp; Edit Action" />
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Immutable Snapshot Creation Dialog</p>
+        <ul class="text-xs text-gray-500 !mb-16">
+          <li>
+            <strong>PURPOSE:</strong>
+            Warns users when viewing a read-only historical
+            analytical snapshot.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [⑂ Fork into Active Workspace] clones parameters into
+            an editable interactive session.
+          </li>
+          <li>
+            <strong>SAFETY LOCK:</strong>
+            Prevents accidental edits to historical records cited
+            in published UN briefings.
+          </li>
+          <li>
+            <strong>COLOR PSYCHOLOGY:</strong>
+            Risograph paper yellow immediately signals non-live
+            archived state.
+          </li>
+        </ul>
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 !mt-8 text-gray-500">Immutable Snapshot Creation
+          Dialog</p>
         <img class="rounded-xs box-shadow bottomspace"
           src="images/geosightai/paper_components/12_immutable_snapshots_dialog.svg"
           alt="Immutable Snapshots Share Dialog" />
+        <ul class="text-xs text-gray-500">
+          <li>
+            <strong>PURPOSE:</strong>
+            Freezes data vintage, map extent, and formula weights
+            into an unalterable audit snapshot.
+          </li>
+          <li>
+            <strong>AFFORDANCE:</strong>
+            [🔒 Create Snapshot] generates cryptographic SHA-256
+            hash and permanent briefing share link.
+          </li>
+          <li>
+            <strong>ACCOUNTABILITY:</strong>
+            Guarantees historical briefing memos reference exact
+            dataset values during crisis audits.
+          </li>
+          <li>
+            <strong>SECURITY:</strong>
+            Tamper-evident record stored in immutable archival
+            audit repository.
+          </li>
+        </ul>
       </div>
     </div>
-
-    <!-- Executive Briefing Memo Showcase -->
+    <!--
+    Executive Briefing Memo Showcase
     <div class="row mb-12">
       <div class="twelve columns">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Executive Policy Briefing Memo (1-Click
@@ -528,7 +664,7 @@
 
     <hr class="dots my-36" />
 
-    <!-- Section 5: Modular AI Design System -->
+    Section 5: Modular AI Design System
     <div class="row mb-12">
       <div class="four columns">
         <h3 class="text-2xl font-semibold mb-2">
@@ -566,7 +702,7 @@
       </div>
     </div>
 
-    <!-- Design System Primitives Showcase -->
+    Design System Primitives Showcase
     <div class="row mb-12">
       <div class="four columns">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Interactive Spatial Entity Chips</p>
@@ -588,6 +724,7 @@
       </div>
     </div>
 
+-->
     <!-- Floating right arrow for navigation -->
     <a href="p_sparklelabs.html">
       <div class="right-arrow-nav">
