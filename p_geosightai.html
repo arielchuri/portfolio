@@ -16,7 +16,7 @@
 
   <!-- FONT
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />
 
   <!-- CSS
          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -44,10 +44,8 @@
 
   <div class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 main-content">
     <div id="contactDiv" style="display: none; width: 100%"></div>
-    <div class="row">
-      <!-- Hero section -->
-    </div>
-    <div class="h-screen flex items-center twelve columns bottomspace" id="geosight-hero-section">
+    <!-- Hero section -->
+    <div class="h-screen flex items-center justify-center w-full bottomspace" id="geosight-hero-section">
       <img class="pb-48 px-2 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-48 rounded-xs"
         src="images/geosightai/globe-sat_prompt_view.svg" alt="United Nations GeosightAI Interface" />
     </div>
@@ -56,8 +54,8 @@
   <div class="mx-auto max-w-[2000px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
     <hr class="dots my-36" />
 
-    <div class="row">
-      <div class="twelve columns title">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-12 title">
         <h1 class="mb-2">United Nations GeosightAI</h1>
         <p class="text-xl font-thin uppercase tracking-wide text-gray-500">
           Generative AI for Geospatial Humanitarian &amp; Policy Intelligence
@@ -66,21 +64,22 @@
     </div>
 
     <!-- Intro / Context / Overview -->
-    <div class="row">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class=" lg:col-span-6 xl:col-span-4">
+        <h2 class="!text-2xl !font-semibold mb-2">
           Grounded AI for Humanitarian Decisions
-        </h3>
+        </h2>
         <p>
           The transformation of <em>UNICEF&rsquo;s</em> <strong>GeoSight</strong> is a keystone of the <em>United
             Nations 2026
             TechOver</em> initiative. This project brings conversational AI to
           UNICEF&rsquo;s GeoSight geospatial intelligence platform. I presented this work
-          directly to the <strong><a href="https://unite.un.org/" target="_blank">United Nations Office of Information
+          directly to the <strong><a href="https://unite.un.org/" target="_blank" rel="noopener noreferrer">United
+              Nations Office of Information
               and
               Communications
-              Technology (OICT)</a></strong> and to <strong>Google's <a href="https://datacommons.org"
-              target="_blank">Data
+              Technology (OICT)</a></strong> and to <strong>Google's <a href="https://datacommons.org" target="_blank"
+              rel="noopener noreferrer">Data
               Commons</a></strong> team.
         </p>
         <p>
@@ -100,7 +99,7 @@
           <strong>grounded, inspectable, and easy to steer</strong>.
         </p>
       </div>
-      <div class="eight columns">
+      <div class=" lg:col-span-12  xl:col-span-8 ">
         <img class="box-shadow rounded-xs bottomspace" src="images/geosightai/google_talk.webp"
           alt="Presenting GeosightAI at Google Builders Day" />
       </div>
@@ -109,11 +108,11 @@
     <hr class="dots my-36" />
 
     <!-- Section 1: AI Copilot, Intent Disambiguation & Indicator Swap -->
-    <div class="row mb-12">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4">
+        <h2 class="!text-2xl !font-semibold mb-2">
           AI Copilot, Disambiguation &amp; Indicator Swap
-        </h3>
+        </h2>
         <p>
           Broad queries like
           <em>&ldquo;Show me child vulnerability in the Horn of Africa&rdquo;</em>
@@ -129,29 +128,33 @@
           swap layers on the fly without starting over.
         </p>
         <p><strong>Design features:</strong></p>
-        <p>
-          <span class="mb-8">+ <strong>Predictive Data Grounding:</strong> Type-ahead entity
-            chips for Indicators, Hazard Overlays, and Admin Regions</span><br />
-          <span class="mb-8">+ <strong>Indicator Swap Drawer:</strong> Flyout comparing
+        <ul class="list-none !pl-4">
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Predictive Data
+              Grounding:</strong> Type-ahead entity
+            chips for Indicators, Hazard Overlays, and Admin Regions</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Indicator Swap
+              Drawer:</strong> Flyout comparing
             custodian agencies, subnational coverage (e.g., 47/47 counties),
-            and live choropleth previews</span><br />
-          <span class="mb-8">+ <strong>Disentangled System Activity:</strong> Narrative
+            and live choropleth previews</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Disentangled System
+              Activity:</strong> Narrative
             milestone cards, collapsible step-trace reasoning, and calm
-            waiting states</span><br />
-          <span class="mb-8">+ <strong>Bidirectional Deep-Linking:</strong> Clicking AI layer
+            waiting states</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Bidirectional
+              Deep-Linking:</strong> Clicking AI layer
             cards opens the corresponding native GeoSight panel. This seemingly simple change turns the conversational
-            AI into the driver of a complex application rather than a simple information presenter.</span><br />
-        </p>
+            AI into the driver of a complex application rather than a simple information presenter.</li>
+        </ul>
       </div>
-      <div class="eight columns">
+      <div class="lg:col-span-12 xl:col-span-8">
         <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/globe_prompt_view.svg"
           alt="AI Copilot and Compound Flood Risk Analysis" />
       </div>
     </div>
 
     <!-- Conversational Turn Progression (4-Step Guided Intent & Pre-Flight Flow) -->
-    <div class="row mb-12">
-      <div class="six columns">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4 2xl:col-span-3">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 1: Goal Clarification</p>
         <img class="rounded-xs bottomspace"
           src="images/geosightai/paper_components/18_guided_operational_goal_chips.svg"
@@ -178,9 +181,9 @@
           </li>
         </ul>
       </div>
-      <div class="six columns">
+      <div class="lg:col-span-6 xl:col-span-4 2xl:col-span-3">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 2: CCRI Pillars Formulation</p>
-        <img class="rounded-xs box-shadow bottomspace"
+        <img class="rounded-xs bottomspace"
           src="images/geosightai/paper_components/21_analytical_pillars_formulation_card.svg"
           alt="AI Copilot Step 2: Analytical Pillars Formulation" />
         <ul class="text-xs text-gray-500">
@@ -204,15 +207,13 @@
           <li>
             <strong>DOWNSTREAM FLOW:</strong>
             Confirmed pillars directly determine candidate
-            custodial feeds presented in Card 2 (Component 20).
+            custodial feeds presented in Step 3 (Indicator Pair Alignment).
           </li>
         </ul>
       </div>
-    </div>
-    <div class="row mb-12">
-      <div class="six columns">
+      <div class="lg:col-span-6 xl:col-span-4 2xl:col-span-3">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 3: Indicator Pair Alignment</p>
-        <img class="rounded-xs box-shadow bottomspace"
+        <img class="rounded-xs bottomspace"
           src="images/geosightai/paper_components/20_goal_aligned_indicator_resolver.svg"
           alt="AI Copilot Step 3: Goal-Aligned Indicator Pair Selection" />
         <ul class="text-xs text-gray-500">
@@ -238,10 +239,9 @@
           </li>
         </ul>
       </div>
-      <div class="six columns">
+      <div class="lg:col-span-6 xl:col-span-4 2xl:col-span-3">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Step 4: Custodian Swap Drawer</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/02_indicator_swap_drawer.svg"
+        <img class="rounded-xs bottomspace" src="images/geosightai/paper_components/02_indicator_swap_drawer.svg"
           alt="AI Copilot Step 4: Interactive Indicator Swap Drawer" />
         <ul class="text-xs text-gray-500">
           <li>
@@ -269,8 +269,8 @@
     </div>
 
     <!-- Active Map Viewport: Kenya 47-County Subnational Risk Render -->
-    <div class="row mb-16">
-      <div class="twelve columns">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+      <div class="lg:col-span-12">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Rendered Downstream Viewport: Kenya
           CCRI-DRM (Disaster Risk Model) Subnational Composite Map</p>
         <img class="rounded-xs box-shadow bottomspace w-full"
@@ -283,11 +283,11 @@
     <hr class="dots my-36" />
 
     <!-- Section 2: Guided Analytical Recipes & Proactive Signals -->
-    <div class="row mb-12">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4">
+        <h2 class="!text-2xl !font-semibold mb-2">
           Analytical Recipes &amp; Related Signals
-        </h3>
+        </h2>
         <p>
           Analysts mapping a single indicator (like
           <em>Primary Out-of-School Rate</em>) often miss complementary
@@ -302,31 +302,34 @@
           workflow:
         </p>
         <p><strong>Guided intelligence:</strong></p>
-        <p>
-          <span class="mb-8">+ <strong>Related Signals Panel:</strong> Semantic vector
+        <ul class="list-none !pl-4">
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Related Signals
+              Panel:</strong> Semantic vector
             matching suggests complementary layers (e.g., Safe Water in
-            Schools, Poverty Rate, Drought Risk) for one-click overlay</span><br />
-          <span class="mb-8">+ <strong>Auto-Insight Correlations:</strong> Background Pearson
+            Schools, Poverty Rate, Drought Risk) for one-click overlay</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Auto-Insight
+              Correlations:</strong> Background Pearson
             correlation (<em>r</em>) banners highlight hidden relationships
-            across subnational regions with split-viewer comparison</span><br />
-          <span class="mb-8">+ <strong>Analytical Recipes:</strong> Curated composite index
+            across subnational regions with split-viewer comparison</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Analytical
+              Recipes:</strong> Curated composite index
             templates (<em>Standard Burden</em>, <em>Equity-Weighted</em>,
             <em>Climate-Resilient</em>) that load layers and rank counties
-            automatically</span><br />
-        </p>
+            automatically
+          </li>
+        </ul>
       </div>
-      <div class="eight columns">
-        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/out_of_school_map.png"
+      <div class="lg:col-span-12 xl:col-span-8">
+        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/out_of_school_map.webp"
           alt="Out of School Rate Primary Indicators Map" />
       </div>
     </div>
 
     <!-- Section 2 Component Showcase: Related Signals, Correlation & Analytical Recipes -->
-    <div class="row mb-12">
-      <div class="five columns">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-5">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Related Signals Panel</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/05_related_signals_panel.svg"
+        <img class="rounded-xs bottomspace" src="images/geosightai/paper_components/05_related_signals_panel.svg"
           alt="Related Signals Semantic Vector Matches" />
         <ul class="text-xs text-gray-500">
           <li>
@@ -351,10 +354,10 @@
           </li>
         </ul>
       </div>
-      <div class="seven columns">
+      <div class="lg:col-span-7">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Auto-Insight Correlation Alert Banner
         </p>
-        <img class="rounded-xs box-shadow bottomspace mb-4"
+        <img class="rounded-xs bottomspace mb-4"
           src="images/geosightai/paper_components/06_auto_insight_correlation_banner.svg"
           alt="Auto-Insight Statistical Correlation Banner" />
         <ul class="text-xs text-gray-500 !mb-16">
@@ -370,18 +373,19 @@
           </li>
           <li>
             <strong>DATA INTEGRITY:</strong>
-            Fully qualifies statistics: r = 0.78, p < 0.001, sample size N=47 ADM1 counties. </li>
+            Fully qualifies statistics: r = 0.78, p &lt; 0.001, sample size N=47 ADM1 counties.
+          </li>
           <li>
             <strong>FIELD IMPACT:</strong>
             Translates statistical correlation into concrete
-            outcomes (+3.4× wasting elevation)
+            outcomes (+3.4× wasting elevation).
           </li>
         </ul>
         <p class="text-xs font-bold uppercase tracking-wider mb-2 !mt-8 text-gray-500">Composite Risk Model Engine
           (Analytical
           Recipes)</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/07_analytical_recipes_table.svg" alt="Composite Risk Models Table" />
+        <img class="rounded-xs bottomspace" src="images/geosightai/paper_components/07_analytical_recipes_table.svg"
+          alt="Composite Risk Models Table" />
         <ul class="text-xs text-gray-500">
           <li>
             <strong>PURPOSE:</strong>
@@ -410,11 +414,11 @@
     <hr class="dots my-36" />
 
     <!-- Section: 3D Topographic & Terrain Elevation Analysis -->
-    <div class="row mb-12">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4">
+        <h2 class="!text-2xl !font-semibold mb-2">
           3D Terrain &amp; Physical Topography
-        </h3>
+        </h2>
         <p>
           Statistical indicators only tell part of the humanitarian story.
           Evaluating flood inundation, river catchment basins, and isolation
@@ -427,17 +431,20 @@
           and terrain barriers alongside demographic vulnerability layers.
         </p>
         <p><strong>Topographic features:</strong></p>
-        <p>
-          <span class="mb-8">+ <strong>3D Elevation Mesh:</strong> Realistic hillshade and
-            topographic contours for river valley flood mapping</span><br />
-          <span class="mb-8">+ <strong>Oblique Camera Pitch:</strong> Interactive tilt and
-            rotation controls to inspect transport corridors and flood barriers</span><br />
-          <span class="mb-8">+ <strong>Dynamic Layer Draping:</strong> Continuous projection of
-            subnational vulnerability polygons over complex terrain</span><br />
-        </p>
+        <ul class="list-none !pl-4">
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>3D Elevation
+              Mesh:</strong> Realistic hillshade and
+            topographic contours for river valley flood mapping</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Oblique Camera
+              Pitch:</strong> Interactive tilt and
+            rotation controls to inspect transport corridors and flood barriers</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Dynamic Layer
+              Draping:</strong> Continuous projection of
+            subnational vulnerability polygons over complex terrain</li>
+        </ul>
       </div>
-      <div class="eight columns">
-        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/terrain_3d_view.png"
+      <div class="lg:col-span-12 xl:col-span-8">
+        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/terrain_3d_view.webp"
           alt="3D Terrain and Satellite Elevation Analysis" />
       </div>
     </div>
@@ -445,11 +452,11 @@
     <hr class="dots my-36" />
 
     <!-- Section 3: Data Trust & Cross-Source Agreement -->
-    <div class="row mb-12">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4">
+        <h2 class="!text-2xl !font-semibold mb-2">
           Data Trust &amp; Cross-Source Agreement
-        </h3>
+        </h2>
         <p>
           Humanitarian allocations require verifiable numbers. When global
           aggregates (like Google / UN Data Commons) differ from local
@@ -457,30 +464,35 @@
           immediately rather than trusting a black box.
         </p>
         <p><strong>Trust architecture:</strong></p>
-        <p>
-          <span class="mb-8">+ <strong>Agreement Badges:</strong> Visual
+        <ul class="list-none !pl-4">
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Agreement
+              Badges:</strong> Visual
             <code>PASS</code>, <code>REVIEW</code>, and
-            <code>UNVERIFIED</code> status tokens on active layers</span><br />
-          <span class="mb-8">+ <strong>Cross-Source Comparison Popover:</strong> Side-by-side
+            <code>UNVERIFIED</code> status tokens on active layers
+          </li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Cross-Source Comparison
+              Popover:</strong> Side-by-side
             breakdown of reported values, time periods, deltas, and provenance
-            URLs</span><br />
-          <span class="mb-8">+ <strong>Primary Source Toggle:</strong> Direct control to
-            switch between global and local agency feeds</span><br />
-          <span class="mb-8">+ <strong>Verified Attribution:</strong> Explicit credit across
-            UNICEF SDMX, UN Data Commons, and GeoSight layers</span><br />
-        </p>
+            URLs</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Primary Source
+              Toggle:</strong> Direct control to
+            switch between global and local agency feeds</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Verified
+              Attribution:</strong> Explicit credit across
+            UNICEF SDMX, UN Data Commons, and GeoSight layers</li>
+        </ul>
       </div>
-      <div class="eight columns">
-        <img class="rounded-xs box-shadow bottomspace" src="images/geosightai/safeguards.svg"
+      <div class="lg:col-span-12 xl:col-span-8">
+        <img class="rounded-xs bottomspace" src="images/geosightai/safeguards.svg"
           alt="Data Trust and Cross-Source Agreement Badges" />
       </div>
     </div>
 
     <!-- Trust Architecture Component Showcase -->
-    <div class="row mb-12">
-      <div class="six columns">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4 ">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Cross-Source Comparison Popover</p>
-        <img class="rounded-xs box-shadow bottomspace"
+        <img class="rounded-xs bottomspace"
           src="images/geosightai/paper_components/09_cross_source_comparison_popover.svg"
           alt="Cross-Source Provenance Comparison Popover" />
         <ul class="text-xs text-gray-500">
@@ -506,11 +518,10 @@
           </li>
         </ul>
       </div>
-      <div class="six columns">
+      <div class="lg:col-span-6 xl:col-span-4">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Agreement Badges &amp; Status Tokens
         </p>
-        <img class="rounded-xs box-shadow bottomspace mb-4"
-          src="images/geosightai/paper_components/08_agreement_badges_tokens.svg"
+        <img class="rounded-xs bottomspace mb-4" src="images/geosightai/paper_components/08_agreement_badges_tokens.svg"
           alt="Data Trust Agreement Status Badges" />
         <ul class="text-xs text-gray-500 !mb-16">
           <li>
@@ -534,10 +545,12 @@
             field crisis conditions.
           </li>
         </ul>
+      </div>
+      <div class="lg:col-span-6 xl:col-span-4">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 !mt-8 text-gray-500">Primary Source Custodian Toggle
         </p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/10_primary_source_toggle.svg" alt="Primary Source Toggle Control" />
+        <img class="rounded-xs bottomspace" src="images/geosightai/paper_components/10_primary_source_toggle.svg"
+          alt="Primary Source Toggle Control" />
         <ul class="text-xs text-gray-500">
           <li>
             <strong>PURPOSE:</strong>
@@ -566,11 +579,11 @@
     <hr class="dots my-36" />
 
     <!-- Section 4: Immutable Audit Snapshots & Executive Briefings -->
-    <div class="row mb-12">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-6 xl:col-span-4">
+        <h2 class="!text-2xl !font-semibold mb-2">
           Audit Snapshots &amp; Executive Briefings
-        </h3>
+        </h2>
         <p>
           Insights on a screen need to travel into policy meetings and funding
           proposals without losing their audit trail or mutating as underlying
@@ -582,21 +595,25 @@
           generate decision-ready policy memos in one click.
         </p>
         <p><strong>Reporting &amp; governance:</strong></p>
-        <p>
-          <span class="mb-8">+ <strong>Immutable Snapshots (SHA-256):</strong> Share dialog
+        <ul class="list-none !pl-4">
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Immutable Snapshots
+              (SHA-256):</strong> Share dialog
             distinguishing <em>Live Editable Links</em> from
-            <em>Frozen Audit Snapshots</em></span><br />
-          <span class="mb-8">+ <strong>Frozen View &amp; Forking:</strong> Audit banner
+            <em>Frozen Audit Snapshots</em>
+          </li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Frozen View &amp;
+              Forking:</strong> Audit banner
             confirming snapshot timestamp with a one-click &ldquo;Fork &amp;
-            Edit&rdquo; action</span><br />
-          <span class="mb-8">+ <strong>Executive Briefing Export:</strong> 1&ndash;2 page
+            Edit&rdquo; action</li>
+          <li class="!mb-2 relative before:content-['+'] before:absolute before:-left-4"><strong>Executive Briefing
+              Export:</strong> 1&ndash;2 page
             PDF/Memo layout with core KPI cards, static hotspot map, top 5
-            highest-risk areas table, and source methodology footer</span><br />
-        </p>
+            highest-risk areas table, and source methodology footer</li>
+        </ul>
       </div>
-      <div class="eight columns">
+      <div class="lg:col-span-12 xl:col-span-8">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Read-Only Frozen View Audit Banner</p>
-        <img class="rounded-xs box-shadow bottomspace mb-4"
+        <img class="rounded-xs bottomspace mb-4"
           src="images/geosightai/paper_components/13_frozen_view_forking_banner.svg"
           alt="Frozen View Audit Banner with Fork &amp; Edit Action" />
         <ul class="text-xs text-gray-500 !mb-16">
@@ -621,10 +638,11 @@
             archived state.
           </li>
         </ul>
+      </div>
+      <div class="lg:col-span-8 xl:col-span-8 2xl:col-span-6">
         <p class="text-xs font-bold uppercase tracking-wider mb-2 !mt-8 text-gray-500">Immutable Snapshot Creation
           Dialog</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/12_immutable_snapshots_dialog.svg"
+        <img class="rounded-xs bottomspace" src="images/geosightai/paper_components/12_immutable_snapshots_dialog.svg"
           alt="Immutable Snapshots Share Dialog" />
         <ul class="text-xs text-gray-500">
           <li>
@@ -650,81 +668,6 @@
         </ul>
       </div>
     </div>
-    <!--
-    Executive Briefing Memo Showcase
-    <div class="row mb-12">
-      <div class="twelve columns">
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Executive Policy Briefing Memo (1-Click
-          PDF/Markdown Export)</p>
-        <img class="rounded-xs box-shadow bottomspace w-full"
-          src="images/geosightai/paper_components/14_executive_briefing_export_memo.svg"
-          alt="Executive Policy Briefing Memo Layout" />
-      </div>
-    </div>
-
-    <hr class="dots my-36" />
-
-    Section 5: Modular AI Design System
-    <div class="row mb-12">
-      <div class="four columns">
-        <h3 class="text-2xl font-semibold mb-2">
-          Modular AI Design System
-        </h3>
-        <p>
-          Bringing conversational intelligence into geospatial decision-making
-          required establishing a unified design language that bridges natural
-          language, complex GIS layers, and algorithmic uncertainty.
-        </p>
-        <p>
-          I architected a modular component kit in Figma and code, providing
-          consistent visual primitives across copilot dialogs, map inspector
-          cards, and verification states for partner UN agencies.
-        </p>
-        <p><strong>System architecture &amp; components:</strong></p>
-        <p>
-          <span class="mb-8">+ <strong>Semantic AI &amp; Trust Tokens:</strong> Color tokens
-            and status indicators communicating tool execution, provenance
-            confidence, and high-hazard thresholds</span><br />
-          <span class="mb-8">+ <strong>Interactive Grounding Chips:</strong> Entity chips for
-            administrative regions, hazard overlays, and indicator pillars that
-            connect chat text directly to map state</span><br />
-          <span class="mb-8">+ <strong>Reusable Analytical Tiles:</strong> Composable metric
-            cards, delta sparklines, and subnational coverage counters tuned
-            for dark map viewports</span><br />
-          <span class="mb-8">+ <strong>High-Stress Accessibility:</strong> High-contrast
-            cartographic surfaces and WCAG AAA readability for field ops and
-            emergency coordination centers</span><br />
-        </p>
-      </div>
-      <div class="eight columns">
-        <img class="rounded-xs box-shadow bottomspace mb-6" src="images/geosightai/design_system.svg"
-          alt="Modular AI Design System and Component Primitives" />
-      </div>
-    </div>
-
-    Design System Primitives Showcase
-    <div class="row mb-12">
-      <div class="four columns">
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Interactive Spatial Entity Chips</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/15_interactive_grounding_chips_set.svg"
-          alt="Interactive Spatial Entity Chips Token Set" />
-      </div>
-      <div class="four columns">
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Reusable Analytical Metric Tiles</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/16_reusable_analytical_tiles.svg"
-          alt="Reusable Analytical Metric KPI Tiles" />
-      </div>
-      <div class="four columns">
-        <p class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Map Viewport Control Primitives</p>
-        <img class="rounded-xs box-shadow bottomspace"
-          src="images/geosightai/paper_components/17_map_control_buttons_primitives.svg"
-          alt="32x32 Map Viewport Control Primitives" />
-      </div>
-    </div>
-
--->
     <!-- Floating right arrow for navigation -->
     <a href="p_sparklelabs.html">
       <div class="right-arrow-nav">

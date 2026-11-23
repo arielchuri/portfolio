@@ -248,6 +248,9 @@
   .left-4 {
     left: calc(var(--spacing) * 4);
   }
+  .isolate {
+    isolation: isolate;
+  }
   .z-50 {
     z-index: 50;
   }
@@ -325,6 +328,9 @@
   }
   .\!mb-1 {
     margin-bottom: var(--spacing) !important;
+  }
+  .\!mb-2 {
+    margin-bottom: calc(var(--spacing) * 2) !important;
   }
   .\!mb-12 {
     margin-bottom: calc(var(--spacing) * 12) !important;
@@ -532,11 +538,21 @@
   .pb-48 {
     padding-bottom: calc(var(--spacing) * 48);
   }
+  .\!pl-4 {
+    padding-left: calc(var(--spacing) * 4) !important;
+  }
+  .\!pl-6 {
+    padding-left: calc(var(--spacing) * 6) !important;
+  }
   .text-justify {
     text-align: justify;
   }
   .font-mono {
     font-family: var(--font-mono);
+  }
+  .\!text-2xl {
+    font-size: var(--text-2xl) !important;
+    line-height: var(--tw-leading, var(--text-2xl--line-height)) !important;
   }
   .\!text-6xl {
     font-size: var(--text-6xl) !important;
@@ -585,6 +601,10 @@
   .\!leading-snug {
     --tw-leading: var(--leading-snug) !important;
     line-height: var(--leading-snug) !important;
+  }
+  .\!font-semibold {
+    --tw-font-weight: var(--font-weight-semibold) !important;
+    font-weight: var(--font-weight-semibold) !important;
   }
   .font-black {
     --tw-font-weight: var(--font-weight-black);
@@ -701,6 +721,18 @@
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
   }
+  .before\:absolute::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+  .before\:-left-4::before {
+    content: var(--tw-content);
+    left: calc(var(--spacing) * -4);
+  }
+  .before\:content-\[\'\+\'\]::before {
+    --tw-content: '+';
+    content: var(--tw-content);
+  }
   @media (hover: hover) {
     .hover\:text-active:hover {
       color: var(--color-active);
@@ -777,6 +809,21 @@
     .lg\:col-span-4 {
       grid-column: span 4 / span 4;
     }
+    .lg\:col-span-5 {
+      grid-column: span 5 / span 5;
+    }
+    .lg\:col-span-6 {
+      grid-column: span 6 / span 6;
+    }
+    .lg\:col-span-7 {
+      grid-column: span 7 / span 7;
+    }
+    .lg\:col-span-8 {
+      grid-column: span 8 / span 8;
+    }
+    .lg\:col-span-12 {
+      grid-column: span 12 / span 12;
+    }
     .lg\:row-span-2 {
       grid-row: span 2 / span 2;
     }
@@ -785,6 +832,9 @@
     }
     .lg\:grid-cols-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-12 {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
     }
     .lg\:px-12 {
       padding-inline: calc(var(--spacing) * 12);
@@ -799,6 +849,9 @@
     }
     .xl\:col-span-4 {
       grid-column: span 4 / span 4;
+    }
+    .xl\:col-span-8 {
+      grid-column: span 8 / span 8;
     }
     .xl\:grid-cols-5 {
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -817,11 +870,17 @@
     .\32 xl\:col-span-2 {
       grid-column: span 2 / span 2;
     }
+    .\32 xl\:col-span-3 {
+      grid-column: span 3 / span 3;
+    }
     .\32 xl\:col-span-4 {
       grid-column: span 4 / span 4;
     }
     .\32 xl\:col-span-5 {
       grid-column: span 5 / span 5;
+    }
+    .\32 xl\:col-span-6 {
+      grid-column: span 6 / span 6;
     }
     .\32 xl\:grid-cols-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2175,6 +2234,11 @@ nav .btn-outline.nav-active .wipe-bg {
   syntax: "*";
   inherits: false;
 }
+@property --tw-content {
+  syntax: "*";
+  initial-value: "";
+  inherits: false;
+}
 @keyframes bounce {
   0%, 100% {
     transform: translateY(-25%);
@@ -2239,6 +2303,7 @@ nav .btn-outline.nav-active .wipe-bg {
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-ease: initial;
+      --tw-content: "";
     }
   }
 }

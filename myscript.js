@@ -784,6 +784,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializePageAnimations();
   initializeRightArrowScroll();
   initializeDownArrowScroll();
+  initializeLocalTailwindIndicator();
 });
 
 // Handle browser back/forward navigation
@@ -907,4 +908,39 @@ function initializeDownArrowScroll() {
       });
     }
   });
+}
+
+// Localhost-only Tailwind breakpoint indicator
+function initializeLocalTailwindIndicator() {
+  const host = window.location.hostname;
+  if (host !== "localhost" && host !== "127.0.0.1" && host !== "[::1]") return;
+
+  const existing = document.getElementById("dev-tailwind-bp");
+  if (existing) existing.remove();
+
+  const badge = document.createElement("div");
+  badge.id = "dev-tailwind-bp";
+  badge.style.cssText =
+    "position:fixed;bottom:8px;right:8px;z-index:99999;padding:4px 8px;background:rgba(255,255,255,0.5);color:#15803d;font:600 12px monospace;border-radius:4px;pointer-events:none;";
+
+  function update() {
+    const w = window.innerWidth;
+    const bp =
+      w >= 1536
+        ? "2xl"
+        : w >= 1280
+          ? "xl"
+          : w >= 1024
+            ? "lg"
+            : w >= 768
+              ? "md"
+              : w >= 640
+                ? "sm"
+                : "base";
+    badge.textContent = `${bp} (${w}px)`;
+  }
+
+  document.body.appendChild(badge);
+  update();
+  window.addEventListener("resize", update);
 }
